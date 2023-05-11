@@ -7,6 +7,8 @@ let controlsButton = document.getElementById("controls");
 
 newGameButton.addEventListener("click", chooseDifficultyPage);
 rulesButton.addEventListener("click", rulesPage);
+aboutButton.addEventListener("click", aboutPage);
+controlsButton.addEventListener("click", controlsPage);
 
 
 function chooseDifficultyPage() {
@@ -44,6 +46,58 @@ function rulesPage() {
     </img>
     <p>
     If you are left with no choices, you can click on <em>Generate</em> and the board will duplicate all of the numbers you currently have on it, giving you more choices.
+    </p>
+    </div>
+    <br>
+    <button type="button" class="new-game-screen-button" id="return" data-type="return">Return to Main Menu</button>
+    `;
+    let returnButton = document.getElementById("return");
+    returnButton.addEventListener("click", returnToMenu);
+}
+
+function aboutPage() {
+    gameContent.innerHTML = `<h1>Numbers Game</h1>
+    <h2>About</h2>
+    <div>
+    <p>
+    This game was inspired by the Numbers game and Numbers game 2 currently available on the Play Store.
+    <br>
+    This iteration was made for educational purposes only as a part of the course with Code Institute. The creator of this iteration missed their bus stop (and several more) whiole playing the game.
+    <br>
+    Beware.
+    </p>
+    </div>
+    <br>
+    <button type="button" class="new-game-screen-button" id="return" data-type="return">Return to Main Menu</button>
+    `;
+    let returnButton = document.getElementById("return");
+    returnButton.addEventListener("click", returnToMenu);
+}
+
+function controlsPage() {
+    gameContent.innerHTML = `<h1>Numbers Game</h1>
+    <h2>Controls</h2>
+    <div>
+    <p>
+    <h3>
+    Computer:
+    </h3>
+    Left click - choice
+    <br>
+    M - Mute
+    <br>
+    R - Brings up Rules
+    <br>
+    C - Brings up Controls
+    <br>
+    Q - Quit game
+    </p>
+    </div>
+    <div>
+    <p>
+    ICON - Sound On
+    <br>
+    ICON2 - Sound Off
     </p>
     </div>
     <br>
