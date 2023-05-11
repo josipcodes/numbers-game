@@ -4,12 +4,13 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
             if (this.getAttribute("data-type") === "new-game") {
                 ADDFUNCTIONHERE();
-            } else if ((this.getAttribute("data-type") === "rules") {
+            } else if (this.getAttribute("data-type") === "rules") {
                 ADDFUNCTIONHERE();
-            } else if ((this.getAttribute("data-type") === "about") {
+            } else if (this.getAttribute("data-type") === "about") {
                 ADDFUNCTIONHERE();
-            } else if ((this.getAttribute("data-type") === "controls") {
+            } else if (this.getAttribute("data-type") === "controls") {
                 ADDFUNCTIONHERE();
             }
-        }
         });
+    }
+});
