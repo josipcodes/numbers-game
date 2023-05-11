@@ -27,7 +27,8 @@ h1 {
     margin: 0;
 }
 
-.main-screen-button {
+.main-screen-button,
+new-game-screen-button {
     display: block;
     margin: 10px auto;
     padding: 5px 10px;
