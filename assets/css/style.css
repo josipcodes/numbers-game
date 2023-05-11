@@ -12,15 +12,19 @@ body {
 .game-area {
     height: 100%;
     background-color: greenyellow;
+    padding: auto 0;
 }
 
 .game-window {
     width: inherit;
     background-color: lightgrey;
+    margin: 50px auto;
 }
 
 h1 {
     text-align: center;
+    padding: 10px;
+    margin: 0;
 }
 
 .main-screen-button {
