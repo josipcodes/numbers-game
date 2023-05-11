@@ -5,6 +5,9 @@ let rulesButton = document.getElementById("rules");
 let aboutButton = document.getElementById("about");
 let controlsButton = document.getElementById("controls");
 let returnButtons = document.getElementsByClassName("return");
+let beginnerButton = document.getElementById("beginner");
+let intermediateButton = document.getElementById("intermediate");
+let expertButton = document.getElementById("expert");
 
 let initialMenu = document.getElementById("initial-menu");
 let difficultyMenu = document.getElementById("difficulty-menu");
@@ -16,6 +19,9 @@ newGameButton.addEventListener("click", showDifficultyPage);
 rulesButton.addEventListener("click", showRulesPage);
 aboutButton.addEventListener("click", showAboutPage);
 controlsButton.addEventListener("click", showControlsPage);
+beginnerButton.addEventListener("click", runBeginnerMode);
+intermediateButton.addEventListener("click", runIntermediateMode);
+expertButton.addEventListener("click", runExpertMode);
 
 for (let i = 0; i < returnButtons.length; i++) {
     returnButtons[i].addEventListener("click", returnToMenu);
