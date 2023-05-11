@@ -1,14 +1,19 @@
 let newGameButton = document.getElementById("new-game");
 newGameButton.addEventListener("click", chooseDifficulty);
 
-function chooseDifficulty(event) {
-    let gameContent = document.getElementsByClassName("game-window").innerHtml;
+let gameContent = document.getElementsByClassName("game-window").innerHTML;
+console.log(gameContent);
 
-    gameContent = `<h1>Numbers Game</h1>
+function chooseDifficulty() {
+    let gameContent = document.getElementsByClassName("game-window")[0];
+
+    gameContent.innerHTML = `<h1>Numbers Game</h1>
     <h2>Difficulty Level</h2>
     <button type="button" class="new-game-screen-button" data-type="beginner">Beginner</button>
     <button type="button" class="new-game-screen-button" data-type="intermediate">Intermediate</button>
     <button type="button" class="new-game-screen-button" data-type="expert">Expert</button>
+    <br>
+    <button type="button" class="new-game-screen-button" data-type="return">Return to Main Menu</button>
     `;
 }
 
