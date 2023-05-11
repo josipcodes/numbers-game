@@ -1,0 +1,44 @@
+/* Removing user agent stylesheet margin */
+body {
+    margin: inherit;
+}
+
+/* Main screen set up*/
+.side-area-left,
+.side-area-right {
+    display: none;
+}
+
+.game-area {
+    height: 100%;
+    background-color: greenyellow;
+}
+
+.game-window {
+    width: inherit;
+    background-color: lightgrey;
+}
+
+h1 {
+    text-align: center;
+}
+
+.main-screen-button {
+    display: block;
+    margin: 10px auto;
+    padding: 5px 10px;
+    box-shadow: 2px 2px 2px grey;
+}
+
+@media (min-width: 600px) {
+    #grid-container {
+        display: grid;
+        grid-template-columns: 25% auto 25%;
+    }
+
+    .side-area-left,
+    .side-area-right {
+        background-color: blue;
+        display: grid;
+    }
+}
