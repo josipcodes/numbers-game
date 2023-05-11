@@ -1,20 +1,64 @@
+let gameContent = document.getElementsByClassName("game-window")[0];
+
 let newGameButton = document.getElementById("new-game");
-newGameButton.addEventListener("click", chooseDifficulty);
+let rulesButton = document.getElementById("rules");
+let aboutButton = document.getElementById("about");
+let controlsButton = document.getElementById("controls");
 
-let gameContent = document.getElementsByClassName("game-window").innerHTML;
-console.log(gameContent);
+newGameButton.addEventListener("click", chooseDifficultyPage);
+rulesButton.addEventListener("click", rulesPage);
 
-function chooseDifficulty() {
-    let gameContent = document.getElementsByClassName("game-window")[0];
 
+function chooseDifficultyPage() {
     gameContent.innerHTML = `<h1>Numbers Game</h1>
     <h2>Difficulty Level</h2>
     <button type="button" class="new-game-screen-button" data-type="beginner">Beginner</button>
     <button type="button" class="new-game-screen-button" data-type="intermediate">Intermediate</button>
     <button type="button" class="new-game-screen-button" data-type="expert">Expert</button>
     <br>
-    <button type="button" class="new-game-screen-button" data-type="return">Return to Main Menu</button>
+    <button type="button" class="new-game-screen-button" id="return" data-type="return">Return to Main Menu</button>
     `;
+    let returnButton = document.getElementById("return");
+    returnButton.addEventListener("click", returnToMenu);
+}
+
+function rulesPage() {
+    gameContent.innerHTML = `<h1>Numbers Game</h1>
+    <h2>Rules</h2>
+    <div>
+    <p>
+    The goal of the game is to remove all of the numbers from the board.
+    <br>
+    You can remove pairs of the same number or pairs which sum is 10.
+    </p>
+    </div>
+    <div>
+    <img>
+    Placeholder
+    </img>
+    <p>
+    Pairs can be removed within the same column, row or within neighboring rows as long as there are no other numbers between them.
+    </p>
+    <img>
+    Placeholder 2
+    </img>
+    <p>
+    If you are left with no choices, you can click on <em>Generate</em> and the board will duplicate all of the numbers you currently have on it, giving you more choices.
+    </p>
+    </div>
+    <br>
+    <button type="button" class="new-game-screen-button" id="return" data-type="return">Return to Main Menu</button>
+    `;
+    let returnButton = document.getElementById("return");
+    returnButton.addEventListener("click", returnToMenu);
+}
+
+function returnToMenu() {
+    gameContent.innerHTML = `<h1>Numbers Game</h1>
+                <button type="button" class="main-screen-button" id="new-game" data-type="new-game">New Game</button>
+                <button type="button" class="main-screen-button" data-type="rules">Rules</button>
+                <button type="button" class="main-screen-button" data-type="about">About</button>
+                <button type="button" class="main-screen-button" data-type="controls">Controls</button>`;
 }
 
 
