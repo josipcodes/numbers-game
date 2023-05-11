@@ -36,6 +36,26 @@ h2 {
     box-shadow: 2px 2px 2px grey;
 }
 
+#initial-menu {
+
+}
+
+#difficulty-menu {
+    display: none;
+}
+
+#rules-page {
+    display: none;
+}
+
+#about-page {
+    display: none;
+}
+
+#controls-page {
+    display: none;
+}
+
 @media (min-width: 600px) {
     #grid-container {
         display: grid;

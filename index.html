@@ -16,11 +16,101 @@
         </div>
         <div class="game-area">
             <div class="game-window">
-                <h1>Numbers Game</h1>
-                <button type="button" class="main-screen-button" id="new-game" data-type="new-game">New Game</button>
-                <button type="button" class="main-screen-button" id="rules" data-type="rules">Rules</button>
-                <button type="button" class="main-screen-button" id="about" data-type="about">About</button>
-                <button type="button" class="main-screen-button" id="controls" data-type="controls">Controls</button>
+                <div id="initial-menu">
+                    <h1>Numbers Game</h1>
+                    <button type="button" class="main-screen-button" id="new-game" data-type="new-game">New
+                        Game</button>
+                    <button type="button" class="main-screen-button" id="rules" data-type="rules">Rules</button>
+                    <button type="button" class="main-screen-button" id="about" data-type="about">About</button>
+                    <button type="button" class="main-screen-button" id="controls"
+                        data-type="controls">Controls</button>
+                </div>
+
+                <div id="difficulty-menu">
+                    <h1>Numbers Game</h1>
+                    <h2>Difficulty Level</h2>
+                    <button type="button" class="new-game-screen-button" data-type="beginner">Beginner</button>
+                    <button type="button" class="new-game-screen-button" data-type="intermediate">Intermediate</button>
+                    <button type="button" class="new-game-screen-button" data-type="expert">Expert</button>
+                    <br>
+                    <button type="button" class="new-game-screen-button" id="return" data-type="return">Return to Main
+                        Menu</button>
+                </div>
+
+                <div id="rules-page">
+                    <h1>Numbers Game</h1>
+                    <h2>Rules</h2>
+                    <div>
+                        <p>
+                            The goal of the game is to remove all of the numbers from the board.
+                            <br>
+                            You can remove pairs of the same number or pairs which sum is 10.
+                        </p>
+                    </div>
+                    <div>
+                        <img>
+                        Placeholder
+                        </img>
+                        <p>
+                            Pairs can be removed within the same column, row or within neighboring rows as long as there are no other
+                            numbers between them.
+                        </p>
+                        <img>
+                        Placeholder 2
+                        </img>
+                        <p>
+                            If you are left with no choices, you can click on <em>Generate</em> and the board will duplicate all of the
+                            numbers you currently have on it, giving you more choices.
+                        </p>
+                    </div>
+                    <br>
+                    <button type="button" class="new-game-screen-button" id="return" data-type="return">Return to Main Menu</button>
+                </div>
+                <div id="about-page">
+                    <h1>Numbers Game</h1>
+                    <h2>About</h2>
+                    <div>
+                        <p>
+                            This game was inspired by the Numbers game and Numbers game 2 currently available on the Play Store.
+                            <br>
+                            This iteration was made for educational purposes only as a part of the course with Code Institute. The creator
+                            of this iteration missed their bus stop (and several more) whiole playing the game.
+                            <br>
+                            Beware.
+                        </p>
+                    </div>
+                    <br>
+                    <button type="button" class="new-game-screen-button" id="return" data-type="return">Return to Main Menu</button>
+                </div>
+                <div id="controls-page">
+                    <h1>Numbers Game</h1>
+                    <h2>Controls</h2>
+                    <div>
+                        <p>
+                        <h3>
+                            Computer:
+                        </h3>
+                        Left click - choice
+                        <br>
+                        M - Mute
+                        <br>
+                        R - Brings up Rules
+                        <br>
+                        C - Brings up Controls
+                        <br>
+                        Q - Quit game
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            ICON - Sound On
+                            <br>
+                            ICON2 - Sound Off
+                        </p>
+                    </div>
+                    <br>
+                    <button type="button" class="new-game-screen-button" id="return" data-type="return">Return to Main Menu</button>
+                </div>
             </div>
         </div>
         <div class="side-area-right">
