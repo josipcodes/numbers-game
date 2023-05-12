@@ -85,14 +85,14 @@ function runGame() {
     difficultyMenu.style.display = "none";
     gamePage.style.display = "grid";
     if (this.id === "intermediate") {
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < 45; i++) {
             let newSpan = document.createElement("span");
             newSpan.textContent = "";
             gameTable.appendChild(newSpan);
         }
         randomizer();
     } else if (this.id === "expert") {
-        for (let i = 0; i < 60; i++) {
+        for (let i = 0; i < 70; i++) {
             let newSpan = document.createElement("span");
             newSpan.textContent = "";
             gameTable.appendChild(newSpan);
@@ -106,6 +106,7 @@ function runGame() {
         }
         randomizer();
     }
+    playGame();
 }
 
 
@@ -122,3 +123,16 @@ function randomizer() {
     }
 }
 
+function playGame() {
+    let firstChoice = document.getElementsByTagName("span");
+    console.log(firstChoice);
+    for (let i = 0; i < firstChoice.length; i++) {
+        firstChoice[i].addEventListener("click", highlight);
+    }
+    
+}
+
+function highlight(firstChoice) {
+    this.style.backgroundColor = "black";
+    console.log("I work too");
+}
