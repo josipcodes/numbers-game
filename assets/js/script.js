@@ -101,7 +101,7 @@ function runGame() {
     } else {
         for (let i = 0; i < 20; i++) {
             let newSpan = document.createElement("span");
-            newSpan.textContent = "";
+            // newSpan.textContent = "";
             gameTable.appendChild(newSpan);
         }
         randomizer();
@@ -116,23 +116,65 @@ function runGame() {
 function randomizer() {
     let emptySpan = document.getElementsByTagName("span");
     for (let i = 0; i < emptySpan.length; i++) {
-        if (emptySpan[i].textContent === "") {
-            let randomNumber = Math.floor(Math.random() * 9 + 1);
-            emptySpan[i].innerText = randomNumber;
-        }
+        // if (emptySpan[i].textContent === "") {
+        let randomNumber = Math.floor(Math.random() * 9 + 1);
+        emptySpan[i].innerText = randomNumber;
+        // }
     }
 }
 
+/**
+ * Creates event listeners for all spans created
+ */
 function playGame() {
     let firstChoice = document.getElementsByTagName("span");
-    console.log(firstChoice);
     for (let i = 0; i < firstChoice.length; i++) {
         firstChoice[i].addEventListener("click", highlight);
     }
-    
 }
 
+let sum = 0;
+let choices = [];
+
+/**
+ * Hightlights the chosen span pairs and calls for the check of choice.
+ * If user clicks on the same span twice, choice is disregarded.
+ */
 function highlight(firstChoice) {
-    this.style.backgroundColor = "black";
-    console.log("I work too");
+    this.style.backgroundColor = "yellow";
+    this.class = "choice";
+    choices.push(this);
+    if (choices[0] === choices[1]) {
+        choices[0].style.backgroundColor = "white";
+        choices[1].style.backgroundColor = "white";
+        choices = [];
+        console.log("I ran");
+    } else if (choices.length === 2) {
+        checkChoice(choices);
+    }
+}
+
+/**
+ * Checks choices for sum and adjusts CSS accordingly. If the pair is viable, spans should change innerHTML to 0.
+ * 
+ */
+function checkChoice(choices) {
+    let sum = 0;
+    sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
+    if (sum === 10 || (choices[0].innerHTML == choices[1].innerHTML)) {
+        choices[0].textContent = "0";
+        choices[0].style.backgroundColor = "black";
+        choices[1].textContent = "0";
+        choices[1].style.backgroundColor = "black";
+        console.log("I ran");
+        console.log(choices[0], choices[1]);
+    } else {
+        choices[0].style.backgroundColor = "white";
+        choices[1].style.backgroundColor = "white";
+        console.log(choices[0], choices[1]);
+        console.log("test");
+
+    }
+    choices = [];
+    console.log(choices);
 }
