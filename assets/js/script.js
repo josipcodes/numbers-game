@@ -8,7 +8,7 @@ let returnButtons = document.getElementsByClassName("return");
 // let beginnerButton = document.getElementById("beginner");
 // let intermediateButton = document.getElementById("intermediate");
 // let expertButton = document.getElementById("expert");
-let gameModeButton = document.getElementsByClassName("game-type");
+let gameModeButtons = document.getElementsByClassName("game-type");
 
 let initialMenu = document.getElementById("initial-menu");
 let difficultyMenu = document.getElementById("difficulty-menu");
@@ -21,18 +21,16 @@ newGameButton.addEventListener("click", showDifficultyPage);
 rulesButton.addEventListener("click", showRulesPage);
 aboutButton.addEventListener("click", showAboutPage);
 controlsButton.addEventListener("click", showControlsPage);
-beginnerButton.addEventListener("click", runGame);
+// beginnerButton.addEventListener("click", runGame);
 // intermediateButton.addEventListener("click", runIntermediateMode);
 // expertButton.addEventListener("click", runExpertMode);
 
-for (let i = 0; i < returnButtons.length; i++) {
-    returnButtons[i].addEventListener("click", returnToMenu);
-    console.log(returnButtons);
+for (let i = 0; i < gameModeButtons.length; i++) {
+    gameModeButtons[i].addEventListener("click", runGame);
 }
 
-for (let i = 0; i < returnButtons.length; i++) {
+for (let i = 0; i < returnToMenu.length; i++) {
     returnButtons[i].addEventListener("click", returnToMenu);
-    console.log(returnButtons);
 }
 
 function showDifficultyPage() {
@@ -65,11 +63,14 @@ function returnToMenu() {
 }
 
 function runGame() {
-    initialMenu.style.display = "none";
     difficultyMenu.style.display = "none";
-    rulesPage.style.display = "none";
-    aboutPage.style.display = "none";
-    controlsPage.style.display = "none";
     gamePage.style.display = "grid";
-
+    console.log(this.getElementById);
+    if (this.id === "intermediate") {
+        console.log("intermediate");
+    } else if (this.id === "expert") {
+        console.log("expert");
+    } else {
+        console.log("beginner");
+    }
 }
