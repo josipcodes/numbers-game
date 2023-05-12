@@ -29,30 +29,45 @@ for (let i = 0; i < gameModeButtons.length; i++) {
     gameModeButtons[i].addEventListener("click", runGame);
 }
 
-for (let i = 0; i < returnToMenu.length; i++) {
+for (let i = 0; i < returnButtons.length; i++) {
     returnButtons[i].addEventListener("click", returnToMenu);
 }
 
+/**
+ * Opens difficulty page
+ */
 function showDifficultyPage() {
     initialMenu.style.display = "none";
     difficultyMenu.style.display = "block";
 }
 
+/**
+ * Opens rules page
+ */
 function showRulesPage() {
     initialMenu.style.display = "none";
     rulesPage.style.display = "block";
 }
 
+/**
+ * Opens about page
+ */
 function showAboutPage() {
     initialMenu.style.display = "none";
     aboutPage.style.display = "block";
 }
 
+/**
+ * Opens controls page
+ */
 function showControlsPage() {
     initialMenu.style.display = "none";
     controlsPage.style.display = "block";
 }
 
+/**
+ * Opens main menu
+ */
 function returnToMenu() {
     initialMenu.style.display = "block";
     difficultyMenu.style.display = "none";
@@ -62,10 +77,12 @@ function returnToMenu() {
     gamePage.style.display = "none";
 }
 
+/**
+ * Runs game based on the difficulty chosen
+ */
 function runGame() {
     difficultyMenu.style.display = "none";
     gamePage.style.display = "grid";
-    console.log(this.getElementById);
     if (this.id === "intermediate") {
         console.log("intermediate");
     } else if (this.id === "expert") {
