@@ -90,22 +90,21 @@ function runGame() {
             newSpan.textContent = "";
             gameTable.appendChild(newSpan);
         }
-        randomizer();
+
     } else if (this.id === "expert") {
         for (let i = 0; i < 70; i++) {
             let newSpan = document.createElement("span");
             newSpan.textContent = "";
             gameTable.appendChild(newSpan);
         }
-        randomizer();
     } else {
         for (let i = 0; i < 20; i++) {
             let newSpan = document.createElement("span");
             // newSpan.textContent = "";
             gameTable.appendChild(newSpan);
         }
-        randomizer();
     }
+    randomizer();
     playGame();
 }
 
@@ -144,6 +143,7 @@ function highlight(firstChoice) {
     this.style.backgroundColor = "yellow";
     this.class = "choice";
     choices.push(this);
+    // console.log(choices);
     if (choices[0] === choices[1]) {
         choices[0].style.backgroundColor = "white";
         choices[1].style.backgroundColor = "white";
@@ -151,6 +151,7 @@ function highlight(firstChoice) {
         console.log("I ran");
     } else if (choices.length === 2) {
         checkChoice(choices);
+        choices = [];
     }
 }
 
@@ -161,20 +162,21 @@ function highlight(firstChoice) {
 function checkChoice(choices) {
     let sum = 0;
     sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
-    if (sum === 10 || (choices[0].innerHTML == choices[1].innerHTML)) {
+    if (sum === 10 || (choices[0].innerHTML === choices[1].innerHTML)) {
         choices[0].textContent = "0";
         choices[0].style.backgroundColor = "black";
         choices[1].textContent = "0";
         choices[1].style.backgroundColor = "black";
-        console.log("I ran");
+        console.log("I ran too");
         console.log(choices[0], choices[1]);
     } else {
         choices[0].style.backgroundColor = "white";
         choices[1].style.backgroundColor = "white";
         console.log(choices[0], choices[1]);
         console.log("test");
-
     }
-    choices = [];
-    console.log(choices);
+    // choices = [];
+    sum = 0;
+    // playGame();
+    // console.log(choices);
 }
