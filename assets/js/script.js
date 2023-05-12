@@ -85,11 +85,21 @@ function runGame() {
     difficultyMenu.style.display = "none";
     gamePage.style.display = "grid";
     if (this.id === "intermediate") {
-        console.log("intermediate");
+        for (let i = 0; i < 40; i++) {
+            let newSpan = document.createElement("span");
+            newSpan.textContent = "";
+            gameTable.appendChild(newSpan);
+        }
+        randomizer();
     } else if (this.id === "expert") {
-        console.log("expert");
+        for (let i = 0; i < 60; i++) {
+            let newSpan = document.createElement("span");
+            newSpan.textContent = "";
+            gameTable.appendChild(newSpan);
+        }
+        randomizer();
     } else {
-        for (let i = 0; i < 18; i++) {
+        for (let i = 0; i < 20; i++) {
             let newSpan = document.createElement("span");
             newSpan.textContent = "";
             gameTable.appendChild(newSpan);
