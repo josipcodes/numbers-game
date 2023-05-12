@@ -16,6 +16,7 @@ let rulesPage = document.getElementById("rules-page");
 let aboutPage = document.getElementById("about-page");
 let controlsPage = document.getElementById("controls-page");
 let gamePage = document.getElementById("game-container");
+let gameTable = document.getElementById("game-table");
 
 newGameButton.addEventListener("click", showDifficultyPage);
 rulesButton.addEventListener("click", showRulesPage);
@@ -88,6 +89,26 @@ function runGame() {
     } else if (this.id === "expert") {
         console.log("expert");
     } else {
-        console.log("beginner");
+        for (let i = 0; i < 18; i++) {
+            let newSpan = document.createElement("span");
+            newSpan.textContent = "";
+            gameTable.appendChild(newSpan);
+        }
+        randomizer();
     }
 }
+
+
+/**
+ * Creates random numbers and adds them into relevant span elements
+ */
+function randomizer() {
+    let emptySpan = document.getElementsByTagName("span");
+    for (let i = 0; i < emptySpan.length; i++) {
+        if (emptySpan[i].textContent === "") {
+            let randomNumber = Math.floor(Math.random() * 9 + 1);
+            emptySpan[i].innerText = randomNumber;
+        }
+    }
+}
+

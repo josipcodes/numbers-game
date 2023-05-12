@@ -74,12 +74,12 @@ p {
     display: none;
 }
 
-.game-table {
+#game-table {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto auto;
 }
 
-.game-table>span {
+#game-table>span {
     background-color: white;
     border: 1px solid black;
     aspect-ratio: 2/1;
