@@ -79,7 +79,8 @@ function returnToMenu() {
 }
 
 /**
- * Runs game based on the difficulty chosen
+ * Creates sufficient amount of spans based on the difficulty chosen.
+ * Adds random number (1-9) to spans.
  */
 function runGame() {
     difficultyMenu.style.display = "none";
@@ -120,10 +121,29 @@ function randomizer() {
         emptySpan[i].innerText = randomNumber;
         // }
     }
+    addCoordinates();
+
 }
 
 /**
- * Creates event listeners for all spans created
+ *  Creates span coordinates starting from 0,0
+ */
+function addCoordinates() {
+    let emptySpan = document.getElementsByTagName("span");
+    for (let i = 0; i < emptySpan.length; i++) {
+        let stringCoordinateCalc = String(i / 9).split("");
+        if (stringCoordinateCalc[2] === undefined) {
+            stringCoordinateCalc[2] = "0";
+        }
+        emptySpan[i].setAttribute(["data-coordinate"], `x:${stringCoordinateCalc[0]} y:${stringCoordinateCalc[2]}`);
+        console.log(emptySpan[i]);
+        console.log(emptySpan[i]["data-coordinate"]);
+    }
+}
+
+
+/**
+ * Creates event listeners for all spans created.
  */
 function playGame() {
     let firstChoice = document.getElementsByTagName("span");
@@ -142,7 +162,9 @@ let choices = [];
 function highlight(firstChoice) {
     this.style.backgroundColor = "yellow";
     this.class = "choice";
+    console.log(this);
     choices.push(this);
+    // console.log(this["data-coordinates"]);
     // console.log(choices);
     if (choices[0] === choices[1]) {
         choices[0].style.backgroundColor = "white";
