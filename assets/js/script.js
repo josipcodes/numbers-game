@@ -159,7 +159,6 @@ function highlight(firstChoice) {
     if (this.style.backgroundColor !== "black") { // Added to attempt combating event listener jumping to a nearby span
         this.style.backgroundColor = "yellow";
         this.class = "choice";
-        console.log(this.innerHTML);
         choices.push(this);
         if (choices[0] === choices[1]) {
             choices[0].style.backgroundColor = "white";
@@ -179,10 +178,13 @@ function highlight(firstChoice) {
 function checkChoice(choices) {
     let sum = 0;
     sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
-    // let coordinatesOne = choices[0]["data-coordinate"];
-    // let coordinatesTwo = choices[1]["data-coordinate"];
-    // console.log(coordinatesOne, "here here");
+    const regex = /x:(\d+) y:(\d)/g;
+    const coordinatesZero = choices[0].getAttribute("data-coordinate").test(regex);
+    const coordinatesOne = choices[1].getAttribute("data-coordinate").test(regex);
+    console.log(coordinatesZero, coordinatesOne);
+
     if ((sum === 10 || (choices[0].innerHTML === choices[1].innerHTML))) { // && (choices[0]["data-coordinate"] === choices[1].innerHTML)
+        console.log(choices[0].getAttribute("data-coordinate"));
         choices[0].textContent = "0";
         choices[0].style.backgroundColor = "black";
         // choices[0].removeEventListener("click", function () { }); // Redundant because of playGame
