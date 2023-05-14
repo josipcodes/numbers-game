@@ -120,16 +120,18 @@ function randomizer() {
 }
 
 /**
- *  Creates span coordinates starting from 0,0
+ *  Creates span coordinates starting from 0,0. 
+ * Current issue if X>9 resolved by splitting the string with a period (to account for x>9.
+ * Y captured using .charAt
  */
 function addCoordinates() {
     let emptySpan = document.getElementsByTagName("span");
     for (let i = 0; i < emptySpan.length; i++) {
-        let stringCoordinateCalc = String(i / 9).split("");
-        if (stringCoordinateCalc[2] === undefined) {
-            stringCoordinateCalc[2] = "0";
+        let stringCoordinateCalc = String(i / 9).split(".");
+        if (stringCoordinateCalc[1] === undefined) {
+            stringCoordinateCalc[1] = "0";
         }
-        emptySpan[i].setAttribute(["data-coordinate"], `x:${stringCoordinateCalc[0]} y:${stringCoordinateCalc[2]}`);
+        emptySpan[i].setAttribute(["data-coordinate"], `x:${stringCoordinateCalc[0]} y:${stringCoordinateCalc[1].charAt(0)}`);
     }
 }
 
@@ -177,6 +179,9 @@ function highlight(firstChoice) {
 function checkChoice(choices) {
     let sum = 0;
     sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
+    // let coordinatesOne = choices[0]["data-coordinate"];
+    // let coordinatesTwo = choices[1]["data-coordinate"];
+    // console.log(coordinatesOne, "here here");
     if ((sum === 10 || (choices[0].innerHTML === choices[1].innerHTML))) { // && (choices[0]["data-coordinate"] === choices[1].innerHTML)
         choices[0].textContent = "0";
         choices[0].style.backgroundColor = "black";
