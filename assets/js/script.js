@@ -5,9 +5,6 @@ let rulesButton = document.getElementById("rules");
 let aboutButton = document.getElementById("about");
 let controlsButton = document.getElementById("controls");
 let returnButtons = document.getElementsByClassName("return");
-// let beginnerButton = document.getElementById("beginner");
-// let intermediateButton = document.getElementById("intermediate");
-// let expertButton = document.getElementById("expert");
 let gameModeButtons = document.getElementsByClassName("game-type");
 
 let initialMenu = document.getElementById("initial-menu");
@@ -22,9 +19,6 @@ newGameButton.addEventListener("click", showDifficultyPage);
 rulesButton.addEventListener("click", showRulesPage);
 aboutButton.addEventListener("click", showAboutPage);
 controlsButton.addEventListener("click", showControlsPage);
-// beginnerButton.addEventListener("click", runGame);
-// intermediateButton.addEventListener("click", runIntermediateMode);
-// expertButton.addEventListener("click", runExpertMode);
 
 for (let i = 0; i < gameModeButtons.length; i++) {
     gameModeButtons[i].addEventListener("click", runGame);
@@ -148,10 +142,9 @@ function playGame() {
     for (let i = 0; i < firstChoice.length; i++) {
         // if (firstChoice[i].textContent !== "0") { //.style.backgroundColor !== "black") { //innerHTML !== "0") { Doesn't currently work
         firstChoice[i].addEventListener("click", highlight);
-        // }
     }
-    console.log("playGame");
 }
+
 
 let sum = 0;
 let choices = [];
@@ -166,13 +159,10 @@ function highlight(firstChoice) {
         this.class = "choice";
         console.log(this.innerHTML);
         choices.push(this);
-        // console.log(this["data-coordinates"]);
-        // console.log(choices);
         if (choices[0] === choices[1]) {
             choices[0].style.backgroundColor = "white";
             choices[1].style.backgroundColor = "white";
             choices = [];
-            // playGame(); - not necessary, tested event listener issue
         } else if (choices.length === 2) {
             checkChoice(choices);
             choices = [];
@@ -190,20 +180,18 @@ function checkChoice(choices) {
     if ((sum === 10 || (choices[0].innerHTML === choices[1].innerHTML))) { // && (choices[0]["data-coordinate"] === choices[1].innerHTML)
         choices[0].textContent = "0";
         choices[0].style.backgroundColor = "black";
-        choices[0].removeEventListener("click", function () { }); // If event happens on this span, it jumps to the nearest one
+        // choices[0].removeEventListener("click", function () { }); // Redundant because of playGame
         choices[1].textContent = "0";
         choices[1].style.backgroundColor = "black";
-        choices[1].removeEventListener("click", function () { }); // If event happens on this span, it jumps to the nearest one
-        console.log("I ran too");
+        // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
+        console.log("Pair viable");
         console.log(choices[0], choices[1]);
     } else {
         choices[0].style.backgroundColor = "white";
         choices[1].style.backgroundColor = "white";
         console.log(choices[0], choices[1]);
-        console.log("test");
+        console.log("Pair not viable");
     }
-    // choices = [];
     sum = 0;
     playGame();
-    // console.log(choices);
 }
