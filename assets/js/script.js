@@ -136,19 +136,20 @@ function addCoordinates() {
             stringCoordinateCalc[2] = "0";
         }
         emptySpan[i].setAttribute(["data-coordinate"], `x:${stringCoordinateCalc[0]} y:${stringCoordinateCalc[2]}`);
-        console.log(emptySpan[i]);
-        console.log(emptySpan[i]["data-coordinate"]);
     }
 }
 
 
 /**
- * Creates event listeners for all spans created.
+ * Creates event listeners for all spans created. Ideally will only create listeners for spans which don't have a value of 0
  */
 function playGame() {
     let firstChoice = document.getElementsByTagName("span");
     for (let i = 0; i < firstChoice.length; i++) {
-        firstChoice[i].addEventListener("click", highlight);
+        if (firstChoice[i].textContent !== "0") { //.style.backgroundColor !== "black") { //innerHTML !== "0") { Doesn't currently work
+            firstChoice[i].addEventListener("click", highlight);
+            console.log(firstChoice[i].style.backgroundColor);
+        }
     }
 }
 
@@ -160,20 +161,22 @@ let choices = [];
  * If user clicks on the same span twice, choice is disregarded.
  */
 function highlight(firstChoice) {
-    this.style.backgroundColor = "yellow";
-    this.class = "choice";
-    console.log(this);
-    choices.push(this);
-    // console.log(this["data-coordinates"]);
-    // console.log(choices);
-    if (choices[0] === choices[1]) {
-        choices[0].style.backgroundColor = "white";
-        choices[1].style.backgroundColor = "white";
-        choices = [];
-        console.log("I ran");
-    } else if (choices.length === 2) {
-        checkChoice(choices);
-        choices = [];
+    if (this.style.backgroundColor !== "black") { // Added to attempt combating event listener jumping to a nearby span
+        this.style.backgroundColor = "yellow";
+        this.class = "choice";
+        console.log(this.innerHTML);
+        choices.push(this);
+        // console.log(this["data-coordinates"]);
+        // console.log(choices);
+        if (choices[0] === choices[1]) {
+            choices[0].style.backgroundColor = "white";
+            choices[1].style.backgroundColor = "white";
+            choices = [];
+            // playGame(); - not necessary, tested event listener issue
+        } else if (choices.length === 2) {
+            checkChoice(choices);
+            choices = [];
+        }
     }
 }
 
@@ -187,8 +190,10 @@ function checkChoice(choices) {
     if (sum === 10 || (choices[0].innerHTML === choices[1].innerHTML)) {
         choices[0].textContent = "0";
         choices[0].style.backgroundColor = "black";
+        choices[0].removeEventListener("click", highlight); // If event happens on this span, it jumps to the nearest one
         choices[1].textContent = "0";
         choices[1].style.backgroundColor = "black";
+        choices[1].removeEventListener("click", highlight); // If event happens on this span, it jumps to the nearest one
         console.log("I ran too");
         console.log(choices[0], choices[1]);
     } else {
@@ -199,6 +204,6 @@ function checkChoice(choices) {
     }
     // choices = [];
     sum = 0;
-    // playGame();
+    playGame();
     // console.log(choices);
 }
