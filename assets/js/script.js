@@ -146,11 +146,11 @@ function addCoordinates() {
 function playGame() {
     let firstChoice = document.getElementsByTagName("span");
     for (let i = 0; i < firstChoice.length; i++) {
-        if (firstChoice[i].textContent !== "0") { //.style.backgroundColor !== "black") { //innerHTML !== "0") { Doesn't currently work
-            firstChoice[i].addEventListener("click", highlight);
-            console.log(firstChoice[i].style.backgroundColor);
-        }
+        // if (firstChoice[i].textContent !== "0") { //.style.backgroundColor !== "black") { //innerHTML !== "0") { Doesn't currently work
+        firstChoice[i].addEventListener("click", highlight);
+        // }
     }
+    console.log("playGame");
 }
 
 let sum = 0;
@@ -187,13 +187,13 @@ function highlight(firstChoice) {
 function checkChoice(choices) {
     let sum = 0;
     sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
-    if (sum === 10 || (choices[0].innerHTML === choices[1].innerHTML)) {
+    if ((sum === 10 || (choices[0].innerHTML === choices[1].innerHTML))) { // && (choices[0]["data-coordinate"] === choices[1].innerHTML)
         choices[0].textContent = "0";
         choices[0].style.backgroundColor = "black";
-        choices[0].removeEventListener("click", highlight); // If event happens on this span, it jumps to the nearest one
+        choices[0].removeEventListener("click", function () { }); // If event happens on this span, it jumps to the nearest one
         choices[1].textContent = "0";
         choices[1].style.backgroundColor = "black";
-        choices[1].removeEventListener("click", highlight); // If event happens on this span, it jumps to the nearest one
+        choices[1].removeEventListener("click", function () { }); // If event happens on this span, it jumps to the nearest one
         console.log("I ran too");
         console.log(choices[0], choices[1]);
     } else {
