@@ -179,10 +179,6 @@ function highlight(firstChoice) {
  * 
  */
 function checkLocation(choices) {
-    // moved to checkContent()
-    // let sum = 0;
-    // sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
-    // const regex = /x:(\d+) y:(\d)/g;
     const coordinatesYZero = Number(choices[0].getAttribute("data-y"));
     const coordinatesXZero = Number(choices[0].getAttribute("data-x"));
     const coordinatesYOne = Number(choices[1].getAttribute("data-y"));
@@ -192,12 +188,6 @@ function checkLocation(choices) {
     const coordinatesXMin = Math.min(coordinatesXZero, coordinatesXOne);
     const coordinatesXMax = Math.max(coordinatesXZero, coordinatesXOne);
 
-    console.log(coordinatesYMin, coordinatesYMax, coordinatesXMin, coordinatesXMax);
-
-    // const coordinatesOne = choices[1].getAttribute("data-coordinate").test(regex);
-    // console.log(coordinatesZero, coordinatesOne);
-
-    // if ((sum === 10 || (choices[0].innerHTML === choices[1].innerHTML))) {
     if (coordinatesYZero === coordinatesYOne) {
         if ((coordinatesXMin + 1) === coordinatesXMax) {
             console.log("neighbor by x");
@@ -215,25 +205,10 @@ function checkLocation(choices) {
                 cancelChoice;
             }
         }
-    }
-    // choices[0].textContent = "0";
-    // choices[0].style.backgroundColor = "black";
-    // // choices[0].removeEventListener("click", function () { }); // Redundant because of playGame
-    // choices[1].textContent = "0";
-    // choices[1].style.backgroundColor = "black";
-    // // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
-    // console.log("Pair viable, y check");
-    // console.log(coordinatesYZero, coordinatesYOne);
-    else if (coordinatesXZero === coordinatesXOne) {
+    } else if (coordinatesXZero === coordinatesXOne) {
         if ((coordinatesYMin + 1) === coordinatesYMax) {
             console.log("neighbor by y");
             checkContent();
-            // choices[0].textContent = "0";
-            // choices[0].style.backgroundColor = "black";
-            // choices[1].textContent = "0";
-            // choices[1].style.backgroundColor = "black";
-            // console.log("Pair viable, x check");
-            // console.log(coordinatesXZero, coordinatesXOne);
         } else {
             let allX = document.querySelectorAll(`[data-x="${coordinatesXZero}"]`);
             let neighborsY = 0;
@@ -248,17 +223,8 @@ function checkLocation(choices) {
                 cancelChoice;
             }
         }
-        // } 
-        // moved to cancelChoice
-        // sum = 0;
-        // playGame();
     } else {
         cancelChoice();
-        // // Moved to cancelChoice
-        // choices[0].style.backgroundColor = "white";
-        // choices[1].style.backgroundColor = "white";
-        // console.log(choices[0], choices[1]);
-        // console.log("Pair not viable");
     }
 }
 /**
