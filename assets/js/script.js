@@ -131,7 +131,8 @@ function addCoordinates() {
         if (stringCoordinateCalc[1] === undefined) {
             stringCoordinateCalc[1] = "0";
         }
-        emptySpan[i].setAttribute(["data-coordinate"], `x:${stringCoordinateCalc[0]} y:${stringCoordinateCalc[1].charAt(0)}`);
+        emptySpan[i].setAttribute(["data-y"], `${stringCoordinateCalc[0]}`);
+        emptySpan[i].setAttribute(["data-x"], `${stringCoordinateCalc[1].charAt(0)}`);
     }
 }
 
@@ -156,7 +157,7 @@ let choices = [];
  * If user clicks on the same span twice, choice is disregarded.
  */
 function highlight(firstChoice) {
-    if (this.style.backgroundColor !== "black") { // Added to attempt combating event listener jumping to a nearby span
+    if (this.style.backgroundColor !== "black") { // Added to attempt combating event listener jumping to a nearby span, doesn't work elsewhere
         this.style.backgroundColor = "yellow";
         this.class = "choice";
         choices.push(this);
@@ -178,10 +179,10 @@ function highlight(firstChoice) {
 function checkChoice(choices) {
     let sum = 0;
     sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
-    const regex = /x:(\d+) y:(\d)/g;
-    const coordinatesZero = choices[0].getAttribute("data-coordinate").test(regex);
-    const coordinatesOne = choices[1].getAttribute("data-coordinate").test(regex);
-    console.log(coordinatesZero, coordinatesOne);
+    // const regex = /x:(\d+) y:(\d)/g;
+    // const coordinatesZero = choices[0].getAttribute("data-coordinate").test(regex);
+    // const coordinatesOne = choices[1].getAttribute("data-coordinate").test(regex);
+    // console.log(coordinatesZero, coordinatesOne);
 
     if ((sum === 10 || (choices[0].innerHTML === choices[1].innerHTML))) { // && (choices[0]["data-coordinate"] === choices[1].innerHTML)
         console.log(choices[0].getAttribute("data-coordinate"));
