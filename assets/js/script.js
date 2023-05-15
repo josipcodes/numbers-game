@@ -184,6 +184,8 @@ function checkLocation(choices) {
     const coordinatesXZero = Number(choices[0].getAttribute("data-x"));
     const coordinatesYOne = Number(choices[1].getAttribute("data-y"));
     const coordinatesXOne = Number(choices[1].getAttribute("data-x"));
+    const placeYZero = Number(choices[0].getAttribute("data-place"));
+    const placeYOne = Number(choices[1].getAttribute("data-place"));
     const coordinatesYMin = Math.min(coordinatesYZero, coordinatesYOne);
     const coordinatesYMax = Math.max(coordinatesYZero, coordinatesYOne);
     const coordinatesXMin = Math.min(coordinatesXZero, coordinatesXOne);
@@ -195,14 +197,14 @@ function checkLocation(choices) {
             checkContent();
         } else {
             let allY = document.querySelectorAll(`[data-y="${coordinatesYZero}"]`);
-            let neighborsX = 0;
+            let neighborsXSum = 0;
             for (let i = (coordinatesXMin + 1); i < coordinatesXMax; i++) {
-                neighborsX += Number(allY[i].innerHTML);
+                neighborsXSum += Number(allY[i].innerHTML);
             }
-            if (neighborsX === 0) {
+            if (neighborsXSum === 0) {
                 removeViablePair();
             } else {
-                cancelChoice;
+                cancelChoice();
             }
         }
     } else if (coordinatesXZero === coordinatesXOne) {
@@ -211,20 +213,27 @@ function checkLocation(choices) {
             checkContent();
         } else {
             let allX = document.querySelectorAll(`[data-x="${coordinatesXZero}"]`);
-            let neighborsY = 0;
+            let neighborsYSum = 0;
             for (let i = (coordinatesYMin + 1); i < coordinatesYMax; i++) {
-                neighborsY += Number(allX[i].innerHTML);
-                console.log(neighborsY);
-
+                neighborsYSum += Number(allX[i].innerHTML);
             }
-            if (neighborsY === 0) {
+            if (neighborsYSum === 0) {
                 removeViablePair();
             } else {
-                cancelChoice;
+                cancelChoice();
             }
         }
-    } else if ((coordinatesYMin + 1) === coordinatesYMax) {
-        console.log("need to check if everything in between is blank");
+    } else if (coordinatesYMin !== coordinatesYMax) {
+        let allPlaces = document.querySelectorAll(`[data-place`);
+        let betweenSpanSum = 0;
+        for (let i = (placeYZero + 1); i < placeYOne; i++) {
+            betweenSpanSum += Number(allPlaces[i].innerHTML);
+        }
+        if (betweenSpanSum === 0) {
+            removeViablePair();
+        } else {
+            cancelChoice();
+        }
     } else {
         cancelChoice();
     }
