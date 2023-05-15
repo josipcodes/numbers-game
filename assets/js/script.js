@@ -162,9 +162,11 @@ function highlight(firstChoice) {
         this.class = "choice";
         choices.push(this);
         if (choices[0] === choices[1]) {
-            choices[0].style.backgroundColor = "white";
-            choices[1].style.backgroundColor = "white";
-            choices = [];
+            cancelChoice();
+            // moved to
+            // choices[0].style.backgroundColor = "white";
+            // choices[1].style.backgroundColor = "white";
+            // choices = [];
         } else if (choices.length === 2) {
             checkLocation(choices);
             choices = [];
@@ -181,42 +183,61 @@ function checkLocation(choices) {
     // let sum = 0;
     // sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
     // const regex = /x:(\d+) y:(\d)/g;
-    const coordinatesYZero = choices[0].getAttribute("data-y");
-    const coordinatesXZero = choices[0].getAttribute("data-x");
-    const coordinatesYOne = choices[1].getAttribute("data-y");
-    const coordinatesXOne = choices[1].getAttribute("data-x");
+    const coordinatesYZero = Number(choices[0].getAttribute("data-y"));
+    const coordinatesXZero = Number(choices[0].getAttribute("data-x"));
+    const coordinatesYOne = Number(choices[1].getAttribute("data-y"));
+    const coordinatesXOne = Number(choices[1].getAttribute("data-x"));
+    const coordinatesYMin = Math.min(coordinatesYZero, coordinatesYOne);
+    const coordinatesYMax = Math.max(coordinatesYZero, coordinatesYOne);
+    const coordinatesXMin = Math.min(coordinatesXZero, coordinatesXOne);
+    const coordinatesXMax = Math.max(coordinatesXZero, coordinatesXOne);
+
+    console.log(coordinatesYMin, coordinatesYMax, coordinatesXMin, coordinatesXMax);
 
     // const coordinatesOne = choices[1].getAttribute("data-coordinate").test(regex);
     // console.log(coordinatesZero, coordinatesOne);
 
     // if ((sum === 10 || (choices[0].innerHTML === choices[1].innerHTML))) {
     if (coordinatesYZero === coordinatesYOne) {
-        // choices[0].textContent = "0";
-        // choices[0].style.backgroundColor = "black";
-        // // choices[0].removeEventListener("click", function () { }); // Redundant because of playGame
-        // choices[1].textContent = "0";
-        // choices[1].style.backgroundColor = "black";
-        // // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
-        // console.log("Pair viable, y check");
-        // console.log(coordinatesYZero, coordinatesYOne);
-        checkContent();
-    } else if (coordinatesXZero === coordinatesXOne) {
-        // choices[0].textContent = "0";
-        // choices[0].style.backgroundColor = "black";
-        // choices[1].textContent = "0";
-        // choices[1].style.backgroundColor = "black";
-        // console.log("Pair viable, x check");
-        // console.log(coordinatesXZero, coordinatesXOne);
-        checkContent();
-    } else if ((Number(coordinatesYZero) + 1) === Number(coordinatesYOne)) {
-        checkContent();
-        console.log(coordinatesYZero, "is smaller than", coordinatesYOne);
-    } else if ((Number(coordinatesYZero) - 1) === Number(coordinatesYOne)) {
-        checkContent();
-        console.log(coordinatesYZero, "is larger than", coordinatesYOne);
+        if ((coordinatesXMin + 1) === coordinatesXMax) {
+            console.log("neighbor by x");
+            checkContent();
+        } else {
+            console.log("distand neighbor X");
+        }
     }
-    // } 
-    else {
+    // choices[0].textContent = "0";
+    // choices[0].style.backgroundColor = "black";
+    // // choices[0].removeEventListener("click", function () { }); // Redundant because of playGame
+    // choices[1].textContent = "0";
+    // choices[1].style.backgroundColor = "black";
+    // // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
+    // console.log("Pair viable, y check");
+    // console.log(coordinatesYZero, coordinatesYOne);
+    else if (coordinatesXZero === coordinatesXOne) {
+        if ((coordinatesYMin + 1) === coordinatesYMax) {
+            console.log("neighbor by y");
+            checkContent();
+            // choices[0].textContent = "0";
+            // choices[0].style.backgroundColor = "black";
+            // choices[1].textContent = "0";
+            // choices[1].style.backgroundColor = "black";
+            // console.log("Pair viable, x check");
+            // console.log(coordinatesXZero, coordinatesXOne);
+        } else {
+            let allX = document.querySelectorAll(`[data-x="${coordinatesXZero}"]`);
+            console.log(allX);
+            let neighborsY = [];
+            for (let i = coordinatesYMin; i < coordinatesYMax; i++) {
+
+                console.log("distand neighbor X");
+            }
+        }
+        // } 
+        // moved to cancelChoice
+        // sum = 0;
+        // playGame();
+    } else {
         cancelChoice();
         // // Moved to cancelChoice
         // choices[0].style.backgroundColor = "white";
@@ -224,9 +245,6 @@ function checkLocation(choices) {
         // console.log(choices[0], choices[1]);
         // console.log("Pair not viable");
     }
-    // moved to cancelChoice
-    // sum = 0;
-    // playGame();
 }
 /**
  * Checks content of spans
@@ -253,6 +271,7 @@ function cancelChoice() {
     console.log("Pair not viable");
     sum = 0;
     playGame();
+    choices = [];
 }
 
 function removeViablePair() {
@@ -262,7 +281,5 @@ function removeViablePair() {
     choices[1].textContent = "0";
     choices[1].style.backgroundColor = "black";
     // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
-    console.log("Pair viable, y check");
-    // console.log(coordinatesYZero, coordinatesYOne);
     playGame();
 }
