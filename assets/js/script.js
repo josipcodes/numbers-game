@@ -166,7 +166,7 @@ function highlight(firstChoice) {
             choices[1].style.backgroundColor = "white";
             choices = [];
         } else if (choices.length === 2) {
-            checkChoice(choices);
+            checkLocation(choices);
             choices = [];
         }
     }
@@ -176,9 +176,10 @@ function highlight(firstChoice) {
  * Checks choices for sum and adjusts CSS accordingly. If the pair is viable, spans should change innerHTML to 0.
  * 
  */
-function checkChoice(choices) {
-    let sum = 0;
-    sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
+function checkLocation(choices) {
+    // moved to checkContent()
+    // let sum = 0;
+    // sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
     // const regex = /x:(\d+) y:(\d)/g;
     const coordinatesYZero = choices[0].getAttribute("data-y");
     const coordinatesXZero = choices[0].getAttribute("data-x");
@@ -188,34 +189,80 @@ function checkChoice(choices) {
     // const coordinatesOne = choices[1].getAttribute("data-coordinate").test(regex);
     // console.log(coordinatesZero, coordinatesOne);
 
-    if ((sum === 10 || (choices[0].innerHTML === choices[1].innerHTML))) {
-        if (coordinatesYZero === coordinatesYOne) {// && (choices[0]["data-coordinate"] === choices[1].innerHTML)
-            choices[0].textContent = "0";
-            choices[0].style.backgroundColor = "black";
-            // choices[0].removeEventListener("click", function () { }); // Redundant because of playGame
-            choices[1].textContent = "0";
-            choices[1].style.backgroundColor = "black";
-            // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
-            console.log("Pair viable, y check");
-            console.log(coordinatesYZero, coordinatesYOne);
-        } else if (coordinatesXZero === coordinatesXOne) {
-            choices[0].textContent = "0";
-            choices[0].style.backgroundColor = "black";
-            choices[1].textContent = "0";
-            choices[1].style.backgroundColor = "black";
-            console.log("Pair viable, x check");
-            console.log(coordinatesXZero, coordinatesXOne);
-        } else if (coordinatesYZero < coordinatesYOne) {
-            console.log(coordinatesYZero, "is smaller than", coordinatesYOne);
-        } else {
-            console.log(coordinatesYZero, "is larger than", coordinatesYOne);
-        }
-    } else {
-        choices[0].style.backgroundColor = "white";
-        choices[1].style.backgroundColor = "white";
-        console.log(choices[0], choices[1]);
-        console.log("Pair not viable");
+    // if ((sum === 10 || (choices[0].innerHTML === choices[1].innerHTML))) {
+    if (coordinatesYZero === coordinatesYOne) {
+        // choices[0].textContent = "0";
+        // choices[0].style.backgroundColor = "black";
+        // // choices[0].removeEventListener("click", function () { }); // Redundant because of playGame
+        // choices[1].textContent = "0";
+        // choices[1].style.backgroundColor = "black";
+        // // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
+        // console.log("Pair viable, y check");
+        // console.log(coordinatesYZero, coordinatesYOne);
+        checkContent();
+    } else if (coordinatesXZero === coordinatesXOne) {
+        // choices[0].textContent = "0";
+        // choices[0].style.backgroundColor = "black";
+        // choices[1].textContent = "0";
+        // choices[1].style.backgroundColor = "black";
+        // console.log("Pair viable, x check");
+        // console.log(coordinatesXZero, coordinatesXOne);
+        checkContent();
+    } else if ((Number(coordinatesYZero) + 1) === Number(coordinatesYOne)) {
+        checkContent();
+        console.log(coordinatesYZero, "is smaller than", coordinatesYOne);
+    } else if ((Number(coordinatesYZero) - 1) === Number(coordinatesYOne)) {
+        checkContent();
+        console.log(coordinatesYZero, "is larger than", coordinatesYOne);
     }
+    // } 
+    else {
+        cancelChoice();
+        // // Moved to cancelChoice
+        // choices[0].style.backgroundColor = "white";
+        // choices[1].style.backgroundColor = "white";
+        // console.log(choices[0], choices[1]);
+        // console.log("Pair not viable");
+    }
+    // moved to cancelChoice
+    // sum = 0;
+    // playGame();
+}
+/**
+ * Checks content of spans
+ */
+function checkContent() {
+    let sum = 0;
+    sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
+    if ((sum === 10 || (choices[0].innerHTML === choices[1].innerHTML))) {
+        removeViablePair();
+        console.log("checkContent if reached");
+    } else {
+        cancelChoice();
+        console.log("checkContent else reached");
+    }
+}
+
+/**
+ * Cancels choice if pair is not viable
+ */
+function cancelChoice() {
+    choices[0].style.backgroundColor = "white";
+    choices[1].style.backgroundColor = "white";
+    console.log(choices[0], choices[1]);
+    console.log("Pair not viable");
     sum = 0;
+    playGame();
+}
+
+function removeViablePair() {
+    choices[0].textContent = "0";
+    choices[0].style.backgroundColor = "black";
+    // choices[0].removeEventListener("click", function () { }); // Redundant because of playGame
+    choices[1].textContent = "0";
+    choices[1].style.backgroundColor = "black";
+    // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
+    console.log("Pair viable, y check");
+    // console.log(coordinatesYZero, coordinatesYOne);
     playGame();
 }
