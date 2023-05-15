@@ -133,6 +133,7 @@ function addCoordinates() {
         }
         emptySpan[i].setAttribute(["data-y"], `${stringCoordinateCalc[0]}`);
         emptySpan[i].setAttribute(["data-x"], `${stringCoordinateCalc[1].charAt(0)}`);
+        emptySpan[i].setAttribute(["data-place"], `${i}`);
     }
 }
 
@@ -197,7 +198,6 @@ function checkLocation(choices) {
             let neighborsX = 0;
             for (let i = (coordinatesXMin + 1); i < coordinatesXMax; i++) {
                 neighborsX += Number(allY[i].innerHTML);
-                console.log(neighborsX);
             }
             if (neighborsX === 0) {
                 removeViablePair();
@@ -223,6 +223,8 @@ function checkLocation(choices) {
                 cancelChoice;
             }
         }
+    } else if ((coordinatesYMin + 1) === coordinatesYMax) {
+        console.log("need to check if everything in between is blank");
     } else {
         cancelChoice();
     }
