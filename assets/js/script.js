@@ -219,6 +219,7 @@ function checkLocation(choices) {
             }
             if (neighborsYSum === 0) {
                 removeViablePair();
+                console.log("neighborsYSum");
             } else {
                 cancelChoice();
             }
@@ -226,11 +227,14 @@ function checkLocation(choices) {
     } else if (coordinatesYMin !== coordinatesYMax) {
         let allPlaces = document.querySelectorAll(`[data-place]`);
         let betweenSpanSum = 0;
-        for (let i = (placeYZero + 1); i < placeYOne; i++) {
+        // console.log(placeYZero, placeYOne, betweenSpanSum);
+        for (let i = coordinatesYMin + 1; i < coordinatesYMax; i++) {
             betweenSpanSum += Number(allPlaces[i].innerHTML);
+
         }
         if (betweenSpanSum === 0) {
             removeViablePair();
+
         } else {
             cancelChoice();
         }
@@ -244,7 +248,7 @@ function checkLocation(choices) {
 function checkContent() {
     let sum = 0;
     sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
-    if ((sum === 10 || (choices[0].innerHTML === choices[1].innerHTML))) {
+    if (sum === 10 || (choices[0].innerHTML === choices[1].innerHTML)) {
         removeViablePair();
         console.log("checkContent if reached");
     } else {
@@ -279,7 +283,6 @@ function removeViablePair() {
 
 function removeEmptyRow() {
     let amountOfSpans = document.querySelectorAll("[data-place]").length;
-    console.log(Math.floor(amountOfSpans / 9), "amount of spans");
     for (let i = 0; i < (Math.floor(amountOfSpans / 9)); i++) {
         let collection = 0;
         let wholeRow = document.querySelectorAll(`[data-y="${i}"]`);
@@ -288,8 +291,19 @@ function removeEmptyRow() {
         }
         if (collection === 0) {
             console.log("Empty row!", i);
+            let emptyRow = document.querySelectorAll(`[data-y="${i}"]`);
+            console.log(emptyRow);
+            for (let i = 0; i < emptyRow.length; i++) {
+                emptyRow[i].remove();
+            }
+            // emptyRow.remove();
 
+            //  for (let x = i * 9; x < (x + 9); x++) {
+            //     // gameTable.removeChild(gameTableChildren[x]);
+            //     console.log(gameTableChildren[x]);
+            // }
         }
     }
     playGame();
 }
+
