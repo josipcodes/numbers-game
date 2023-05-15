@@ -180,20 +180,36 @@ function checkChoice(choices) {
     let sum = 0;
     sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
     // const regex = /x:(\d+) y:(\d)/g;
-    // const coordinatesZero = choices[0].getAttribute("data-coordinate").test(regex);
+    const coordinatesYZero = choices[0].getAttribute("data-y");
+    const coordinatesXZero = choices[0].getAttribute("data-x");
+    const coordinatesYOne = choices[1].getAttribute("data-y");
+    const coordinatesXOne = choices[1].getAttribute("data-x");
+
     // const coordinatesOne = choices[1].getAttribute("data-coordinate").test(regex);
     // console.log(coordinatesZero, coordinatesOne);
 
-    if ((sum === 10 || (choices[0].innerHTML === choices[1].innerHTML))) { // && (choices[0]["data-coordinate"] === choices[1].innerHTML)
-        console.log(choices[0].getAttribute("data-coordinate"));
-        choices[0].textContent = "0";
-        choices[0].style.backgroundColor = "black";
-        // choices[0].removeEventListener("click", function () { }); // Redundant because of playGame
-        choices[1].textContent = "0";
-        choices[1].style.backgroundColor = "black";
-        // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
-        console.log("Pair viable");
-        console.log(choices[0], choices[1]);
+    if ((sum === 10 || (choices[0].innerHTML === choices[1].innerHTML))) {
+        if (coordinatesYZero === coordinatesYOne) {// && (choices[0]["data-coordinate"] === choices[1].innerHTML)
+            choices[0].textContent = "0";
+            choices[0].style.backgroundColor = "black";
+            // choices[0].removeEventListener("click", function () { }); // Redundant because of playGame
+            choices[1].textContent = "0";
+            choices[1].style.backgroundColor = "black";
+            // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
+            console.log("Pair viable, y check");
+            console.log(coordinatesYZero, coordinatesYOne);
+        } else if (coordinatesXZero === coordinatesXOne) {
+            choices[0].textContent = "0";
+            choices[0].style.backgroundColor = "black";
+            choices[1].textContent = "0";
+            choices[1].style.backgroundColor = "black";
+            console.log("Pair viable, x check");
+            console.log(coordinatesXZero, coordinatesXOne);
+        } else if (coordinatesYZero < coordinatesYOne) {
+            console.log(coordinatesYZero, "is smaller than", coordinatesYOne);
+        } else {
+            console.log(coordinatesYZero, "is larger than", coordinatesYOne);
+        }
     } else {
         choices[0].style.backgroundColor = "white";
         choices[1].style.backgroundColor = "white";
