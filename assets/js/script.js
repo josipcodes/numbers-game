@@ -203,7 +203,17 @@ function checkLocation(choices) {
             console.log("neighbor by x");
             checkContent();
         } else {
-            console.log("distand neighbor X");
+            let allY = document.querySelectorAll(`[data-y="${coordinatesYZero}"]`);
+            let neighborsX = 0;
+            for (let i = (coordinatesXMin + 1); i < coordinatesXMax; i++) {
+                neighborsX += Number(allY[i].innerHTML);
+                console.log(neighborsX);
+            }
+            if (neighborsX === 0) {
+                removeViablePair();
+            } else {
+                cancelChoice;
+            }
         }
     }
     // choices[0].textContent = "0";
@@ -226,11 +236,16 @@ function checkLocation(choices) {
             // console.log(coordinatesXZero, coordinatesXOne);
         } else {
             let allX = document.querySelectorAll(`[data-x="${coordinatesXZero}"]`);
-            console.log(allX);
-            let neighborsY = [];
-            for (let i = coordinatesYMin; i < coordinatesYMax; i++) {
+            let neighborsY = 0;
+            for (let i = (coordinatesYMin + 1); i < coordinatesYMax; i++) {
+                neighborsY += Number(allX[i].innerHTML);
+                console.log(neighborsY);
 
-                console.log("distand neighbor X");
+            }
+            if (neighborsY === 0) {
+                removeViablePair();
+            } else {
+                cancelChoice;
             }
         }
         // } 
