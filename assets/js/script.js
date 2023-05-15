@@ -176,7 +176,7 @@ function highlight(firstChoice) {
 }
 
 /**
- * Checks choices for sum and adjusts CSS accordingly. If the pair is viable, spans should change innerHTML to 0.
+ * Checks location of the choices by x and y coordinates as well as placement.
  * 
  */
 function checkLocation(choices) {
@@ -224,7 +224,7 @@ function checkLocation(choices) {
             }
         }
     } else if (coordinatesYMin !== coordinatesYMax) {
-        let allPlaces = document.querySelectorAll(`[data-place`);
+        let allPlaces = document.querySelectorAll(`[data-place]`);
         let betweenSpanSum = 0;
         for (let i = (placeYZero + 1); i < placeYOne; i++) {
             betweenSpanSum += Number(allPlaces[i].innerHTML);
@@ -273,5 +273,23 @@ function removeViablePair() {
     choices[1].textContent = "0";
     choices[1].style.backgroundColor = "black";
     // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
+    removeEmptyRow();
+    playGame();
+}
+
+function removeEmptyRow() {
+    let amountOfSpans = document.querySelectorAll("[data-place]").length;
+    console.log(Math.floor(amountOfSpans / 9), "amount of spans");
+    for (let i = 0; i < (Math.floor(amountOfSpans / 9)); i++) {
+        let collection = 0;
+        let wholeRow = document.querySelectorAll(`[data-y="${i}"]`);
+        for (let j = 0; j < 9; j++) {
+            collection += Number(wholeRow[j].innerHTML);
+        }
+        if (collection === 0) {
+            console.log("Empty row!", i);
+
+        }
+    }
     playGame();
 }
