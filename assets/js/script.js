@@ -108,11 +108,11 @@ function runGame() {
  * Creates random numbers and adds them into relevant span elements
  */
 function randomizer() {
-    let emptySpan = document.getElementsByTagName("span");
-    for (let i = 0; i < emptySpan.length; i++) {
+    let spans = document.getElementsByTagName("span");
+    for (let i = 0; i < spans.length; i++) {
         // if (emptySpan[i].textContent === "") {
         let randomNumber = Math.floor(Math.random() * 9 + 1);
-        emptySpan[i].innerText = randomNumber;
+        spans[i].innerText = randomNumber;
         // }
     }
     addCoordinates();
@@ -125,16 +125,17 @@ function randomizer() {
  * Y captured using .charAt
  */
 function addCoordinates() {
-    let emptySpan = document.getElementsByTagName("span");
-    for (let i = 0; i < emptySpan.length; i++) {
+    let spans = document.getElementsByTagName("span");
+    for (let i = 0; i < spans.length; i++) {
         let stringCoordinateCalc = String(i / 9).split(".");
         if (stringCoordinateCalc[1] === undefined) {
             stringCoordinateCalc[1] = "0";
         }
-        emptySpan[i].setAttribute(["data-y"], `${stringCoordinateCalc[0]}`);
-        emptySpan[i].setAttribute(["data-x"], `${stringCoordinateCalc[1].charAt(0)}`);
-        emptySpan[i].setAttribute(["data-place"], `${i}`);
+        spans[i].setAttribute(["data-y"], `${stringCoordinateCalc[0]}`);
+        spans[i].setAttribute(["data-x"], `${stringCoordinateCalc[1].charAt(0)}`);
+        spans[i].setAttribute(["data-place"], `${i}`);
     }
+    playGame();
 }
 
 
@@ -281,6 +282,9 @@ function removeViablePair() {
     playGame();
 }
 
+/** 
+ * Checks for and removes an empty row
+*/
 function removeEmptyRow() {
     let amountOfSpans = document.querySelectorAll("[data-place]").length;
     for (let i = 0; i < (Math.floor(amountOfSpans / 9)); i++) {
@@ -292,18 +296,11 @@ function removeEmptyRow() {
         if (collection === 0) {
             console.log("Empty row!", i);
             let emptyRow = document.querySelectorAll(`[data-y="${i}"]`);
-            console.log(emptyRow);
             for (let i = 0; i < emptyRow.length; i++) {
                 emptyRow[i].remove();
             }
-            // emptyRow.remove();
-
-            //  for (let x = i * 9; x < (x + 9); x++) {
-            //     // gameTable.removeChild(gameTableChildren[x]);
-            //     console.log(gameTableChildren[x]);
-            // }
         }
     }
-    playGame();
+    addCoordinates();
 }
 
