@@ -7,6 +7,8 @@ let controlsButton = document.getElementById("controls");
 let continueGameButton = document.getElementById("continue-game");
 let returnButtons = document.getElementsByClassName("return");
 let gameModeButtons = document.getElementsByClassName("game-type");
+let returnToMenuButton = document.getElementById("in-game-return");
+let quitGameButton = document.getElementById("quit-game");
 
 let initialMenu = document.getElementById("initial-menu");
 let difficultyMenu = document.getElementById("difficulty-menu");
@@ -21,12 +23,13 @@ rulesButton.addEventListener("click", showRulesPage);
 aboutButton.addEventListener("click", showAboutPage);
 controlsButton.addEventListener("click", showControlsPage);
 continueGameButton.addEventListener("click", continueGame);
+returnToMenuButton.addEventListener("click", pauseGame);
 
 for (let i = 0; i < gameModeButtons.length; i++) {
     gameModeButtons[i].addEventListener("click", runGame);
 }
 
-for (let i = 0; i < returnButtons.length; i++) {
+for (let i = 0; i < returnButtons.length - 1; i++) {
     returnButtons[i].addEventListener("click", returnToMenu);
 }
 
@@ -72,9 +75,11 @@ function returnToMenu() {
     aboutPage.style.display = "none";
     controlsPage.style.display = "none";
     gamePage.style.display = "none";
-    if (this.id = "in-game-return") {
-        pauseGame();
-    }
+    // if (this.id = "in-game-return") {
+    //     pauseGame();
+    //     console.log(this, this.id);
+    //     console.log("in game return works");
+    // }
 }
 
 /**
@@ -307,12 +312,15 @@ function removeEmptyRow() {
 }
 
 function pauseGame() {
+    returnToMenu();
     continueGameButton.style.display = "block";
-    console.log("Brings up the first screen. Hides new game button, shows continue game button. Or doesn't hide new game button, but said button should then delete previous spans.");
+    quitGameButton.style.display = "block";
 }
 
 function continueGame() {
     initialMenu.style.display = "none";
+    continueGameButton.style.display = "none";
+    quitGameButton.style.display = "none";
     gamePage.style.display = "grid";
     console.log("Returns to the game without generating additional spans (current state).");
 }
