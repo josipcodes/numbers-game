@@ -72,6 +72,9 @@ function returnToMenu() {
     aboutPage.style.display = "none";
     controlsPage.style.display = "none";
     gamePage.style.display = "none";
+    if (this.id = "in-game-return") {
+        pauseGame();
+    }
 }
 
 /**
@@ -304,6 +307,7 @@ function removeEmptyRow() {
 }
 
 function pauseGame() {
+    continueGameButton.style.display = "block";
     console.log("Brings up the first screen. Hides new game button, shows continue game button. Or doesn't hide new game button, but said button should then delete previous spans.");
 }
 
