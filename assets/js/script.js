@@ -1,5 +1,6 @@
-let gameContent = document.getElementsByClassName("game-window")[0];
-
+/** 
+ * DOM related variables
+*/
 let newGameButton = document.getElementById("new-game");
 let rulesButton = document.getElementById("rules");
 let aboutButton = document.getElementById("about");
@@ -11,6 +12,7 @@ let returnToMenuButton = document.getElementById("in-game-return");
 let generateButton = document.getElementById("generate");
 let quitGameButton = document.getElementById("quit-game");
 
+let gameContent = document.getElementsByClassName("game-window")[0];
 let initialMenu = document.getElementById("initial-menu");
 let difficultyMenu = document.getElementById("difficulty-menu");
 let rulesPage = document.getElementById("rules-page");
@@ -19,6 +21,9 @@ let controlsPage = document.getElementById("controls-page");
 let gamePage = document.getElementById("game-container");
 let gameTable = document.getElementById("game-table");
 
+/** 
+ * Event listeners
+*/
 newGameButton.addEventListener("click", showDifficultyPage);
 rulesButton.addEventListener("click", showRulesPage);
 aboutButton.addEventListener("click", showAboutPage);
@@ -264,6 +269,7 @@ function checkLocation(choices) {
         cancelChoice();
     }
 }
+
 /**
  * Checks content of spans
  */
@@ -292,6 +298,9 @@ function cancelChoice() {
     choices = [];
 }
 
+/** 
+ * Removes a pair if all conditions are met.
+*/
 function removeViablePair() {
     choices[0].textContent = "0";
     choices[0].style.backgroundColor = "black";
@@ -325,12 +334,18 @@ function removeEmptyRow() {
     addCoordinates();
 }
 
+/** 
+ * Opens main menu
+*/
 function pauseGame() {
     returnToMenu();
     continueGameButton.style.display = "block";
     quitGameButton.style.display = "block";
 }
 
+/** 
+ * Brings user back into the game
+*/
 function continueGame() {
     initialMenu.style.display = "none";
     continueGameButton.style.display = "none";
@@ -341,6 +356,10 @@ function continueGame() {
 
 let generateSpans = [];
 
+/** 
+ * Generates new spans after the user presses "generate".
+ * This is done by only taking into account spans on the board which don't have inner.HTML = 0.
+*/
 function generateMoreSpans() {
     let spans = document.getElementsByTagName("span");
     let spansLength = spans.length;
@@ -359,6 +378,9 @@ function generateMoreSpans() {
     generateSpans = [];
 }
 
+/** 
+ * Outside of MVP, should check if the game is no longer solvable.
+*/
 function checkIfNotSolvable() {
     console.log("if only 3 rows, if only 2 spans !== 0, if sum !== 10, if span1 !== span2, if both are !== odd or even placed, if span1 is !== even placed (if length even).");
 }
