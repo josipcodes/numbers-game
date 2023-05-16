@@ -25,6 +25,7 @@ aboutButton.addEventListener("click", showAboutPage);
 controlsButton.addEventListener("click", showControlsPage);
 continueGameButton.addEventListener("click", continueGame);
 returnToMenuButton.addEventListener("click", pauseGame);
+generateButton.addEventListener("click", generateMoreSpans);
 
 for (let i = 0; i < gameModeButtons.length; i++) {
     gameModeButtons[i].addEventListener("click", runGame);
@@ -341,8 +342,8 @@ function continueGame() {
 let generateSpans = [];
 
 function generateMoreSpans() {
-    const spans = document.getElementsByTagName("span");
-    const spansLength = spans.length;
+    let spans = document.getElementsByTagName("span");
+    let spansLength = spans.length;
     for (let i = 0; i < spansLength; i++) {
         if (spans[i].style.backgroundColor !== "black") {
             generateSpans.push(spans[i]);
@@ -354,6 +355,8 @@ function generateMoreSpans() {
         newSpan.textContent = generateSpans[i].innerHTML;
         gameTable.appendChild(newSpan);
     }
+    addCoordinates();
+    generateSpans = [];
 }
 
 function checkIfNotSolvable() {
