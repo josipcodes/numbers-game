@@ -229,7 +229,7 @@ function checkLocation(choices) {
                 neighborsXSum += Number(allY[i].innerHTML);
             }
             if (neighborsXSum === 0) {
-                removeViablePair();
+                checkContent();
             } else {
                 cancelChoice();
             }
@@ -245,7 +245,7 @@ function checkLocation(choices) {
                 neighborsYSum += Number(allX[i].innerHTML);
             }
             if (neighborsYSum === 0) {
-                removeViablePair();
+                checkContent();
                 console.log("neighborsYSum");
             } else {
                 cancelChoice();
@@ -260,7 +260,7 @@ function checkLocation(choices) {
 
         }
         if (betweenSpanSum === 0) {
-            removeViablePair();
+            checkContent();
 
         } else {
             cancelChoice();
