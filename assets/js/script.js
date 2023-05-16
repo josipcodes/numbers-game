@@ -74,7 +74,7 @@ function returnToMenu() {
 
 /**
  * Creates sufficient amount of spans based on the difficulty chosen.
- * Adds random number (1-9) to spans.
+ * MVP: Current state. Future potential - each difficulty level could generate a random amount of spans (15-25, 25-50, 50-100)
  */
 function runGame() {
     difficultyMenu.style.display = "none";
@@ -105,7 +105,7 @@ function runGame() {
 
 
 /**
- * Creates random numbers and adds them into relevant span elements
+ * Creates random numbers (1-9) and adds them into relevant span elements
  */
 function randomizer() {
     let spans = document.getElementsByTagName("span");
@@ -116,12 +116,11 @@ function randomizer() {
         // }
     }
     addCoordinates();
-
 }
 
 /**
  *  Creates span coordinates starting from 0,0. 
- * Current issue if X>9 resolved by splitting the string with a period (to account for x>9.
+ * Current issue if X>9 resolved by splitting the string by a period.
  * Y captured using .charAt
  */
 function addCoordinates() {
@@ -161,11 +160,10 @@ let choices = [];
 function highlight() {
     if (this.style.backgroundColor !== "black") { // Added to attempt combating event listener jumping to a nearby span, doesn't work elsewhere
         this.style.backgroundColor = "yellow";
-        this.class = "choice";
         choices.push(this);
         if (choices[0] === choices[1]) {
-            cancelChoice();
             // moved to
+            cancelChoice();
             // choices[0].style.backgroundColor = "white";
             // choices[1].style.backgroundColor = "white";
             // choices = [];
