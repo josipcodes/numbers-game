@@ -188,6 +188,7 @@ function highlight() {
             // choices[1].style.backgroundColor = "white";
             // choices = [];
         } else if (choices.length === 2) {
+            console.log("blabla");
             checkLocation(choices);
             choices = [];
         }
@@ -205,10 +206,15 @@ function checkLocation(choices) {
     // are the below 2 necessary?
     const placeYZero = Number(choices[0].getAttribute("data-place"));
     const placeYOne = Number(choices[1].getAttribute("data-place"));
+    const placeYMin = Math.min(placeYZero, placeYOne);
+    const placeYMax = Math.max(placeYZero, placeYOne);
     const coordinatesYMin = Math.min(coordinatesYZero, coordinatesYOne);
     const coordinatesYMax = Math.max(coordinatesYZero, coordinatesYOne);
     const coordinatesXMin = Math.min(coordinatesXZero, coordinatesXOne);
     const coordinatesXMax = Math.max(coordinatesXZero, coordinatesXOne);
+    console.log(placeYMin);
+    console.log(placeYMax);
+    console.log("bla");
 
     if (coordinatesYZero === coordinatesYOne) {
         if (coordinatesXMin + 1 === coordinatesXMax) {
@@ -250,19 +256,36 @@ function checkLocation(choices) {
                 cancelChoice();
             }
         }
-    } else if (coordinatesYMin !== coordinatesYMax) {
+
+    } else if (placeYMin !== placeYMax) {
         let allPlaces = document.querySelectorAll(`[data-place]`);
         let betweenSpanSum = 0;
         // console.log(placeYZero, placeYOne, betweenSpanSum);
-        for (let i = coordinatesYMin + 1; i < coordinatesYMax; i++) {
+        console.log(placeYMin);
+        console.log(placeYMax);
+        for (let i = placeYMin + 1; i < placeYMax; i++) {
             betweenSpanSum += Number(allPlaces[i].innerHTML);
+            console.log(betweenSpanSum, "betweenSpanSum");
         }
         if (betweenSpanSum === 0) {
             checkContent();
-            console.log("I work...or do I? 5");
+            console.log("I work...or do I? 5!");
         } else {
             cancelChoice();
         }
+        // } else if (coordinatesYMin !== coordinatesYMax) {
+        //     let allPlaces = document.querySelectorAll(`[data-place]`);
+        //     let betweenSpanSum = 0;
+        //     // console.log(placeYZero, placeYOne, betweenSpanSum);
+        //     for (let i = coordinatesYMin + 1; i < coordinatesYMax; i++) {
+        //         betweenSpanSum += Number(allPlaces[i].innerHTML);
+        //     }
+        //     if (betweenSpanSum === 0) {
+        //         checkContent();
+        //         console.log("I work...or do I? 5");
+        //     } else {
+        //         cancelChoice();
+        //     }
     } else {
         cancelChoice();
     }
