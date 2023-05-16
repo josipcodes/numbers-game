@@ -176,7 +176,6 @@ function highlight() {
 
 /**
  * Checks location of the choices by x and y coordinates as well as placement.
- * 
  */
 function checkLocation(choices) {
     const coordinatesYZero = Number(choices[0].getAttribute("data-y"));
@@ -302,3 +301,18 @@ function removeEmptyRow() {
     addCoordinates();
 }
 
+function pauseGame() {
+    console.log("Brings up the first screen. Hides new game button, shows continue game button. Or doesn't hide new game button, but said button should then delete previous spans.");
+}
+
+function continueGame() {
+    console.log("Returns to the game without generating additional spans (current state).");
+}
+
+function generateMoreSpans() {
+    console.log("Takes all spans !== 0 and generates them from the first empty place");
+}
+
+function checkIfNotSolvable() {
+    console.log("if only 3 rows, if only 2 spans !== 0, if sum !== 10, if span1 !== span2, if both are !== odd or even placed, if span1 is !== even placed.");
+}
