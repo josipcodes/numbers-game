@@ -4,6 +4,7 @@ let newGameButton = document.getElementById("new-game");
 let rulesButton = document.getElementById("rules");
 let aboutButton = document.getElementById("about");
 let controlsButton = document.getElementById("controls");
+let continueGameButton = document.getElementById("continue-game");
 let returnButtons = document.getElementsByClassName("return");
 let gameModeButtons = document.getElementsByClassName("game-type");
 
@@ -19,6 +20,7 @@ newGameButton.addEventListener("click", showDifficultyPage);
 rulesButton.addEventListener("click", showRulesPage);
 aboutButton.addEventListener("click", showAboutPage);
 controlsButton.addEventListener("click", showControlsPage);
+continueGameButton.addEventListener("click", continueGame);
 
 for (let i = 0; i < gameModeButtons.length; i++) {
     gameModeButtons[i].addEventListener("click", runGame);
@@ -306,6 +308,8 @@ function pauseGame() {
 }
 
 function continueGame() {
+    initialMenu.style.display = "none";
+    gamePage.style.display = "grid";
     console.log("Returns to the game without generating additional spans (current state).");
 }
 
