@@ -143,10 +143,10 @@ function addCoordinates() {
  * Creates event listeners for all spans created. Ideally will only create listeners for spans which don't have a value of 0
  */
 function playGame() {
-    let firstChoice = document.getElementsByTagName("span");
-    for (let i = 0; i < firstChoice.length; i++) {
-        // if (firstChoice[i].textContent !== "0") { //.style.backgroundColor !== "black") { //innerHTML !== "0") { Doesn't currently work
-        firstChoice[i].addEventListener("click", highlight);
+    let choice = document.getElementsByTagName("span");
+    for (let i = 0; i < choice.length; i++) {
+        // if (choice[i].textContent !== "0") { //.style.backgroundColor !== "black") { //innerHTML !== "0") { Doesn't currently work
+        choice[i].addEventListener("click", highlight);
     }
 }
 
@@ -158,7 +158,7 @@ let choices = [];
  * Hightlights the chosen span pairs and calls for the check of choice.
  * If user clicks on the same span twice, choice is disregarded.
  */
-function highlight(firstChoice) {
+function highlight() {
     if (this.style.backgroundColor !== "black") { // Added to attempt combating event listener jumping to a nearby span, doesn't work elsewhere
         this.style.backgroundColor = "yellow";
         this.class = "choice";
