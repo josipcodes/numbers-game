@@ -8,6 +8,7 @@ let continueGameButton = document.getElementById("continue-game");
 let returnButtons = document.getElementsByClassName("return");
 let gameModeButtons = document.getElementsByClassName("game-type");
 let returnToMenuButton = document.getElementById("in-game-return");
+let generateButton = document.getElementById("generate");
 let quitGameButton = document.getElementById("quit-game");
 
 let initialMenu = document.getElementById("initial-menu");
@@ -132,7 +133,7 @@ function runGame() {
 function randomizer() {
     let spans = document.getElementsByTagName("span");
     for (let i = 0; i < spans.length; i++) {
-        // if (emptySpan[i].textContent === "") {
+        // if (spans[i].textContent === "") {
         let randomNumber = Math.floor(Math.random() * 9 + 1);
         spans[i].innerText = randomNumber;
         // }
@@ -337,10 +338,24 @@ function continueGame() {
     console.log("Returns to the game without generating additional spans (current state).");
 }
 
+let generateSpans = [];
+
 function generateMoreSpans() {
-    console.log("Takes all spans !== 0 and generates them from the first empty place");
+    const spans = document.getElementsByTagName("span");
+    const spansLength = spans.length;
+    for (let i = 0; i < spansLength; i++) {
+        if (spans[i].style.backgroundColor !== "black") {
+            generateSpans.push(spans[i]);
+            console.log("Takes all spans !== 0 and generates them from the first empty place");
+        }
+    }
+    for (let i = 0; i < generateSpans.length; i++) {
+        let newSpan = document.createElement("span");
+        newSpan.textContent = generateSpans[i].innerHTML;
+        gameTable.appendChild(newSpan);
+    }
 }
 
 function checkIfNotSolvable() {
-    console.log("if only 3 rows, if only 2 spans !== 0, if sum !== 10, if span1 !== span2, if both are !== odd or even placed, if span1 is !== even placed.");
+    console.log("if only 3 rows, if only 2 spans !== 0, if sum !== 10, if span1 !== span2, if both are !== odd or even placed, if span1 is !== even placed (if length even).");
 }
