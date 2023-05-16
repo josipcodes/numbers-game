@@ -84,9 +84,21 @@ function returnToMenu() {
 
 /**
  * Creates sufficient amount of spans based on the difficulty chosen.
+ * If user closes a previous session by clicking on new game, deletes previous spans and generates new game.
  * MVP: Current state. Future potential - each difficulty level could generate a random amount of spans (15-25, 25-50, 50-100)
  */
 function runGame() {
+    const spans = document.getElementsByTagName("span");
+    const spansLength = spans.length;
+    console.log(spans, "spans", spans.length, "spans length");
+    if (spans.length !== 0) {
+        for (let i = 0; i < spansLength; i++) {
+            gameTable.removeChild(spans[0]);
+            console.log(`removing span ${i}`);
+            console.log(spans.length, "length");
+            console.log(spansLength);
+        }
+    }
     difficultyMenu.style.display = "none";
     gamePage.style.display = "grid";
     if (this.id === "intermediate") {
