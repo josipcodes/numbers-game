@@ -12,7 +12,7 @@ let returnToMenuButton = document.getElementById("in-game-return");
 let generateButton = document.getElementById("generate");
 let quitGameButton = document.getElementById("quit-game");
 
-let gameContent = document.getElementsByClassName("game-window")[0];
+// let gameContent = document.getElementsByClassName("game-window")[0];
 let initialMenu = document.getElementById("initial-menu");
 let difficultyMenu = document.getElementById("difficulty-menu");
 let rulesPage = document.getElementById("rules-page");
@@ -82,11 +82,6 @@ function returnToMenu() {
     aboutPage.style.display = "none";
     controlsPage.style.display = "none";
     gamePage.style.display = "none";
-    // if (this.id = "in-game-return") {
-    //     pauseGame();
-    //     console.log(this, this.id);
-    //     console.log("in game return works");
-    // }
 }
 
 /**
@@ -97,13 +92,9 @@ function returnToMenu() {
 function runGame() {
     const spans = document.getElementsByTagName("span");
     const spansLength = spans.length;
-    console.log(spans, "spans", spans.length, "spans length");
     if (spans.length !== 0) {
         for (let i = 0; i < spansLength; i++) {
             gameTable.removeChild(spans[0]);
-            console.log(`removing span ${i}`);
-            console.log(spans.length, "length");
-            console.log(spansLength);
         }
     }
     difficultyMenu.style.display = "none";
@@ -211,6 +202,7 @@ function checkLocation(choices) {
     const coordinatesXZero = Number(choices[0].getAttribute("data-x"));
     const coordinatesYOne = Number(choices[1].getAttribute("data-y"));
     const coordinatesXOne = Number(choices[1].getAttribute("data-x"));
+    // are the below 2 necessary?
     const placeYZero = Number(choices[0].getAttribute("data-place"));
     const placeYOne = Number(choices[1].getAttribute("data-place"));
     const coordinatesYMin = Math.min(coordinatesYZero, coordinatesYOne);
@@ -219,34 +211,41 @@ function checkLocation(choices) {
     const coordinatesXMax = Math.max(coordinatesXZero, coordinatesXOne);
 
     if (coordinatesYZero === coordinatesYOne) {
-        if ((coordinatesXMin + 1) === coordinatesXMax) {
+        if (coordinatesXMin + 1 === coordinatesXMax) {
+            // works correctly
             console.log("neighbor by x");
             checkContent();
         } else {
             let allY = document.querySelectorAll(`[data-y="${coordinatesYZero}"]`);
             let neighborsXSum = 0;
-            for (let i = (coordinatesXMin + 1); i < coordinatesXMax; i++) {
+            for (let i = coordinatesXMin + 1; i < coordinatesXMax; i++) {
                 neighborsXSum += Number(allY[i].innerHTML);
+                console.log("neighborsXSum", neighborsXSum);
             }
             if (neighborsXSum === 0) {
                 checkContent();
+                console.log("I work...or do I? 2");
             } else {
                 cancelChoice();
             }
         }
     } else if (coordinatesXZero === coordinatesXOne) {
-        if ((coordinatesYMin + 1) === coordinatesYMax) {
+        if (coordinatesYMin + 1 === coordinatesYMax) {
+            // works correctly
             console.log("neighbor by y");
             checkContent();
         } else {
             let allX = document.querySelectorAll(`[data-x="${coordinatesXZero}"]`);
             let neighborsYSum = 0;
-            for (let i = (coordinatesYMin + 1); i < coordinatesYMax; i++) {
+            console.log(coordinatesYMin, coordinatesYMax, "min max y");
+            for (let i = coordinatesYMin + 1; i < coordinatesYMax; i++) {
                 neighborsYSum += Number(allX[i].innerHTML);
+                console.log("neighborsYSum", neighborsYSum, "something's wrong");
             }
             if (neighborsYSum === 0) {
                 checkContent();
                 console.log("neighborsYSum");
+                console.log("I work...or do I? 4");
             } else {
                 cancelChoice();
             }
@@ -257,11 +256,10 @@ function checkLocation(choices) {
         // console.log(placeYZero, placeYOne, betweenSpanSum);
         for (let i = coordinatesYMin + 1; i < coordinatesYMax; i++) {
             betweenSpanSum += Number(allPlaces[i].innerHTML);
-
         }
         if (betweenSpanSum === 0) {
             checkContent();
-
+            console.log("I work...or do I? 5");
         } else {
             cancelChoice();
         }
@@ -291,7 +289,6 @@ function checkContent() {
 function cancelChoice() {
     choices[0].style.backgroundColor = "white";
     choices[1].style.backgroundColor = "white";
-    console.log(choices[0], choices[1]);
     console.log("Pair not viable");
     sum = 0;
     playGame();
@@ -324,7 +321,6 @@ function removeEmptyRow() {
             collection += Number(wholeRow[j].innerHTML);
         }
         if (collection === 0) {
-            console.log("Empty row!", i);
             let emptyRow = document.querySelectorAll(`[data-y="${i}"]`);
             for (let i = 0; i < emptyRow.length; i++) {
                 emptyRow[i].remove();
@@ -351,7 +347,6 @@ function continueGame() {
     continueGameButton.style.display = "none";
     quitGameButton.style.display = "none";
     gamePage.style.display = "grid";
-    console.log("Returns to the game without generating additional spans (current state).");
 }
 
 let generateSpans = [];
@@ -366,7 +361,6 @@ function generateMoreSpans() {
     for (let i = 0; i < spansLength; i++) {
         if (spans[i].style.backgroundColor !== "black") {
             generateSpans.push(spans[i]);
-            console.log("Takes all spans !== 0 and generates them from the first empty place");
         }
     }
     for (let i = 0; i < generateSpans.length; i++) {
