@@ -10,7 +10,7 @@ let returnButtons = document.getElementsByClassName("return");
 let gameModeButtons = document.getElementsByClassName("game-type");
 let returnToMenuButton = document.getElementById("in-game-return");
 let generateButton = document.getElementById("generate");
-let redoButton = document.getElementById("redo");
+let undoButton = document.getElementById("undo");
 let quitGameButton = document.getElementById("quit-game");
 
 // let gameContent = document.getElementsByClassName("game-window")[0];
@@ -32,7 +32,7 @@ controlsButton.addEventListener("click", showControlsPage);
 continueGameButton.addEventListener("click", continueGame);
 returnToMenuButton.addEventListener("click", pauseGame);
 generateButton.addEventListener("click", generateMoreSpans);
-redoButton.addEventListener("click", redoAction);
+undoButton.addEventListener("click", undoAction);
 
 for (let i = 0; i < gameModeButtons.length; i++) {
     gameModeButtons[i].addEventListener("click", runGame);
@@ -135,6 +135,7 @@ function randomizer() {
         // if (spans[i].textContent === "") {
         let randomNumber = Math.floor(Math.random() * 9 + 1);
         spans[i].innerText = randomNumber;
+        spans[i].value = spans[i].innerText;
         // }
     }
     addLocation();
@@ -298,7 +299,7 @@ function checkContent() {
     sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
     if (sum === 10 || (choices[0].innerHTML === choices[1].innerHTML)) {
         console.log(choices[0].innerHTML, choices[1].innerHTML);
-        undoMemory();
+        memory();
         // removeViablePair();
         console.log("checkContent if reached");
     } else {
@@ -386,18 +387,32 @@ function generateMoreSpans() {
  * Outside of MVP, should check if the game is no longer solvable.
 */
 
-const memory = [];
+let memory = [];
 
 function undoMemory() {
-    // let spans = document.getElementsByTagName("span");
-    // memory.push(check);
-    // console.log("before spans are noted");
-    // console.log(spans);
+    let spans = document.getElementsByTagName("span");
+    memory.push(spans);
+    console.log(memory, "undoMemory");
+    // // console.log("before spans are noted");
+    // // console.log(spans);
     removeViablePair();
 }
 
 function undoAction() {
-    console.log("undo clicked");
+    let spans = document.getElementsByTagName("span");
+    let spansLength = spans.length;
+    for (let i = 0; i < spansLength; i++) {
+        gameTable.removeChild(spans[0]);
+    }
+    console.log(memory, "undoAction");
+    // console.log(memory[memory.length - 1]);
+    // let previousState = memory[memory.length - 1];
+
+    // console.log(typeof (previousState), "previous State");
+    // for (let i = 0; i < previousState.length; i++)
+    //     gameTable.appendChild(previousState[i]);
+    // console.log(`adding Element ${i}`);
+    // console.log(previousState.length);
 }
 
 /** 
