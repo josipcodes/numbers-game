@@ -34,7 +34,7 @@ continueGameButton.addEventListener("click", continueGame);
 returnToMenuButton.addEventListener("click", pauseGame);
 generateButton.addEventListener("click", generateMoreSpans);
 undoButton.addEventListener("click", undoAction);
-hintButton.addEventListener("click", function);
+hintButton.addEventListener("click", checkIfNotSolvable);
 
 for (let i = 0; i < gameModeButtons.length; i++) {
     gameModeButtons[i].addEventListener("click", runGame);
@@ -301,8 +301,8 @@ function checkContent() {
     sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
     if (sum === 10 || (choices[0].innerHTML === choices[1].innerHTML)) {
         console.log(choices[0].innerHTML, choices[1].innerHTML);
-        memory();
-        // removeViablePair();
+        // memory();
+        removeViablePair();
         console.log("checkContent if reached");
     } else {
         cancelChoice();
@@ -421,8 +421,100 @@ function undoAction() {
  * Outside of MVP, should check if the game is no longer solvable.
 */
 function checkIfNotSolvable() {
-    console.log("if only 3 rows, if only 2 spans !== 0, if sum !== 10, if span1 !== span2, if both are !== odd or even placed, if span1 is !== even placed (if length even).");
+    let spans = document.getElementsByTagName("span");
+    for (let i = 0; i < spans.length - 1; i++) {
+        for (let j = i + 1; j < spans.length; j++) {
+            let spanIValue = Number(spans[i].innerHTML);
+            let spanJValue = Number(spans[j].innerHTML);
+            sum = spanIValue + spanJValue;
+
+            const coordinatesYZero = Number(spans[i].getAttribute("data-y"));
+            const coordinatesXZero = Number(spans[i].getAttribute("data-x"));
+            const coordinatesYOne = Number(spans[j].getAttribute("data-y"));
+            const coordinatesXOne = Number(spans[j].getAttribute("data-x"));
+            const placeYZero = Number(spans[i].getAttribute("data-place"));
+            const placeYOne = Number(spans[j].getAttribute("data-place"));
+            const placeYMin = Math.min(placeYZero, placeYOne);
+            const placeYMax = Math.max(placeYZero, placeYOne);
+            const coordinatesYMin = Math.min(coordinatesYZero, coordinatesYOne);
+            const coordinatesYMax = Math.max(coordinatesYZero, coordinatesYOne);
+            const coordinatesXMin = Math.min(coordinatesXZero, coordinatesXOne);
+            const coordinatesXMax = Math.max(coordinatesXZero, coordinatesXOne);
+
+            if ((spanIValue === spanJValue || sum === 10) && spanIValue !== 0) {
+                console.log(spanIValue, spanJValue);
+                // 
+                if (coordinatesYZero === coordinatesYOne) {
+                    if (coordinatesXMin + 1 === coordinatesXMax) {
+                        console.log(spans[i], spans[j]);
+                        console.log("can be removed");
+                        // checkContent();
+                    } else {
+                        let allY = document.querySelectorAll(`[data-y="${coordinatesYZero}"]`);
+                        let neighborsXSum = 0;
+                        for (let i = coordinatesXMin + 1; i < coordinatesXMax; i++) {
+                            neighborsXSum += Number(allY[i].innerHTML);
+                        }
+                        if (neighborsXSum === 0) {
+                            console.log(spans[i], spans[j]);
+                            console.log("can be removed");
+                        } else {
+                            console.log("cannot be removed");
+                        }
+                    }
+                } else if (coordinatesXZero === coordinatesXOne) {
+                    if (coordinatesYMin + 1 === coordinatesYMax) {
+                        console.log(spans[i], spans[j]);
+                        console.log("can be removed");
+                    } else {
+                        let allX = document.querySelectorAll(`[data-x="${coordinatesXZero}"]`);
+                        let neighborsYSum = 0;
+                        for (let i = coordinatesYMin + 1; i < coordinatesYMax; i++) {
+                            neighborsYSum += Number(allX[i].innerHTML);
+                        }
+                        if (neighborsYSum === 0) {
+                            console.log(spans[i], spans[j]);
+                            console.log("can be removed");
+                        } else {
+                            console.log("cannot be removed");
+                        }
+                    }
+
+                } else if (placeYMin !== placeYMax) {
+                    let allPlaces = document.querySelectorAll(`[data-place]`);
+                    let betweenSpanSum = 0;
+                    for (let i = placeYMin + 1; i < placeYMax; i++) {
+                        betweenSpanSum += Number(allPlaces[i].innerHTML);
+                    }
+                    if (betweenSpanSum === 0) {
+                        console.log(spans[i], spans[j]);
+                        console.log("can be removed");
+                    } else {
+                        console.log("cannot be removed");
+                    }
+                } else {
+                    console.log("game not solveable?");
+                }
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+// 
+//         }
+//     }
+//     let spansLocation = spans[i].getAttribute("data-y");
+//     // console.log(spansLocation);
+// }
+// console.log("if only 3 rows, if only 2 spans !== 0, if sum !== 10, if span1 !== span2, if both are !== odd or even placed, if span1 is !== even placed (if length even).");
+// }
+
 
 /** 
  * Removes a pair if all conditions are met.
