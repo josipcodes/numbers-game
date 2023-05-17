@@ -386,7 +386,7 @@ function generateMoreSpans() {
 }
 
 /** 
- * Outside of MVP, should check if the game is no longer solvable.
+ * Outside of MVP, should undo the last action
 */
 
 let memory = [];
