@@ -10,6 +10,7 @@ let returnButtons = document.getElementsByClassName("return");
 let gameModeButtons = document.getElementsByClassName("game-type");
 let returnToMenuButton = document.getElementById("in-game-return");
 let generateButton = document.getElementById("generate");
+let redoButton = document.getElementById("redo");
 let quitGameButton = document.getElementById("quit-game");
 
 // let gameContent = document.getElementsByClassName("game-window")[0];
@@ -31,6 +32,7 @@ controlsButton.addEventListener("click", showControlsPage);
 continueGameButton.addEventListener("click", continueGame);
 returnToMenuButton.addEventListener("click", pauseGame);
 generateButton.addEventListener("click", generateMoreSpans);
+redoButton.addEventListener("click", redoAction);
 
 for (let i = 0; i < gameModeButtons.length; i++) {
     gameModeButtons[i].addEventListener("click", runGame);
