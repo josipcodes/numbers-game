@@ -11,6 +11,7 @@ let gameModeButtons = document.getElementsByClassName("game-type");
 let returnToMenuButton = document.getElementById("in-game-return");
 let generateButton = document.getElementById("generate");
 let undoButton = document.getElementById("undo");
+let hintButton = document.getElementById("hint");
 let quitGameButton = document.getElementById("quit-game");
 
 // let gameContent = document.getElementsByClassName("game-window")[0];
@@ -33,6 +34,7 @@ continueGameButton.addEventListener("click", continueGame);
 returnToMenuButton.addEventListener("click", pauseGame);
 generateButton.addEventListener("click", generateMoreSpans);
 undoButton.addEventListener("click", undoAction);
+hintButton.addEventListener("click", function);
 
 for (let i = 0; i < gameModeButtons.length; i++) {
     gameModeButtons[i].addEventListener("click", runGame);
