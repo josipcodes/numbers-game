@@ -297,7 +297,9 @@ function checkContent() {
     let sum = 0;
     sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
     if (sum === 10 || (choices[0].innerHTML === choices[1].innerHTML)) {
-        removeViablePair();
+        console.log(choices[0].innerHTML, choices[1].innerHTML);
+        undoMemory();
+        // removeViablePair();
         console.log("checkContent if reached");
     } else {
         cancelChoice();
@@ -315,20 +317,6 @@ function cancelChoice() {
     sum = 0;
     playGame();
     choices = [];
-}
-
-/** 
- * Removes a pair if all conditions are met.
-*/
-function removeViablePair() {
-    choices[0].textContent = "0";
-    choices[0].style.backgroundColor = "black";
-    // choices[0].removeEventListener("click", function () { }); // Redundant because of playGame
-    choices[1].textContent = "0";
-    choices[1].style.backgroundColor = "black";
-    // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
-    removeEmptyRow();
-    playGame();
 }
 
 /** 
@@ -397,8 +385,19 @@ function generateMoreSpans() {
 /** 
  * Outside of MVP, should check if the game is no longer solvable.
 */
-function redoAction() {
 
+const memory = [];
+
+function undoMemory() {
+    // let spans = document.getElementsByTagName("span");
+    // memory.push(check);
+    // console.log("before spans are noted");
+    // console.log(spans);
+    removeViablePair();
+}
+
+function undoAction() {
+    console.log("undo clicked");
 }
 
 /** 
@@ -406,4 +405,23 @@ function redoAction() {
 */
 function checkIfNotSolvable() {
     console.log("if only 3 rows, if only 2 spans !== 0, if sum !== 10, if span1 !== span2, if both are !== odd or even placed, if span1 is !== even placed (if length even).");
+}
+
+/** 
+ * Removes a pair if all conditions are met.
+*/
+function removeViablePair() {
+    console.log(choices[0].textContent, "removeviablepair");
+    choices[0].textContent = "0";
+    choices[0].style.backgroundColor = "black";
+    // choices[0].removeEventListener("click", function () { }); // Redundant because of playGame
+    choices[1].textContent = "0";
+    choices[1].style.backgroundColor = "black";
+    // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
+    removeEmptyRow();
+    // let spans = document.getElementsByTagName("span");
+    // memory.push(spans);
+    // console.log("before spans are noted");
+    // console.log(spans);
+    playGame();
 }
