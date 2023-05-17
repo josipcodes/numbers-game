@@ -135,7 +135,7 @@ function randomizer() {
         spans[i].innerText = randomNumber;
         // }
     }
-    addCoordinates();
+    addLocation();
 }
 
 /**
@@ -143,7 +143,7 @@ function randomizer() {
  * Current issue if X>9 resolved by splitting the string by a period.
  * Y captured using .charAt
  */
-function addCoordinates() {
+function addLocation() {
     let spans = document.getElementsByTagName("span");
     for (let i = 0; i < spans.length; i++) {
         let stringCoordinateCalc = String(i / 9).split(".");
@@ -212,9 +212,6 @@ function checkLocation(choices) {
     const coordinatesYMax = Math.max(coordinatesYZero, coordinatesYOne);
     const coordinatesXMin = Math.min(coordinatesXZero, coordinatesXOne);
     const coordinatesXMax = Math.max(coordinatesXZero, coordinatesXOne);
-    console.log(placeYMin);
-    console.log(placeYMax);
-    console.log("bla");
 
     if (coordinatesYZero === coordinatesYOne) {
         if (coordinatesXMin + 1 === coordinatesXMax) {
@@ -350,7 +347,7 @@ function removeEmptyRow() {
             }
         }
     }
-    addCoordinates();
+    addLocation();
 }
 
 /** 
@@ -391,8 +388,15 @@ function generateMoreSpans() {
         newSpan.textContent = generateSpans[i].innerHTML;
         gameTable.appendChild(newSpan);
     }
-    addCoordinates();
+    addLocation();
     generateSpans = [];
+}
+
+/** 
+ * Outside of MVP, should check if the game is no longer solvable.
+*/
+function redoAction() {
+
 }
 
 /** 
