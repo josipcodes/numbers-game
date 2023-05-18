@@ -193,7 +193,6 @@ function highlight() {
             // choices[1].style.backgroundColor = "white";
             // choices = [];
         } else if (choices.length === 2) {
-            console.log("blabla");
             checkLocation(choices);
             choices = [];
         }
@@ -220,40 +219,30 @@ function checkLocation(choices) {
 
     if (coordinatesYZero === coordinatesYOne) {
         if (coordinatesXMin + 1 === coordinatesXMax) {
-            // works correctly
-            console.log("neighbor by x");
             checkContent();
         } else {
             let allY = document.querySelectorAll(`[data-y="${coordinatesYZero}"]`);
             let neighborsXSum = 0;
             for (let i = coordinatesXMin + 1; i < coordinatesXMax; i++) {
                 neighborsXSum += Number(allY[i].innerHTML);
-                console.log("neighborsXSum", neighborsXSum);
             }
             if (neighborsXSum === 0) {
                 checkContent();
-                console.log("I work...or do I? 2");
             } else {
                 cancelChoice();
             }
         }
     } else if (coordinatesXZero === coordinatesXOne) {
         if (coordinatesYMin + 1 === coordinatesYMax) {
-            // works correctly
-            console.log("neighbor by y");
             checkContent();
         } else {
             let allX = document.querySelectorAll(`[data-x="${coordinatesXZero}"]`);
             let neighborsYSum = 0;
-            console.log(coordinatesYMin, coordinatesYMax, "min max y");
             for (let i = coordinatesYMin + 1; i < coordinatesYMax; i++) {
                 neighborsYSum += Number(allX[i].innerHTML);
-                console.log("neighborsYSum", neighborsYSum, "something's wrong");
             }
             if (neighborsYSum === 0) {
                 checkContent();
-                console.log("neighborsYSum");
-                console.log("I work...or do I? 4");
             } else {
                 cancelChoice();
             }
@@ -262,32 +251,14 @@ function checkLocation(choices) {
     } else if (placeYMin !== placeYMax) {
         let allPlaces = document.querySelectorAll(`[data-place]`);
         let betweenSpanSum = 0;
-        // console.log(placeYZero, placeYOne, betweenSpanSum);
-        console.log(placeYMin);
-        console.log(placeYMax);
         for (let i = placeYMin + 1; i < placeYMax; i++) {
             betweenSpanSum += Number(allPlaces[i].innerHTML);
-            console.log(betweenSpanSum, "betweenSpanSum");
         }
         if (betweenSpanSum === 0) {
             checkContent();
-            console.log("I work...or do I? 5!");
         } else {
             cancelChoice();
         }
-        // } else if (coordinatesYMin !== coordinatesYMax) {
-        //     let allPlaces = document.querySelectorAll(`[data-place]`);
-        //     let betweenSpanSum = 0;
-        //     // console.log(placeYZero, placeYOne, betweenSpanSum);
-        //     for (let i = coordinatesYMin + 1; i < coordinatesYMax; i++) {
-        //         betweenSpanSum += Number(allPlaces[i].innerHTML);
-        //     }
-        //     if (betweenSpanSum === 0) {
-        //         checkContent();
-        //         console.log("I work...or do I? 5");
-        //     } else {
-        //         cancelChoice();
-        //     }
     } else {
         cancelChoice();
     }
@@ -300,13 +271,10 @@ function checkContent() {
     let sum = 0;
     sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
     if (sum === 10 || (choices[0].innerHTML === choices[1].innerHTML)) {
-        console.log(choices[0].innerHTML, choices[1].innerHTML);
         // memory();
         removeViablePair();
-        console.log("checkContent if reached");
     } else {
         cancelChoice();
-        console.log("checkContent else reached");
     }
 }
 
@@ -316,7 +284,6 @@ function checkContent() {
 function cancelChoice() {
     choices[0].style.backgroundColor = "white";
     choices[1].style.backgroundColor = "white";
-    console.log("Pair not viable");
     sum = 0;
     playGame();
     choices = [];
@@ -369,6 +336,9 @@ let generateSpans = [];
  * This is done by only taking into account spans on the board which don't have inner.HTML = 0.
 */
 function generateMoreSpans() {
+    if (generateButton.classList.contains("hint")) {
+        generateButton.classList.remove("hint");
+    }
     let spans = document.getElementsByTagName("span");
     let spansLength = spans.length;
     for (let i = 0; i < spansLength; i++) {
@@ -395,8 +365,6 @@ function undoMemory() {
     let spans = document.getElementsByTagName("span");
     memory.push(spans);
     console.log(memory, "undoMemory");
-    // // console.log("before spans are noted");
-    // // console.log(spans);
     removeViablePair();
 }
 
@@ -424,8 +392,10 @@ function checkIfNotSolvable() {
     let spans = document.getElementsByTagName("span");
     let choices = [];
     // Loop runs as many times as there are spans on the board, minus one as there is no need to check the last span.
+    loopOne:
     for (let i = 0; i < spans.length - 2; i++) {
         // Loop runs as many times as there are spans on the board, counting from the current i + 1.
+        loopTwo:
         for (let j = i + 1; j < spans.length; j++) {
             let spanIValue = Number(spans[i].innerHTML);
             let spanJValue = Number(spans[j].innerHTML);
@@ -444,14 +414,12 @@ function checkIfNotSolvable() {
             let coordinatesXMin = Math.min(coordinatesXZero, coordinatesXOne);
             let coordinatesXMax = Math.max(coordinatesXZero, coordinatesXOne);
 
-            // const choices = [];
             //  if statement checks inner HTML of i and j as long as the current i inner HTML isn't 0 (previously removed item).
             if ((spanIValue === spanJValue || sum === 10) && spanIValue !== 0) {
                 // if statement check if both i and j are in the same row
                 if (coordinatesYZero === coordinatesYOne) {
                     // if statement checks if i and j are touching in a column (x). If yes, i and j are pushed into choices array.
                     if (coordinatesXMin + 1 === coordinatesXMax) {
-                        console.log(spans[i], spans[j], "can be removed");
                         choices.push(spans[i]);
                         spans[i].classList.add("hint");
                         spans[j].classList.add("hint");
@@ -459,7 +427,7 @@ function checkIfNotSolvable() {
                         // if length of array choices is 2, if statement should cause a break.
                         if (choices.length === 2) {
                             console.log("breaking", choices.length);
-                            break;
+                            break loopOne;
                         }
                     }
                     //  else statement takes all the spans in the row of the current i and should check if the ???
@@ -476,14 +444,14 @@ function checkIfNotSolvable() {
                             spans[j].classList.add("hint");
                             choices.push(spans[i]);
                             choices.push(spans[j]);
-                            console.log("neighborsXSum === 0");
                             if (choices.length === 2) {
                                 console.log("breaking");
-                                break;
+                                break loopOne;
                             }
-                        } else {
-                            console.log(spans[i], spans[j], "cannot be removed");
                         }
+                        // else {
+                        //     console.log(spans[i], spans[j], "cannot be removed");
+                        // }
                     }
                     // Else if statement checks if i and j are in the same column.
                 } else if (coordinatesXZero === coordinatesXOne) {
@@ -494,10 +462,9 @@ function checkIfNotSolvable() {
                         spans[i].classList.add("hint");
                         spans[j].classList.add("hint");
                         choices.push(spans[j]);
-                        console.log("neighborsXSum === 0");
                         if (choices.length === 2) {
                             console.log("breaking");
-                            break;
+                            break loopOne;
                         }
                         // Else statement takes all numbers in the column of i and checks if 
                     } else {
@@ -512,12 +479,12 @@ function checkIfNotSolvable() {
                             spans[i].classList.add("hint");
                             spans[j].classList.add("hint");
                             choices.push(spans[j]);
-                            console.log(spans[i], spans[j], coordinatesYMin, coordinatesYMax, "this one");
                             if (choices.length === 2) {
                                 console.log("breaking");
-                                break;
+                                break loopOne;
                             }
-                        } else {
+                        }
+                        else {
                             console.log(spans[i], spans[j], "cannot be removed, thins one?");
                         }
                     }
@@ -537,23 +504,32 @@ function checkIfNotSolvable() {
                         console.log("neighborsXSum === 0");
                         if (choices.length === 2) {
                             console.log("breaking");
-                            break;
+                            break loopOne;
                         }
                     } else {
                         console.log(spans[i], spans[j], "cannot be removed", betweenSpanSum);
                     }
                 } else {
-                    console.log("game not solveable?");
+                    generateButton.classList.add("hint");
+                    console.log("generate button should get a class", generateButton.classList);
                 }
 
             }
         }
-        if (choices.length === 2) {
-            console.log("breaking");
-            choices = [];
-            return;
-        }
+        // if (choices.length === 2) {
+        //     console.log("breaking");
+        //     choices = [];
+        //     return;
+        // }
     }
+    if (choices.length === 2) {
+        console.log("breaking");
+        choices = [];
+    } else {
+        generateButton.classList.add("hint");
+        console.log("generate button should get a class", generateButton.classList);
+    }
+    // choices = [];
 }
 
 
@@ -563,7 +539,6 @@ function checkIfNotSolvable() {
  * Removes a pair if all conditions are met.
 */
 function removeViablePair() {
-    console.log(choices[0].textContent, "removeviablepair");
     choices[0].textContent = "0";
     choices[0].style.backgroundColor = "black";
     // choices[0].removeEventListener("click", function () { }); // Redundant because of playGame
