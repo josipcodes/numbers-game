@@ -422,31 +422,41 @@ function undoAction() {
 */
 function checkIfNotSolvable() {
     let spans = document.getElementsByTagName("span");
+    console.log(spans);
+    let choices = [];
     for (let i = 0; i < spans.length - 1; i++) {
         for (let j = i + 1; j < spans.length; j++) {
             let spanIValue = Number(spans[i].innerHTML);
             let spanJValue = Number(spans[j].innerHTML);
             sum = spanIValue + spanJValue;
 
-            const coordinatesYZero = Number(spans[i].getAttribute("data-y"));
-            const coordinatesXZero = Number(spans[i].getAttribute("data-x"));
-            const coordinatesYOne = Number(spans[j].getAttribute("data-y"));
-            const coordinatesXOne = Number(spans[j].getAttribute("data-x"));
-            const placeYZero = Number(spans[i].getAttribute("data-place"));
-            const placeYOne = Number(spans[j].getAttribute("data-place"));
-            const placeYMin = Math.min(placeYZero, placeYOne);
-            const placeYMax = Math.max(placeYZero, placeYOne);
-            const coordinatesYMin = Math.min(coordinatesYZero, coordinatesYOne);
-            const coordinatesYMax = Math.max(coordinatesYZero, coordinatesYOne);
-            const coordinatesXMin = Math.min(coordinatesXZero, coordinatesXOne);
-            const coordinatesXMax = Math.max(coordinatesXZero, coordinatesXOne);
+            let coordinatesYZero = Number(spans[i].getAttribute("data-y"));
+            let coordinatesXZero = Number(spans[i].getAttribute("data-x"));
+            let coordinatesYOne = Number(spans[j].getAttribute("data-y"));
+            let coordinatesXOne = Number(spans[j].getAttribute("data-x"));
+            let placeYZero = Number(spans[i].getAttribute("data-place"));
+            let placeYOne = Number(spans[j].getAttribute("data-place"));
+            let placeYMin = Math.min(placeYZero, placeYOne);
+            let placeYMax = Math.max(placeYZero, placeYOne);
+            let coordinatesYMin = Math.min(coordinatesYZero, coordinatesYOne);
+            let coordinatesYMax = Math.max(coordinatesYZero, coordinatesYOne);
+            let coordinatesXMin = Math.min(coordinatesXZero, coordinatesXOne);
+            let coordinatesXMax = Math.max(coordinatesXZero, coordinatesXOne);
+
+            // const choices = [];
 
             if ((spanIValue === spanJValue || sum === 10) && spanIValue !== 0) {
                 if (coordinatesYZero === coordinatesYOne) {
                     if (coordinatesXMin + 1 === coordinatesXMax) {
                         console.log(spans[i], spans[j]);
+                        choices.push(spans[i]);
                         spans[i].classList.add("hint");
                         spans[j].classList.add("hint");
+                        choices.push(spans[j]);
+                        // if (choices.length === 2) {
+                        //     console.log("breaking", choices.length);
+                        //     break;
+                        // }
                         console.log("coordinatesXMin + 1 === coordinatesXMax");
                         // checkContent();
                     } else {
@@ -456,54 +466,79 @@ function checkIfNotSolvable() {
                             neighborsXSum += Number(allY[i].innerHTML);
                         }
                         if (neighborsXSum === 0) {
+                            choices.push(spans[i]);
                             spans[i].classList.add("hint");
                             spans[j].classList.add("hint");
+                            choices.push(spans[j]);
                             console.log("neighborsXSum === 0");
-                            break;
+                            if (choices.length === 2) {
+                                console.log("breaking");
+                                break;
+                            }
                         } else {
                             console.log("cannot be removed");
                         }
                     }
                 } else if (coordinatesXZero === coordinatesXOne) {
                     if (coordinatesYMin + 1 === coordinatesYMax) {
+                        choices.push(spans[i]);
                         spans[i].classList.add("hint");
                         spans[j].classList.add("hint");
-                        console.log("coordinatesYMin + 1 === coordinatesYMax");
-                        break;
-                    } else {
-                        let allX = document.querySelectorAll(`[data-x="${coordinatesXZero}"]`);
-                        let neighborsYSum = 0;
-                        for (let i = coordinatesYMin + 1; i < coordinatesYMax; i++) {
-                            neighborsYSum += Number(allX[i].innerHTML);
+                        choices.push(spans[j]);
+                        console.log("neighborsXSum === 0");
+                        if (choices.length === 2) {
+                            console.log("breaking");
+                            break;
+                        } else {
+                            let allX = document.querySelectorAll(`[data-x="${coordinatesXZero}"]`);
+                            let neighborsYSum = 0;
+                            for (let i = coordinatesYMin + 1; i < coordinatesYMax; i++) {
+                                neighborsYSum += Number(allX[i].innerHTML);
+                            }
+                            if (neighborsYSum === 0) {
+                                choices.push(spans[i]);
+                                spans[i].classList.add("hint");
+                                spans[j].classList.add("hint");
+                                choices.push(spans[j]);
+                                console.log("neighborsXSum === 0");
+                                if (choices.length === 2) {
+                                    console.log("breaking");
+                                    break;
+                                }
+                            } else {
+                                console.log("cannot be removed");
+                            }
                         }
-                        if (neighborsYSum === 0) {
+
+                    } else if (placeYMin !== placeYMax) {
+                        let allPlaces = document.querySelectorAll(`[data-place]`);
+                        let betweenSpanSum = 0;
+                        for (let i = placeYMin + 1; i < placeYMax; i++) {
+                            betweenSpanSum += Number(allPlaces[i].innerHTML);
+                        }
+                        if (betweenSpanSum === 0) {
+                            choices.push(spans[i]);
                             spans[i].classList.add("hint");
                             spans[j].classList.add("hint");
-                            console.log("neighborsYSum === 0");
-                            break;
+                            choices.push(spans[j]);
+                            console.log("neighborsXSum === 0");
+                            if (choices.length === 2) {
+                                console.log("breaking");
+                                break;
+                            }
                         } else {
                             console.log("cannot be removed");
                         }
-                    }
-
-                } else if (placeYMin !== placeYMax) {
-                    let allPlaces = document.querySelectorAll(`[data-place]`);
-                    let betweenSpanSum = 0;
-                    for (let i = placeYMin + 1; i < placeYMax; i++) {
-                        betweenSpanSum += Number(allPlaces[i].innerHTML);
-                    }
-                    if (betweenSpanSum === 0) {
-                        spans[i].classList.add("hint");
-                        spans[j].classList.add("hint");
-                        console.log("betweenSpanSum === 0");
-                        break;
                     } else {
-                        console.log("cannot be removed");
+                        console.log("game not solveable?");
                     }
-                } else {
-                    console.log("game not solveable?");
                 }
             }
+        }
+        if (choices.length === 2) {
+            console.log("breaking");
+            choices = [];
+            return;
         }
     }
 }
