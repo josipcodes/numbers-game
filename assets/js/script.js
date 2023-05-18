@@ -442,11 +442,11 @@ function checkIfNotSolvable() {
             const coordinatesXMax = Math.max(coordinatesXZero, coordinatesXOne);
 
             if ((spanIValue === spanJValue || sum === 10) && spanIValue !== 0) {
-                console.log(spanIValue, spanJValue);
-                // 
                 if (coordinatesYZero === coordinatesYOne) {
                     if (coordinatesXMin + 1 === coordinatesXMax) {
                         console.log(spans[i], spans[j]);
+                        spans[i].classList.add("hint");
+                        spans[j].classList.add("hint");
                         console.log("can be removed");
                         // checkContent();
                     } else {
@@ -456,16 +456,16 @@ function checkIfNotSolvable() {
                             neighborsXSum += Number(allY[i].innerHTML);
                         }
                         if (neighborsXSum === 0) {
-                            console.log(spans[i], spans[j]);
-                            console.log("can be removed");
+                            spans[i].classList.add("hint");
+                            spans[j].classList.add("hint");
                         } else {
                             console.log("cannot be removed");
                         }
                     }
                 } else if (coordinatesXZero === coordinatesXOne) {
                     if (coordinatesYMin + 1 === coordinatesYMax) {
-                        console.log(spans[i], spans[j]);
-                        console.log("can be removed");
+                        spans[i].classList.add("hint");
+                        spans[j].classList.add("hint");
                     } else {
                         let allX = document.querySelectorAll(`[data-x="${coordinatesXZero}"]`);
                         let neighborsYSum = 0;
@@ -473,8 +473,8 @@ function checkIfNotSolvable() {
                             neighborsYSum += Number(allX[i].innerHTML);
                         }
                         if (neighborsYSum === 0) {
-                            console.log(spans[i], spans[j]);
-                            console.log("can be removed");
+                            spans[i].classList.add("hint");
+                            spans[j].classList.add("hint");
                         } else {
                             console.log("cannot be removed");
                         }
@@ -487,8 +487,8 @@ function checkIfNotSolvable() {
                         betweenSpanSum += Number(allPlaces[i].innerHTML);
                     }
                     if (betweenSpanSum === 0) {
-                        console.log(spans[i], spans[j]);
-                        console.log("can be removed");
+                        spans[i].classList.add("hint");
+                        spans[j].classList.add("hint");
                     } else {
                         console.log("cannot be removed");
                     }
