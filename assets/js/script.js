@@ -540,7 +540,7 @@ function removeViablePair() {
     const spansLength = spans.length;
     for (let i = 0; i < spans.length; i++) {
         if (spans[i].style.classList = "hint") {
-            spans[i].style.classList.remove("hint");
+            spans[i].classList.remove("hint");
         }
     }
     // memory.push(spans);
