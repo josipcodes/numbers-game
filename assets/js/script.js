@@ -34,7 +34,7 @@ continueGameButton.addEventListener("click", continueGame);
 returnToMenuButton.addEventListener("click", pauseGame);
 generateButton.addEventListener("click", generateMoreSpans);
 undoButton.addEventListener("click", undoAction);
-hintButton.addEventListener("click", checkIfNotSolvable);
+hintButton.addEventListener("click", provideHint);
 
 for (let i = 0; i < gameModeButtons.length; i++) {
     gameModeButtons[i].addEventListener("click", runGame);
@@ -388,7 +388,7 @@ function undoAction() {
 /** 
  * Outside of MVP, should check if the game is no longer solvable.
 */
-function checkIfNotSolvable() {
+function provideHint() {
     let spans = document.getElementsByTagName("span");
     let choices = [];
     // Loop runs as many times as there are spans on the board, minus one as there is no need to check the last span.
@@ -509,10 +509,11 @@ function checkIfNotSolvable() {
                     } else {
                         console.log(spans[i], spans[j], "cannot be removed", betweenSpanSum);
                     }
-                } else {
-                    generateButton.classList.add("hint");
-                    console.log("generate button should get a class", generateButton.classList);
                 }
+                // else {
+                //     generateButton.classList.add("hint");
+                //     console.log("generate button should get a class", generateButton.classList);
+                // }
 
             }
         }
@@ -527,7 +528,7 @@ function checkIfNotSolvable() {
         choices = [];
     } else {
         generateButton.classList.add("hint");
-        console.log("generate button should get a class", generateButton.classList);
+        // console.log("generate button should get a class", generateButton.classList);
     }
     // choices = [];
 }
