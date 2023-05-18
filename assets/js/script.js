@@ -447,7 +447,7 @@ function checkIfNotSolvable() {
                         console.log(spans[i], spans[j]);
                         spans[i].classList.add("hint");
                         spans[j].classList.add("hint");
-                        console.log("can be removed");
+                        console.log("coordinatesXMin + 1 === coordinatesXMax");
                         // checkContent();
                     } else {
                         let allY = document.querySelectorAll(`[data-y="${coordinatesYZero}"]`);
@@ -458,6 +458,8 @@ function checkIfNotSolvable() {
                         if (neighborsXSum === 0) {
                             spans[i].classList.add("hint");
                             spans[j].classList.add("hint");
+                            console.log("neighborsXSum === 0");
+                            break;
                         } else {
                             console.log("cannot be removed");
                         }
@@ -466,6 +468,8 @@ function checkIfNotSolvable() {
                     if (coordinatesYMin + 1 === coordinatesYMax) {
                         spans[i].classList.add("hint");
                         spans[j].classList.add("hint");
+                        console.log("coordinatesYMin + 1 === coordinatesYMax");
+                        break;
                     } else {
                         let allX = document.querySelectorAll(`[data-x="${coordinatesXZero}"]`);
                         let neighborsYSum = 0;
@@ -475,6 +479,8 @@ function checkIfNotSolvable() {
                         if (neighborsYSum === 0) {
                             spans[i].classList.add("hint");
                             spans[j].classList.add("hint");
+                            console.log("neighborsYSum === 0");
+                            break;
                         } else {
                             console.log("cannot be removed");
                         }
@@ -489,6 +495,8 @@ function checkIfNotSolvable() {
                     if (betweenSpanSum === 0) {
                         spans[i].classList.add("hint");
                         spans[j].classList.add("hint");
+                        console.log("betweenSpanSum === 0");
+                        break;
                     } else {
                         console.log("cannot be removed");
                     }
@@ -528,7 +536,13 @@ function removeViablePair() {
     choices[1].style.backgroundColor = "black";
     // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
     removeEmptyRow();
-    // let spans = document.getElementsByTagName("span");
+    let spans = document.getElementsByTagName("span");
+    const spansLength = spans.length;
+    for (let i = 0; i < spans.length; i++) {
+        if (spans[i].style.classList = "hint") {
+            spans[i].style.classList.remove("hint");
+        }
+    }
     // memory.push(spans);
     // console.log("before spans are noted");
     // console.log(spans);
