@@ -602,8 +602,15 @@ function calculateScore() {
 gameScore.innerHTML = score;
 }
 
+let newScore = 0;
+
+/**
+ * Function removed 1/5 of the current score when the removeFifthButton is used.
+ * If score cannot be divided by 5, Math.ceil is used for the score to remain an integer.
+ * 
+ */
 function removeFifth() {
-    if (score >= 50) {
-        score /= 5;
+    newScore = Math.ceil((score / 5) * 4);
+    score = newScore; 
+    calculateScore();
     }
-}
