@@ -22,6 +22,7 @@ let aboutPage = document.getElementById("about-page");
 let controlsPage = document.getElementById("controls-page");
 let gamePage = document.getElementById("game-container");
 let gameTable = document.getElementById("game-table");
+let gameScore = document.getElementById("score");
 
 /** 
  * Event listeners
@@ -94,7 +95,8 @@ function returnToMenu() {
  * MVP: Current state. Future potential - each difficulty level could generate a random amount of spans (15-25, 25-50, 50-100)
  */
 function runGame() {
-    const spans = document.getElementsByTagName("span");
+    score = 0;
+    const spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
     if (spans.length !== 0) {
         for (let i = 0; i < spansLength; i++) {
@@ -132,7 +134,7 @@ function runGame() {
  * Creates random numbers (1-9) and adds them into relevant span elements
  */
 function randomizer() {
-    let spans = document.getElementsByTagName("span");
+    let spans = gameTable.getElementsByTagName("span");
     for (let i = 0; i < spans.length; i++) {
         // if (spans[i].textContent === "") {
         let randomNumber = Math.floor(Math.random() * 9 + 1);
@@ -149,7 +151,7 @@ function randomizer() {
  * Y captured using .charAt
  */
 function addLocation() {
-    let spans = document.getElementsByTagName("span");
+    let spans = gameTable.getElementsByTagName("span");
     for (let i = 0; i < spans.length; i++) {
         let stringCoordinateCalc = String(i / 9).split(".");
         if (stringCoordinateCalc[1] === undefined) {
@@ -167,7 +169,7 @@ function addLocation() {
  * Creates event listeners for all spans created. Ideally will only create listeners for spans which don't have a value of 0
  */
 function playGame() {
-    let choice = document.getElementsByTagName("span");
+    let choice = gameTable.getElementsByTagName("span");
     for (let i = 0; i < choice.length; i++) {
         // if (choice[i].textContent !== "0") { //.style.backgroundColor !== "black") { //innerHTML !== "0") { Doesn't currently work
         choice[i].addEventListener("click", highlight);
@@ -301,6 +303,8 @@ function removeEmptyRow() {
             collection += Number(wholeRow[j].innerHTML);
         }
         if (collection === 0) {
+            score += 10;
+            calculateScore();
             let emptyRow = document.querySelectorAll(`[data-y="${i}"]`);
             for (let i = 0; i < emptyRow.length; i++) {
                 emptyRow[i].remove();
@@ -340,7 +344,7 @@ function generateMoreSpans() {
     if (generateButton.classList.contains("hint")) {
         generateButton.classList.remove("hint");
     }
-    let spans = document.getElementsByTagName("span");
+    let spans = gameTable.getElementsByTagName("span");
     let spansLength = spans.length;
     for (let i = 0; i < spansLength; i++) {
         if (spans[i].style.backgroundColor !== "black") {
@@ -363,14 +367,14 @@ function generateMoreSpans() {
 let memory = [];
 
 function undoMemory() {
-    let spans = document.getElementsByTagName("span");
+    let spans = gameTable.getElementsByTagName("span");
     memory.push(spans);
     console.log(memory, "undoMemory");
     removeViablePair();
 }
 
 function undoAction() {
-    let spans = document.getElementsByTagName("span");
+    let spans = gameTable.getElementsByTagName("span");
     let spansLength = spans.length;
     for (let i = 0; i < spansLength; i++) {
         gameTable.removeChild(spans[0]);
@@ -390,7 +394,11 @@ function undoAction() {
  * Outside of MVP, should check if the game is no longer solvable.
 */
 function provideHint() {
-    let spans = document.getElementsByTagName("span");
+    if (score >= 10) {
+        score -=10;
+        calculateScore();
+    }
+    let spans = gameTable.getElementsByTagName("span");
     let choices = [];
     // Loop runs as many times as there are spans on the board, minus one as there is no need to check the last span.
     loopOne:
@@ -541,6 +549,7 @@ function provideHint() {
  * Removes a pair if all conditions are met.
 */
 function removeViablePair() {
+    score += 2;
     choices[0].textContent = "0";
     choices[0].style.backgroundColor = "black";
     // choices[0].removeEventListener("click", function () { }); // Redundant because of playGame
@@ -548,7 +557,7 @@ function removeViablePair() {
     choices[1].style.backgroundColor = "black";
     // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
     removeEmptyRow();
-    let spans = document.getElementsByTagName("span");
+    let spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
     for (let i = 0; i < spans.length; i++) {
         if (spans[i].style.classList = "hint") {
@@ -558,5 +567,22 @@ function removeViablePair() {
     // memory.push(spans);
     // console.log("before spans are noted");
     // console.log(spans);
+    calculateScore();
     playGame();
+}
+
+/**
+ * Function calculates user's current score. 
+ * Each successful pair removal equals to 2 points.
+ * Row removal equals to 10 points.
+ * Using a hint removes 2 points as long as the score equals to 2 or more.
+ * 
+ */
+
+let score = 0;
+
+function calculateScore() {
+gameScore.innerHTML = score;
+console.log("I work")
+console.log(gameScore)
 }
