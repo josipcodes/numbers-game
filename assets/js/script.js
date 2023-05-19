@@ -554,6 +554,8 @@ function provideHint() {
  * Removes a pair if all conditions are met.
 */
 function removeViablePair() {
+    memory = gameTable.cloneNode(true);
+    console.log(memory)
     score += 2;
     choices[0].textContent = "0";
     choices[0].style.backgroundColor = "black";
@@ -562,11 +564,10 @@ function removeViablePair() {
     choices[1].style.backgroundColor = "black";
     // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
     removeEmptyRow();
-    let spans = gameTable.getElementsByTagName("span");
-    const spansLength = spans.length;
-    for (let i = 0; i < spans.length; i++) {
-        if (spans[i].style.classList = "hint") {
-            spans[i].classList.remove("hint");
+    let currentSpans = gameTable.getElementsByTagName("span");
+    for (let i = 0; i < currentSpans.length; i++) {
+        if (currentSpans[i].style.classList = "hint") {
+            currentSpans[i].classList.remove("hint");
         }
     }
     // memory.push(spans);
