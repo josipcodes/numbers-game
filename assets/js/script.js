@@ -96,6 +96,7 @@ function returnToMenu() {
  */
 function runGame() {
     score = 0;
+    calculateScore()
     const spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
     if (spans.length !== 0) {
@@ -396,8 +397,10 @@ function undoAction() {
 function provideHint() {
     if (score >= 10) {
         score -=10;
-        calculateScore();
+    } else {
+        score = 0;
     }
+    calculateScore();
     let spans = gameTable.getElementsByTagName("span");
     let choices = [];
     // Loop runs as many times as there are spans on the board, minus one as there is no need to check the last span.
