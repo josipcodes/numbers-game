@@ -98,7 +98,7 @@ function returnToMenu() {
  */
 function runGame() {
     score = 0;
-    calculateScore()
+    calculateScore();
     const spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
     if (spans.length !== 0) {
@@ -177,7 +177,7 @@ function playGame() {
         // if (choice[i].textContent !== "0") { //.style.backgroundColor !== "black") { //innerHTML !== "0") { Doesn't currently work
         choice[i].addEventListener("click", highlight);
     }
-calculateScore();
+    calculateScore();
 }
 
 
@@ -370,37 +370,18 @@ function generateMoreSpans() {
 
 let memory = [];
 
-// function undoMemory() {
-//     let spans = gameTable.getElementsByTagName("span");
-//     memory.push(spans);
-//     console.log(memory, "undoMemory");
-//     removeViablePair();
-// }
-
 function undoAction() {
+    console.log(memory);
     gameTable.remove();
     gamePage.appendChild(memory);
-    // let spansLength = spans.length;
-    // for (let i = 0; i < spansLength; i++) {
-    //     gameTable.removeChild(spans[0]);
-    // }
-    // console.log(memory, "undoAction");
-    // console.log(memory[memory.length - 1]);
-    // let previousState = memory[memory.length - 1];
-
-    // console.log(typeof (previousState), "previous State");
-    // for (let i = 0; i < previousState.length; i++)
-    //     gameTable.appendChild(previousState[i]);
-    // console.log(`adding Element ${i}`);
-    // console.log(previousState.length);
 }
 
 /** 
- * Outside of MVP, should check if the game is no longer solvable.
+ * Outside of MVP, provides a hint, but costs 5 points.
 */
 function provideHint() {
-    if (score >= 10) {
-        score -=10;
+    if (score >= 5) {
+        score -= 5;
     } else {
         score = 0;
     }
@@ -555,8 +536,8 @@ function provideHint() {
  * Removes a pair if all conditions are met.
 */
 function removeViablePair() {
-    memory = gameTable.cloneNode(true);
-    console.log(memory)
+    memory = gameTable.cloneNode(deep);
+    console.log(memory);
     score += 2;
     choices[0].textContent = "0";
     choices[0].style.backgroundColor = "black";
@@ -584,15 +565,15 @@ let score = 0;
  * Function updates gameScore inner HTML with the current score.
  */
 function calculateScore() {
-gameScore.innerHTML = score;
+    gameScore.innerHTML = score;
     if (score >= 50) {
         if (removeFifthButton.classList.contains("hide")) {
-        removeFifthButton.classList.remove("hide");
+            removeFifthButton.classList.remove("hide");
         }
     } else {
         if (!removeFifthButton.classList.contains("hide")) {
-        removeFifthButton.classList.add("hide");
-        }        
+            removeFifthButton.classList.add("hide");
+        }
     }
 }
 
@@ -607,13 +588,13 @@ let newScore = 0;
 
 function removeFifth() {
     newScore = Math.ceil((score / 5) * 4);
-    score = newScore; 
+    score = newScore;
     calculateScore();
-     const spans = gameTable.getElementsByTagName("span");
-     const spansLength = spans.length;
+    const spans = gameTable.getElementsByTagName("span");
+    const spansLength = spans.length;
     for (let i = spansLength; i > 0; i--) {
         if (i % 5 === 0) {
-            gameTable.removeChild(spans[i-1]);
+            gameTable.removeChild(spans[i - 1]);
         }
     }
     addLocation();
