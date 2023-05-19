@@ -389,8 +389,16 @@ function provideHint() {
     let spans = gameTable.getElementsByTagName("span");
     let choices = [];
     // Loop runs as many times as there are spans on the board, minus one as there is no need to check the last span.
+    let startOfCheck = 0;
+    for (let x = 0; x < spans.length; x++) {
+        if (spans[x].classList("hint")) {
+            startOfCheck = x;
+        } else {
+            startOfCheck = 0;
+        }
+    }
     loopOne:
-    for (let i = 0; i < spans.length - 2; i++) {
+    for (let i = startOfCheck; i < spans.length - 2; i++) {
         // Loop runs as many times as there are spans on the board, counting from the current i + 1.
         for (let j = i + 1; j < spans.length; j++) {
             let spanIValue = Number(spans[i].innerHTML);
