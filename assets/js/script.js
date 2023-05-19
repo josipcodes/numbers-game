@@ -343,13 +343,17 @@ let generateSpans = [];
  * Generates new spans after the user presses "generate".
  * This is done by only taking into account spans on the board which don't have inner.HTML = 0.
 */
-
 function generateMoreSpans() {
+    let spans = gameTable.getElementsByTagName("span");
+    let spansLength = spans.length;
+    for (let i = 0; i < spans.length; i++) {
+        if (spans[i].classList.contains("hint")) {
+            spans[i].classList.remove("hint");
+        }
+    }
     if (generateButton.classList.contains("hint")) {
         generateButton.classList.remove("hint");
     }
-    let spans = gameTable.getElementsByTagName("span");
-    let spansLength = spans.length;
     for (let i = 0; i < spansLength; i++) {
         if (spans[i].style.backgroundColor !== "black") {
             generateSpans.push(spans[i]);
@@ -391,10 +395,8 @@ function provideHint() {
     // Loop runs as many times as there are spans on the board, minus one as there is no need to check the last span.
     let startOfCheck = 0;
     for (let x = 0; x < spans.length; x++) {
-        if (spans[x].classList("hint")) {
+        if (spans[x].classList.contains("hint")) {
             startOfCheck = x;
-        } else {
-            startOfCheck = 0;
         }
     }
     loopOne:
@@ -510,8 +512,6 @@ function provideHint() {
                             console.log("breaking");
                             break loopOne;
                         }
-                    } else {
-                        console.log(spans[i], spans[j], "cannot be removed", betweenSpanSum);
                     }
                 }
                 // else {
@@ -538,13 +538,11 @@ function provideHint() {
 }
 
 
-
-
 /** 
  * Removes a pair if all conditions are met.
 */
 function removeViablePair() {
-    memory = gameTable.cloneNode(deep);
+    memory = gameTable.cloneNode(true);
     console.log(memory);
     score += 2;
     choices[0].textContent = "0";
@@ -556,13 +554,10 @@ function removeViablePair() {
     removeEmptyRow();
     let currentSpans = gameTable.getElementsByTagName("span");
     for (let i = 0; i < currentSpans.length; i++) {
-        if (currentSpans[i].style.classList = "hint") {
+        if (currentSpans[i].classList.contains("hint")) {
             currentSpans[i].classList.remove("hint");
         }
     }
-    // memory.push(spans);
-    // console.log("before spans are noted");
-    // console.log(spans);
     calculateScore();
     playGame();
 }
