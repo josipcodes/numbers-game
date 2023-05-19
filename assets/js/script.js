@@ -397,6 +397,7 @@ function provideHint() {
     for (let x = 0; x < spans.length; x++) {
         if (spans[x].classList.contains("hint")) {
             startOfCheck = x;
+            spans[x].classList.remove("hint");
         }
     }
     loopOne:
