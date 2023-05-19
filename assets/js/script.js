@@ -614,15 +614,13 @@ function removeFifth() {
     newScore = Math.ceil((score / 5) * 4);
     score = newScore; 
     calculateScore();
-     let spans = gameTable.getElementsByTagName("span");
+     const spans = gameTable.getElementsByTagName("span");
      const spansLength = spans.length;
-    for (let i = 0; i < spansLength; i++) {
-        console.log(i)
+    for (let i = spansLength; i > 0; i--) {
         if (i % 5 === 0) {
-            gameTable.removeChild(spans[0]);
-            console.log("removing", i)
-        } else {
-            console.log("skipped", i)
+            gameTable.removeChild(spans[i-1]);
+            console.log("removing", i-1)
         }
     }
+    addLocation();
 }
