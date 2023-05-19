@@ -584,8 +584,9 @@ function removeViablePair() {
 
 let score = 0;
 
+/**
+ * Function updates gameScore inner HTML with the current score.
+ */
 function calculateScore() {
 gameScore.innerHTML = score;
-console.log("I work")
-console.log(gameScore)
 }
