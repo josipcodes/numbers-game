@@ -410,7 +410,6 @@ function provideHint() {
     loopOne:
     for (let i = 0; i < spans.length - 2; i++) {
         // Loop runs as many times as there are spans on the board, counting from the current i + 1.
-        loopTwo:
         for (let j = i + 1; j < spans.length; j++) {
             let spanIValue = Number(spans[i].innerHTML);
             let spanJValue = Number(spans[j].innerHTML);
@@ -577,14 +576,6 @@ function removeViablePair() {
     playGame();
 }
 
-/**
- * Function calculates user's current score. 
- * Each successful pair removal equals to 2 points.
- * Row removal equals to 10 points.
- * Using a hint removes 2 points as long as the score equals to 2 or more.
- * 
- */
-
 let score = 0;
 
 /**
@@ -603,13 +594,15 @@ gameScore.innerHTML = score;
     }
 }
 
-let newScore = 0;
 
 /**
- * Function removed 1/5 of the current score when the removeFifthButton is used.
+ * Function removes 1/5 of the current score when the removeFifthButton is used.
  * If score cannot be divided by 5, Math.ceil is used for the score to remain an integer.
  * 
  */
+
+let newScore = 0;
+
 function removeFifth() {
     newScore = Math.ceil((score / 5) * 4);
     score = newScore; 
@@ -619,7 +612,6 @@ function removeFifth() {
     for (let i = spansLength; i > 0; i--) {
         if (i % 5 === 0) {
             gameTable.removeChild(spans[i-1]);
-            console.log("removing", i-1)
         }
     }
     addLocation();
