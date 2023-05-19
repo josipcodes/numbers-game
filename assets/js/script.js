@@ -12,6 +12,7 @@ let returnToMenuButton = document.getElementById("in-game-return");
 let generateButton = document.getElementById("generate");
 let undoButton = document.getElementById("undo");
 let hintButton = document.getElementById("hint");
+let removeFifthButton = document.getElementById("remove-fifth");
 let quitGameButton = document.getElementById("quit-game");
 
 // let gameContent = document.getElementsByClassName("game-window")[0];
@@ -36,6 +37,7 @@ returnToMenuButton.addEventListener("click", pauseGame);
 generateButton.addEventListener("click", generateMoreSpans);
 undoButton.addEventListener("click", undoAction);
 hintButton.addEventListener("click", provideHint);
+removeFifthButton.addEventListener("click", removeFifth);
 
 for (let i = 0; i < gameModeButtons.length; i++) {
     gameModeButtons[i].addEventListener("click", runGame);
@@ -174,6 +176,15 @@ function playGame() {
     for (let i = 0; i < choice.length; i++) {
         // if (choice[i].textContent !== "0") { //.style.backgroundColor !== "black") { //innerHTML !== "0") { Doesn't currently work
         choice[i].addEventListener("click", highlight);
+    }
+    if (score >= 50) {
+        if (removeFifthButton.classList.contains("hide")) {
+        removeFifthButton.classList.remove("hide");
+        }
+    } else {
+        if (!removeFifthButton.classList.contains("hide")) {
+        removeFifthButton.classList.add("hide");
+        }        
     }
 }
 
@@ -589,4 +600,10 @@ let score = 0;
  */
 function calculateScore() {
 gameScore.innerHTML = score;
+}
+
+function removeFifth() {
+    if (score >= 50) {
+        score /= 5;
+    }
 }

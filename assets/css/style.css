@@ -100,6 +100,10 @@ span {
     background-color: red;
 }
 
+.hide {
+    display: none;
+}
+
 #score {
     margin: 0 auto;
     display: block;
