@@ -177,15 +177,7 @@ function playGame() {
         // if (choice[i].textContent !== "0") { //.style.backgroundColor !== "black") { //innerHTML !== "0") { Doesn't currently work
         choice[i].addEventListener("click", highlight);
     }
-    if (score >= 50) {
-        if (removeFifthButton.classList.contains("hide")) {
-        removeFifthButton.classList.remove("hide");
-        }
-    } else {
-        if (!removeFifthButton.classList.contains("hide")) {
-        removeFifthButton.classList.add("hide");
-        }        
-    }
+calculateScore();
 }
 
 
@@ -600,6 +592,15 @@ let score = 0;
  */
 function calculateScore() {
 gameScore.innerHTML = score;
+    if (score >= 50) {
+        if (removeFifthButton.classList.contains("hide")) {
+        removeFifthButton.classList.remove("hide");
+        }
+    } else {
+        if (!removeFifthButton.classList.contains("hide")) {
+        removeFifthButton.classList.add("hide");
+        }        
+    }
 }
 
 let newScore = 0;
@@ -613,4 +614,15 @@ function removeFifth() {
     newScore = Math.ceil((score / 5) * 4);
     score = newScore; 
     calculateScore();
+     let spans = gameTable.getElementsByTagName("span");
+     const spansLength = spans.length;
+    for (let i = 0; i < spansLength; i++) {
+        console.log(i)
+        if (i % 5 === 0) {
+            gameTable.removeChild(spans[0]);
+            console.log("removing", i)
+        } else {
+            console.log("skipped", i)
+        }
     }
+}
