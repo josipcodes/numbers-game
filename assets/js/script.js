@@ -382,6 +382,7 @@ function undoAction() {
 
 /** 
  * Outside of MVP, provides a hint, but costs 5 points.
+ * Current unexpected behaviour - generate button triggers after the last pair is hinted, not removing after a cycle.
 */
 function provideHint() {
     if (score >= 5) {
