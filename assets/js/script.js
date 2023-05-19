@@ -335,6 +335,7 @@ let generateSpans = [];
  * Generates new spans after the user presses "generate".
  * This is done by only taking into account spans on the board which don't have inner.HTML = 0.
 */
+
 function generateMoreSpans() {
     if (generateButton.classList.contains("hint")) {
         generateButton.classList.remove("hint");

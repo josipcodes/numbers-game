@@ -100,6 +100,12 @@ span {
     background-color: red;
 }
 
+#score {
+    color: black;
+    background-color: white:
+    border: 2px solid black;
+}
+
 @media (min-width: 600px) {
     #grid-container {
         display: grid;
