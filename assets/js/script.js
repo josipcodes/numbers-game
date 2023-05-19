@@ -370,20 +370,21 @@ function generateMoreSpans() {
 
 let memory = [];
 
-function undoMemory() {
-    let spans = gameTable.getElementsByTagName("span");
-    memory.push(spans);
-    console.log(memory, "undoMemory");
-    removeViablePair();
-}
+// function undoMemory() {
+//     let spans = gameTable.getElementsByTagName("span");
+//     memory.push(spans);
+//     console.log(memory, "undoMemory");
+//     removeViablePair();
+// }
 
 function undoAction() {
-    let spans = gameTable.getElementsByTagName("span");
-    let spansLength = spans.length;
-    for (let i = 0; i < spansLength; i++) {
-        gameTable.removeChild(spans[0]);
-    }
-    console.log(memory, "undoAction");
+    gameTable.remove();
+    gamePage.appendChild(memory);
+    // let spansLength = spans.length;
+    // for (let i = 0; i < spansLength; i++) {
+    //     gameTable.removeChild(spans[0]);
+    // }
+    // console.log(memory, "undoAction");
     // console.log(memory[memory.length - 1]);
     // let previousState = memory[memory.length - 1];
 
