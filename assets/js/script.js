@@ -376,6 +376,7 @@ function generateMoreSpans() {
 let memory = [];
 
 function undoAction() {
+    undoButton.classList.add("hide");
     let memoryChildren = memory.getElementsByTagName("span");
     console.log(memoryChildren, "memory length")
     for (let x = 0; x < memoryChildren.length; x++) {
@@ -561,6 +562,7 @@ function provideHint() {
  * Removes a pair if all conditions are met.
 */
 function removeViablePair() {
+    undoButton.classList.remove("hide");
     memory = [];
     memory = gameTable.cloneNode(true);
     // let memoryChildren = memory.getElementsByTagName("span");
