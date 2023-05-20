@@ -24,6 +24,7 @@ let controlsPage = document.getElementById("controls-page");
 let gamePage = document.getElementById("game-container");
 let gameTable = document.getElementById("game-table");
 let gameScore = document.getElementById("score");
+let game = document.getElementById("beginner-mode")
 
 /** 
  * Event listeners
@@ -97,6 +98,7 @@ function returnToMenu() {
  * MVP: Current state. Future potential - each difficulty level could generate a random amount of spans (15-25, 25-50, 50-100)
  */
 function runGame() {
+    game.style.display = "block";
     score = 0;
     calculateScore();
     const spans = gameTable.getElementsByTagName("span");
@@ -593,6 +595,7 @@ function removeViablePair() {
         }
     }
     calculateScore();
+    gameWon();
     playGame();
 }
 
@@ -635,4 +638,17 @@ function removeFifth() {
         }
     }
     addLocation();
+}
+
+function gameWon() {
+    const spans = gameTable.getElementsByTagName("span");
+    let sum = 0;
+    for (let i = 0; i < spans.length; i++) {
+        sum += Number(spans[i].innerHTML)
+    }
+    if (sum === 0) {
+        alert(`You won! Your final score is ${score}`)
+        initialMenu.style.display = "block";
+        game.style.display = "none";
+    }
 }
