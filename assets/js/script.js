@@ -174,7 +174,6 @@ function addLocation() {
 function playGame() {
     let choice = gameTable.getElementsByTagName("span");
     for (let i = 0; i < choice.length; i++) {
-        // if (choice[i].textContent !== "0") { //.style.backgroundColor !== "black") { //innerHTML !== "0") { Doesn't currently work
         choice[i].addEventListener("click", highlight);
     }
     calculateScore();
@@ -378,6 +377,17 @@ function undoAction() {
     console.log(memory);
     gameTable.remove();
     gamePage.appendChild(memory);
+    let spans = gameTable.getElementsByTagName("span");
+    console.log(spans.length);
+    console.log(spans);
+    playGame();
+    addLocation();
+    for (let i = 0; i < spans.length; i++) {
+        if (spans[i].style.backgroundColor = "yellow") {
+            spans[i].style.removeProperty("background-color")
+            console.log("checking background color", spans[i].style.backgroundColor)
+        }
+    }
 }
 
 /** 
