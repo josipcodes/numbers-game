@@ -345,6 +345,7 @@ let generateSpans = [];
 */
 function generateMoreSpans() {
     let spans = gameTable.getElementsByTagName("span");
+    console.log(spans, "generateMoreSpans")
     let spansLength = spans.length;
     for (let i = 0; i < spans.length; i++) {
         if (spans[i].classList.contains("hint")) {
@@ -378,13 +379,14 @@ function undoAction() {
     let memoryChildren = memory.getElementsByTagName("span");
     console.log(memoryChildren, "memory length")
     for (let x = 0; x < memoryChildren.length; x++) {
-        if (memoryChildren[x].style.backgroundColor = "yellow") {
+        if (memoryChildren[x].style.backgroundColor === "yellow") {
             memoryChildren[x].style.backgroundColor = "";
         }
     }
     gameTable.remove();
     gamePage.appendChild(memory);
     memory = [];
+    gameTable = document.getElementById("game-table");
     // let spans = gameTable.getElementsByTagName("span");
     playGame();
     // for (let i = 0; i < spans.length; i++) {
@@ -559,6 +561,7 @@ function provideHint() {
  * Removes a pair if all conditions are met.
 */
 function removeViablePair() {
+    memory = [];
     memory = gameTable.cloneNode(true);
     // let memoryChildren = memory.getElementsByTagName("span");
     // console.log(memoryChildren, "memory length")
