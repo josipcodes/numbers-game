@@ -344,6 +344,7 @@ let generateSpans = [];
  * This is done by only taking into account spans on the board which don't have inner.HTML = 0.
 */
 function generateMoreSpans() {
+    undoButton.classList.add("hide");
     let spans = gameTable.getElementsByTagName("span");
     console.log(spans, "generateMoreSpans")
     let spansLength = spans.length;
@@ -376,6 +377,11 @@ function generateMoreSpans() {
 let memory = [];
 
 function undoAction() {
+    if (score <= 5) {
+        score = 0;
+    } else {
+        score -= 5;
+    }
     undoButton.classList.add("hide");
     let memoryChildren = memory.getElementsByTagName("span");
     console.log(memoryChildren, "memory length")
