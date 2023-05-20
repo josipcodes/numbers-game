@@ -374,21 +374,25 @@ function generateMoreSpans() {
 let memory = [];
 
 function undoAction() {
-    console.log(memory);
-    gameTable.remove();
-    gamePage.appendChild(memory);
-    let spans = gameTable.getElementsByTagName("span");
-    console.log(spans.length);
-    console.log(spans);
-    playGame();
-    addLocation();
-    for (let i = 0; i < spans.length; i++) {
-        if (spans[i].style.backgroundColor = "yellow") {
-            spans[i].style.removeProperty("background-color")
-            console.log("checking background color", spans[i].style.backgroundColor)
+    let memoryChildren = memory.getElementsByTagName("span");
+    console.log(memoryChildren, "memory length")
+    for (let x = 0; x < memoryChildren.length; x++) {
+        if (memoryChildren[x].style.backgroundColor = "yellow") {
+            memoryChildren[x].style.backgroundColor = "";
         }
     }
-}
+    gameTable.remove();
+    gamePage.appendChild(memory);
+    memory = [];
+    // let spans = gameTable.getElementsByTagName("span");
+    playGame();
+    // for (let i = 0; i < spans.length; i++) {
+    //     if (spans[i].style.backgroundColor = "yellow") {
+    //         console.log("checking background color", i, spans[i].style.backgroundColor)
+    //         spans[i].style.removeProperty("background-color")
+    //     }
+    }
+// }
 
 /** 
  * Outside of MVP, provides a hint, but costs 5 points.
@@ -555,7 +559,13 @@ function provideHint() {
 */
 function removeViablePair() {
     memory = gameTable.cloneNode(true);
-    console.log(memory);
+    // let memoryChildren = memory.getElementsByTagName("span");
+    // console.log(memoryChildren, "memory length")
+    // for (let x = 0; x < memoryChildren.length; x++) {
+    //     if (memoryChildren[x].style.backgroundColor = "yellow") {
+    //         memoryChildren[x].style.backgroundColor = "";
+    //     }
+    // }
     score += 2;
     choices[0].textContent = "0";
     choices[0].style.backgroundColor = "black";
