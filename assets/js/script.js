@@ -175,6 +175,7 @@ function playGame() {
     let choice = gameTable.getElementsByTagName("span");
     for (let i = 0; i < choice.length; i++) {
         choice[i].addEventListener("click", highlight);
+        console.log("adding event listeners")
     }
     calculateScore();
 }
