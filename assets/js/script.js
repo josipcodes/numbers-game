@@ -606,6 +606,9 @@ let score = 0;
  */
 function calculateScore() {
     gameScore.innerHTML = score;
+       if (generateButton.classList.contains("hint")) {
+        generateButton.classList.remove("hint");
+    }
     if (score >= 50) {
         if (removeFifthButton.classList.contains("hide")) {
             removeFifthButton.classList.remove("hide");
@@ -630,6 +633,10 @@ function removeFifth() {
     newScore = Math.ceil((score / 5) * 4);
     score = newScore;
     calculateScore();
+    if (generateButton.classList.contains("hint")) {
+        generateButton.classList.remove("hint");
+    }
+    undoButton.classList.add("hide");
     const spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
     for (let i = spansLength; i > 0; i--) {
