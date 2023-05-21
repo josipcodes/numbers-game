@@ -24,7 +24,7 @@ let controlsPage = document.getElementById("controls-page");
 let gamePage = document.getElementById("game-container");
 let gameTable = document.getElementById("game-table");
 let gameScore = document.getElementById("score");
-let game = document.getElementById("beginner-mode")
+let game = document.getElementById("beginner-mode");
 
 /** 
  * Event listeners
@@ -177,7 +177,7 @@ function playGame() {
     let choice = gameTable.getElementsByTagName("span");
     for (let i = 0; i < choice.length; i++) {
         choice[i].addEventListener("click", highlight);
-        console.log("adding event listeners")
+        console.log("adding event listeners");
     }
     calculateScore();
 }
@@ -348,7 +348,7 @@ let generateSpans = [];
 function generateMoreSpans() {
     undoButton.classList.add("hide");
     let spans = gameTable.getElementsByTagName("span");
-    console.log(spans, "generateMoreSpans")
+    console.log(spans, "generateMoreSpans");
     let spansLength = spans.length;
     for (let i = 0; i < spans.length; i++) {
         if (spans[i].classList.contains("hint")) {
@@ -386,7 +386,7 @@ function undoAction() {
     }
     undoButton.classList.add("hide");
     let memoryChildren = memory.getElementsByTagName("span");
-    console.log(memoryChildren, "memory length")
+    console.log(memoryChildren, "memory length");
     for (let x = 0; x < memoryChildren.length; x++) {
         if (memoryChildren[x].style.backgroundColor === "yellow") {
             memoryChildren[x].style.backgroundColor = "";
@@ -403,7 +403,7 @@ function undoAction() {
     //         console.log("checking background color", i, spans[i].style.backgroundColor)
     //         spans[i].style.removeProperty("background-color")
     //     }
-    }
+}
 // }
 
 /** 
@@ -606,7 +606,7 @@ let score = 0;
  */
 function calculateScore() {
     gameScore.innerHTML = score;
-       if (generateButton.classList.contains("hint")) {
+    if (generateButton.classList.contains("hint")) {
         generateButton.classList.remove("hint");
     }
     if (score >= 50) {
@@ -629,32 +629,65 @@ function calculateScore() {
 
 let newScore = 0;
 
+/**
+ * Function removes 1/5 of score and spans once Remove Fifth button is used.
+ * 
+ */
 function removeFifth() {
+    /**
+     * Removes 1/5 of the score.
+     * If the score cannot be divided by 5, this is done to user's benefit.
+     */
     newScore = Math.ceil((score / 5) * 4);
     score = newScore;
     calculateScore();
+    /**
+     * If statement removes a hint class from generate Button if present. 
+     */
     if (generateButton.classList.contains("hint")) {
         generateButton.classList.remove("hint");
     }
+    /**
+     * Undo button is removed to prevent gaming.
+     */
     undoButton.classList.add("hide");
     const spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
+    /**
+     * For loop removes every 5th span starting from the end.
+     */
     for (let i = spansLength; i > 0; i--) {
         if (i % 5 === 0) {
             gameTable.removeChild(spans[i - 1]);
         }
     }
+    /**
+     * Span location is calculated again.
+     */
     addLocation();
 }
 
+/**
+ * Function checks if all present spans are empty (0).
+ * Once all spans are empty, pop-up is generated, notifying player.
+ * Pop up includes the final score.
+ * Upon closing of the pop-up, user is brought to the initial game menu.
+ */
 function gameWon() {
     const spans = gameTable.getElementsByTagName("span");
     let sum = 0;
+   //** 
+     * For loop checks if all present spans equal to 0.
+        * /;
     for (let i = 0; i < spans.length; i++) {
-        sum += Number(spans[i].innerHTML)
+        sum += Number(spans[i].innerHTML);
     }
+    /** If statement creates an alert if the game is won. 
+     * It shows the final score.
+     * It hides the current session and shows initial menu.
+     */
     if (sum === 0) {
-        alert(`You won! Your final score is ${score}`)
+        alert(`You won! Your final score is ${score}`);
         initialMenu.style.display = "block";
         game.style.display = "none";
     }
