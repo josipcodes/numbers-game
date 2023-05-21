@@ -669,6 +669,10 @@ function removeFifth() {
         }
     }
     /**
+     * Check if game was won by removing spans.
+     */
+    gameWon();
+    /**
      * Span location is calculated again.
      */
     addLocation();
