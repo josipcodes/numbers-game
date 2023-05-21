@@ -606,9 +606,16 @@ let score = 0;
  */
 function calculateScore() {
     gameScore.innerHTML = score;
+    /**
+     * Highlight is removed from generateButton if present.
+     */
     if (generateButton.classList.contains("hint")) {
         generateButton.classList.remove("hint");
     }
+    /**
+     * If statement shows Remove Fifth button if score is above 50.
+     * Else statement hides Remove Fifth button if score is less than 50.
+     */
     if (score >= 50) {
         if (removeFifthButton.classList.contains("hide")) {
             removeFifthButton.classList.remove("hide");
@@ -644,9 +651,9 @@ function removeFifth() {
     /**
      * If statement removes a hint class from generate Button if present. 
      */
-    if (generateButton.classList.contains("hint")) {
-        generateButton.classList.remove("hint");
-    }
+    // if (generateButton.classList.contains("hint")) {
+    //     generateButton.classList.remove("hint");
+    // }
     /**
      * Undo button is removed to prevent gaming.
      */
@@ -676,9 +683,9 @@ function removeFifth() {
 function gameWon() {
     const spans = gameTable.getElementsByTagName("span");
     let sum = 0;
-   //** 
+    /** 
      * For loop checks if all present spans equal to 0.
-        * /;
+     */
     for (let i = 0; i < spans.length; i++) {
         sum += Number(spans[i].innerHTML);
     }
