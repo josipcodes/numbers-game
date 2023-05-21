@@ -52,44 +52,74 @@ for (let i = 0; i < returnButtons.length - 1; i++) {
  * Opens difficulty page
  */
 function showDifficultyPage() {
-    initialMenu.style.display = "none";
-    difficultyMenu.style.display = "block";
+    console.log("showDifficultyPage")
+    initialMenu.classList.remove("show");
+    initialMenu.classList.add("hide");
+    // initialMenu.style.display = "none";
+    // difficultyMenu.style.display = "block";
+    difficultyMenu.classList.add("show");
+    difficultyMenu.classList.remove("hide");
 }
 
 /**
  * Opens rules page
  */
 function showRulesPage() {
-    initialMenu.style.display = "none";
-    rulesPage.style.display = "block";
+    initialMenu.classList.remove("show");
+    initialMenu.classList.add("hide");
+    // initialMenu.style.display = "none";
+    // rulesPage.style.display = "block";
+    rulesPage.classList.add("show");
+    rulesPage.classList.remove("hide");
 }
 
 /**
  * Opens about page
  */
 function showAboutPage() {
-    initialMenu.style.display = "none";
-    aboutPage.style.display = "block";
+    initialMenu.classList.remove("show");
+    initialMenu.classList.add("hide");
+    // initialMenu.style.display = "none";
+    // aboutPage.style.display = "block";
+    aboutPage.classList.add("show");
+    aboutPage.classList.remove("hide");
 }
 
 /**
  * Opens controls page
  */
 function showControlsPage() {
-    initialMenu.style.display = "none";
-    controlsPage.style.display = "block";
+    initialMenu.classList.remove("show");
+    initialMenu.classList.add("hide");
+    // initialMenu.style.display = "none";
+    // controlsPage.style.display = "block";
+    controlsPage.classList.add("show");
+    controlsPage.classList.remove("hide");
 }
 
 /**
  * Opens main menu
  */
 function returnToMenu() {
-    initialMenu.style.display = "block";
-    difficultyMenu.style.display = "none";
-    rulesPage.style.display = "none";
-    aboutPage.style.display = "none";
-    controlsPage.style.display = "none";
-    gamePage.style.display = "none";
+    initialMenu.classList.remove("hide");
+    initialMenu.classList.add("show");
+    // initialMenu.style.display = "block";
+    // difficultyMenu.style.display = "none";
+    // rulesPage.style.display = "none";
+    // aboutPage.style.display = "none";
+    // controlsPage.style.display = "none";
+    // gamePage.style.display = "none";
+    difficultyMenu.classList.add("hide");
+    difficultyMenu.classList.remove("show");
+    rulesPage.classList.add("hide");
+    rulesPage.classList.remove("show");
+    aboutPage.classList.add("hide");
+    aboutPage.classList.remove("show");
+    controlsPage.classList.add("hide");
+    controlsPage.classList.remove("show");
+    gamePage.classList.add("hide");
+    gamePage.classList.remove("show");
+    // gameTable.style.display = "none";
 }
 
 /**
@@ -98,7 +128,9 @@ function returnToMenu() {
  * MVP: Current state. Future potential - each difficulty level could generate a random amount of spans (15-25, 25-50, 50-100)
  */
 function runGame() {
-    gamePage.style.display = "block";
+    // gameTable.style.display = "grid";
+    gamePage.classList.add("show");
+    gamePage.classList.remove("hide");
     score = 0;
     calculateScore();
     const spans = gameTable.getElementsByTagName("span");
@@ -108,8 +140,10 @@ function runGame() {
             gameTable.removeChild(spans[0]);
         }
     }
-    difficultyMenu.style.display = "none";
-    gamePage.style.display = "grid";
+    // difficultyMenu.style.display = "none";
+    // gamePage.style.display = "grid";
+    difficultyMenu.classList.add("hide");
+    gamePage.classList.add("show");
     if (this.id === "intermediate") {
         for (let i = 0; i < 45; i++) {
             let newSpan = document.createElement("span");
@@ -325,18 +359,30 @@ function removeEmptyRow() {
 */
 function pauseGame() {
     returnToMenu();
-    continueGameButton.style.display = "block";
-    quitGameButton.style.display = "block";
+    // continueGameButton.style.display = "block";
+    // quitGameButton.style.display = "block";
+    continueGameButton.classList.remove("hide");
+    continueGameButton.classList.add("show");
+    quitGameButton.classList.add("show");
+    quitGameButton.classList.remove("hide");
 }
 
 /** 
  * Brings user back into the game
 */
 function continueGame() {
-    initialMenu.style.display = "none";
-    continueGameButton.style.display = "none";
-    quitGameButton.style.display = "none";
-    gamePage.style.display = "grid";
+    // initialMenu.style.display = "none";
+    // continueGameButton.style.display = "none";
+    // quitGameButton.style.display = "none";
+    // gamePage.style.display = "grid";
+    initialMenu.classList.remove("show");
+    initialMenu.classList.add("hide");
+    // continueGameButton.classList.remove("show");
+    // continueGameButton.classList.add("hide");
+    // quitGameButton.classList.remove("show");
+    // quitGameButton.classList.add("hide");
+    gamePage.classList.remove("hide");
+    gamePage.classList.add("show");
 }
 
 let generateSpans = [];
@@ -699,7 +745,11 @@ function gameWon() {
      */
     if (sum === 0) {
         alert(`You won! Your final score is ${score}`);
-        initialMenu.style.display = "block";
-        gamePage.style.display = "none";
+        // initialMenu.style.display = "block";
+        // gamePage.style.display = "none";
+        initialMenu.classList.add("show");
+        initialMenu.classList.remove("hide");
+        gamePage.classList.add("hide");
+        gamePage.classList.remove("show");
     }
 }

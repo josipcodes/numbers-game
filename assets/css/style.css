@@ -12,7 +12,6 @@ body {
 .game-area {
     height: 100%;
     background-color: greenyellow;
-
 }
 
 .game-window {
@@ -50,37 +49,38 @@ p {
     box-shadow: 2px 2px 2px grey;
 }
 
-#continue-game {
+.show {
+    display: block;
+}
+
+/* #continue-game {
     display: none;
 }
 
 #quit-game {
     display: none;
-}
+} */
 
-#initial-menu {
+/* #initial-menu {
     display: block;
-}
+} */
 
-#difficulty-menu {
+/* #difficulty-menu {
     display: none;
-}
+} */
 
-#rules-page {
+/* #rules-page {
     display: none;
-}
+} */
 
-#about-page {
+/* #about-page {
     display: none;
 }
 
 #controls-page {
     display: none;
-}
-
-/* #game-container {
-    display: none;
 } */
+
 
 #game-button-container {
     display: grid;
