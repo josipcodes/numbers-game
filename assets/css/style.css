@@ -78,8 +78,13 @@ p {
     display: none;
 }
 
-#game-container {
+/* #game-container {
     display: none;
+} */
+
+#game-button-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 #game-table {
