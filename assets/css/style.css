@@ -21,7 +21,7 @@ body {
 .game-area {
     height: 100%;
     background-color: lightgrey;
-    border: 2px solid black;
+    border: 3px solid black;
     margin: 40% auto auto auto;
     /* Prevents overflow */
     width: inherit;
@@ -32,6 +32,9 @@ body {
     margin: 13% auto;
     background-color: lightgrey;
     /* border: 2px solid black; */
+    /* border-bottom: 5px solid black; */
+    /* border-left: 5px solid black;
+    border-right: 5px solid black; */
 }
 
 .game-window>div {
@@ -45,10 +48,10 @@ h1 {
     padding-left: 2.5%;
     /* padding-bottom: 85px; */
     background-color: lightgray;
-    position: sticky;
-    top: 0;
-    margin-top: -50px;
-    width: 95%;
+    /* position: sticky;
+    top: 0; */
+    /* margin-top: -50px;
+    width: 95%; */
 }
 
 h2 {
@@ -115,7 +118,7 @@ p {
     top: 0;
     /* margin-top: 50px; */
     background-color: lightgray;
-    margin: auto 0 auto -1%;
+    margin: auto -5% auto auto;
 }
 
 #game-table {
@@ -203,7 +206,12 @@ span {
         padding-bottom: 0;
         /* background-color: lightgray; */
         position: static;
-        /* margin-top: -50px; */
+        margin-top: -61px;
         width: auto;
+        margin-left: -3px;
+        margin-right: -3px;
+        /* border-top: 3px solid black; */
+        border-left: 3px solid black;
+        border-right: 3px solid black;
     }
 }
