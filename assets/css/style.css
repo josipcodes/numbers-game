@@ -241,3 +241,10 @@ span {
         margin-top: -9%;
     }
 }
+
+@media (min-width: 1500px) {
+
+    body {
+        background-size: 100% auto;
+    }
+}
