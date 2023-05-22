@@ -8,7 +8,8 @@ body {
     background-image: url("/assets/images/race-track.webp");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: contain;
+    background-position: center;
+    background-size: auto 100%;
 }
 
 /* Main screen set up*/
@@ -148,13 +149,6 @@ span {
 
 
 @media (min-width: 600px) {
-
-    body {
-        background-image: url("/assets/images/race-track.webp");
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: contain;
-    }
 
     #grid-container {
         display: grid;
