@@ -1,6 +1,5 @@
 html {
     height: 100%;
-    background-color: green;
 }
 
 /* Removing user agent stylesheet margin */
@@ -149,6 +148,14 @@ span {
 
 
 @media (min-width: 600px) {
+
+    body {
+        background-image: url("/assets/images/race-track.webp");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: contain;
+    }
+
     #grid-container {
         display: grid;
         grid-template-columns: 25% auto 25%;
@@ -156,7 +163,6 @@ span {
 
     .side-area-left,
     .side-area-right {
-        background-color: blue;
         display: grid;
     }
 
