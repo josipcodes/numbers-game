@@ -1,6 +1,15 @@
+html {
+    height: 100%;
+    background-color: green;
+}
+
 /* Removing user agent stylesheet margin */
 body {
     margin: inherit;
+    background-image: url("/assets/images/race-track.webp");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
 }
 
 /* Main screen set up*/
@@ -68,7 +77,10 @@ p {
 } */
 
 #initial-menu,
-#difficulty-menu {
+#difficulty-menu,
+#rules-page,
+#about-page,
+#controls-page {
     position: sticky;
     padding-top: 10px;
 }
