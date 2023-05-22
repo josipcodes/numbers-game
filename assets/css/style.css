@@ -20,13 +20,18 @@ body {
 
 .game-area {
     height: 100%;
-    background-color: greenyellow;
+    background-color: lightgrey;
+    border: 2px solid black;
+    margin: 40% auto auto auto;
+    /* Prevents overflow */
+    width: inherit;
 }
 
 .game-window {
     width: inherit;
-    background-color: lightgrey;
-    margin: 50px auto;
+    margin: 20% auto;
+    /* background-color: lightgrey; */
+    /* border: 2px solid black; */
 }
 
 .game-window>div {
@@ -36,13 +41,13 @@ body {
 
 h1 {
     text-align: center;
-    padding: 10px;
-    margin: 0;
+    /* padding: 10px; */
+    padding-left: 2.5%;
     padding-bottom: 85px;
     background-color: lightgray;
     position: fixed;
     margin-top: -50px;
-    width: 100%;
+    width: 95%;
 }
 
 h2 {
@@ -59,8 +64,8 @@ p {
 .main-screen-button,
 .new-game-screen-button {
     display: block;
-    margin: 10px auto;
-    padding: 5px 10px;
+    margin: 7px auto;
+    padding: 6px 5px;
     box-shadow: 2px 2px 2px grey;
 }
 
@@ -172,6 +177,10 @@ span {
         width: 12%;
         /* margin-top: -95px; */
         margin: auto;
+    }
+
+    .game-area {
+        width: 100%;
     }
 
     #game-table {
