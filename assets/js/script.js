@@ -52,7 +52,6 @@ for (let i = 0; i < returnButtons.length - 1; i++) {
  * Opens difficulty page
  */
 function showDifficultyPage() {
-    console.log("showDifficultyPage")
     initialMenu.classList.remove("show");
     initialMenu.classList.add("hide");
     // initialMenu.style.display = "none";

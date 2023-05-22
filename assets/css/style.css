@@ -35,6 +35,8 @@ h2 {
     text-align: left;
     margin-left: 20px;
     padding: 10px auto;
+    line-height: 0px;
+    margin-bottom: 31px;
 }
 
 p {
@@ -110,8 +112,9 @@ span {
 }
 
 #score {
-    margin: 0 auto;
-    width: 25%;
+    margin: 0 auto 5px;
+    width: auto;
+    padding: 1px 5px;
     height: 20px;
     color: black;
     display: block;
@@ -131,5 +134,21 @@ span {
     .side-area-right {
         background-color: blue;
         display: grid;
+    }
+
+    #flex {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    #game-button-container {
+        display: block;
+    }
+
+    #game-table {
+        min-width: 70%;
+        margin-right: 5px;
+        /* necessary to ensure beginner mode doesn't expand space between span rows */
+        height: 100%;
     }
 }
