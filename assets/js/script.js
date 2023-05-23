@@ -39,6 +39,7 @@ generateButton.addEventListener("click", generateMoreSpans);
 undoButton.addEventListener("click", undoAction);
 hintButton.addEventListener("click", provideHint);
 removeFifthButton.addEventListener("click", removeFifth);
+quitGameButton.addEventListener("click", quitGame);
 
 for (let i = 0; i < gameModeButtons.length; i++) {
     gameModeButtons[i].addEventListener("click", runGame);
@@ -765,4 +766,13 @@ function removeFifthButtonDisplay() {
     } else if (currentSpans.length > 4 && score >= 50 && removeFifthButton.classList.contains("hide")) {
         removeFifthButton.classList.remove("hide");
     }
+}
+
+function quitGame() {
+    console.log("quit game button works");
+    returnToMenu();
+    continueGameButton.classList.remove("show");
+    continueGameButton.classList.add("hide");
+    quitGameButton.classList.add("hide");
+    quitGameButton.classList.remove("show");
 }
