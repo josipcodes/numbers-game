@@ -178,7 +178,6 @@ function randomizer() {
         // if (spans[i].textContent === "") {
         let randomNumber = Math.floor(Math.random() * 9 + 1);
         spans[i].innerText = randomNumber;
-        spans[i].value = spans[i].innerText;
         // }
     }
     addLocation();
