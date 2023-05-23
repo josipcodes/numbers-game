@@ -781,9 +781,20 @@ function quitGame() {
 
 let generateScore = 0;
 
+/**
+ * Function checks if user uses Generate button several times without removing any viable pairs in between.
+ * This is designed to warn the user at certain intervals to: 
+ * a) prevent game exploitation,
+ * b) recognise potential for player genuinely being stuck, while not impact their experience.
+ */
 function gamePotentiallyNotSolvable() {
+    /**
+     * If statement check the generateScore which is increased whenever the user repeatedly presses Generate.
+     * If generateScore reaches 5, alert pops up and the game moves to its paused state.
+     */
     if (generateScore === 4) {
         alert("You have used 'Generate' several times in a row. Feel free to start a new game if this one is no longer solvable. Good luck!");
+        generateScore = 0;
         pauseGame();
     }
 }
