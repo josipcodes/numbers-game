@@ -217,11 +217,7 @@ function highlight() {
         this.style.backgroundColor = "yellow";
         choices.push(this);
         if (choices[0] === choices[1]) {
-            // moved to
             cancelChoice();
-            // choices[0].style.backgroundColor = "white";
-            // choices[1].style.backgroundColor = "white";
-            // choices = [];
         } else if (choices.length === 2) {
             checkLocation(choices);
             choices = [];
@@ -312,10 +308,18 @@ function checkContent() {
  * Cancels choice if pair is not viable
  */
 function cancelChoice() {
-    choices[0].style.backgroundColor = "white";
-    choices[1].style.backgroundColor = "white";
-    sum = 0;
     choices = [];
+    let spans = gameTable.getElementsByTagName("span");
+    // choices[0].style.backgroundColor = "white";
+    // choices[1].style.backgroundColor = "white";
+    for (let i = 0; i < spans.length; i++) {
+        if (spans[i].classList.contains("hint") || spans[i].style.backgroundColor === "yellow") {
+            spans[i].style.backgroundColor = "white";
+            spans[i].classList.remove("hint");
+        }
+        sum = 0;
+        // choices = [];
+    }
 }
 
 /** 
@@ -450,6 +454,7 @@ function provideHint() {
         if (spans[x].classList.contains("hint")) {
             startOfCheck = x;
             spans[x].classList.remove("hint");
+            console.log("removing previous hint", x);
         }
     }
     loopOne:
@@ -654,12 +659,6 @@ function removeFifth() {
     score = newScore;
     calculateScore();
     /**
-     * If statement removes a hint class from generate Button if present. 
-     */
-    // if (generateButton.classList.contains("hint")) {
-    //     generateButton.classList.remove("hint");
-    // }
-    /**
      * Undo button is removed to prevent gaming.
      */
     undoButton.classList.add("hide");
@@ -739,9 +738,8 @@ function FifthButtonDisplay() {
     }
 }
 
-/**
- * Function brings up the main menu and hides continue and quit options.
- */
+
+// Function brings up the main menu and hides continue and quit options.
 function quitGame() {
     returnToMenu();
     continueGameButton.classList.remove("show");
