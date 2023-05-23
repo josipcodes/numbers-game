@@ -49,66 +49,48 @@ for (let i = 0; i < returnButtons.length - 1; i++) {
     returnButtons[i].addEventListener("click", returnToMenu);
 }
 
-/**
- * Opens difficulty page
- */
+// Opens difficulty page
 function showDifficultyPage() {
     initialMenu.classList.remove("show");
     initialMenu.classList.add("hide");
-    // initialMenu.style.display = "none";
-    // difficultyMenu.style.display = "block";
     difficultyMenu.classList.add("show");
     difficultyMenu.classList.remove("hide");
 }
 
-/**
- * Opens rules page
- */
+
+// Opens rules page
 function showRulesPage() {
     initialMenu.classList.remove("show");
     initialMenu.classList.add("hide");
-    // initialMenu.style.display = "none";
-    // rulesPage.style.display = "block";
     rulesPage.classList.add("show");
     rulesPage.classList.remove("hide");
 }
 
-/**
- * Opens about page
- */
+
+// Opens about page
 function showAboutPage() {
     initialMenu.classList.remove("show");
     initialMenu.classList.add("hide");
-    // initialMenu.style.display = "none";
-    // aboutPage.style.display = "block";
     aboutPage.classList.add("show");
     aboutPage.classList.remove("hide");
 }
 
-/**
- * Opens controls page
- */
+
+// Opens controls page
+
 function showControlsPage() {
     initialMenu.classList.remove("show");
     initialMenu.classList.add("hide");
-    // initialMenu.style.display = "none";
-    // controlsPage.style.display = "block";
     controlsPage.classList.add("show");
     controlsPage.classList.remove("hide");
 }
 
-/**
- * Opens main menu
- */
+
+// Opens main menu
+
 function returnToMenu() {
     initialMenu.classList.remove("hide");
     initialMenu.classList.add("show");
-    // initialMenu.style.display = "block";
-    // difficultyMenu.style.display = "none";
-    // rulesPage.style.display = "none";
-    // aboutPage.style.display = "none";
-    // controlsPage.style.display = "none";
-    // gamePage.style.display = "none";
     difficultyMenu.classList.add("hide");
     difficultyMenu.classList.remove("show");
     rulesPage.classList.add("hide");
@@ -119,7 +101,6 @@ function returnToMenu() {
     controlsPage.classList.remove("show");
     gamePage.classList.add("hide");
     gamePage.classList.remove("show");
-    // gameTable.style.display = "none";
 }
 
 /**
@@ -616,32 +597,30 @@ function provideHint() {
  * Removes a pair if all conditions are met.
 */
 function removeViablePair() {
+    // Sets generateScore to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
     generateScore = 0;
+    // Hides undo button to prevent gaming.
     undoButton.classList.remove("hide");
     memory = [];
+    // Clones gameTable to remember the last choice.
     memory = gameTable.cloneNode(true);
-    // let memoryChildren = memory.getElementsByTagName("span");
-    // console.log(memoryChildren, "memory length")
-    // for (let x = 0; x < memoryChildren.length; x++) {
-    //     if (memoryChildren[x].style.backgroundColor = "yellow") {
-    //         memoryChildren[x].style.backgroundColor = "";
-    //     }
-    // }
+    // Increases score.
     score += 2;
     choices[0].textContent = "0";
     choices[0].style.backgroundColor = "black";
     choices[1].textContent = "0";
     choices[1].style.backgroundColor = "black";
+    // Checks if there are empty rows.
     removeEmptyRow();
+    // Checks if spans are highlighted and removes highlight.
     let currentSpans = gameTable.getElementsByTagName("span");
     for (let i = 0; i < currentSpans.length; i++) {
         if (currentSpans[i].classList.contains("hint")) {
             currentSpans[i].classList.remove("hint");
         }
     }
-    // calculateScore();
+    // Checks if game is won.
     gameWon();
-    // playGame();
 }
 
 let score = 0;
