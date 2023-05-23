@@ -310,8 +310,7 @@ function checkContent() {
 function cancelChoice() {
     choices = [];
     let spans = gameTable.getElementsByTagName("span");
-    // choices[0].style.backgroundColor = "white";
-    // choices[1].style.backgroundColor = "white";
+    // Checks if any of the spans are highlighted and removes highlight
     for (let i = 0; i < spans.length; i++) {
         if (spans[i].classList.contains("hint") || spans[i].style.backgroundColor === "yellow") {
             spans[i].style.removeProperty("background-color");
