@@ -708,7 +708,6 @@ function removeFifth() {
     * Check if there are empty rows to be removed.
     */
     removeEmptyRow();
-    FifthButtonDisplay();
 }
 
 /**
@@ -732,8 +731,6 @@ function gameWon() {
      */
     if (sum === 0) {
         alert(`You won! Your final score is ${score}`);
-        // initialMenu.style.display = "block";
-        // gamePage.style.display = "none";
         initialMenu.classList.add("show");
         initialMenu.classList.remove("hide");
         gamePage.classList.add("hide");
