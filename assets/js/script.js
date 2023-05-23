@@ -728,7 +728,7 @@ function removeFifth() {
     * Check if there are empty rows to be removed.
     */
     removeEmptyRow();
-    removeFifthButtonDisplay();
+    FifthButtonDisplay();
 }
 
 /**
@@ -761,17 +761,31 @@ function gameWon() {
     }
 }
 
-function removeFifthButtonDisplay() {
+/**
+ * Function hides removeFifthButton when conditions are met. 
+ * It shows the button if second set of conditions are met.
+ */
+function FifthButtonDisplay() {
     let currentSpans = gameTable.getElementsByTagName("span");
+    // If statement hides removeFifthButton if there are less than 5 spans on the table.
     if (currentSpans.length < 5) {
         removeFifthButton.classList.add("hide");
-    } else if (currentSpans.length > 4 && score >= 50 && removeFifthButton.classList.contains("hide")) {
+    }
+    /**
+     * Else if statement shows removeFifthButton if: 
+     * a) there are more than 4 spans on the table,
+     * b) score is at least 50,
+     * c) removeFifthButton was previously hidden.
+     */
+    else if (currentSpans.length > 4 && score >= 50 && removeFifthButton.classList.contains("hide")) {
         removeFifthButton.classList.remove("hide");
     }
 }
 
+/**
+ * Function brings up the main menu and hides continue and quit options.
+ */
 function quitGame() {
-    console.log("quit game button works");
     returnToMenu();
     continueGameButton.classList.remove("show");
     continueGameButton.classList.add("hide");
