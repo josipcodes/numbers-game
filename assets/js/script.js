@@ -391,6 +391,8 @@ let generateSpans = [];
  * This is done by only taking into account spans on the board which don't have inner.HTML = 0.
 */
 function generateMoreSpans() {
+    generateScore += 1;
+    gamePotentiallyNotSolvable();
     undoButton.classList.add("hide");
     let spans = gameTable.getElementsByTagName("span");
     console.log(spans, "generateMoreSpans");
@@ -615,6 +617,7 @@ function provideHint() {
  * Removes a pair if all conditions are met.
 */
 function removeViablePair() {
+    generateScore = 0;
     undoButton.classList.remove("hide");
     memory = [];
     memory = gameTable.cloneNode(true);
@@ -774,4 +777,13 @@ function quitGame() {
     continueGameButton.classList.add("hide");
     quitGameButton.classList.add("hide");
     quitGameButton.classList.remove("show");
+}
+
+let generateScore = 0;
+
+function gamePotentiallyNotSolvable() {
+    if (generateScore === 4) {
+        alert("You have used 'Generate' several times in a row. Feel free to start a new game if this one is no longer solvable. Good luck!");
+        pauseGame();
+    }
 }
