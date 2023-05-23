@@ -727,6 +727,7 @@ function removeFifth() {
     * Check if there are empty rows to be removed.
     */
     removeEmptyRow();
+    removeFifthButtonDisplay();
 }
 
 /**
@@ -756,5 +757,14 @@ function gameWon() {
         initialMenu.classList.remove("hide");
         gamePage.classList.add("hide");
         gamePage.classList.remove("show");
+    }
+}
+
+function removeFifthButtonDisplay() {
+    let currentSpans = gameTable.getElementsByTagName("span");
+    if (currentSpans.length < 5) {
+        removeFifthButton.classList.add("hide");
+    } else if (currentSpans.length > 4 && score >= 50 && removeFifthButton.classList.contains("hide")) {
+        removeFifthButton.classList.remove("hide");
     }
 }
