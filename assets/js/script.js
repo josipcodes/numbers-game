@@ -686,6 +686,8 @@ let newScore = 0;
  * 
  */
 function removeFifth() {
+    const spans = gameTable.getElementsByTagName("span");
+    const spansLength = spans.length;
     /**
      * Removes 1/5 of the score.
      * If the score cannot be divided by 5, this is done to user's benefit.
@@ -703,8 +705,8 @@ function removeFifth() {
      * Undo button is removed to prevent gaming.
      */
     undoButton.classList.add("hide");
-    const spans = gameTable.getElementsByTagName("span");
-    const spansLength = spans.length;
+    // const spans = gameTable.getElementsByTagName("span");
+    // const spansLength = spans.length;
     /**
      * For loop removes every 5th span starting from the end.
      */
@@ -718,13 +720,13 @@ function removeFifth() {
      */
     gameWon();
     /**
-    * Check if there are empty rows to be removed.
-    */
-    removeEmptyRow();
-    /**
      * Span location is calculated again.
      */
     addLocation();
+    /**
+    * Check if there are empty rows to be removed.
+    */
+    removeEmptyRow();
 }
 
 /**
