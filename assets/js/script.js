@@ -446,6 +446,7 @@ function provideHint() {
         score = 0;
     }
     calculateScore();
+    generateButton.classList.remove("hint");
     let spans = gameTable.getElementsByTagName("span");
     let choices = [];
     // Loop runs as many times as there are spans on the board, minus one as there is no need to check the last span.
