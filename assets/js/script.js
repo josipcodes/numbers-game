@@ -273,7 +273,6 @@ function checkLocation(choices) {
                 cancelChoice();
             }
         }
-
     } else if (placeYMin !== placeYMax) {
         let allPlaces = document.querySelectorAll(`[data-place]`);
         let betweenSpanSum = 0;
@@ -291,11 +290,12 @@ function checkLocation(choices) {
 }
 
 /**
- * Checks content of spans
+ * Checks content of spans to decide if action is valid.
  */
 function checkContent() {
     let sum = 0;
     sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
+    // If sum of spans is 10 or their innerHTML is equal, pair is removed, otherwise cancelled.
     if (sum === 10 || (choices[0].innerHTML === choices[1].innerHTML)) {
         // memory();
         removeViablePair();
