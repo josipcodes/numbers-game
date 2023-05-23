@@ -718,6 +718,10 @@ function removeFifth() {
      */
     gameWon();
     /**
+    * Check if there are empty rows to be removed.
+    */
+    removeEmptyRow();
+    /**
      * Span location is calculated again.
      */
     addLocation();
