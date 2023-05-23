@@ -439,7 +439,7 @@ function undoAction() {
  * Current unexpected behaviour - generate button triggers after the last pair is hinted, not removing after a cycle.
 */
 function provideHint() {
-    hintButton.classList.add("hide");
+    // hintButton.classList.add("hide");
     if (score >= 3) {
         score -= 3;
     } else {
@@ -454,12 +454,23 @@ function provideHint() {
     forloop:
     for (let x = 0; x < spans.length; x++) {
         if (spans[x].classList.contains("hint")) {
-            startOfCheck = x;
-            console.log(startOfCheck);
-            spans[x].classList.remove("hint");
-            console.log("removing previous hint", x);
+            startOfCheck = spans[x].getAttribute("data-place");
+            console.log(startOfCheck, "startofcheck");
+            // console.log(startOfCheck, "startofcheck");
+            // spans[x].classList.remove("hint");
+            // console.log("removing previous hint", x);
+            break;
         }
+        // if (spans[x].classList.contains("hint")) {
+        //     spans[x].classList.remove("hint");
+        //     console.log("removing hint", x);
+        // }
     }
+    // for (let x = 0; x < spans.length; x++) {
+    //     if (spans[x].classList.contains("hint")) {
+    //         spans[x].classList.remove("hint");
+    //     }
+    // }
     loopOne:
     for (let i = startOfCheck; i < spans.length - 2; i++) {
         // Loop runs as many times as there are spans on the board, counting from the current i + 1.
