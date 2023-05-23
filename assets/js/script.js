@@ -456,8 +456,8 @@ function undoAction() {
  * Current unexpected behaviour - generate button triggers after the last pair is hinted, not removing after a cycle.
 */
 function provideHint() {
-    if (score >= 5) {
-        score -= 5;
+    if (score >= 3) {
+        score -= 3;
     } else {
         score = 0;
     }
