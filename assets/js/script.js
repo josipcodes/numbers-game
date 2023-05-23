@@ -326,7 +326,7 @@ function cancelChoice() {
     choices[0].style.backgroundColor = "white";
     choices[1].style.backgroundColor = "white";
     sum = 0;
-    playGame();
+    // playGame();
     choices = [];
 }
 
@@ -628,10 +628,8 @@ function removeViablePair() {
     score += 2;
     choices[0].textContent = "0";
     choices[0].style.backgroundColor = "black";
-    // choices[0].removeEventListener("click", function () { }); // Redundant because of playGame
     choices[1].textContent = "0";
     choices[1].style.backgroundColor = "black";
-    // choices[1].removeEventListener("click", function () { }); // Redundant because of playGame
     removeEmptyRow();
     let currentSpans = gameTable.getElementsByTagName("span");
     for (let i = 0; i < currentSpans.length; i++) {
@@ -639,9 +637,9 @@ function removeViablePair() {
             currentSpans[i].classList.remove("hint");
         }
     }
-    calculateScore();
+    // calculateScore();
     gameWon();
-    playGame();
+    // playGame();
 }
 
 let score = 0;
