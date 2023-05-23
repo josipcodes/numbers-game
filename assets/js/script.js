@@ -193,15 +193,14 @@ function addLocation() {
 }
 
 
-/**
- * Creates event listeners for all spans created. Ideally will only create listeners for spans which don't have a value of 0
- */
+// Creates event listeners for all spans created. Ideally will only create listeners for spans which don't have a value of 0
 function addListenerToSpan() {
     let choice = gameTable.getElementsByTagName("span");
     for (let i = 0; i < choice.length; i++) {
         choice[i].addEventListener("click", highlight);
         console.log("adding event listeners");
     }
+    // 
     calculateScore();
 }
 
@@ -347,8 +346,6 @@ function removeEmptyRow() {
 */
 function pauseGame() {
     returnToMenu();
-    // continueGameButton.style.display = "block";
-    // quitGameButton.style.display = "block";
     continueGameButton.classList.remove("hide");
     continueGameButton.classList.add("show");
     quitGameButton.classList.add("show");
@@ -359,16 +356,8 @@ function pauseGame() {
  * Brings user back into the game
 */
 function continueGame() {
-    // initialMenu.style.display = "none";
-    // continueGameButton.style.display = "none";
-    // quitGameButton.style.display = "none";
-    // gamePage.style.display = "grid";
     initialMenu.classList.remove("show");
     initialMenu.classList.add("hide");
-    // continueGameButton.classList.remove("show");
-    // continueGameButton.classList.add("hide");
-    // quitGameButton.classList.remove("show");
-    // quitGameButton.classList.add("hide");
     gamePage.classList.remove("hide");
     gamePage.classList.add("show");
 }
@@ -732,8 +721,11 @@ function gameWon() {
  */
 function FifthButtonDisplay() {
     let currentSpans = gameTable.getElementsByTagName("span");
-    // If statement hides removeFifthButton if there are less than 5 spans on the table.
-    if (currentSpans.length < 5) {
+    /** If statement hides removeFifthButton if: 
+     * a) there are less than 5 spans on the table.
+     * b) score is below 50.
+    */
+    if (currentSpans.length < 5 || score < 50) {
         removeFifthButton.classList.add("hide");
     }
     /**
