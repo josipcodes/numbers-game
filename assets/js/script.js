@@ -314,7 +314,7 @@ function cancelChoice() {
     // choices[1].style.backgroundColor = "white";
     for (let i = 0; i < spans.length; i++) {
         if (spans[i].classList.contains("hint") || spans[i].style.backgroundColor === "yellow") {
-            spans[i].style.backgroundColor = "white";
+            spans[i].style.removeProperty("background-color");
             spans[i].classList.remove("hint");
         }
         sum = 0;
@@ -440,6 +440,7 @@ function undoAction() {
  * Current unexpected behaviour - generate button triggers after the last pair is hinted, not removing after a cycle.
 */
 function provideHint() {
+    hintButton.classList.add("hide");
     if (score >= 3) {
         score -= 3;
     } else {
@@ -451,9 +452,11 @@ function provideHint() {
     let choices = [];
     // Loop runs as many times as there are spans on the board, minus one as there is no need to check the last span.
     let startOfCheck = 0;
+    forloop:
     for (let x = 0; x < spans.length; x++) {
         if (spans[x].classList.contains("hint")) {
             startOfCheck = x;
+            console.log(startOfCheck);
             spans[x].classList.remove("hint");
             console.log("removing previous hint", x);
         }
@@ -601,6 +604,8 @@ function provideHint() {
  * Removes a pair if all conditions are met.
 */
 function removeViablePair() {
+    hintButton.classList.add("show");
+    hintButton.classList.remove("hide");
     // Sets generateScore to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
     generateScore = 0;
     // Hides undo button to prevent gaming.
@@ -650,6 +655,8 @@ let newScore = 0;
  * 
  */
 function removeFifth() {
+    hintButton.classList.add("show");
+    hintButton.classList.remove("hide");
     const spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
     /**
