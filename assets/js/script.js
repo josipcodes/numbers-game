@@ -395,7 +395,6 @@ function generateMoreSpans() {
     gamePotentiallyNotSolvable();
     undoButton.classList.add("hide");
     let spans = gameTable.getElementsByTagName("span");
-    console.log(spans, "generateMoreSpans");
     let spansLength = spans.length;
     for (let i = 0; i < spans.length; i++) {
         if (spans[i].classList.contains("hint")) {
@@ -658,19 +657,7 @@ function calculateScore() {
     if (generateButton.classList.contains("hint")) {
         generateButton.classList.remove("hint");
     }
-    /**
-     * If statement shows Remove Fifth button if score is above 50.
-     * Else statement hides Remove Fifth button if score is less than 50.
-     */
-    if (score >= 50) {
-        if (removeFifthButton.classList.contains("hide")) {
-            removeFifthButton.classList.remove("hide");
-        }
-    } else {
-        if (!removeFifthButton.classList.contains("hide")) {
-            removeFifthButton.classList.add("hide");
-        }
-    }
+    FifthButtonDisplay();
 }
 
 
