@@ -24,6 +24,7 @@ let controlsPage = document.getElementById("controls-page");
 let gamePage = document.getElementById("game-container");
 let gameTable = document.getElementById("game-table");
 let gameScore = document.getElementById("score");
+let flex = document.getElementById("flex");
 // let game = document.getElementById("beginner-mode");
 
 /** 
@@ -105,26 +106,26 @@ function returnToMenu() {
 
 /**
  * Creates sufficient amount of spans based on the difficulty chosen.
- * If user closes a previous session by clicking on new game, deletes previous spans and generates new game.
+ * If user closes a previous session by clicking on a new game, deletes previous spans and generates new game.
  * MVP: Current state. Future potential - each difficulty level could generate a random amount of spans (15-25, 25-50, 50-100)
  */
 function runGame() {
-    // gameTable.style.display = "grid";
+    // Checks if gamePage contains show class, if not, adds it and removes hide.
     gamePage.classList.add("show");
     gamePage.classList.remove("hide");
+    difficultyMenu.classList.add("hide");
+    // Sets score to 0 to prevent score carrying over from a previous session.
     score = 0;
+    // Sets innerHTML to score.
     calculateScore();
     const spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
+    // Removes previous spans if they exist.
     if (spans.length !== 0) {
         for (let i = 0; i < spansLength; i++) {
             gameTable.removeChild(spans[0]);
         }
     }
-    // difficultyMenu.style.display = "none";
-    // gamePage.style.display = "grid";
-    difficultyMenu.classList.add("hide");
-    gamePage.classList.add("show");
     if (this.id === "intermediate") {
         for (let i = 0; i < 45; i++) {
             let newSpan = document.createElement("span");
@@ -420,7 +421,7 @@ function undoAction() {
         }
     }
     gameTable.remove();
-    gamePage.appendChild(memory);
+    flex.appendChild(memory);
     memory = [];
     gameTable = document.getElementById("game-table");
     // let spans = gameTable.getElementsByTagName("span");
