@@ -116,6 +116,13 @@ p {
     display: none;
 } */
 
+.text-block {
+    border: 2px solid black;
+    margin: 5px auto;
+    background-color: whitesmoke;
+    border-radius: 5%;
+    padding: 15px;
+}
 
 #game-button-container {
     display: grid;
@@ -224,24 +231,23 @@ span {
         padding-top: 10px;
     }
 
-    h1 {
+    /* h1 {
         font-size: 30px;
-        justify-content: left;
-        /* Overrulling user agent stylesheet */
-        display: inline-block;
-        /* padding: 10px; */
-        /* margin: 0; */
-        padding-bottom: 0;
-        /* background-color: lightgray; */
-        position: static;
-        /* margin-top: -61px; */
-        width: auto;
-        /* margin-left: -3px;
+        /* justify-content: center; */
+    /* Overrulling user agent stylesheet */
+    /* display: inline-block; */
+    /* padding: 10px; */
+    /* margin: 0; */
+    /* padding-bottom: 0; */
+    /* background-color: lightgray; */
+    /* position: static; */
+    /* margin-top: -61px; */
+    /* width: auto; */
+    /* margin-left: -3px;
         margin-right: -3px; */
-        /* border-top: 3px solid black; */
-        /* border-left: 3px solid black;
+    /* border-top: 3px solid black; */
+    /* border-left: 3px solid black;
         border-right: 3px solid black; */
-    }
 }
 
 /* @media (min-width: 600px) {
