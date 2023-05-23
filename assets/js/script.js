@@ -646,17 +646,10 @@ function removeViablePair() {
 
 let score = 0;
 
-/**
- * Function updates gameScore inner HTML with the current score.
- */
+
+// Function updates gameScore inner HTML with the current score.
 function calculateScore() {
     gameScore.innerHTML = score;
-    /**
-     * Highlight is removed from generateButton if present.
-     */
-    if (generateButton.classList.contains("hint")) {
-        generateButton.classList.remove("hint");
-    }
     FifthButtonDisplay();
 }
 
