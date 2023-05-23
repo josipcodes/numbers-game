@@ -150,28 +150,35 @@ function runGame() {
     addListenerToSpan();
 }
 
-
-/**
- * Creates random numbers (1-9) and adds them into relevant span elements
- */
+// Creates random numbers (1-9) and adds them into relevant span elements
 function randomizer() {
+    // Obtains the list of spans
     let spans = gameTable.getElementsByTagName("span");
+    // Adds random (1-9) number to each existing span.
     for (let i = 0; i < spans.length; i++) {
         // if (spans[i].textContent === "") {
         let randomNumber = Math.floor(Math.random() * 9 + 1);
+        // sets innerText to said random number
         spans[i].innerText = randomNumber;
-        // }
     }
+    // Adds location to existing spans.
     addLocation();
 }
 
 /**
- *  Creates span coordinates starting from 0,0. 
+ * Creates span coordinates starting from 0,0. 
  * Current issue if X>9 resolved by splitting the string by a period.
  * Y captured using .charAt
  */
 function addLocation() {
+    // Obtains the list of spans
     let spans = gameTable.getElementsByTagName("span");
+    /**
+     * For each existing span:
+     * a) sets y by taking digits before the period when dividing i with 9.
+     * b) sets x by taking the first digit after the period. Undefined is set to 0.
+     * c) data-place is the general location of the span (0-current length).
+     */
     for (let i = 0; i < spans.length; i++) {
         let stringCoordinateCalc = String(i / 9).split(".");
         if (stringCoordinateCalc[1] === undefined) {
@@ -181,6 +188,7 @@ function addLocation() {
         spans[i].setAttribute(["data-x"], `${stringCoordinateCalc[1].charAt(0)}`);
         spans[i].setAttribute(["data-place"], `${i}`);
     }
+    // Adds event listeners to current spans.
     addListenerToSpan();
 }
 
