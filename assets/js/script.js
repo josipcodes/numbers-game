@@ -147,7 +147,7 @@ function runGame() {
         }
     }
     randomizer();
-    playGame();
+    addListenerToSpan();
 }
 
 
@@ -181,14 +181,14 @@ function addLocation() {
         spans[i].setAttribute(["data-x"], `${stringCoordinateCalc[1].charAt(0)}`);
         spans[i].setAttribute(["data-place"], `${i}`);
     }
-    playGame();
+    addListenerToSpan();
 }
 
 
 /**
  * Creates event listeners for all spans created. Ideally will only create listeners for spans which don't have a value of 0
  */
-function playGame() {
+function addListenerToSpan() {
     let choice = gameTable.getElementsByTagName("span");
     for (let i = 0; i < choice.length; i++) {
         choice[i].addEventListener("click", highlight);
@@ -308,7 +308,6 @@ function cancelChoice() {
     choices[0].style.backgroundColor = "white";
     choices[1].style.backgroundColor = "white";
     sum = 0;
-    // playGame();
     choices = [];
 }
 
@@ -401,38 +400,39 @@ function generateMoreSpans() {
 }
 
 /** 
- * Outside of MVP, should undo the last action
+ * Outside of MVP, removes the last action.
+ * Removes 5 points if the score is at least 5, otherwise sets score to 0.
 */
 
 let memory = [];
 
 function undoAction() {
+    // Checks score, if sets score to 0 if less than 5, else removes 5 points.
     if (score <= 5) {
         score = 0;
     } else {
         score -= 5;
     }
+    // hides undoButton
     undoButton.classList.add("hide");
     let memoryChildren = memory.getElementsByTagName("span");
-    console.log(memoryChildren, "memory length");
+    // Removes highlight from spans.
     for (let x = 0; x < memoryChildren.length; x++) {
         if (memoryChildren[x].style.backgroundColor === "yellow") {
             memoryChildren[x].style.backgroundColor = "";
         }
     }
+    // removes current spans.
     gameTable.remove();
+    // appends spans saved in memory (previous action)
     flex.appendChild(memory);
+    // empties memory
     memory = [];
+    // updates gameTable with the new state
     gameTable = document.getElementById("game-table");
-    // let spans = gameTable.getElementsByTagName("span");
-    playGame();
-    // for (let i = 0; i < spans.length; i++) {
-    //     if (spans[i].style.backgroundColor = "yellow") {
-    //         console.log("checking background color", i, spans[i].style.backgroundColor)
-    //         spans[i].style.removeProperty("background-color")
-    //     }
+    // Adds event listeners.
+    addListenerToSpan();
 }
-// }
 
 /** 
  * Outside of MVP, provides a hint, but costs 5 points.
