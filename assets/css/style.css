@@ -155,7 +155,8 @@ span {
 }
 
 .hint {
-    background-color: red;
+    background-color: rgb(244 196 48);
+    border: 1px dotted grey;
 }
 
 .hide {
