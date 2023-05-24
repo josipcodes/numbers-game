@@ -469,7 +469,7 @@ function provideHint() {
     for (let i = startOfCheck; i < spans.length - 2; i++) {
       /** 
        * Loop runs as many times as there are spans on the board, counting from the current i + 1.
-       * Bug observer where a positive vertical find (coordinates 0,0 and 1,0) causes j to become 01.
+       * Bug observer where a positive vertical find in the first column causes j to become 01.
        * Manifestation: positive vertical find remains stuck and is the only hint available.
        * Fix implemented by breaking a loop when this happens.
     */ 
