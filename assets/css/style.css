@@ -157,6 +157,13 @@ span {
 .hint {
     background-color: rgb(244 196 48);
     border: 1px dotted grey;
+    font-weight: 600;
+}
+
+.choice {
+    background-color: #ffff6a;
+    border: 1px dotted grey;
+    font-weight: 600;
 }
 
 .hide {

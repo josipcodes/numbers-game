@@ -214,7 +214,7 @@ let choices = [];
  */
 function highlight() {
     if (this.style.backgroundColor !== "black") { // Added to attempt combating event listener jumping to a nearby span, doesn't work elsewhere
-        this.style.backgroundColor = "yellow";
+        this.classList.add("choice");
         choices.push(this);
         if (choices[0] === choices[1]) {
             cancelChoice();
@@ -312,9 +312,10 @@ function cancelChoice() {
     let spans = gameTable.getElementsByTagName("span");
     // Checks if any of the spans are highlighted and removes highlight
     for (let i = 0; i < spans.length; i++) {
-        if (spans[i].classList.contains("hint") || spans[i].style.backgroundColor === "yellow") {
-            spans[i].style.removeProperty("background-color");
+        if (spans[i].classList.contains("hint") || spans[i].classList.contains("choice")) {
+            // spans[i].style.removeProperty("background-color");
             spans[i].classList.remove("hint");
+            spans[i].classList.remove("choice");
         }
         sum = 0;
         // choices = [];
@@ -418,8 +419,8 @@ function undoAction() {
     let memoryChildren = memory.getElementsByTagName("span");
     // Removes highlight from spans.
     for (let x = 0; x < memoryChildren.length; x++) {
-        if (memoryChildren[x].style.backgroundColor === "yellow") {
-            memoryChildren[x].style.backgroundColor = "";
+        if (memoryChildren[x].classList.contains("choice")) {
+            memoryChildren[x].classList.remove("choice");
         }
     }
     // removes current spans.
