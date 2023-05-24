@@ -161,9 +161,14 @@ span {
 }
 
 .choice {
-    background-color: #ffff6a;
+    background-color: #E5E619;
     border: 1px dotted grey;
     font-weight: 600;
+}
+
+.removed-choice {
+    background-color: #000001;
+    border: 1px solid black;
 }
 
 .hide {

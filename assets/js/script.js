@@ -213,7 +213,7 @@ let choices = [];
  * If user clicks on the same span twice, choice is disregarded.
  */
 function highlight() {
-    if (this.style.backgroundColor !== "black") { // Added to attempt combating event listener jumping to a nearby span, doesn't work elsewhere
+    if (!this.classList.contains("removed-choice")) { // Added to attempt combating event listener jumping to a nearby span, doesn't work elsewhere
         this.classList.add("choice");
         choices.push(this);
         if (choices[0] === choices[1]) {
@@ -387,7 +387,7 @@ function generateMoreSpans() {
         generateButton.classList.remove("hint");
     }
     for (let i = 0; i < spansLength; i++) {
-        if (spans[i].style.backgroundColor !== "black") {
+        if (!spans[i].classList.contains("removed-choice")) {
             generateSpans.push(spans[i]);
         }
     }
@@ -468,6 +468,15 @@ function provideHint() {
     for (let i = startOfCheck; i < spans.length - 2; i++) {
         // Loop runs as many times as there are spans on the board, counting from the current i + 1.
         for (let j = i + 1; j < spans.length; j++) {
+            if (j === "01" && spans[9].classList.contains("hint")) {
+                j = 10;
+                console.log("if reached");
+            } else if (i === 0 && j % 9 && spans[j].classList.contains("hint")) {
+                j += 1;
+            } else if (j === "01") {
+                j = 10;
+            }
+            console.log(i, "i", j, "j");
             let spanIValue = Number(spans[i].innerHTML);
             let spanJValue = Number(spans[j].innerHTML);
             sum = spanIValue + spanJValue;
@@ -619,9 +628,11 @@ function removeViablePair() {
     // Increases score.
     score += 2;
     choices[0].textContent = "0";
-    choices[0].style.backgroundColor = "black";
     choices[1].textContent = "0";
-    choices[1].style.backgroundColor = "black";
+    // choices[0].style.backgroundColor = "black";
+    // choices[1].style.backgroundColor = "black";
+    choices[0].classList.add("removed-choice");
+    choices[1].classList.add("removed-choice");;
     // Checks if there are empty rows.
     removeEmptyRow();
     // Checks if spans are highlighted and removes highlight.
