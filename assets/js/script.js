@@ -461,6 +461,7 @@ function provideHint() {
     for (let y = 0; y < spans.length; y++) {
         if (spans[y].classList.contains("hint")) {
             spans[y].classList.remove("hint");
+            spans[y].classList.add("was-hint");
         }
     }
 
@@ -468,13 +469,8 @@ function provideHint() {
     for (let i = startOfCheck; i < spans.length - 2; i++) {
         // Loop runs as many times as there are spans on the board, counting from the current i + 1.
         for (let j = i + 1; j < spans.length; j++) {
-            if (j === "01" && spans[9].classList.contains("hint")) {
-                j = 10;
-                console.log("if reached");
-            } else if (i === 0 && j % 9 && spans[j].classList.contains("hint")) {
-                j += 1;
-            } else if (j === "01") {
-                j = 10;
+        	if (j === "01") {
+                break;
             }
             console.log(i, "i", j, "j");
             let spanIValue = Number(spans[i].innerHTML);
