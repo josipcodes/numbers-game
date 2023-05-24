@@ -467,12 +467,16 @@ function provideHint() {
 
     loopOne:
     for (let i = startOfCheck; i < spans.length - 2; i++) {
-        // Loop runs as many times as there are spans on the board, counting from the current i + 1.
+      /** 
+       * Loop runs as many times as there are spans on the board, counting from the current i + 1.
+       * Bug observer where a positive vertical find (coordinates 0,0 and 1,0) causes j to become 01.
+       * Manifestation: positive vertical find remains stuck and is the only hint available.
+       * Fix implemented by breaking a loop when this happens.
+    */ 
         for (let j = i + 1; j < spans.length; j++) {
         	if (j === "01") {
                 break;
             }
-            console.log(i, "i", j, "j");
             let spanIValue = Number(spans[i].innerHTML);
             let spanJValue = Number(spans[j].innerHTML);
             sum = spanIValue + spanJValue;
