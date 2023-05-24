@@ -461,7 +461,7 @@ function provideHint() {
     for (let y = 0; y < spans.length; y++) {
         if (spans[y].classList.contains("hint")) {
             spans[y].classList.remove("hint");
-            spans[y].classList.add("was-hint");
+            // spans[y].classList.add("was-hint");
         }
     }
 
@@ -472,6 +472,7 @@ function provideHint() {
        * Bug observer where a positive vertical find in the first column causes j to become 01.
        * Manifestation: positive vertical find remains stuck and is the only hint available.
        * Fix implemented by breaking a loop when this happens.
+       * Remaining minor issue - function can overlook a vertical find in the first row if there is a horizontal one.
     */ 
         for (let j = i + 1; j < spans.length; j++) {
         	if (j === "01") {
