@@ -5,8 +5,7 @@ html {
 /* Removing user agent stylesheet margin */
 body {
     margin: inherit;
-    background-image: url("assets/images/race-track.webp");
-    /* background-image: url("assets/images/background-image.jpg"); */
+    background-image: url("../images/race-track.webp");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
