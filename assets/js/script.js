@@ -804,20 +804,20 @@ function gamePotentiallyNotSolvable() {
     }
 }
 
-function soundOptions() {
-    if (this.classList.contains("fa-volume-high")) {       
-        soundOn.classList.add("show");
-        soundOff.classList.add("hide");
-        soundOn.classList.remove("hide");
-        soundOff.classList.remove("show");
-        playSound();
-    } else if (this.classList.contains("fa-volume-xmark")) {
-        soundOn.classList.add("hide");
-        soundOff.classList.add("show");
-        soundOn.classList.remove("show");
-        soundOff.classList.remove("hide");
-    }
-}
+// function soundOptions() {
+//     if (this.classList.contains("fa-volume-high")) {       
+//         soundOn.classList.add("show");
+//         soundOff.classList.add("hide");
+//         soundOn.classList.remove("hide");
+//         soundOff.classList.remove("show");
+//         playSound();
+//     } else if (this.classList.contains("fa-volume-xmark")) {
+//         soundOn.classList.add("hide");
+//         soundOff.classList.add("show");
+//         soundOn.classList.remove("show");
+//         soundOff.classList.remove("hide");
+//     } else if ()
+// }
 
 function playSound() {
     const audio = document.getElementsByTagName("audio")[0];
@@ -825,21 +825,50 @@ function playSound() {
     sound.play();
 }
 
+// document.addEventListener("keydown", function(event) {
+//         if (event.code === "KeyM") {
+//             if (soundOn.classList.contains("hide")) {
+//                 soundOn.classList.add("show");
+//                 soundOff.classList.add("hide");
+//                 soundOn.classList.remove("hide");
+//                 soundOff.classList.remove("show");
+//                 playSound();
+//             } else {
+//                 soundOn.classList.add("hide");
+//                 soundOff.classList.add("show");
+//                 soundOn.classList.remove("show");
+//                 soundOff.classList.remove("hide");
+//             }
+//     }
+//   });
+
 document.addEventListener("keydown", function(event) {
+    console.log(event.code)
         if (event.code === "KeyM") {
-            if (soundOn.classList.contains("hide")) {
-                soundOn.classList.add("show");
-                soundOff.classList.add("hide");
-                soundOn.classList.remove("hide");
-                soundOff.classList.remove("show");
-                playSound();
-            } else {
-                soundOn.classList.add("hide");
-                soundOff.classList.add("show");
-                soundOn.classList.remove("show");
-                soundOff.classList.remove("hide");
+            soundOptions();
+            } else if (gamePage.classList.contains("show")) {
+                if (event.code === "KeyG") {
+                generateMoreSpans();
+            } else if (event.code === "KeyH") {
+                provideHint();
+            } else if (event.code === "KeyR" && !removeFifthButton.classList.contains("hide")) {
+                removeFifth();
             }
-    }
+        }
   });
 
-  
+
+  function soundOptions() {
+    if (soundOn.classList.contains("hide")) {
+        soundOn.classList.add("show");
+        soundOff.classList.add("hide");
+        soundOn.classList.remove("hide");
+        soundOff.classList.remove("show");
+        playSound();
+    } else {
+        soundOn.classList.add("hide");
+        soundOff.classList.add("show");
+        soundOn.classList.remove("show");
+        soundOff.classList.remove("hide");
+    }
+}
