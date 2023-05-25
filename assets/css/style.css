@@ -10,6 +10,7 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size: auto 100%;
+    background-color: #E7B818;
 }
 
 /* Main screen set up*/
@@ -67,8 +68,13 @@ h2 {
     margin-bottom: 31px;
 }
 
+h1, h2 {
+    font-family: "Kanit", "Times New Roman", sans-serif;
+}
+
 p {
     text-align: justify;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .main-screen-button,

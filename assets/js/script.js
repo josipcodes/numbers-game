@@ -25,6 +25,7 @@ let gamePage = document.getElementById("game-container");
 let gameTable = document.getElementById("game-table");
 let gameScore = document.getElementById("score");
 let flex = document.getElementById("flex");
+let sound = document.getElementById("sound");
 // let game = document.getElementById("beginner-mode");
 
 /** 
@@ -215,6 +216,7 @@ let choices = [];
 function highlight() {
     if (!this.classList.contains("removed-choice")) { // Added to attempt combating event listener jumping to a nearby span, doesn't work elsewhere
         this.classList.add("choice");
+        playSound();
         choices.push(this);
         if (choices[0] === choices[1]) {
             cancelChoice();
@@ -791,4 +793,8 @@ function gamePotentiallyNotSolvable() {
         generateScore = 0;
         pauseGame();
     }
+}
+
+function playSound() {
+    sound.play();
 }
