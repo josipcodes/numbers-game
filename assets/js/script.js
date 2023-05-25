@@ -734,6 +734,8 @@ function gameWon() {
         initialMenu.classList.remove("hide");
         gamePage.classList.add("hide");
         gamePage.classList.remove("show");
+        continueGameButton.classList.remove("show");
+        continueGameButton.classList.add("hide");
     }
 }
 
