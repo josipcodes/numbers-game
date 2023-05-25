@@ -26,7 +26,9 @@ let gameTable = document.getElementById("game-table");
 let gameScore = document.getElementById("score");
 let flex = document.getElementById("flex");
 let sound = document.getElementById("sound");
-let soundIcons = document.getElemenysByClass("fa-solid");
+let soundIcons = document.getElementsByClassName("fa-solid");
+let soundOn = document.getElementById("sound-is-on");
+let soundOff = document.getElementById("sound-is-off");
 // let game = document.getElementById("beginner-mode");
 
 /** 
@@ -53,7 +55,7 @@ for (let i = 0; i < returnButtons.length - 1; i++) {
 }
 
 for (let i = 0; i < soundIcons.length; i++) {
-    soundIcons[i].addEventListener("click", playSound);
+    soundIcons[i].addEventListener("click", soundOptions);
 }
 
 // Opens difficulty page
@@ -221,7 +223,9 @@ let choices = [];
 function highlight() {
     if (!this.classList.contains("removed-choice")) { // Added to attempt combating event listener jumping to a nearby span, doesn't work elsewhere
         this.classList.add("choice");
+        if (soundOn.classList.contains("show")) {
         playSound();
+    }
         choices.push(this);
         if (choices[0] === choices[1]) {
             cancelChoice();
@@ -800,7 +804,21 @@ function gamePotentiallyNotSolvable() {
     }
 }
 
+function soundOptions() {
+    console.log(this)
+    if (this.classList.contains("fa-volume-high")) {       
+        soundOn.classList.add("show");
+        soundOff.classList.add("hide");
+        soundOn.classList.remove("hide");
+        soundOff.classList.remove("show");
+    } else if (this.classList.contains("fa-volume-xmark")) {
+        soundOn.classList.add("hide");
+        soundOff.classList.add("show");
+        soundOn.classList.remove("show");
+        soundOff.classList.remove("hide");
+    }
+}
+
 function playSound() {
-    if ()
     sound.play();
 }
