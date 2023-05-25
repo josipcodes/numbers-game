@@ -26,6 +26,7 @@ let gameTable = document.getElementById("game-table");
 let gameScore = document.getElementById("score");
 let flex = document.getElementById("flex");
 let sound = document.getElementById("sound");
+let soundIcons = document.getElemenysByClass("fa-solid");
 // let game = document.getElementById("beginner-mode");
 
 /** 
@@ -49,6 +50,10 @@ for (let i = 0; i < gameModeButtons.length; i++) {
 
 for (let i = 0; i < returnButtons.length - 1; i++) {
     returnButtons[i].addEventListener("click", returnToMenu);
+}
+
+for (let i = 0; i < soundIcons.length; i++) {
+    soundIcons[i].addEventListener("click", playSound);
 }
 
 // Opens difficulty page
@@ -796,5 +801,6 @@ function gamePotentiallyNotSolvable() {
 }
 
 function playSound() {
+    if ()
     sound.play();
 }
