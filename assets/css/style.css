@@ -79,6 +79,11 @@ p {
     box-shadow: 2px 2px 2px grey;
 }
 
+.main-screen-button:hover,
+.new-game-screen-button:hover {
+    font-weight: 700;
+}
+
 .show {
     display: block;
 }
@@ -169,6 +174,9 @@ span {
 .removed-choice {
     background-color: #000001;
     border: 1px solid black;
+    transition: all 0.4s ease-out;
+    font-display: none;
+    font
 }
 
 .hide {
