@@ -80,21 +80,21 @@ p {
 
 }
 
-.main-screen-button:hover, .new-game-screen-button:hover {
+/* .main-screen-button:click, .new-game-screen-button:click {
+    transition: 0.2s;
     background-color: darkgray;
-}
+} */
 
 .show {
     display: block;
 }
-
 
 #initial-menu,
 #difficulty-menu,
 #rules-page,
 #about-page,
 #controls-page {
-    position: sticky;
+    /* position: sticky; */
     padding-top: 10px;
 }
 
