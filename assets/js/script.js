@@ -823,3 +823,10 @@ function soundOptions() {
 function playSound() {
     sound.play();
 }
+
+document.addEventListener("keypress", function(event) {
+    console.log(this)
+    if ("key-code" === "77") {
+      alert('hi.');
+    }
+  });
