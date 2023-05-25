@@ -621,7 +621,7 @@ function removeViablePair() {
     hintButton.classList.remove("hide");
     // Sets generateScore to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
     generateScore = 0;
-    // Hides undo button to prevent gaming.
+    // Shows undo button after a successful removal.
     undoButton.classList.remove("hide");
     memory = [];
     // Clones gameTable to remember the last choice.

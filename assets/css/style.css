@@ -76,14 +76,12 @@ p {
     display: block;
     margin: 7px auto;
     padding: 6px 5px;
-    box-shadow: 2px 2px 2px grey;
+    box-shadow: 2px 2px 2px darkgrey;
 
 }
 
-.main-screen-button:hover,
-.new-game-screen-button:hover {
-    transition: 2s ease-out;
-    background-color: #F2A30D;
+.main-screen-button:hover, .new-game-screen-button:hover {
+    background-color: darkgray;
 }
 
 .show {
@@ -156,10 +154,6 @@ span {
 
 .hide {
     display: none;
-}
-
-.hidden {
-    visibility: hidden;
 }
 
 #score {
