@@ -20,9 +20,7 @@ body {
 }
 
 .game-area {
-    /* height: 100%; */
     background-color: lightgrey;
-    /* border: 3px solid black; */
     margin: 40% auto auto auto;
     /* Prevents overflow */
     width: inherit;
@@ -30,15 +28,7 @@ body {
 
 .game-window {
     width: inherit;
-    /* margin: 13% auto; */
     background-color: lightgrey;
-    /* border: 2px solid black; */
-    /* border-bottom: 5px solid black; */
-    /* border-left: 5px solid black;
-    border-right: 5px solid black; */
-    /* border-bottom: 2px solid black;
-    border-left: 2px solid black;
-    border-right: 2px solid black; */
     padding-bottom: 17%;
     padding-top: 5%;
     border: 3px solid black;
@@ -51,14 +41,9 @@ body {
 
 h1 {
     text-align: center;
-    /* padding: 10px; */
     padding-left: 2.5%;
-    /* padding-bottom: 85px; */
     background-color: lightgray;
-    /* position: sticky;
-    top: 0; */
-    /* margin-top: -50px;
-    width: 95%; */
+
 }
 
 h2 {
@@ -86,10 +71,6 @@ p {
 
 }
 
-/* .main-screen-button:click, .new-game-screen-button:click {
-    transition: 0.2s;
-    background-color: darkgray;
-} */
 
 .show {
     display: block;
@@ -100,7 +81,6 @@ p {
 #rules-page,
 #about-page,
 #controls-page {
-    /* position: sticky; */
     padding-top: 10px;
 }
 
@@ -117,7 +97,6 @@ p {
     grid-template-columns: repeat(5, 1fr);
     position: sticky;
     top: 0;
-    /* margin-top: 50px; */
     background-color: lightgray;
     margin: auto auto auto -1%;
 }
@@ -131,9 +110,6 @@ p {
 #game-table {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    /* To compensate for fixed positioning of buttons and h1 */
-    /* padding-top: 95px; */
-    /* background-color: #000001; */
 }
 
 span {
@@ -162,7 +138,6 @@ span {
     background-color: #000001;
     border: 1px solid black;
     transition: all 0.4s ease-out;
-    /* font-display: none; */
 }
 
 .hide {
@@ -184,7 +159,6 @@ span {
 
 
 @media (min-width: 800px) {
-
     h2 {
         margin-bottom: 15px;
     }
@@ -211,17 +185,8 @@ span {
 
     #game-button-container {
         display: block;
-        /* position: fixed;
-        top: unset;
-        width: 12%; */
-        /* margin-top: -95px; */
-        /* margin: auto; */
-        /* margin-top: -7%; */
-        /* position: absolute; */
         padding-top: 5%;
         margin-left: 12%;
-        /* position: sticky;
-        top: 0; */
         margin-top: 0;
     }
 
@@ -232,10 +197,8 @@ span {
 
     #game-table {
         min-width: 75%;
-        /* margin-right: 28%; */
         /* necessary to ensure beginner mode doesn't expand space between span rows */
         height: 100%;
-        /* margin-left: -10px; */
         padding-top: 10px;
     }
 
