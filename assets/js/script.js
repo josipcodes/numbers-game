@@ -811,6 +811,7 @@ function soundOptions() {
         soundOff.classList.add("hide");
         soundOn.classList.remove("hide");
         soundOff.classList.remove("show");
+        playSound();
     } else if (this.classList.contains("fa-volume-xmark")) {
         soundOn.classList.add("hide");
         soundOff.classList.add("show");

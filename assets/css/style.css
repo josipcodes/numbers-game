@@ -126,7 +126,7 @@ p {
     color: black;
     font-size: xx-large;
     display: block;
-    margin-left: 30%;
+    /* margin-left: 30%; */
 }
 
 #game-table {
