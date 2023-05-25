@@ -851,6 +851,8 @@ document.addEventListener("keydown", function(event) {
                 generateMoreSpans();
             } else if (event.code === "KeyH") {
                 provideHint();
+            } else if (event.code === "KeyP") {
+                pauseGame();
             } else if (event.code === "KeyR" && !removeFifthButton.classList.contains("hide")) {
                 removeFifth();
             }
