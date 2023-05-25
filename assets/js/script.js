@@ -632,8 +632,8 @@ function removeViablePair() {
     // choices[1].style.backgroundColor = "black";
     choices[0].classList.add("removed-choice");
     choices[1].classList.add("removed-choice");
-    choices[0].textContent = "0";
-    choices[1].textContent = "0";
+    choices[0].textContent = "";
+    choices[1].textContent = "";
     // Checks if there are empty rows.
     removeEmptyRow();
     // Checks if spans are highlighted and removes highlight.

@@ -90,13 +90,6 @@ p {
     display: block;
 }
 
-/* #continue-game {
-    display: none;
-}
-
-#quit-game {
-    display: none;
-} */
 
 #initial-menu,
 #difficulty-menu,
@@ -106,22 +99,6 @@ p {
     position: sticky;
     padding-top: 10px;
 }
-
-/* #difficulty-menu {
-    display: none;
-} */
-
-/* #rules-page {
-    display: none;
-} */
-
-/* #about-page {
-    display: none;
-}
-
-#controls-page {
-    display: none;
-} */
 
 .text-block {
     border: 2px solid black;
@@ -141,9 +118,6 @@ p {
     margin: auto auto auto -1%;
 }
 
-/* #relative-position {
-    position: relative;
-} */
 
 #game-table {
     display: grid;
@@ -177,12 +151,15 @@ span {
     background-color: #000001;
     border: 1px solid black;
     transition: all 0.4s ease-out;
-    font-display: none;
-    font
+    /* font-display: none; */
 }
 
 .hide {
     display: none;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 #score {
