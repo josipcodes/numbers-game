@@ -774,7 +774,6 @@ function FifthButtonDisplay() {
     }
 }
 
-
 // Function brings up the main menu and hides continue and quit options.
 function quitGame() {
     returnToMenu();
@@ -804,50 +803,35 @@ function gamePotentiallyNotSolvable() {
     }
 }
 
-// function soundOptions() {
-//     if (this.classList.contains("fa-volume-high")) {       
-//         soundOn.classList.add("show");
-//         soundOff.classList.add("hide");
-//         soundOn.classList.remove("hide");
-//         soundOff.classList.remove("show");
-//         playSound();
-//     } else if (this.classList.contains("fa-volume-xmark")) {
-//         soundOn.classList.add("hide");
-//         soundOff.classList.add("show");
-//         soundOn.classList.remove("show");
-//         soundOff.classList.remove("hide");
-//     } else if ()
-// }
-
+/**
+ * Function plays sound when called. 
+ * Current play time is set to 0 to help with repeated actions. 
+ */
 function playSound() {
     const audio = document.getElementsByTagName("audio")[0];
+    // Below line of code was obtained from JavaScript30 website - JavaScript Drum Kit tutorial.
     audio.currentTime = 0;
     sound.play();
 }
 
-// document.addEventListener("keydown", function(event) {
-//         if (event.code === "KeyM") {
-//             if (soundOn.classList.contains("hide")) {
-//                 soundOn.classList.add("show");
-//                 soundOff.classList.add("hide");
-//                 soundOn.classList.remove("hide");
-//                 soundOff.classList.remove("show");
-//                 playSound();
-//             } else {
-//                 soundOn.classList.add("hide");
-//                 soundOff.classList.add("show");
-//                 soundOn.classList.remove("show");
-//                 soundOff.classList.remove("hide");
-//             }
-//     }
-//   });
-
+/**
+ * Function observers a keydown event.
+ * If C is pressed while continueGameButton is showing, used will be taken into the game.
+ * If G is pressed, generateMoreSpans function runs.
+ * If H is pressed, provideHint function runs.
+ * If P is pressed, pauseGame function runs.
+ * If R is pressed, removeFifth function runs.
+ * If M is pressed, soundOptions function runs.
+ * Minor bug: when in main menu after pausing the game, user can press H, R or G. 
+ * Corresponding action will take place and user will be brought into the gamePage. Unable to locate source of gamePage class change.
+ * Event listener creation was loosely taken from JavaScript30 website - JavaScript Drum Kit tutorial.
+ */
 document.addEventListener("keydown", function(event) {
-    console.log(event.code)
-        if (event.code === "KeyM") {
-            soundOptions();
-            } else if (gamePage.classList.contains("show")) {
-                if (event.code === "KeyG") {
+        if (event.code = "KeyC" && continueGameButton.classList.contains("show")) {
+            continueGame();
+        } 
+        if (gamePage.classList.contains("show")) {
+            if (event.code === "KeyG") {
                 generateMoreSpans();
             } else if (event.code === "KeyH") {
                 provideHint();
@@ -855,11 +839,14 @@ document.addEventListener("keydown", function(event) {
                 pauseGame();
             } else if (event.code === "KeyR" && !removeFifthButton.classList.contains("hide")) {
                 removeFifth();
+            } else if (event.code === "KeyM") {
+                soundOptions();
             }
         }
   });
 
-
+  
+// Function checks for a class of soundOn div and toggles visibility between it and soundOff.
   function soundOptions() {
     if (soundOn.classList.contains("hide")) {
         soundOn.classList.add("show");
