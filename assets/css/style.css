@@ -133,6 +133,7 @@ p {
     grid-template-columns: repeat(9, 1fr);
     /* To compensate for fixed positioning of buttons and h1 */
     /* padding-top: 95px; */
+    /* background-color: #000001; */
 }
 
 span {
@@ -141,7 +142,8 @@ span {
     aspect-ratio: 2/1;
     padding: 5px 0;
     text-align: center;
-
+    /* Added to combat span height changing when span is empty */
+    line-height: 0.9;
 }
 
 .hint {
@@ -177,6 +179,7 @@ span {
     background-color: white;
     border: 2px solid black;
     text-align: center;
+    line-height: 1;
 }
 
 
