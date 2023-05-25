@@ -805,7 +805,6 @@ function gamePotentiallyNotSolvable() {
 }
 
 function soundOptions() {
-    console.log(this)
     if (this.classList.contains("fa-volume-high")) {       
         soundOn.classList.add("show");
         soundOff.classList.add("hide");
@@ -821,12 +820,26 @@ function soundOptions() {
 }
 
 function playSound() {
+    const audio = document.getElementsByTagName("audio")[0];
+    audio.currentTime = 0;
     sound.play();
 }
 
-document.addEventListener("keypress", function(event) {
-    console.log(this)
-    if ("key-code" === "77") {
-      alert('hi.');
+document.addEventListener("keydown", function(event) {
+        if (event.code === "KeyM") {
+            if (soundOn.classList.contains("hide")) {
+                soundOn.classList.add("show");
+                soundOff.classList.add("hide");
+                soundOn.classList.remove("hide");
+                soundOff.classList.remove("show");
+                playSound();
+            } else {
+                soundOn.classList.add("hide");
+                soundOff.classList.add("show");
+                soundOn.classList.remove("show");
+                soundOff.classList.remove("hide");
+            }
     }
   });
+
+  
