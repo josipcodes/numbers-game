@@ -77,11 +77,13 @@ p {
     margin: 7px auto;
     padding: 6px 5px;
     box-shadow: 2px 2px 2px grey;
+
 }
 
 .main-screen-button:hover,
 .new-game-screen-button:hover {
-    font-weight: 700;
+    transition: 2s ease-out;
+    background-color: #F2A30D;
 }
 
 .show {
