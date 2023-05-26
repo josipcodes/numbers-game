@@ -703,9 +703,10 @@ function gameWon() {
      */
     if (sum === 0) {
         alert(`You won! Your final score is ${score}`);
-        initialMenu.classList.toggle("hide");
-        gamePage.classList.toggle("hide");
-        continueGameButton.classList.add("hide");
+        quitGame();
+        // initialMenu.classList.toggle("hide");
+        // gamePage.classList.toggle("hide");
+        // continueGameButton.classList.add("hide");
     }
 }
 
@@ -736,9 +737,8 @@ function FifthButtonDisplay() {
 // Function brings up the main menu and hides continue and quit options.
 function quitGame() {
     returnToMenu();
-    continueGameButton.classList.toggle("hide");
-    quitGameButton.classList.toggle("hide");
-    // initialMenu.classList.toggle("hide");
+    continueGameButton.classList.add("hide");
+    quitGameButton.classList.add("hide");
 }
 
 let generateScore = 0;
