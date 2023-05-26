@@ -116,7 +116,7 @@ span {
     background-color: white;
     border: 1px solid black;
     /* aspect-ratio: 2/1; */
-    padding: 7px 0;
+    padding: 10px 0;
     text-align: center;
     font-size: x-large;
     /* Added to combat span height changing when span is empty */
@@ -159,7 +159,13 @@ span {
 }
 
 
-@media (min-width: 800px) {
+@media (min-width: 750px) {
+    span {
+        padding: 12px 0;
+    }
+}
+
+@media (min-width: 950px) {
     h2 {
         margin-bottom: 15px;
     }
@@ -211,5 +217,19 @@ span {
 @media (min-width: 1500px) {
     body {
         background-size: cover;
+    }
+}
+
+
+@media (min-width: 1800px) {
+    span {
+        aspect-ratio: 2/1;
+        padding: 16px 0 0 0;
+        font-size: xx-large;
+    }
+
+    #score {
+        aspect-ratio: unset;
+        height: auto;
     }
 }
