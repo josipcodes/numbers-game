@@ -229,7 +229,7 @@ let choices = [];
 function highlight() {
     if (!this.classList.contains("removed-choice")) { // Added to attempt combating event listener jumping to a nearby span, doesn't work elsewhere
         this.classList.add("choice");
-        if (soundOn.classList.contains("show")) {
+        if (!soundOn.classList.contains("hide")) {
         playSound();
     }
         choices.push(this);
@@ -856,16 +856,9 @@ document.addEventListener("keydown", function(event) {
   
 // Function checks for a class of soundOn div and toggles visibility between it and soundOff.
   function soundOptions() {
-    if (soundOn.classList.contains("hide")) {
-        soundOn.classList.add("show");
-        soundOff.classList.add("hide");
-        soundOn.classList.remove("hide");
-        soundOff.classList.remove("show");
+    soundOn.classList.toggle("hide");
+    soundOff.classList.toggle("hide");
+    if (!soundOn.classList.contains("hide")) {
         playSound();
-    } else {
-        soundOn.classList.add("hide");
-        soundOff.classList.add("show");
-        soundOn.classList.remove("show");
-        soundOff.classList.remove("hide");
     }
 }
