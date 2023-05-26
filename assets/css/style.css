@@ -115,9 +115,10 @@ p {
 span {
     background-color: white;
     border: 1px solid black;
-    aspect-ratio: 2/1;
-    padding: 5px 0;
+    /* aspect-ratio: 2/1; */
+    padding: 7px 0;
     text-align: center;
+    font-size: x-large;
     /* Added to combat span height changing when span is empty */
     line-height: 0.9;
 }
@@ -148,7 +149,7 @@ span {
     margin: 0 auto 5px;
     width: auto;
     padding: 1px 5px;
-    height: 20px;
+    height: 23px;
     color: black;
     display: block;
     background-color: white;

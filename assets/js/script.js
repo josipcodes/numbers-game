@@ -344,7 +344,7 @@ function pauseGame() {
     returnToMenu();
     continueGameButton.classList.toggle("hide");
     quitGameButton.classList.toggle("hide");
-    initialMenu.classList.remove("hide");
+    // initialMenu.classList.remove("hide");
 }
 
 /** 
@@ -706,7 +706,7 @@ function gameWon() {
         alert(`You won! Your final score is ${score}`);
         initialMenu.classList.toggle("hide");
         gamePage.classList.toggle("hide");
-        continueGameButton.classList.toggle("hide");
+        continueGameButton.classList.add("hide");
     }
 }
 
