@@ -105,7 +105,7 @@ function runGame() {
     initialMenu.classList.add("hide");
     continueGameButton.classList.add("hide");
     quitGameButton.classList.add("hide");
-    undoButton.classList.add("hide");
+    undoButton.classList.add("hidden");
     gamePage.classList.toggle("hide");
     difficultyMenu.classList.toggle("hide");
     // Sets score to 0 to prevent score carrying over from a previous session.
@@ -366,7 +366,7 @@ let generateSpans = [];
 function generateMoreSpans() {
     generateScore += 1;
     gamePotentiallyNotSolvable();
-    if (!undoButton.classList.contains("hide")) {
+    if (!undoButton.classList.contains("hidden")) {
     undoButtonToggle();
     }
     let spans = gameTable.getElementsByTagName("span");
@@ -597,8 +597,7 @@ function removeViablePair() {
     // Sets generateScore to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
     generateScore = 0;
     // Shows undo button after a successful removal.
-    // undoButton.classList.remove("hide");
-    if (undoButton.classList.contains("hide")) {
+    if (undoButton.classList.contains("hidden")) {
     undoButtonToggle();
     }
     memory = [];
@@ -658,7 +657,7 @@ function removeFifth() {
     /**
      * Undo button is removed to prevent gaming.
      */
-    if (!undoButton.classList.contains("hide")) {
+    if (!undoButton.classList.contains("hidden")) {
     undoButtonToggle();
     }
     /**
@@ -817,5 +816,5 @@ document.addEventListener("keyup", function(event) {
 
 // Toggles undoButton class of hide when called
 function undoButtonToggle() {
-    undoButton.classList.toggle("hide");
+    undoButton.classList.toggle("hidden");
 }
