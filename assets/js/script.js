@@ -118,6 +118,7 @@ function runGame() {
     // Checks if gamePage contains show class, if not, adds it and removes hide.
     // continueGameButton.classList.remove("show");
     continueGameButton.classList.add("hide");
+    quitGameButton.classList.add("hide");
     gamePage.classList.add("show");
     gamePage.classList.remove("hide");
     difficultyMenu.classList.add("hide");
@@ -362,8 +363,9 @@ function pauseGame() {
     continueGameButton.classList.toggle("hide");
     // continueGameButton.classList.remove("hide");
     // continueGameButton.classList.add("show");
-    quitGameButton.classList.add("show");
-    quitGameButton.classList.remove("hide");
+    // quitGameButton.classList.add("show");
+    // quitGameButton.classList.remove("hide");
+    quitGameButton.classList.toggle("hide");
 }
 
 /** 
@@ -784,8 +786,9 @@ function quitGame() {
     continueGameButton.classList.toggle("hide");
     // continueGameButton.classList.remove("show");
     // continueGameButton.classList.add("hide");
-    quitGameButton.classList.add("hide");
-    quitGameButton.classList.remove("show");
+    // quitGameButton.classList.add("hide");
+    // quitGameButton.classList.remove("show");
+    quitGameButton.classList.toggle("hide");
 }
 
 let generateScore = 0;
