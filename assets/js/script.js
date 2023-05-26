@@ -239,7 +239,6 @@ function checkLocation(choices) {
     const coordinatesXZero = Number(choices[0].getAttribute("data-x"));
     const coordinatesYOne = Number(choices[1].getAttribute("data-y"));
     const coordinatesXOne = Number(choices[1].getAttribute("data-x"));
-    // are the below 2 necessary?
     const placeYZero = Number(choices[0].getAttribute("data-place"));
     const placeYOne = Number(choices[1].getAttribute("data-place"));
     const placeYMin = Math.min(placeYZero, placeYOne);
@@ -303,7 +302,6 @@ function checkContent() {
     sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
     // If sum of spans is 10 or their innerHTML is equal, pair is removed, otherwise cancelled.
     if (sum === 10 || (choices[0].innerHTML === choices[1].innerHTML)) {
-        // memory();
         removeViablePair();
     } else {
         cancelChoice();
@@ -319,18 +317,15 @@ function cancelChoice() {
     // Checks if any of the spans are highlighted and removes highlight
     for (let i = 0; i < spans.length; i++) {
         if (spans[i].classList.contains("hint") || spans[i].classList.contains("choice")) {
-            // spans[i].style.removeProperty("background-color");
             spans[i].classList.remove("hint");
             spans[i].classList.remove("choice");
         }
         sum = 0;
-        // choices = [];
     }
 }
 
-/** 
- * Checks for and removes an empty row
-*/
+// Checks for and removes an empty row
+
 function removeEmptyRow() {
     let amountOfSpans = document.querySelectorAll("[data-place]").length;
     for (let i = 0; i < (Math.floor(amountOfSpans / 9)); i++) {
