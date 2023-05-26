@@ -200,14 +200,13 @@ function addLocation() {
 // Creates event listeners for all spans created. Ideally will only create listeners for spans which don't have a value of 0
 function addListenerToSpan() {
     let choice = gameTable.getElementsByTagName("span");
-    for (let i = 0; i < choice.length; i++) {
-        choice[i].addEventListener("click", highlight);
-        console.log("adding event listeners");
-    }
+    typeof(choice);
+    Array.prototype.forEach.call(choice, span => {
+        span.addEventListener("click", highlight)
+      });
     // 
     calculateScore();
 }
-
 
 let sum = 0;
 let choices = [];
