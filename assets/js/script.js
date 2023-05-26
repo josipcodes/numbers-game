@@ -719,8 +719,8 @@ function FifthButtonDisplay() {
      * a) there are less than 5 spans on the table.
      * b) score is below 50.
     */
-    if (currentSpans.length < 5 || score < 50 && !removeFifthButton.classList.contains("hide")) {
-        removeFifthButton.classList.toggle("hide");
+    if (currentSpans.length < 5 || score < 50 && !removeFifthButton.classList.contains("hidden")) {
+        removeFifthButton.classList.toggle("hidden");
     }
     /**
      * Else if statement shows removeFifthButton if: 
@@ -728,8 +728,8 @@ function FifthButtonDisplay() {
      * b) score is at least 50,
      * c) removeFifthButton was previously hidden.
      */
-    else if (currentSpans.length > 4 && score >= 50 && removeFifthButton.classList.contains("hide")) {
-        removeFifthButton.classList.toggle("hide");
+    else if (currentSpans.length > 4 && score >= 50 && removeFifthButton.classList.contains("hidden")) {
+        removeFifthButton.classList.toggle("hidden");
     }
 }
 
@@ -797,7 +797,7 @@ document.addEventListener("keyup", function(event) {
             } else if (event.code === "KeyP") {
                 pauseGame();
                 // initialMenu.classList.toggle("hide");
-            } else if (event.code === "KeyR" && !removeFifthButton.classList.contains("hide")) {
+            } else if (event.code === "KeyR" && !removeFifthButton.classList.contains("hidden")) {
                 removeFifth();
             } else if (event.code === "KeyM") {
                 soundOptions();
