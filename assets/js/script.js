@@ -381,8 +381,9 @@ function continueGame() {
     // initialMenu.classList.remove("show");
     // initialMenu.classList.add("hide");
     initialMenu.classList.toggle("hide");
-    gamePage.classList.remove("hide");
-    gamePage.classList.add("show");
+    // gamePage.classList.remove("hide");
+    // gamePage.classList.add("show");
+    gamePage.classList.toggle("hide");
     continueGameButton.classList.toggle("hide");
     quitGameButton.classList.toggle("hide");
 }
@@ -754,8 +755,9 @@ function gameWon() {
         // initialMenu.classList.add("show");
         // initialMenu.classList.remove("hide");
         initialMenu.classList.toggle("hide");
-        gamePage.classList.add("hide");
-        gamePage.classList.remove("show");
+        // gamePage.classList.add("hide");
+        // gamePage.classList.remove("show");
+        gamePage.classList.toggle("hide");
         // continueGameButton.classList.remove("show");
         // continueGameButton.classList.add("hide");
         // continueGameButton.classList.toggle("show");
@@ -843,13 +845,14 @@ document.addEventListener("keydown", function(event) {
         if (event.code = "KeyC" && !continueGameButton.classList.contains("hide")) {
             continueGame();
         } 
-        if (gamePage.classList.contains("show")) {
+        if (!gamePage.classList.contains("hide")) {
             if (event.code === "KeyG") {
                 generateMoreSpans();
             } else if (event.code === "KeyH") {
                 provideHint();
             } else if (event.code === "KeyP") {
                 pauseGame();
+                initialMenu.classList.toggle("hide");
             } else if (event.code === "KeyR" && !removeFifthButton.classList.contains("hide")) {
                 removeFifth();
             } else if (event.code === "KeyM") {
