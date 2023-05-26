@@ -324,6 +324,7 @@ function cancelChoice() {
 
 // Checks for and removes an empty row
 function removeEmptyRow() {
+    typeof(wholeRow)
     let amountOfSpans = document.querySelectorAll("[data-place]").length;
     // Calculates the amount of rows that need checking. Doesn't check the last row if not full.
     for (let i = 0; i < (Math.floor(amountOfSpans / 9)); i++) {
@@ -337,14 +338,16 @@ function removeEmptyRow() {
         if (collection === 0) {
             score += 10;
             calculateScore();
+
             let emptyRow = document.querySelectorAll(`[data-y="${i}"]`);
-            for (let i = 0; i < emptyRow.length; i++) {
-                emptyRow[i].remove();
+            Array.prototype.forEach.call(emptyRow, span => {
+                span.remove()
+                console.log("removing a row")
+              });
             }
         }
+        addLocation();
     }
-    addLocation();
-}
 
 /** 
  * Opens main menu
