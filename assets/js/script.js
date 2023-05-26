@@ -46,13 +46,16 @@ hintButton.addEventListener("click", provideHint);
 removeFifthButton.addEventListener("click", removeFifth);
 quitGameButton.addEventListener("click", quitGame);
 
-for (let i = 0; i < gameModeButtons.length; i++) {
-    gameModeButtons[i].addEventListener("click", runGame);
-}
+// Turns object into an array and uses forEach to add event listener.
+Array.prototype.forEach.call(gameModeButtons, button => {
+    button.addEventListener("click", runGame)
+  });
 
-for (let i = 0; i < returnButtons.length - 1; i++) {
-    returnButtons[i].addEventListener("click", returnToMenu);
-}
+// Turns object into an array and uses forEach to add event listener.
+Array.prototype.forEach.call(returnButtons, button => {
+    button.addEventListener("click", returnToMenu)
+  });
+
 
 for (let i = 0; i < soundIcons.length; i++) {
     soundIcons[i].addEventListener("click", soundOptions);
