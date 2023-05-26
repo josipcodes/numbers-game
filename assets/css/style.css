@@ -118,7 +118,7 @@ span {
     /* aspect-ratio: 2/1; */
     padding: 10px 0;
     text-align: center;
-    font-size: x-large;
+    font-size: large;
     /* Added to combat span height changing when span is empty */
     line-height: 0.9;
 }
