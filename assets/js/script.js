@@ -841,7 +841,7 @@ function playSound() {
  * Corresponding action will take place and user will be brought into the gamePage. Unable to locate source of gamePage class change.
  * Event listener creation was loosely taken from JavaScript30 website - JavaScript Drum Kit tutorial.
  */
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keyup", function(event) {
         if (event.code = "KeyC" && !continueGameButton.classList.contains("hide")) {
             continueGame();
         } 
