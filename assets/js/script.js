@@ -1,6 +1,4 @@
-/** 
- * DOM related variables
-*/
+// DOM related variables
 let newGameButton = document.getElementById("new-game");
 let rulesButton = document.getElementById("rules");
 let aboutButton = document.getElementById("about");
@@ -15,7 +13,6 @@ let hintButton = document.getElementById("hint");
 let removeFifthButton = document.getElementById("remove-fifth");
 let quitGameButton = document.getElementById("quit-game");
 
-// let gameContent = document.getElementsByClassName("game-window")[0];
 let initialMenu = document.getElementById("initial-menu");
 let difficultyMenu = document.getElementById("difficulty-menu");
 let rulesPage = document.getElementById("rules-page");
@@ -29,11 +26,9 @@ let sound = document.getElementById("sound");
 let soundIcons = document.getElementsByClassName("fa-solid");
 let soundOn = document.getElementById("sound-is-on");
 let soundOff = document.getElementById("sound-is-off");
-// let game = document.getElementById("beginner-mode");
 
-/** 
- * Event listeners
-*/
+// Event listeners
+
 newGameButton.addEventListener("click", showDifficultyPage);
 rulesButton.addEventListener("click", showRulesPage);
 aboutButton.addEventListener("click", showAboutPage);
@@ -56,10 +51,9 @@ Array.prototype.forEach.call(returnButtons, button => {
     button.addEventListener("click", returnToMenu)
   });
 
-
-for (let i = 0; i < soundIcons.length; i++) {
-    soundIcons[i].addEventListener("click", soundOptions);
-}
+Array.prototype.forEach.call(soundIcons, icon => {
+    icon.addEventListener("click", soundOptions)
+  });
 
 // Opens difficulty page
 function showDifficultyPage() {
