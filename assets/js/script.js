@@ -58,16 +58,18 @@ quitGameButton.addEventListener("click", quitGame);
 
 // Opens difficulty page
 function showDifficultyPage() {
-    initialMenu.classList.remove("show");
-    initialMenu.classList.add("hide");
+    // initialMenu.classList.remove("show");
+    // initialMenu.classList.add("hide");
+    initialMenu.classList.toggle("hide");
     difficultyMenu.classList.add("show");
     difficultyMenu.classList.remove("hide");
 }
 
 // Opens rules page
 function showRulesPage() {
-    initialMenu.classList.remove("show");
-    initialMenu.classList.add("hide");
+    // initialMenu.classList.remove("show");
+    // initialMenu.classList.add("hide");
+    initialMenu.classList.toggle("hide");
     rulesPage.classList.add("show");
     rulesPage.classList.remove("hide");
 }
@@ -75,8 +77,9 @@ function showRulesPage() {
 
 // Opens about page
 function showAboutPage() {
-    initialMenu.classList.remove("show");
-    initialMenu.classList.add("hide");
+    // initialMenu.classList.remove("show");
+    // initialMenu.classList.add("hide");
+    initialMenu.classList.toggle("hide");
     aboutPage.classList.add("show");
     aboutPage.classList.remove("hide");
 }
@@ -85,8 +88,9 @@ function showAboutPage() {
 // Opens controls page
 
 function showControlsPage() {
-    initialMenu.classList.remove("show");
-    initialMenu.classList.add("hide");
+    // initialMenu.classList.remove("show");
+    // initialMenu.classList.add("hide");
+    initialMenu.classList.toggle("hide");
     controlsPage.classList.add("show");
     controlsPage.classList.remove("hide");
 }
@@ -95,8 +99,9 @@ function showControlsPage() {
 // Opens main menu
 
 function returnToMenu() {
-    initialMenu.classList.remove("hide");
-    initialMenu.classList.add("show");
+    // initialMenu.classList.remove("hide");
+    // initialMenu.classList.add("show");
+    initialMenu.classList.toggle("hide");
     difficultyMenu.classList.add("hide");
     difficultyMenu.classList.remove("show");
     rulesPage.classList.add("hide");
@@ -116,6 +121,7 @@ function returnToMenu() {
  */
 function runGame() {
     // Checks if gamePage contains show class, if not, adds it and removes hide.
+    initialMenu.classList.add("hide");
     continueGameButton.classList.add("hide");
     quitGameButton.classList.add("hide");
     gamePage.classList.add("show");
@@ -360,14 +366,16 @@ function pauseGame() {
     returnToMenu();
     continueGameButton.classList.toggle("hide");
     quitGameButton.classList.toggle("hide");
+    initialMenu.classList.toggle("hide");
 }
 
 /** 
  * Brings user back into the game
 */
 function continueGame() {
-    initialMenu.classList.remove("show");
-    initialMenu.classList.add("hide");
+    // initialMenu.classList.remove("show");
+    // initialMenu.classList.add("hide");
+    initialMenu.classList.toggle("hide");
     gamePage.classList.remove("hide");
     gamePage.classList.add("show");
     continueGameButton.classList.toggle("hide");
@@ -738,8 +746,9 @@ function gameWon() {
      */
     if (sum === 0) {
         alert(`You won! Your final score is ${score}`);
-        initialMenu.classList.add("show");
-        initialMenu.classList.remove("hide");
+        // initialMenu.classList.add("show");
+        // initialMenu.classList.remove("hide");
+        initialMenu.classList.toggle("hide");
         gamePage.classList.add("hide");
         gamePage.classList.remove("show");
         // continueGameButton.classList.remove("show");
@@ -778,6 +787,7 @@ function quitGame() {
     returnToMenu();
     continueGameButton.classList.toggle("hide");
     quitGameButton.classList.toggle("hide");
+    initialMenu.classList.toggle("hide");
 }
 
 let generateScore = 0;
@@ -797,6 +807,7 @@ function gamePotentiallyNotSolvable() {
         alert("You have used 'Generate' several times in a row. Feel free to start a new game if this one is no longer solvable. Good luck!");
         generateScore = 0;
         pauseGame();
+        initialMenu.classList.toggle("hide");
     }
 }
 
@@ -824,7 +835,7 @@ function playSound() {
  * Event listener creation was loosely taken from JavaScript30 website - JavaScript Drum Kit tutorial.
  */
 document.addEventListener("keydown", function(event) {
-        if (event.code = "KeyC" && continueGameButton.classList.contains("show")) {
+        if (event.code = "KeyC" && !continueGameButton.classList.contains("hide")) {
             continueGame();
         } 
         if (gamePage.classList.contains("show")) {
