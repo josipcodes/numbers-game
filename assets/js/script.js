@@ -61,8 +61,9 @@ function showDifficultyPage() {
     // initialMenu.classList.remove("show");
     // initialMenu.classList.add("hide");
     initialMenu.classList.toggle("hide");
-    difficultyMenu.classList.add("show");
-    difficultyMenu.classList.remove("hide");
+    // difficultyMenu.classList.add("show");
+    // difficultyMenu.classList.remove("hide");
+    difficultyMenu.classList.toggle("hide");
 }
 
 // Opens rules page
@@ -70,8 +71,9 @@ function showRulesPage() {
     // initialMenu.classList.remove("show");
     // initialMenu.classList.add("hide");
     initialMenu.classList.toggle("hide");
-    rulesPage.classList.add("show");
-    rulesPage.classList.remove("hide");
+    // rulesPage.classList.add("show");
+    // rulesPage.classList.remove("hide");
+    rulesPage.classList.toggle("hide");
 }
 
 
@@ -80,8 +82,9 @@ function showAboutPage() {
     // initialMenu.classList.remove("show");
     // initialMenu.classList.add("hide");
     initialMenu.classList.toggle("hide");
-    aboutPage.classList.add("show");
-    aboutPage.classList.remove("hide");
+    // aboutPage.classList.add("show");
+    // aboutPage.classList.remove("hide");
+    aboutPage.classList.toggle("hide");
 }
 
 
@@ -91,8 +94,9 @@ function showControlsPage() {
     // initialMenu.classList.remove("show");
     // initialMenu.classList.add("hide");
     initialMenu.classList.toggle("hide");
-    controlsPage.classList.add("show");
-    controlsPage.classList.remove("hide");
+    // controlsPage.classList.add("show");
+    // controlsPage.classList.remove("hide");
+    controlsPage.classList.toggle("hide");
 }
 
 
@@ -103,15 +107,15 @@ function returnToMenu() {
     // initialMenu.classList.add("show");
     initialMenu.classList.toggle("hide");
     difficultyMenu.classList.add("hide");
-    difficultyMenu.classList.remove("show");
+    // difficultyMenu.classList.remove("show");
     rulesPage.classList.add("hide");
-    rulesPage.classList.remove("show");
+    // rulesPage.classList.remove("show");
     aboutPage.classList.add("hide");
-    aboutPage.classList.remove("show");
+    // aboutPage.classList.remove("show");
     controlsPage.classList.add("hide");
-    controlsPage.classList.remove("show");
+    // controlsPage.classList.remove("show");
     gamePage.classList.add("hide");
-    gamePage.classList.remove("show");
+    // gamePage.classList.remove("show");
 }
 
 /**
@@ -124,9 +128,10 @@ function runGame() {
     initialMenu.classList.add("hide");
     continueGameButton.classList.add("hide");
     quitGameButton.classList.add("hide");
-    gamePage.classList.add("show");
-    gamePage.classList.remove("hide");
-    difficultyMenu.classList.add("hide");
+    // gamePage.classList.add("show");
+    // gamePage.classList.remove("hide");
+    gamePage.classList.toggle("hide");
+    difficultyMenu.classList.toggle("hide");
     // Sets score to 0 to prevent score carrying over from a previous session.
     score = 0;
     // Sets innerHTML to score.
@@ -852,7 +857,6 @@ document.addEventListener("keydown", function(event) {
             }
         }
   });
-
   
 // Function checks for a class of soundOn div and toggles visibility between it and soundOff.
   function soundOptions() {
