@@ -308,9 +308,7 @@ function checkContent() {
     }
 }
 
-/**
- * Cancels choice if pair is not viable
- */
+// Cancels choice if pair is not viable
 function cancelChoice() {
     choices = [];
     let spans = gameTable.getElementsByTagName("span");
@@ -325,15 +323,17 @@ function cancelChoice() {
 }
 
 // Checks for and removes an empty row
-
 function removeEmptyRow() {
     let amountOfSpans = document.querySelectorAll("[data-place]").length;
+    // Calculates the amount of rows that need checking. Doesn't check the last row if not full.
     for (let i = 0; i < (Math.floor(amountOfSpans / 9)); i++) {
         let collection = 0;
         let wholeRow = document.querySelectorAll(`[data-y="${i}"]`);
+        // Checks all spans within the row and sums their innerHTML.
         for (let j = 0; j < 9; j++) {
             collection += Number(wholeRow[j].innerHTML);
         }
+        // If row sum is 0, calculates score and removes the row.
         if (collection === 0) {
             score += 10;
             calculateScore();
