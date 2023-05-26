@@ -639,8 +639,11 @@ function provideHint() {
  * Removes a pair if all conditions are met.
 */
 function removeViablePair() {
-    hintButton.classList.add("show");
-    hintButton.classList.remove("hide");
+    // if (hintButton.classList.contains("hide")) {
+    //     hintButton.classList.toggle("hide");
+    // }
+    // hintButton.classList.add("show");
+    // hintButton.classList.remove("hide");
     // Sets generateScore to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
     generateScore = 0;
     // Shows undo button after a successful removal.
@@ -692,8 +695,8 @@ let newScore = 0;
  * 
  */
 function removeFifth() {
-    hintButton.classList.add("show");
-    hintButton.classList.remove("hide");
+    // hintButton.classList.add("show");
+    // hintButton.classList.remove("hide");
     const spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
     /**
@@ -775,8 +778,9 @@ function FifthButtonDisplay() {
      * a) there are less than 5 spans on the table.
      * b) score is below 50.
     */
-    if (currentSpans.length < 5 || score < 50) {
-        removeFifthButton.classList.add("hide");
+    if (currentSpans.length < 5 || score < 50 && !removeFifthButton.classList.contains("hide")) {
+        // removeFifthButton.classList.add("hide");
+        removeFifthButton.classList.toggle("hide");
     }
     /**
      * Else if statement shows removeFifthButton if: 
@@ -785,7 +789,8 @@ function FifthButtonDisplay() {
      * c) removeFifthButton was previously hidden.
      */
     else if (currentSpans.length > 4 && score >= 50 && removeFifthButton.classList.contains("hide")) {
-        removeFifthButton.classList.remove("hide");
+        // removeFifthButton.classList.remove("hide");
+        removeFifthButton.classList.toggle("hide");
     }
 }
 
