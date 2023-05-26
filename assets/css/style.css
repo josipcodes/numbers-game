@@ -72,9 +72,8 @@ p {
 }
 
 
-.show {
-    display: block;
-}
+.hiden {
+   visibility: hidden;
 
 #initial-menu,
 #difficulty-menu,
