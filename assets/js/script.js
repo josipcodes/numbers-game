@@ -128,6 +128,7 @@ function runGame() {
     initialMenu.classList.add("hide");
     continueGameButton.classList.add("hide");
     quitGameButton.classList.add("hide");
+    undoButton.classList.add("hide");
     // gamePage.classList.add("show");
     // gamePage.classList.remove("hide");
     gamePage.classList.toggle("hide");
@@ -397,7 +398,10 @@ let generateSpans = [];
 function generateMoreSpans() {
     generateScore += 1;
     gamePotentiallyNotSolvable();
-    undoButton.classList.add("hide");
+    // undoButton.classList.add("hide");
+    if (!undoButton.classList.contains("hide")) {
+    undoButtonToggle();
+    }
     let spans = gameTable.getElementsByTagName("span");
     let spansLength = spans.length;
     for (let i = 0; i < spans.length; i++) {
@@ -437,7 +441,8 @@ function undoAction() {
         score -= 5;
     }
     // hides undoButton
-    undoButton.classList.add("hide");
+    // undoButton.classList.add("hide");
+    undoButtonToggle();
     let memoryChildren = memory.getElementsByTagName("span");
     // Removes highlight from spans.
     for (let x = 0; x < memoryChildren.length; x++) {
@@ -647,7 +652,10 @@ function removeViablePair() {
     // Sets generateScore to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
     generateScore = 0;
     // Shows undo button after a successful removal.
-    undoButton.classList.remove("hide");
+    // undoButton.classList.remove("hide");
+    if (undoButton.classList.contains("hide")) {
+    undoButtonToggle();
+    }
     memory = [];
     // Clones gameTable to remember the last choice.
     memory = gameTable.cloneNode(true);
@@ -709,7 +717,10 @@ function removeFifth() {
     /**
      * Undo button is removed to prevent gaming.
      */
-    undoButton.classList.add("hide");
+    // undoButton.classList.add("hide");
+    if (!undoButton.classList.contains("hide")) {
+    undoButtonToggle();
+    }
     // const spans = gameTable.getElementsByTagName("span");
     // const spansLength = spans.length;
     /**
@@ -873,4 +884,8 @@ document.addEventListener("keyup", function(event) {
     if (!soundOn.classList.contains("hide")) {
         playSound();
     }
+}
+
+function undoButtonToggle() {
+    undoButton.classList.toggle("hide");
 }
