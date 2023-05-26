@@ -116,7 +116,6 @@ function returnToMenu() {
  */
 function runGame() {
     // Checks if gamePage contains show class, if not, adds it and removes hide.
-    // continueGameButton.classList.remove("show");
     continueGameButton.classList.add("hide");
     quitGameButton.classList.add("hide");
     gamePage.classList.add("show");
@@ -359,12 +358,7 @@ function removeEmptyRow() {
 */
 function pauseGame() {
     returnToMenu();
-    // continueGameButton.classList.toggle("show");
     continueGameButton.classList.toggle("hide");
-    // continueGameButton.classList.remove("hide");
-    // continueGameButton.classList.add("show");
-    // quitGameButton.classList.add("show");
-    // quitGameButton.classList.remove("hide");
     quitGameButton.classList.toggle("hide");
 }
 
@@ -376,8 +370,8 @@ function continueGame() {
     initialMenu.classList.add("hide");
     gamePage.classList.remove("hide");
     gamePage.classList.add("show");
-    // continueGameButton.classList.toggle("show");
     continueGameButton.classList.toggle("hide");
+    quitGameButton.classList.toggle("hide");
 }
 
 let generateSpans = [];
@@ -782,12 +776,7 @@ function FifthButtonDisplay() {
 // Function brings up the main menu and hides continue and quit options.
 function quitGame() {
     returnToMenu();
-    // continueGameButton.classList.toggle("show");
     continueGameButton.classList.toggle("hide");
-    // continueGameButton.classList.remove("show");
-    // continueGameButton.classList.add("hide");
-    // quitGameButton.classList.add("hide");
-    // quitGameButton.classList.remove("show");
     quitGameButton.classList.toggle("hide");
 }
 
