@@ -58,32 +58,20 @@ quitGameButton.addEventListener("click", quitGame);
 
 // Opens difficulty page
 function showDifficultyPage() {
-    // initialMenu.classList.remove("show");
-    // initialMenu.classList.add("hide");
     initialMenu.classList.toggle("hide");
-    // difficultyMenu.classList.add("show");
-    // difficultyMenu.classList.remove("hide");
     difficultyMenu.classList.toggle("hide");
 }
 
 // Opens rules page
 function showRulesPage() {
-    // initialMenu.classList.remove("show");
-    // initialMenu.classList.add("hide");
     initialMenu.classList.toggle("hide");
-    // rulesPage.classList.add("show");
-    // rulesPage.classList.remove("hide");
     rulesPage.classList.toggle("hide");
 }
 
 
 // Opens about page
 function showAboutPage() {
-    // initialMenu.classList.remove("show");
-    // initialMenu.classList.add("hide");
     initialMenu.classList.toggle("hide");
-    // aboutPage.classList.add("show");
-    // aboutPage.classList.remove("hide");
     aboutPage.classList.toggle("hide");
 }
 
@@ -91,11 +79,7 @@ function showAboutPage() {
 // Opens controls page
 
 function showControlsPage() {
-    // initialMenu.classList.remove("show");
-    // initialMenu.classList.add("hide");
     initialMenu.classList.toggle("hide");
-    // controlsPage.classList.add("show");
-    // controlsPage.classList.remove("hide");
     controlsPage.classList.toggle("hide");
 }
 
@@ -103,19 +87,12 @@ function showControlsPage() {
 // Opens main menu
 
 function returnToMenu() {
-    // initialMenu.classList.remove("hide");
-    // initialMenu.classList.add("show");
     initialMenu.classList.remove("hide");
     difficultyMenu.classList.add("hide");
-    // difficultyMenu.classList.remove("show");
     rulesPage.classList.add("hide");
-    // rulesPage.classList.remove("show");
     aboutPage.classList.add("hide");
-    // aboutPage.classList.remove("show");
     controlsPage.classList.add("hide");
-    // controlsPage.classList.remove("show");
     gamePage.classList.add("hide");
-    // gamePage.classList.remove("show");
 }
 
 /**
@@ -129,8 +106,6 @@ function runGame() {
     continueGameButton.classList.add("hide");
     quitGameButton.classList.add("hide");
     undoButton.classList.add("hide");
-    // gamePage.classList.add("show");
-    // gamePage.classList.remove("hide");
     gamePage.classList.toggle("hide");
     difficultyMenu.classList.toggle("hide");
     // Sets score to 0 to prevent score carrying over from a previous session.
@@ -161,7 +136,6 @@ function runGame() {
     } else {
         for (let i = 0; i < 20; i++) {
             let newSpan = document.createElement("span");
-            // newSpan.textContent = "";
             gameTable.appendChild(newSpan);
         }
     }
@@ -206,6 +180,7 @@ function addLocation() {
         spans[i].setAttribute(["data-x"], `${stringCoordinateCalc[1].charAt(0)}`);
         spans[i].setAttribute(["data-place"], `${i}`);
     }
+    
     // Adds event listeners to current spans.
     addListenerToSpan();
 }
@@ -215,9 +190,6 @@ function addLocation() {
 function addListenerToSpan() {
     let choice = gameTable.getElementsByTagName("span");
     typeof(choice);
-    // Array.prototype.forEach.call(choice, span => {
-    //     span.addEventListener("click", highlight)
-    //   });
     Array.from(choice).forEach(span => {
         span.addEventListener("click", highlight)
       });
@@ -379,11 +351,7 @@ function pauseGame() {
  * Brings user back into the game
 */
 function continueGame() {
-    // initialMenu.classList.remove("show");
-    // initialMenu.classList.add("hide");
     initialMenu.classList.toggle("hide");
-    // gamePage.classList.remove("hide");
-    // gamePage.classList.add("show");
     gamePage.classList.toggle("hide");
     continueGameButton.classList.toggle("hide");
     quitGameButton.classList.toggle("hide");
@@ -398,7 +366,6 @@ let generateSpans = [];
 function generateMoreSpans() {
     generateScore += 1;
     gamePotentiallyNotSolvable();
-    // undoButton.classList.add("hide");
     if (!undoButton.classList.contains("hide")) {
     undoButtonToggle();
     }
@@ -441,7 +408,6 @@ function undoAction() {
         score -= 5;
     }
     // hides undoButton
-    // undoButton.classList.add("hide");
     undoButtonToggle();
     let memoryChildren = memory.getElementsByTagName("span");
     // Removes highlight from spans.
@@ -467,7 +433,6 @@ function undoAction() {
  * Current unexpected behaviour - generate button triggers after the last pair is hinted, not removing after a cycle.
 */
 function provideHint() {
-    // hintButton.classList.add("hide");
     if (score >= 3) {
         score -= 3;
     } else {
@@ -488,7 +453,6 @@ function provideHint() {
     for (let y = 0; y < spans.length; y++) {
         if (spans[y].classList.contains("hint")) {
             spans[y].classList.remove("hint");
-            // spans[y].classList.add("was-hint");
         }
     }
 
@@ -557,9 +521,6 @@ function provideHint() {
                                 break loopOne;
                             }
                         }
-                        // else {
-                        //     console.log(spans[i], spans[j], "cannot be removed");
-                        // }
                     }
                     // Else if statement checks if i and j are in the same column.
                 } else if (coordinatesXZero === coordinatesXOne) {
@@ -616,18 +577,8 @@ function provideHint() {
                         }
                     }
                 }
-                // else {
-                //     generateButton.classList.add("hint");
-                //     console.log("generate button should get a class", generateButton.classList);
-                // }
-
             }
         }
-        // if (choices.length === 2) {
-        //     console.log("breaking");
-        //     choices = [];
-        //     return;
-        // }
     }
     if (choices.length === 2) {
         console.log("breaking");
@@ -639,16 +590,10 @@ function provideHint() {
     // choices = [];
 }
 
-
 /** 
  * Removes a pair if all conditions are met.
 */
 function removeViablePair() {
-    // if (hintButton.classList.contains("hide")) {
-    //     hintButton.classList.toggle("hide");
-    // }
-    // hintButton.classList.add("show");
-    // hintButton.classList.remove("hide");
     // Sets generateScore to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
     generateScore = 0;
     // Shows undo button after a successful removal.
@@ -661,8 +606,6 @@ function removeViablePair() {
     memory = gameTable.cloneNode(true);
     // Increases score.
     score += 2;
-    // choices[0].style.backgroundColor = "black";
-    // choices[1].style.backgroundColor = "black";
     choices[0].classList.add("removed-choice");
     choices[1].classList.add("removed-choice");
     choices[0].textContent = "";
@@ -703,8 +646,6 @@ let newScore = 0;
  * 
  */
 function removeFifth() {
-    // hintButton.classList.add("show");
-    // hintButton.classList.remove("hide");
     const spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
     /**
@@ -717,12 +658,9 @@ function removeFifth() {
     /**
      * Undo button is removed to prevent gaming.
      */
-    // undoButton.classList.add("hide");
     if (!undoButton.classList.contains("hide")) {
     undoButtonToggle();
     }
-    // const spans = gameTable.getElementsByTagName("span");
-    // const spansLength = spans.length;
     /**
      * For loop removes every 5th span starting from the end.
      */
@@ -766,15 +704,8 @@ function gameWon() {
      */
     if (sum === 0) {
         alert(`You won! Your final score is ${score}`);
-        // initialMenu.classList.add("show");
-        // initialMenu.classList.remove("hide");
         initialMenu.classList.toggle("hide");
-        // gamePage.classList.add("hide");
-        // gamePage.classList.remove("show");
         gamePage.classList.toggle("hide");
-        // continueGameButton.classList.remove("show");
-        // continueGameButton.classList.add("hide");
-        // continueGameButton.classList.toggle("show");
         continueGameButton.classList.toggle("hide");
     }
 }
@@ -790,7 +721,6 @@ function FifthButtonDisplay() {
      * b) score is below 50.
     */
     if (currentSpans.length < 5 || score < 50 && !removeFifthButton.classList.contains("hide")) {
-        // removeFifthButton.classList.add("hide");
         removeFifthButton.classList.toggle("hide");
     }
     /**
@@ -800,7 +730,6 @@ function FifthButtonDisplay() {
      * c) removeFifthButton was previously hidden.
      */
     else if (currentSpans.length > 4 && score >= 50 && removeFifthButton.classList.contains("hide")) {
-        // removeFifthButton.classList.remove("hide");
         removeFifthButton.classList.toggle("hide");
     }
 }
@@ -886,6 +815,7 @@ document.addEventListener("keyup", function(event) {
     }
 }
 
+// Toggles undoButton class of hide when called
 function undoButtonToggle() {
     undoButton.classList.toggle("hide");
 }
