@@ -224,8 +224,9 @@ span {
 @media (min-width: 1800px) {
     span {
         aspect-ratio: 2/1;
-        padding: 16px 0 0 0;
-        font-size: xx-large;
+        padding: 16px 0;
+        font-size: x-large;
+        line-height: 1;
     }
 
     #score {
