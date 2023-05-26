@@ -41,18 +41,19 @@ hintButton.addEventListener("click", provideHint);
 removeFifthButton.addEventListener("click", removeFifth);
 quitGameButton.addEventListener("click", quitGame);
 
-// Turns object into an array and uses forEach to add event listener.
-Array.prototype.forEach.call(gameModeButtons, button => {
+// Ensures item is an array and uses forEach to add event listener.
+  [...gameModeButtons].forEach(button => {
     button.addEventListener("click", runGame)
   });
 
-// Turns object into an array and uses forEach to add event listener.
-Array.prototype.forEach.call(returnButtons, button => {
+// Ensures item is an array and uses forEach to add event listener.
+[...returnButtons].forEach(button => {
     button.addEventListener("click", returnToMenu)
   });
 
-Array.prototype.forEach.call(soundIcons, icon => {
-    icon.addEventListener("click", soundOptions)
+// Ensures item is an array and uses forEach to add event listener.
+[...soundIcons].forEach(button => {
+    button.addEventListener("click", soundOptions)
   });
 
 // Opens difficulty page
@@ -62,7 +63,6 @@ function showDifficultyPage() {
     difficultyMenu.classList.add("show");
     difficultyMenu.classList.remove("hide");
 }
-
 
 // Opens rules page
 function showRulesPage() {
@@ -338,7 +338,6 @@ function removeEmptyRow() {
         if (collection === 0) {
             score += 10;
             calculateScore();
-
             let emptyRow = document.querySelectorAll(`[data-y="${i}"]`);
             Array.prototype.forEach.call(emptyRow, span => {
                 span.remove()
