@@ -105,7 +105,7 @@ function showControlsPage() {
 function returnToMenu() {
     // initialMenu.classList.remove("hide");
     // initialMenu.classList.add("show");
-    initialMenu.classList.toggle("hide");
+    initialMenu.classList.remove("hide");
     difficultyMenu.classList.add("hide");
     // difficultyMenu.classList.remove("show");
     rulesPage.classList.add("hide");
@@ -371,7 +371,7 @@ function pauseGame() {
     returnToMenu();
     continueGameButton.classList.toggle("hide");
     quitGameButton.classList.toggle("hide");
-    initialMenu.classList.toggle("hide");
+    initialMenu.classList.remove("hide");
 }
 
 /** 
@@ -794,7 +794,7 @@ function quitGame() {
     returnToMenu();
     continueGameButton.classList.toggle("hide");
     quitGameButton.classList.toggle("hide");
-    initialMenu.classList.toggle("hide");
+    // initialMenu.classList.toggle("hide");
 }
 
 let generateScore = 0;
@@ -814,7 +814,7 @@ function gamePotentiallyNotSolvable() {
         alert("You have used 'Generate' several times in a row. Feel free to start a new game if this one is no longer solvable. Good luck!");
         generateScore = 0;
         pauseGame();
-        initialMenu.classList.toggle("hide");
+        // initialMenu.classList.toggle("hide");
     }
 }
 
@@ -852,7 +852,7 @@ document.addEventListener("keydown", function(event) {
                 provideHint();
             } else if (event.code === "KeyP") {
                 pauseGame();
-                initialMenu.classList.toggle("hide");
+                // initialMenu.classList.toggle("hide");
             } else if (event.code === "KeyR" && !removeFifthButton.classList.contains("hide")) {
                 removeFifth();
             } else if (event.code === "KeyM") {
