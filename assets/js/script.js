@@ -116,7 +116,7 @@ function returnToMenu() {
  */
 function runGame() {
     // Checks if gamePage contains show class, if not, adds it and removes hide.
-    continueGameButton.classList.remove("show");
+    // continueGameButton.classList.remove("show");
     continueGameButton.classList.add("hide");
     gamePage.classList.add("show");
     gamePage.classList.remove("hide");
@@ -358,7 +358,7 @@ function removeEmptyRow() {
 */
 function pauseGame() {
     returnToMenu();
-    continueGameButton.classList.toggle("show");
+    // continueGameButton.classList.toggle("show");
     continueGameButton.classList.toggle("hide");
     // continueGameButton.classList.remove("hide");
     // continueGameButton.classList.add("show");
@@ -374,7 +374,7 @@ function continueGame() {
     initialMenu.classList.add("hide");
     gamePage.classList.remove("hide");
     gamePage.classList.add("show");
-    continueGameButton.classList.toggle("show");
+    // continueGameButton.classList.toggle("show");
     continueGameButton.classList.toggle("hide");
 }
 
@@ -748,7 +748,7 @@ function gameWon() {
         gamePage.classList.remove("show");
         // continueGameButton.classList.remove("show");
         // continueGameButton.classList.add("hide");
-        continueGameButton.classList.toggle("show");
+        // continueGameButton.classList.toggle("show");
         continueGameButton.classList.toggle("hide");
     }
 }
@@ -780,7 +780,7 @@ function FifthButtonDisplay() {
 // Function brings up the main menu and hides continue and quit options.
 function quitGame() {
     returnToMenu();
-    continueGameButton.classList.toggle("show");
+    // continueGameButton.classList.toggle("show");
     continueGameButton.classList.toggle("hide");
     // continueGameButton.classList.remove("show");
     // continueGameButton.classList.add("hide");
