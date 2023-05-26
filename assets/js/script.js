@@ -161,7 +161,6 @@ function randomizer() {
     let spans = gameTable.getElementsByTagName("span");
     // Adds random (1-9) number to each existing span.
     for (let i = 0; i < spans.length; i++) {
-        // if (spans[i].textContent === "") {
         let randomNumber = Math.floor(Math.random() * 9 + 1);
         // sets innerText to said random number
         spans[i].innerText = randomNumber;
