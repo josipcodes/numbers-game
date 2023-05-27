@@ -647,6 +647,14 @@ let newScore = 0;
 function removeFifth() {
     const spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
+    if (generateButton.classList.contains("hint")) {
+        generateButton.classList.remove("hint")
+    } else if (Array.from(spans).forEach(span => {
+        if (span.classList.contains("hint")) {
+            span.classList.remove("hint");
+        }
+    }));
+    
     /**
      * Removes 1/5 of the score.
      * If the score cannot be divided by 5, this is done to user's benefit.
