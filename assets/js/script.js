@@ -647,14 +647,8 @@ let newScore = 0;
 function removeFifth() {
     const spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
-    if (generateButton.classList.contains("hint")) {
-        generateButton.classList.remove("hint")
-    } else if (Array.from(spans).forEach(span => {
-        if (span.classList.contains("hint")) {
-            span.classList.remove("hint");
-        }
-    }));
-    
+    removeHighlight();
+
     /**
      * Removes 1/5 of the score.
      * If the score cannot be divided by 5, this is done to user's benefit.
@@ -688,6 +682,18 @@ function removeFifth() {
     * Check if there are empty rows to be removed.
     */
     removeEmptyRow();
+}
+
+// Checks if generate button or any spans are highlighted, removes highlight.
+function removeHighlight() {
+const spans = gameTable.getElementsByTagName("span");
+if (generateButton.classList.contains("hint")) {
+    generateButton.classList.remove("hint")
+} else if (Array.from(spans).forEach(span => {
+    if (span.classList.contains("hint")) {
+        span.classList.remove("hint");
+    }
+}));
 }
 
 /**
