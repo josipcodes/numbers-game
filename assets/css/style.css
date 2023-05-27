@@ -134,6 +134,7 @@ span {
     background-color: #E5E619;
     border: 1px dotted grey;
     font-weight: 600;
+    transition: all 0.2s ease-in;
 }
 
 .removed-choice {
@@ -228,7 +229,7 @@ span {
         aspect-ratio: 2/1;
         padding: 16px 0;
         font-size: x-large;
-        line-height: 1;
+        line-height: 2;
     }
 
     #score {
