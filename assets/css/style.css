@@ -64,7 +64,7 @@ p {
 }
 
 .main-screen-button,
-.new-game-screen-button {
+.new-game-screen-button, .in-game-screen-button {
     display: block;
     margin: 7px auto;
     padding: 6px 5px;
@@ -226,7 +226,7 @@ span {
 
 @media (min-width: 1800px) {
     span {
-        aspect-ratio: 2/1;
+        /* aspect-ratio: 2/1; */
         padding: 16px 0;
         font-size: x-large;
         line-height: 2;
