@@ -169,6 +169,12 @@ span {
     margin-left: 0;
 }
 
+.image-display {
+    margin: 5px auto;
+    border: 2px solid black;
+    display: block;
+}
+
 @media (min-width: 750px) {
     span {
         padding: 12px 0;
