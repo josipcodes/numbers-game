@@ -161,6 +161,13 @@ span {
     /* line-height: 1; */
 }
 
+#computer-controls {
+    display: none;
+}
+
+#general-controls-icons {
+    margin-left: 0;
+}
 
 @media (min-width: 750px) {
     span {
@@ -189,9 +196,9 @@ span {
         width: 100%;
     }
 
-    #relative-position {
+    /* #relative-position {
         position: relative;
-    }
+    } */
 
     #game-button-container {
         display: block;
@@ -214,6 +221,14 @@ span {
 
     .fa-solid {
         margin-left: 1vw;
+    }
+
+    #phone-controls {
+        display: none;
+    }
+
+    #computer-controls {
+        display: block;
     }
 }
 
