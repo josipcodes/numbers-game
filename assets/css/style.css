@@ -45,6 +45,8 @@ h1 {
     text-align: center;
     padding-left: 2.5%;
     background-color: lightgray;
+    /* Adding 1% margin to prevent h1 from covering external border */
+    margin: 0 1%;
 
 }
 
@@ -108,7 +110,7 @@ p {
     position: sticky;
     top: 0;
     background-color: lightgray;
-    margin: auto auto auto -1%;
+    margin: 0 5px;
 }
 
 .fa-solid {
@@ -230,8 +232,7 @@ span {
     #game-button-container {
         display: block;
         padding-top: 5%;
-        margin-left: 12%;
-        margin-top: 0;
+        margin: 0 1%;
     }
 
     .game-area {
@@ -241,6 +242,7 @@ span {
 
     #game-table {
         min-width: 75%;
+        margin: 0 0 0 1%;
         /* necessary to ensure beginner mode doesn't expand space between span rows */
         height: 100%;
         padding-top: 10px;
