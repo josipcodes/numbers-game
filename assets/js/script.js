@@ -366,19 +366,12 @@ let generateSpans = [];
 function generateMoreSpans() {
     generateScore += 1;
     gamePotentiallyNotSolvable();
+    removeHint();
     if (!undoButton.classList.contains("hidden")) {
     undoButtonToggle();
     }
     let spans = gameTable.getElementsByTagName("span");
     let spansLength = spans.length;
-    for (let i = 0; i < spans.length; i++) {
-        if (spans[i].classList.contains("hint")) {
-            spans[i].classList.remove("hint");
-        }
-    }
-    if (generateButton.classList.contains("hint")) {
-        generateButton.classList.remove("hint");
-    }
     for (let i = 0; i < spansLength; i++) {
         if (!spans[i].classList.contains("removed-choice")) {
             generateSpans.push(spans[i]);
@@ -647,7 +640,7 @@ let newScore = 0;
 function removeFifth() {
     const spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
-    removeHighlight();
+    removeHint();
 
     /**
      * Removes 1/5 of the score.
@@ -685,11 +678,13 @@ function removeFifth() {
 }
 
 // Checks if generate button or any spans are highlighted, removes highlight.
-function removeHighlight() {
+function removeHint() {
+    console.log("running")
 const spans = gameTable.getElementsByTagName("span");
 if (generateButton.classList.contains("hint")) {
     generateButton.classList.remove("hint")
-} else if (Array.from(spans).forEach(span => {
+}
+if (Array.from(spans).forEach(span => {
     if (span.classList.contains("hint")) {
         span.classList.remove("hint");
     }
@@ -832,3 +827,5 @@ document.addEventListener("keyup", function(event) {
 function undoButtonToggle() {
     undoButton.classList.toggle("hidden");
 }
+
+// Removes a highlight if another action takes place.
