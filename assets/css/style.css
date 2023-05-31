@@ -64,12 +64,19 @@ p {
 }
 
 .main-screen-button,
-.new-game-screen-button, .in-game-screen-button {
+.new-game-screen-button {
+    display: block;
+    margin: 7px auto;
+    padding: 10px 10px;
+    font-size: larger;
+    box-shadow: 3px 3px 2px darkgrey;
+}
+
+.in-game-screen-button {
     display: block;
     margin: 7px auto;
     padding: 6px 5px;
     box-shadow: 3px 3px 2px darkgrey;
-
 }
 
 
