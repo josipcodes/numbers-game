@@ -34,10 +34,12 @@ body {
     border: 3px solid black;
 }
 
-.game-window>div {
+.game-window > section {
     width: 90%;
     margin: 0 auto;
 }
+
+/* .game-window > div, */
 
 h1 {
     text-align: center;
