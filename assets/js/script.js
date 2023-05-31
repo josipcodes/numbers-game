@@ -443,11 +443,7 @@ function provideHint() {
             break;
         }
     }
-    for (let y = 0; y < spans.length; y++) {
-        if (spans[y].classList.contains("hint")) {
-            spans[y].classList.remove("hint");
-        }
-    }
+    removeHint();
 
     loopOne:
     for (let i = startOfCheck; i < spans.length - 2; i++) {
