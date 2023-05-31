@@ -78,7 +78,7 @@ p {
 .in-game-screen-button {
     display: block;
     margin: 7px auto;
-    padding: 6px 5px;
+    padding: 6px 4px;
     box-shadow: 3px 3px 2px darkgrey;
 }
 
@@ -222,6 +222,7 @@ span {
         display: flex;
         flex-direction: row-reverse;
         width: 100%;
+        min-height: 500px;
     }
 
     /* #relative-position {
