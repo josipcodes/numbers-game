@@ -26,11 +26,11 @@
         <div class="side-area-left">
         </div>
         <div class="game-area">
-            <section class="game-window">
+            <div class="game-window">
                 <h1>
                     Numbers Game
                 </h1>
-                <section id="initial-menu">
+                <section id="initial-menu" aria-label="Menu containing buttons">
                     <button type="button" class="main-screen-button hide" id="continue-game">
                         Continue Game
                     </button>
@@ -50,7 +50,7 @@
                         Quit Game
                     </button>
                 </section>
-                <section id="difficulty-menu" class="hide">
+                <section id="difficulty-menu" class="hide" aria-label="Difficulty menu containing buttons">
                     <h2>
                         Difficulty Level
                     </h2>
@@ -68,7 +68,7 @@
                         Return to Main Menu
                     </button>
                 </section>
-                <section id="rules-page" class="hide">
+                <section id="rules-page" class="hide" aria-label="Rules explanation with images">
                     <h2>
                         Rules
                     </h2>
@@ -81,16 +81,20 @@
                         </p>
                     </div>
                     <div class="text-block">
-                        <img src="assets/images/example-remove-in-column.png" class="image-display" alt="Pairs can be removed within the same column as long as there are no numbers between the pair.">
-                        <img src="assets/images/example-remove-in-row.png" class="image-display" alt="Pairs can be removed within the same row as long as there are no numbers between the pair.">
-                        <img src="assets/images/example-remove-in-rows.png" class="image-display" alt="Pairs can be removed within neighboring rows as long as there are no numbers between the pair.">
+                        <img src="assets/images/example-remove-in-column.png" class="image-display"
+                            alt="Pairs can be removed within the same column as long as there are no numbers between the pair.">
+                        <img src="assets/images/example-remove-in-row.png" class="image-display"
+                            alt="Pairs can be removed within the same row as long as there are no numbers between the pair.">
+                        <img src="assets/images/example-remove-in-rows.png" class="image-display"
+                            alt="Pairs can be removed within neighboring rows as long as there are no numbers between the pair.">
                         <p>
                             Pairs can be removed within the same column, row or within neighboring rows as long as there
                             are no other
                             numbers between them.
                         </p>
                         <p>
-                            Removing a pair equals to 2 points, while emptying a whole row adds additional 10 points to your overall score.
+                            Removing a pair equals to 2 points, while emptying a whole row adds additional 10 points to
+                            your overall score.
                         </p>
                     </div>
                     <div class="text-block">
@@ -130,7 +134,8 @@
                         Return to Main Menu
                     </button>
                 </section>
-                <section id="about-page" class="hide">
+                <section id="about-page" class="hide"
+                    aria-label="Information regarding the game inspiration and author.">
                     <h2>
                         About
                     </h2>
@@ -148,7 +153,8 @@
                             Beware.
                             <br>
                             <br>
-                            <a href="https://github.com/josipcodes/numbers-game" target="_blank" rel="noopener noreferrer">Visit Github page.</a>
+                            <a href="https://github.com/josipcodes/numbers-game" target="_blank"
+                                rel="noopener noreferrer"  aria-label="Github page of the numbers game, opens in a new window">Visit Github page.</a>
                         </p>
                     </div>
                     <br>
@@ -156,7 +162,7 @@
                         Return to Main Menu
                     </button>
                 </section>
-                <section id="controls-page" class="hide">
+                <section id="controls-page" class="hide" aria-label="Controls explanation">
                     <h2>
                         Controls
                     </h2>
@@ -186,10 +192,12 @@
                             Click - choice
                         </p>
                         <p>
-                            <i class="fa-solid fa-volume-high in-game-screen-button general-controls-icons"></i> - Sound currently off, switch it on
+                            <i class="fa-solid fa-volume-high in-game-screen-button general-controls-icons"></i> - Sound
+                            currently off, switch it on
                             <br>
                             <br>
-                            <i class="fa-solid fa-volume-xmark in-game-screen-button hide general-controls-icons"></i> - Sound currently on, switch it off
+                            <i class="fa-solid fa-volume-xmark in-game-screen-button hide general-controls-icons"></i> -
+                            Sound currently on, switch it off
                         </p>
                     </div>
                     <br>
@@ -197,9 +205,9 @@
                         Return to Main Menu
                     </button>
                 </section>
-                <section id="game-container" class="hide">
+                <div id="game-container" class="hide">
                     <div id="flex">
-                        <section id="game-button-container">
+                        <section id="game-button-container" aria-label="In-game buttons">
                             <div>
                                 <button type="button" class="in-game-screen-button" id="generate">
                                     Generate
@@ -239,18 +247,17 @@
                         <div id="game-table">
                         </div>
                     </div>
-                </section>
+                </div>
                 <div id="side-bar">
                 </div>
-            </section>
+            </div>
+            <div class="side-area-right">
+            </div>
+            <audio id="sound" src="assets/sounds/click.mp3"></audio>
         </div>
-        <div class="side-area-right">
-        </div>
-        <audio id="sound" src="assets/sounds/click.mp3"></audio>
-    </div>
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/75e939ab45.js" crossorigin="anonymous"></script>
-    <script src="assets/js/script.js"></script>
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/75e939ab45.js" crossorigin="anonymous"></script>
+        <script src="assets/js/script.js"></script>
 </body>
 
 </html>
