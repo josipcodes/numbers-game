@@ -197,6 +197,10 @@ span {
     margin: 5%;
 }
 
+#error-title {
+    margin-bottom: 5%;
+}
+
 @media (min-width: 750px) {
     span {
         padding: 12px 0;
