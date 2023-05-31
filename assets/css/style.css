@@ -29,8 +29,7 @@ body {
 .game-window {
     width: inherit;
     background-color: lightgrey;
-    padding-bottom: 17%;
-    padding-top: 5%;
+    padding: 5% 0;
     border: 3px solid black;
 }
 
@@ -110,7 +109,7 @@ p {
     position: sticky;
     top: 0;
     background-color: lightgray;
-    margin: 0 5px;
+    margin: 0 1px;
 }
 
 .fa-solid {
@@ -232,7 +231,9 @@ span {
     #game-button-container {
         display: block;
         padding-top: 5%;
-        margin: 0 1%;
+        margin: 0 auto;
+        /* Adding to ensure button container remains on the screen, otherwise it doesn't remain sticky */
+        max-height: 50px;
     }
 
     .game-area {
@@ -242,7 +243,7 @@ span {
 
     #game-table {
         min-width: 75%;
-        margin: 0 0 0 1%;
+        margin: 0 auto 0 10px;
         /* necessary to ensure beginner mode doesn't expand space between span rows */
         height: 100%;
         padding-top: 10px;
