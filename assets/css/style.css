@@ -176,6 +176,17 @@ span {
     max-width: 275px;
 }
 
+#error-container {
+    background-color: lightgrey;
+    margin: 5% auto;
+    min-height: 15vh;
+}
+
+#error-container > a {
+    color: black;
+    margin: 5%;
+}
+
 @media (min-width: 750px) {
     span {
         padding: 12px 0;
