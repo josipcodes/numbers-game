@@ -367,6 +367,7 @@ function generateMoreSpans() {
     generateScore += 1;
     gamePotentiallyNotSolvable();
     removeHint();
+    removeHighlight();
     if (!undoButton.classList.contains("hidden")) {
     undoButtonToggle();
     }
@@ -444,6 +445,7 @@ function provideHint() {
         }
     }
     removeHint();
+    removeHighlight();
 
     loopOne:
     for (let i = startOfCheck; i < spans.length - 2; i++) {
@@ -634,9 +636,9 @@ let newScore = 0;
  * 
  */
 function removeFifth() {
+    console.log("running removefifth")
     const spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
-    removeHint();
 
     /**
      * Removes 1/5 of the score.
@@ -671,11 +673,13 @@ function removeFifth() {
     * Check if there are empty rows to be removed.
     */
     removeEmptyRow();
+    removeHint();
+    removeHighlight();
+    console.log("removinghighlight")
 }
 
 // Checks if generate button or any spans are highlighted, removes highlight.
 function removeHint() {
-    console.log("running")
 const spans = gameTable.getElementsByTagName("span");
 if (generateButton.classList.contains("hint")) {
     generateButton.classList.remove("hint")
@@ -825,3 +829,12 @@ function undoButtonToggle() {
 }
 
 // Removes a highlight if another action takes place.
+function removeHighlight() {
+const spans = gameTable.getElementsByTagName("span");
+if (Array.from(spans).forEach(span => {
+    if (span.classList.contains("choice")) {
+        span.classList.remove("choice");
+    }
+}));
+choices = [];
+}
