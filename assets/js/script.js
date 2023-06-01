@@ -363,7 +363,7 @@ let generateSpans = [];
  * This is done by only taking into account spans on the board which don't have inner.HTML = 0.
 */
 function generateMoreSpans() {
-    generateScore += 1;
+    generateButtonScore += 1;
     gamePotentiallyNotSolvable();
     removeHint();
     removeHighlight();
@@ -571,8 +571,8 @@ function provideHint() {
  * Removes a pair if all conditions are met.
 */
 function removeViablePair() {
-    // Sets generateScore to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
-    generateScore = 0;
+    // Sets generateButtonScore to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
+    generateButtonScore = 0;
     // Shows undo button after a successful removal.
     if (undoButton.classList.contains("hidden")) {
     undoButtonToggle();
@@ -742,7 +742,7 @@ function quitGame() {
     }
 }
 
-let generateScore = 0;
+let generateButtonScore = 0;
 
 /**
  * Function checks if user uses Generate button several times without removing any viable pairs in between.
@@ -752,20 +752,19 @@ let generateScore = 0;
  */
 function gamePotentiallyNotSolvable() {
     /**
-     * If statement check the generateScore which is increased whenever the user repeatedly presses Generate.
-     * If generateScore reaches 5, alert pops up and the game moves to its paused state.
+     * If statement check the generateButtonScore which is increased whenever the user repeatedly presses Generate.
+     * If generateButtonScore reaches 4, alert pops up and the game moves to its paused state.
      */
-    if (generateScore === 4) {
+    if (generateButtonScore === 4) {
         alert("You have used 'Generate' several times in a row. Feel free to start a new game if this one is no longer solvable. Good luck!");
-        generateScore = 0;
+        generateButtonScore = 0;
         pauseGame();
-        // initialMenu.classList.toggle("hide");
     }
 }
 
 /**
  * Function plays sound when called. 
- * Current play time is set to 0 to help with repeated actions. 
+ * Current play time is set to 0 to help with repeated/quick actions. 
  */
 function playSound() {
     const audio = document.getElementsByTagName("audio")[0];
@@ -784,7 +783,7 @@ function playSound() {
  * If M is pressed, soundOptions function runs.
  * Minor bug: when in main menu after pausing the game, user can press H, R or G. 
  * Corresponding action will take place and user will be brought into the gamePage. Unable to locate source of gamePage class change.
- * Event listener creation was loosely taken from JavaScript30 website - JavaScript Drum Kit tutorial.
+ * Event listener creation was loosely inspired by JavaScript30 website - JavaScript Drum Kit tutorial.
  */
 document.addEventListener("keyup", function(event) {
         if (event.code = "KeyC" && !continueGameButton.classList.contains("hide")) {
@@ -797,7 +796,6 @@ document.addEventListener("keyup", function(event) {
                 provideHint();
             } else if (event.code === "KeyP") {
                 pauseGame();
-                // initialMenu.classList.toggle("hide");
             } else if (event.code === "KeyR" && !removeFifthButton.classList.contains("hidden")) {
                 removeFifth();
             } else if (event.code === "KeyM") {
@@ -828,6 +826,7 @@ if (Array.from(spans).forEach(span => {
         span.classList.remove("choice");
     }
 }));
+// Empties choices to prevent user having to make unnecessary click
 choices = [];
 }
 
