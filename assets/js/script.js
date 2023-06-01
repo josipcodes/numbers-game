@@ -330,7 +330,6 @@ function removeEmptyRow() {
             let emptyRow = document.querySelectorAll(`[data-y="${i}"]`);
             Array.prototype.forEach.call(emptyRow, span => {
                 span.remove()
-                console.log("removing a row")
               });
             }
         }
@@ -489,7 +488,6 @@ function provideHint() {
                         choices.push(spans[j]);
                         // if length of array choices is 2, if statement should cause a break.
                         if (choices.length === 2) {
-                            console.log("breaking", choices.length);
                             break loopOne;
                         }
                     }
@@ -502,13 +500,11 @@ function provideHint() {
                             neighborsXSum += Number(allY[i].innerHTML);
                         }
                         if (neighborsXSum === 0) {
-                            console.log(spans[i], spans[j], "can be removed");
                             spans[i].classList.add("hint");
                             spans[j].classList.add("hint");
                             choices.push(spans[i]);
                             choices.push(spans[j]);
                             if (choices.length === 2) {
-                                console.log("breaking");
                                 break loopOne;
                             }
                         }
@@ -517,13 +513,11 @@ function provideHint() {
                 } else if (coordinatesXZero === coordinatesXOne) {
                     // if statement checks if i and j are neighbors by a row, if yes, they are pushed into choices array.
                     if (coordinatesYMin + 1 === coordinatesYMax) {
-                        console.log(spans[i], spans[j], "can be removed");
                         choices.push(spans[i]);
                         spans[i].classList.add("hint");
                         spans[j].classList.add("hint");
                         choices.push(spans[j]);
                         if (choices.length === 2) {
-                            console.log("breaking");
                             break loopOne;
                         }
                         // Else statement takes all numbers in the column of i and checks if 
@@ -534,19 +528,17 @@ function provideHint() {
                             neighborsYSum += Number(allX[i].innerHTML);
                         }
                         if (neighborsYSum === 0) {
-                            console.log(spans[i], spans[j], "can be removed");
                             choices.push(spans[i]);
                             spans[i].classList.add("hint");
                             spans[j].classList.add("hint");
                             choices.push(spans[j]);
                             if (choices.length === 2) {
-                                console.log("breaking");
                                 break loopOne;
                             }
                         }
-                        else {
-                            console.log(spans[i], spans[j], "cannot be removed, thins one?");
-                        }
+                        // else {
+                        //     console.log(spans[i], spans[j], "cannot be removed, thins one?");
+                        // }
                     }
                     // Else if statement takes the 
                 } else if (placeYMin !== placeYMax) {
@@ -556,14 +548,11 @@ function provideHint() {
                         betweenSpanSum += Number(allPlaces[i].innerHTML);
                     }
                     if (betweenSpanSum === 0) {
-                        console.log(spans[i], spans[j], "can be removed");
                         choices.push(spans[i]);
                         spans[i].classList.add("hint");
                         spans[j].classList.add("hint");
                         choices.push(spans[j]);
-                        console.log("neighborsXSum === 0");
                         if (choices.length === 2) {
-                            console.log("breaking");
                             break loopOne;
                         }
                     }
@@ -572,13 +561,10 @@ function provideHint() {
         }
     }
     if (choices.length === 2) {
-        console.log("breaking");
         choices = [];
     } else {
         generateButton.classList.add("hint");
-        // console.log("generate button should get a class", generateButton.classList);
     }
-    // choices = [];
 }
 
 /** 
@@ -636,7 +622,6 @@ let newScore = 0;
  * 
  */
 function removeFifth() {
-    console.log("running removefifth")
     const spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
 
@@ -675,7 +660,6 @@ function removeFifth() {
     removeEmptyRow();
     removeHint();
     removeHighlight();
-    console.log("removinghighlight")
 }
 
 // Checks if generate button or any spans are highlighted, removes highlight.
@@ -726,10 +710,11 @@ function gameWon() {
 function FifthButtonDisplay() {
     let currentSpans = gameTable.getElementsByTagName("span");
     /** If statement hides removeFifthButton if: 
-     * a) there are less than 5 spans on the table.
+     * a) there are less than or equal to 5 spans on the table.
+     * a.1) without '=', button remains visible if there are 4 spans on the board
      * b) score is below 50.
     */
-    if (currentSpans.length < 5 || score < 50 && !removeFifthButton.classList.contains("hidden")) {
+    if (currentSpans.length <= 5 || score < 50 && !removeFifthButton.classList.contains("hidden")) {
         removeFifthButton.classList.toggle("hidden");
     }
     /**
@@ -738,7 +723,7 @@ function FifthButtonDisplay() {
      * b) score is at least 50,
      * c) removeFifthButton was previously hidden.
      */
-    else if (currentSpans.length > 4 && score >= 50 && removeFifthButton.classList.contains("hidden")) {
+     else if (currentSpans.length > 4 && score >= 50 && removeFifthButton.classList.contains("hidden")) {
         removeFifthButton.classList.toggle("hidden");
     }
 }
