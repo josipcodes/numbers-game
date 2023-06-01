@@ -38,8 +38,6 @@ body {
     margin: 0 auto;
 }
 
-/* .game-window > div, */
-
 h1 {
     text-align: center;
     padding-left: 2.5%;
@@ -124,9 +122,8 @@ p {
 }
 
 span {
-    background-color: white;
+    background-color: whitesmoke;
     border: 1px solid black;
-    /* aspect-ratio: 2/1; */
     padding: 10px 0;
     text-align: center;
     font-size: large;
@@ -160,15 +157,13 @@ span {
 #score {
     margin: 0 auto 5px;
     width: auto;
-    /* padding: 1px 5px; */
     padding: 5px 5px 1px 5px;
     height: 23px;
     color: black;
     display: block;
-    background-color: white;
+    background-color: whitesmoke;
     border: 2px solid black;
     text-align: center;
-    /* line-height: 1; */
 }
 
 #computer-controls {
@@ -202,11 +197,15 @@ span {
     margin-bottom: 5%;
 }
 
+/* Media query organising display of screens wider than 750px */
+
 @media (min-width: 750px) {
     span {
         padding: 12px 0;
     }
 }
+
+/* Media query organising display of screens wider than 950px */
 
 @media (min-width: 950px) {
     h2 {
@@ -230,10 +229,6 @@ span {
         min-height: 500px;
     }
 
-    /* #relative-position {
-        position: relative;
-    } */
-
     #game-button-container {
         display: block;
         padding-top: 5%;
@@ -250,7 +245,6 @@ span {
     #game-table {
         min-width: 75%;
         margin: 0 auto 0 10px;
-        /* necessary to ensure beginner mode doesn't expand space between span rows */
         height: 100%;
         padding-top: 10px;
     }
@@ -268,16 +262,18 @@ span {
     }
 }
 
+/* Media query organising display of screens wider than 1500px */
+
 @media (min-width: 1500px) {
     body {
         background-size: cover;
     }
 }
 
+/* Media query organising display of screens wider than 1800px */
 
 @media (min-width: 1800px) {
     span {
-        /* aspect-ratio: 2/1; */
         padding: 16px 0;
         font-size: x-large;
         line-height: 2;
