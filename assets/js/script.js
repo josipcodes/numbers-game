@@ -180,7 +180,6 @@ function addLocation() {
     addListenerToSpan();
 }
 
-
 // Creates event listeners for all spans created. Ideally will only create listeners for spans which don't have a value of 0
 function addListenerToSpan() {
     let choice = gameTable.getElementsByTagName("span");
@@ -219,6 +218,7 @@ function highlight() {
 
 /**
  * Checks location of the choices by x and y coordinates as well as placement.
+ * Proceeds to cancelChoice if choice is not valid, or to check content if choice is deemed valid
  */
 function checkLocation(choices) {
     const coordinatesYZero = Number(choices[0].getAttribute("data-y"));
@@ -281,7 +281,7 @@ function checkLocation(choices) {
 }
 
 /**
- * Checks content of spans to decide if action is valid.
+ * Checks content of spans to decide if action is valid based on the innerHTML.
  */
 function checkContent() {
     let sum = 0;
