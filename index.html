@@ -16,17 +16,20 @@
         rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <!-- Page title -->
     <title>
         Numbers game
     </title>
 </head>
 
 <body>
+    <!-- Container organising the layout of the page, .game-page is the middle section hosting the game -->
     <div id="grid-container">
         <div class="side-area-left">
         </div>
-        <div class="game-area">
-            <div class="game-window">
+        <!--  -->
+        <div id="game-area">
+            <div id="game-window">
                 <h1>
                     Numbers Game
                 </h1>
@@ -50,6 +53,7 @@
                         Quit Game
                     </button>
                 </section>
+                <!-- Difficulty section reachable through 'New Game' button -->
                 <section id="difficulty-menu" class="hide" aria-label="Difficulty menu containing buttons">
                     <h2>
                         Difficulty Level
@@ -68,6 +72,7 @@
                         Return to Main Menu
                     </button>
                 </section>
+                <!-- Rules page reachable via 'Rules' button -->
                 <section id="rules-page" class="hide" aria-label="Rules explanation with images">
                     <h2>
                         Rules
@@ -134,6 +139,7 @@
                         Return to Main Menu
                     </button>
                 </section>
+                <!-- About section reachable via 'About' button -->
                 <section id="about-page" class="hide"
                     aria-label="Information regarding the game inspiration and author.">
                     <h2>
@@ -162,6 +168,7 @@
                         Return to Main Menu
                     </button>
                 </section>
+                <!-- Controls section reachable via 'Controls' button -->
                 <section id="controls-page" class="hide" aria-label="Controls explanation">
                     <h2>
                         Controls

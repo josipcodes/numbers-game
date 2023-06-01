@@ -19,21 +19,21 @@ body {
     display: none;
 }
 
-.game-area {
+#game-area {
     background-color: lightgrey;
     margin: 20% auto auto auto;
     /* Prevents overflow */
     width: inherit;
 }
 
-.game-window {
+#game-window {
     width: inherit;
     background-color: lightgrey;
     padding: 5% 0;
     border: 3px solid black;
 }
 
-.game-window > section {
+#game-window > section {
     width: 90%;
     margin: 0 auto;
 }
@@ -237,7 +237,7 @@ span {
         max-height: 50px;
     }
 
-    .game-area {
+    #game-area {
         width: 100%;
         height: auto;
     }
