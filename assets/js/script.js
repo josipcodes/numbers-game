@@ -743,11 +743,18 @@ function FifthButtonDisplay() {
     }
 }
 
-// Function brings up the main menu and hides continue and quit options.
+/** 
+ * Function brings up a pop up asking user to confirm if they want to quit the game. 
+ * Upon confirmation, the main menu is brought up, and continue and quit options are hidden.
+ * Cancel closes the pop-up without further action.
+ */
 function quitGame() {
-    returnToMenu();
-    continueGameButton.classList.add("hide");
-    quitGameButton.classList.add("hide");
+    let quitConfirm = confirm("Are you sure you want to quit?");
+    if (quitConfirm === true) {
+        returnToMenu();
+        continueGameButton.classList.add("hide");
+        quitGameButton.classList.add("hide");
+    }
 }
 
 let generateScore = 0;
@@ -838,3 +845,4 @@ if (Array.from(spans).forEach(span => {
 }));
 choices = [];
 }
+
