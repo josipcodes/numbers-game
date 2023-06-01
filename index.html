@@ -27,8 +27,9 @@
     <div id="grid-container">
         <div class="side-area-left">
         </div>
-        <!--  -->
+        <!-- Game area holds the center area of the desktop screen, and is the area visible on phone screens -->
         <div id="game-area">
+            <!-- Game-window is the window displaying the game on all screen sizes, it initially shows the main menu -->
             <div id="game-window">
                 <h1>
                     Numbers Game
@@ -212,8 +213,10 @@
                         Return to Main Menu
                     </button>
                 </section>
+                <!-- Game-container holds the playable part of the game, including the game-table and in-game buttons -->
                 <div id="game-container" class="hide">
                     <div id="flex">
+                        <!-- Container helps to organise buttons in rows (phone) or vertically (desktop) -->
                         <section id="game-button-container" aria-label="In-game buttons">
                             <div>
                                 <button type="button" class="in-game-screen-button" id="generate">
@@ -250,7 +253,7 @@
                                 </div>
                             </div>
                         </section>
-                        <!-- Used to generate span elements by the script -->
+                        <!-- Game-table is used to generate span elements with javascript -->
                         <div id="game-table">
                         </div>
                     </div>
@@ -260,10 +263,13 @@
             </div>
             <div class="side-area-right">
             </div>
+            <!-- Sound made available in game, it won't be played automatically, only if the user decides to use it. 
+            If the user quits the game and starts a new one, sound will remain as their last choice assuming this is user's preferred mode. -->
             <audio id="sound" src="assets/sounds/click.mp3"></audio>
         </div>
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/75e939ab45.js" crossorigin="anonymous"></script>
+        <!-- Javascript -->
         <script src="assets/js/script.js"></script>
 </body>
 
