@@ -190,6 +190,7 @@ span {
     background-color: lightgrey;
     margin: 5% auto;
     min-height: 15vh;
+    border: 2px solid black;
 }
 
 #error-container > a {
