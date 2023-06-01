@@ -1,4 +1,4 @@
-// DOM related variables
+// DOM related variables - buttons
 let newGameButton = document.getElementById("new-game");
 let rulesButton = document.getElementById("rules");
 let aboutButton = document.getElementById("about");
@@ -13,6 +13,7 @@ let hintButton = document.getElementById("hint");
 let removeFifthButton = document.getElementById("remove-fifth");
 let quitGameButton = document.getElementById("quit-game");
 
+// DOM related variables
 let initialMenu = document.getElementById("initial-menu");
 let difficultyMenu = document.getElementById("difficulty-menu");
 let rulesPage = document.getElementById("rules-page");
@@ -28,7 +29,6 @@ let soundOn = document.getElementById("sound-is-on");
 let soundOff = document.getElementById("sound-is-off");
 
 // Event listeners
-
 newGameButton.addEventListener("click", showDifficultyPage);
 rulesButton.addEventListener("click", showRulesPage);
 aboutButton.addEventListener("click", showAboutPage);
@@ -68,24 +68,19 @@ function showRulesPage() {
     rulesPage.classList.toggle("hide");
 }
 
-
 // Opens about page
 function showAboutPage() {
     initialMenu.classList.toggle("hide");
     aboutPage.classList.toggle("hide");
 }
 
-
 // Opens controls page
-
 function showControlsPage() {
     initialMenu.classList.toggle("hide");
     controlsPage.classList.toggle("hide");
 }
 
-
 // Opens main menu
-
 function returnToMenu() {
     initialMenu.classList.remove("hide");
     difficultyMenu.classList.add("hide");
@@ -123,14 +118,14 @@ function runGame() {
     if (this.id === "intermediate") {
         for (let i = 0; i < 45; i++) {
             let newSpan = document.createElement("span");
-            newSpan.textContent = "";
+            // newSpan.textContent = "";
             gameTable.appendChild(newSpan);
         }
 
     } else if (this.id === "expert") {
         for (let i = 0; i < 70; i++) {
             let newSpan = document.createElement("span");
-            newSpan.textContent = "";
+            // newSpan.textContent = "";
             gameTable.appendChild(newSpan);
         }
     } else {
@@ -169,7 +164,7 @@ function addLocation() {
      * For each existing span:
      * a) sets y by taking digits before the period when dividing i with 9.
      * b) sets x by taking the first digit after the period. Undefined is set to 0.
-     * c) data-place is the general location of the span (0-current length).
+     * c) data-place is the general location of the span.
      */
     for (let i = 0; i < spans.length; i++) {
         let stringCoordinateCalc = String(i / 9).split(".");
@@ -205,18 +200,20 @@ let choices = [];
  * If user clicks on the same span twice, choice is disregarded.
  */
 function highlight() {
-    if (!this.classList.contains("removed-choice")) { // Added to attempt combating event listener jumping to a nearby span, doesn't work elsewhere
+    // Added to attempt combating event listener jumping to a nearby span, doesn't work elsewhere
+    if (!this.classList.contains("removed-choice")) { 
         this.classList.add("choice");
+        // Ensures sound isn't played if user clicks on a removed span
         if (!soundOn.classList.contains("hide")) {
-        playSound();
-    }
-        choices.push(this);
-        if (choices[0] === choices[1]) {
-            cancelChoice();
-        } else if (choices.length === 2) {
-            checkLocation(choices);
-            choices = [];
+            playSound();
         }
+    }
+    choices.push(this);
+    if (choices[0] === choices[1]) {
+        cancelChoice();
+    } else if (choices.length === 2) {
+        checkLocation(choices);
+        choices = [];
     }
 }
 
@@ -829,4 +826,3 @@ if (Array.from(spans).forEach(span => {
 // Empties choices to prevent user having to make unnecessary click
 choices = [];
 }
-
