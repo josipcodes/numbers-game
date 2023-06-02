@@ -180,13 +180,16 @@ function addLocation() {
     addListenerToSpan();
 }
 
-// Creates event listeners for all spans created. Ideally will only create listeners for spans which don't have a value of 0
+/**
+ * Creates event listeners for all spans created. 
+ * Ideally it would only create listeners for spans which don't have a class of 'removed-choice' however this results in click event jumping to the closest present span.
+ */
 function addListenerToSpan() {
-    let choice = gameTable.getElementsByTagName("span");
-    Array.from(choice).forEach(span => {
+    let spans = gameTable.getElementsByTagName("span");
+    Array.from(spans).forEach(span => {
         span.addEventListener("click", highlight)
       });
-    // 
+    // Ensures score is calculated when needed.
     calculateScore();
 }
 
@@ -359,7 +362,7 @@ let generateSpans = [];
  * This is done by only taking into account spans on the board which don't have inner.HTML = 0.
 */
 function generateMoreSpans() {
-    generateButtonScore += 1;
+    generateButtonInstance += 1;
     gamePotentiallyNotSolvable();
     removeHint();
     removeHighlight();
@@ -567,8 +570,8 @@ function provideHint() {
  * Removes a pair if all conditions are met.
 */
 function removeViablePair() {
-    // Sets generateButtonScore to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
-    generateButtonScore = 0;
+    // Sets generateButtonInstance to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
+    generateButtonInstance = 0;
     // Shows undo button after a successful removal.
     if (undoButton.classList.contains("hidden")) {
     undoButtonToggle();
@@ -756,7 +759,7 @@ function quitGame() {
     gameWon = false;
 }
 
-let generateButtonScore = 0;
+let generateButtonInstance = 0;
 
 /**
  * Function checks if user uses Generate button several times without removing any viable pairs in between.
@@ -766,12 +769,12 @@ let generateButtonScore = 0;
  */
 function gamePotentiallyNotSolvable() {
     /**
-     * If statement check the generateButtonScore which is increased whenever the user repeatedly presses Generate.
-     * If generateButtonScore reaches 4, alert pops up and the game moves to its paused state.
+     * If statement check the generateButtonInstance which is increased whenever the user repeatedly presses Generate.
+     * If generateButtonInstance reaches 4, alert pops up and the game moves to its paused state.
      */
-    if (generateButtonScore === 4) {
+    if (generateButtonInstance === 4) {
         alert("You have used 'Generate' several times in a row. Feel free to start a new game if this one is no longer solvable. Good luck!");
-        generateButtonScore = 0;
+        generateButtonInstance = 0;
         pauseGame();
     }
 }
