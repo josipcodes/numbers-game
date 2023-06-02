@@ -28,6 +28,8 @@ let soundIcons = document.getElementsByClassName("fa-solid");
 let soundOn = document.getElementById("sound-is-on");
 let soundOff = document.getElementById("sound-is-off");
 let generateButtonInstance = 0;
+let score = 0;
+let newScore = 0;
 
 // Event listeners
 newGameButton.addEventListener("click", showDifficultyPage);
@@ -570,19 +572,17 @@ function provideHint() {
     }
 }
 
-/** 
- * Removes a pair if all conditions are met.
-*/
+// Removes a pair if all conditions are met.
 function removeViablePair() {
     // Sets generateButtonInstance to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
     generateButtonInstance = 0;
+    memory = [];
+    // Cloning gameTable to remember the last choice.
+    memory = gameTable.cloneNode(true);
     // Shows undo button after a successful removal.
     if (undoButton.classList.contains("hidden")) {
-    undoButtonToggle();
+        undoButtonToggle();
     }
-    memory = [];
-    // Clones gameTable to remember the last choice.
-    memory = gameTable.cloneNode(true);
     // Increases score.
     score += 2;
     choices[0].classList.add("removed-choice");
@@ -602,32 +602,20 @@ function removeViablePair() {
     isGameWonCheck();
 }
 
-let score = 0;
-
-
 // Function updates gameScore inner HTML with the current score.
 function calculateScore() {
     gameScore.innerHTML = score;
+    // Check added to ensure removeFifth button is visible/hidden depending on the score.
     FifthButtonDisplay();
 }
-
 
 /**
  * Function removes 1/5 of the current score when the removeFifthButton is used.
  * If score cannot be divided by 5, Math.ceil is used for the score to remain an integer.
- * 
- */
-
-let newScore = 0;
-
-/**
- * Function removes 1/5 of score and spans once Remove Fifth button is used.
- * 
  */
 function removeFifth() {
     const spans = gameTable.getElementsByTagName("span");
     const spansLength = spans.length;
-
     /**
      * Removes 1/5 of the score.
      * If the score cannot be divided by 5, this is done to user's benefit.
@@ -635,47 +623,38 @@ function removeFifth() {
     newScore = Math.ceil((score / 5) * 4);
     score = newScore;
     calculateScore();
-    /**
-     * Undo button is removed to prevent gaming.
-     */
+    // Undo button is removed to prevent gaming.
     if (!undoButton.classList.contains("hidden")) {
-    undoButtonToggle();
+        undoButtonToggle();
     }
-    /**
-     * For loop removes every 5th span starting from the end.
-     */
+    // For loop removes every 5th span starting from the end.
     for (let i = spansLength; i > 0; i--) {
         if (i % 5 === 0) {
             gameTable.removeChild(spans[i - 1]);
         }
     }
-    /**
-     * Check if game was won by removing spans.
-     */
+    // Check if game was won by removing spans.
     isGameWonCheck();
-    /**
-     * Span location is calculated again.
-     */
+    // Span location is calculated again.
     addLocation();
-    /**
-    * Check if there are empty rows to be removed.
-    */
+    // Check if there are empty rows to be removed.
     removeEmptyRow();
+    // Removing hints and highlights if present as hints would likely be invalid.
     removeHint();
     removeHighlight();
 }
 
 // Checks if generate button or any spans are highlighted, removes highlight.
 function removeHint() {
-const spans = gameTable.getElementsByTagName("span");
-if (generateButton.classList.contains("hint")) {
-    generateButton.classList.remove("hint")
-}
-if (Array.from(spans).forEach(span => {
-    if (span.classList.contains("hint")) {
-        span.classList.remove("hint");
+    const spans = gameTable.getElementsByTagName("span");
+    if (generateButton.classList.contains("hint")) {
+        generateButton.classList.remove("hint")
     }
-}));
+    if (Array.from(spans).forEach(span => {
+        if (span.classList.contains("hint")) {
+            span.classList.remove("hint");
+        }
+    }));
 }
 
 /**
@@ -711,13 +690,13 @@ function isGameWonCheck() {
  * It shows the button if second set of conditions is met.
  */
 function FifthButtonDisplay() {
-    let currentSpans = gameTable.getElementsByTagName("span");
+    let spans = gameTable.getElementsByTagName("span");
     /** If statement hides removeFifthButton if: 
      * a) there are less than or equal to 5 spans on the table.
      * a.1) bug fix - without '=', button remains visible if there are 4 spans on the board
      * b) score is below 50.
     */
-    if (currentSpans.length <= 5 || score < 50 && !removeFifthButton.classList.contains("hidden")) {
+    if (spans.length <= 5 || score < 50 && !removeFifthButton.classList.contains("hidden")) {
         removeFifthButton.classList.toggle("hidden");
     }
     /**
@@ -726,7 +705,7 @@ function FifthButtonDisplay() {
      * b) score is at least 50,
      * c) removeFifthButton was previously hidden.
      */
-     else if (currentSpans.length > 4 && score >= 50 && removeFifthButton.classList.contains("hidden")) {
+     else if (spans.length > 4 && score >= 50 && removeFifthButton.classList.contains("hidden")) {
         removeFifthButton.classList.toggle("hidden");
     }
 }
