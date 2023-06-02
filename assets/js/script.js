@@ -288,8 +288,11 @@ function checkLocation(choices) {
 function checkContent() {
     let sum = 0;
     sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
-    // If sum of spans is 10 or their innerHTML is equal, pair is removed, otherwise cancelled.
-    if (sum === 10 || (choices[0].innerHTML === choices[1].innerHTML)) {
+    /**
+     * If sum of spans is 10 or their innerHTML is equal and greater than 0, pair is removed, otherwise cancelled.
+     * This fixes issue where user could remove previously removed pair, which triggered score calculation and undo button visibility.
+     */
+    if (sum === 10 || (choices[0].innerHTML === choices[1].innerHTML && sum > 0)) {
         removeViablePair();
     } else {
         cancelChoice();
@@ -821,7 +824,10 @@ document.addEventListener("keyup", function(event) {
         }
   });
   
-// Function checks for a class of soundOn div and toggles visibility between it and soundOff.
+  /**
+   * Function checks for a class of soundOn div and toggles visibility between it and soundOff.
+   * Sound will play when user clicks on the icon which enables sound to confirm the user's action.
+   */
   function soundOptions() {
     soundOn.classList.toggle("hide");
     soundOff.classList.toggle("hide");
