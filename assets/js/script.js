@@ -101,13 +101,14 @@ function returnToMenu() {
  * MVP: Current state. Future potential - each difficulty level could generate a random amount of spans (15-25, 25-50, 50-100)
  */
 function runGame() {
-    // Checks if gamePage contains show class, if not, adds it and removes hide.
+    // Shows initial menu, toggles or hides related pages and buttons.
     initialMenu.classList.add("hide");
     continueGameButton.classList.add("hide");
     quitGameButton.classList.add("hide");
     undoButton.classList.add("hidden");
     gamePage.classList.toggle("hide");
     difficultyMenu.classList.toggle("hide");
+    generateButton.classList.remove("hint");
     // Sets score to 0 to prevent score carrying over from a previous session.
     score = 0;
     // Sets innerHTML to score.
@@ -323,7 +324,7 @@ function checkContent() {
 }
 
 // Cancels choice if pair is not viable, empties choices array, sets sum to 0.
-function cancelChoice() {
+function cancelChoice(choices) {
     choices = [];
     // Removes highlight or hints if present
         removeHint();
@@ -441,7 +442,7 @@ function undoAction() {
 */
 function provideHint() {
     let spans = gameTable.getElementsByTagName("span");
-    let choices = [];
+    let hintOptions = [];
     let startOfCheck = 0;
     // Score calculation
     if (score >= 3) {
@@ -505,12 +506,12 @@ function provideHint() {
                 if (coordinatesYZero === coordinatesYOne) {
                     // if statement checks if i and j are touching in a column (x). If yes, i and j are pushed into choices array.
                     if (coordinatesXMin + 1 === coordinatesXMax) {
-                        choices.push(spans[i]);
-                        choices.push(spans[j]);
+                        hintOptions.push(spans[i]);
+                        hintOptions.push(spans[j]);
                         spans[i].classList.add("hint");
                         spans[j].classList.add("hint");
                         // if length of array choices is 2, centralLoop is broken.
-                        if (choices.length === 2) {
+                        if (hintOptions.length === 2) {
                             break centralLoop;
                         }
                     }
@@ -526,10 +527,10 @@ function provideHint() {
                         if (neighborsXSum === 0) {
                             spans[i].classList.add("hint");
                             spans[j].classList.add("hint");
-                            choices.push(spans[i]);
-                            choices.push(spans[j]);
+                            hintOptions.push(spans[i]);
+                            hintOptions.push(spans[j]);
                             // if length of array choices is 2, centralLoop is broken.
-                            if (choices.length === 2) {
+                            if (hintOptions.length === 2) {
                                 break centralLoop;
                             }
                         }
@@ -538,12 +539,12 @@ function provideHint() {
                 } else if (coordinatesXZero === coordinatesXOne) {
                     // If statement checks if i and j are neighbors by a row - if yes, they are pushed into choices array.
                     if (coordinatesYMin + 1 === coordinatesYMax) {
-                        choices.push(spans[i]);
-                        choices.push(spans[j]);
+                        hintOptions.push(spans[i]);
+                        hintOptions.push(spans[j]);
                         spans[i].classList.add("hint");
                         spans[j].classList.add("hint");
                         // if length of array choices is 2, centralLoop is broken.
-                        if (choices.length === 2) {
+                        if (hintOptions.length === 2) {
                             break centralLoop;
                         }
                     // Else statement takes all the numbers in the column of the current i and checks the sum of the spans between coordinatesYMin and Max.
@@ -556,12 +557,12 @@ function provideHint() {
                         }
                         // If the sum of spans in between is 0, hint has been located.
                         if (neighborsYSum === 0) {
-                            choices.push(spans[i]);
-                            choices.push(spans[j]);
+                            hintOptions.push(spans[i]);
+                            hintOptions.push(spans[j]);
                             spans[i].classList.add("hint");
                             spans[j].classList.add("hint");
                             // if length of array choices is 2, centralLoop is broken.
-                            if (choices.length === 2) {
+                            if (hintOptions.length === 2) {
                                 break centralLoop;
                             }
                         }
@@ -576,12 +577,12 @@ function provideHint() {
                     }
                     // If the sum of spans in between is 0, hint has been located.
                     if (betweenSpanSum === 0) {
-                        choices.push(spans[i]);
-                        choices.push(spans[j]);
+                        hintOptions.push(spans[i]);
+                        hintOptions.push(spans[j]);
                         spans[i].classList.add("hint");
                         spans[j].classList.add("hint");
                         // If length of array choices is 2, centralLoop is broken.
-                        if (choices.length === 2) {
+                        if (hintOptions.length === 2) {
                             break centralLoop;
                         }
                     }
@@ -590,9 +591,7 @@ function provideHint() {
         }
     }
     // If there are no hints to be provided on the spans, generateButton receives a 'hint' class.
-    if (choices.length === 2) {
-        choices = [];
-    } else {
+    if (hintOptions.length === 0) {
         generateButton.classList.add("hint");
     }
 }
