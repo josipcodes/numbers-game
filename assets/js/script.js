@@ -671,6 +671,8 @@ if (Array.from(spans).forEach(span => {
 }));
 }
 
+let gameWon = false;
+
 /**
  * Function checks if all present spans are empty (0).
  * Once all spans are empty, pop-up is generated, notifying player.
@@ -693,6 +695,7 @@ function isGameWonCheck() {
      * It hides the current session and shows initial menu.
      */
     if (sum === 0) {
+        gameWon = true;
         alert(`You won! Your final score is ${score}`);
         quitGame();
         // initialMenu.classList.toggle("hide");
@@ -733,12 +736,24 @@ function FifthButtonDisplay() {
  * Cancel closes the pop-up without further action.
  */
 function quitGame() {
-    let quitConfirm = confirm("Are you sure you want to quit?");
-    if (quitConfirm === true) {
+    /** 
+     * Pop up will ask user for confirmation of quitting the game.
+     * This is done only if the game has not been solved already during the current session to prevent poor user experience.
+     */
+    if (gameWon === false) {
+        let quitConfirm = confirm("Are you sure you want to quit?");
+        if (quitConfirm === true) {
+            returnToMenu();
+            continueGameButton.classList.add("hide");
+            quitGameButton.classList.add("hide");
+        }
+    } else {
         returnToMenu();
         continueGameButton.classList.add("hide");
         quitGameButton.classList.add("hide");
+
     }
+    gameWon = false;
 }
 
 let generateButtonScore = 0;
