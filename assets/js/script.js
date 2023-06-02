@@ -680,7 +680,7 @@ if (Array.from(spans).forEach(span => {
 
 /**
  * Function checks if all present spans are empty (0).
- * Once all spans are empty, pop-up is generated, notifying player.
+ * Once all spans are empty, pop-up is generated, notifying the user.
  * Pop up includes the final score.
  * Upon closing of the pop-up, user is brought to the initial game menu.
  */
@@ -689,32 +689,32 @@ function isGameWonCheck() {
     let sum = 0;
     /**
      * For loop checks if all present spans equal to 0.
-     * If check added to prevent unnecessary running of the for loop - it will only run when there is one row left.
+     * If check added to prevent unnecessary running of the loop - it will only run when there is one row left.
      */
     if (spans.length <= 9) {
-    for (let i = 0; i < spans.length; i++) {
-        sum += Number(spans[i].innerHTML);
-    }
+        for (let i = 0; i < spans.length; i++) {
+            sum += Number(spans[i].innerHTML);
+        }
     /** If statement creates an alert if the game is won. 
      * It shows the final score.
      * It hides the current session and shows initial menu.
      */
-    if (sum === 0) {
-        alert(`You won! Your final score is ${score}`);
-        quitGameAction();
-    }
+        if (sum === 0) {
+            alert(`You won! Your final score is ${score}`);
+            quitGameAction();
+        }
     }
 }
 
 /**
  * Function hides removeFifthButton when conditions are met. 
- * It shows the button if second set of conditions are met.
+ * It shows the button if second set of conditions is met.
  */
 function FifthButtonDisplay() {
     let currentSpans = gameTable.getElementsByTagName("span");
     /** If statement hides removeFifthButton if: 
      * a) there are less than or equal to 5 spans on the table.
-     * a.1) without '=', button remains visible if there are 4 spans on the board
+     * a.1) bug fix - without '=', button remains visible if there are 4 spans on the board
      * b) score is below 50.
     */
     if (currentSpans.length <= 5 || score < 50 && !removeFifthButton.classList.contains("hidden")) {
@@ -733,20 +733,20 @@ function FifthButtonDisplay() {
 
 /** 
  * Function brings up a pop up asking user to confirm if they want to quit the game. 
- * Upon confirmation, the main menu is brought up; continue and quit options are hidden.
  * Cancel closes the pop-up without further action.
  */
 function quitGame() {
     /** 
-     * Pop up will ask user for confirmation of quitting the game.
-     * This is done only if the game has not been solved already during the current session - prevents poor user experience.
+     * Pop up will ask user for confirmation of quitting the game: 
+     * function will transition to quitGameAction if needed.
      */
-        let quitConfirm = confirm("Are you sure you want to quit?");
-        if (quitConfirm === true) {
-            quitGameAction();
-        }
+    let quitConfirm = confirm("Are you sure you want to quit?");
+    if (quitConfirm === true) {
+        quitGameAction();
+    }
 }
 
+// Function returns user to the main menu, hides continue/quit game buttons as the session is done.
 function quitGameAction() {
     returnToMenu();
     continueGameButton.classList.add("hide");
