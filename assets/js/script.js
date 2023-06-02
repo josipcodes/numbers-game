@@ -289,7 +289,8 @@ function checkLocation(choices) {
  * Checks content of spans to decide if action is valid based on the innerHTML.
  */
 function checkContent() {
-    let sum = 0;
+    // using variable created outside of the function
+    sum = 0;
     sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
     /**
      * If sum of spans is 10 or their innerHTML is equal and greater than 0, pair is removed, otherwise cancelled.
@@ -427,144 +428,160 @@ function undoAction() {
 }
 
 /** 
- * Outside of MVP, provides a hint, but costs 5 points.
- * Current unexpected behaviour - generate button triggers after the last pair is hinted, not removing after a cycle.
+ * Outside of MVP, provides a hint, but costs 3 points.
+ * Function is set up to check all spans within row, column and across multiple rows.
 */
 function provideHint() {
+    let spans = gameTable.getElementsByTagName("span");
+    let choices = [];
+    let startOfCheck = 0;
+    // Score calculation
     if (score >= 3) {
         score -= 3;
     } else {
         score = 0;
     }
     calculateScore();
-    generateButton.classList.remove("hint");
-    let spans = gameTable.getElementsByTagName("span");
-    let choices = [];
-    // Loop runs as many times as there are spans on the board, minus one as there is no need to check the last span.
-    let startOfCheck = 0;
+    // Loop searches for a span with a class of hint. Loop breaks at that point.
     for (let x = 0; x < spans.length; x++) {
         if (spans[x].classList.contains("hint")) {
             startOfCheck = spans[x].getAttribute("data-place");
             break;
         }
     }
+    // Removing hints and highlights
     removeHint();
     removeHighlight();
-
-    loopOne:
+    centralLoop:
+    /**
+     * Loop starts from startOfCheck (or 0) - this enables user to go through multiple hints instead of only having one.
+     * Max i is second to last span - as further functions check for hints going down and going to the right.
+     */
     for (let i = startOfCheck; i < spans.length - 2; i++) {
       /** 
        * Loop runs as many times as there are spans on the board, counting from the current i + 1.
-       * Bug observer where a positive vertical find in the first column causes j to become 01.
+       * Bug observed where a positive vertical find in the first column causes j to become 01, likely because of addLocation().
        * Manifestation: positive vertical find remains stuck and is the only hint available.
        * Fix implemented by breaking a loop when this happens.
-       * Remaining minor issue - function can overlook a vertical find in the first row if there is a horizontal one.
+       * Remaining minor issue - function can overlook a vertical find if there is a horizontal one starting with the same span.
     */ 
         for (let j = i + 1; j < spans.length; j++) {
         	if (j === "01") {
                 break;
             }
+            // Variables collecting numerical value of the 2 spans being checked.
             let spanIValue = Number(spans[i].innerHTML);
             let spanJValue = Number(spans[j].innerHTML);
-            sum = spanIValue + spanJValue;
-
+            // Variables collecting Y and X coordinates of the first span checked.
             let coordinatesYZero = Number(spans[i].getAttribute("data-y"));
             let coordinatesXZero = Number(spans[i].getAttribute("data-x"));
+            // Variables collecting Y and X coordinates of the second span checked.
             let coordinatesYOne = Number(spans[j].getAttribute("data-y"));
             let coordinatesXOne = Number(spans[j].getAttribute("data-x"));
+            // Variables collecting location of the two spans checked.
             let placeYZero = Number(spans[i].getAttribute("data-place"));
             let placeYOne = Number(spans[j].getAttribute("data-place"));
+            // Variables setting the max and min value of the Y placement of the two spans.
             let placeYMin = Math.min(placeYZero, placeYOne);
             let placeYMax = Math.max(placeYZero, placeYOne);
+            // Variables collecting min and max of both Y and X coordinated of the two spans.
             let coordinatesYMin = Math.min(coordinatesYZero, coordinatesYOne);
             let coordinatesYMax = Math.max(coordinatesYZero, coordinatesYOne);
             let coordinatesXMin = Math.min(coordinatesXZero, coordinatesXOne);
             let coordinatesXMax = Math.max(coordinatesXZero, coordinatesXOne);
-
-            //  if statement checks inner HTML of i and j as long as the current i inner HTML isn't 0 (previously removed item).
+            // using variable created outside of the function
+            sum = spanIValue + spanJValue;
+            // If statement checks inner HTML of i and j as long as the current i's inner HTML isn't 0 (previously removed item).
             if ((spanIValue === spanJValue || sum === 10) && spanIValue !== 0) {
-                // if statement check if both i and j are in the same row
+                // if statement checks if both i and j are in the same row.
                 if (coordinatesYZero === coordinatesYOne) {
                     // if statement checks if i and j are touching in a column (x). If yes, i and j are pushed into choices array.
                     if (coordinatesXMin + 1 === coordinatesXMax) {
                         choices.push(spans[i]);
+                        choices.push(spans[j]);
                         spans[i].classList.add("hint");
                         spans[j].classList.add("hint");
-                        choices.push(spans[j]);
-                        // if length of array choices is 2, if statement should cause a break.
+                        // if length of array choices is 2, centralLoop is broken.
                         if (choices.length === 2) {
-                            break loopOne;
+                            break centralLoop;
                         }
                     }
-                    //  else statement takes all the spans in the row of the current i and should check if the ???
+                    // Else statement takes all the spans in the row of the current i and checks the sum of the spans between coordinatesXMin and Max.
                     else {
                         let allY = document.querySelectorAll(`[data-y="${coordinatesYZero}"]`);
                         let neighborsXSum = 0;
-                        // For loop takes ???
+                        // For loop adds the innerHTML of the spans in between.
                         for (let i = coordinatesXMin + 1; i < coordinatesXMax; i++) {
                             neighborsXSum += Number(allY[i].innerHTML);
                         }
+                        // If the sum of spans in between is 0, hint has been located.
                         if (neighborsXSum === 0) {
                             spans[i].classList.add("hint");
                             spans[j].classList.add("hint");
                             choices.push(spans[i]);
                             choices.push(spans[j]);
+                            // if length of array choices is 2, centralLoop is broken.
                             if (choices.length === 2) {
-                                break loopOne;
+                                break centralLoop;
                             }
                         }
                     }
                     // Else if statement checks if i and j are in the same column.
                 } else if (coordinatesXZero === coordinatesXOne) {
-                    // if statement checks if i and j are neighbors by a row, if yes, they are pushed into choices array.
+                    // If statement checks if i and j are neighbors by a row - if yes, they are pushed into choices array.
                     if (coordinatesYMin + 1 === coordinatesYMax) {
                         choices.push(spans[i]);
+                        choices.push(spans[j]);
                         spans[i].classList.add("hint");
                         spans[j].classList.add("hint");
-                        choices.push(spans[j]);
+                        // if length of array choices is 2, centralLoop is broken.
                         if (choices.length === 2) {
-                            break loopOne;
+                            break centralLoop;
                         }
-                        // Else statement takes all numbers in the column of i and checks if 
+                    // Else statement takes all the numbers in the column of the current i and checks the sum of the spans between coordinatesYMin and Max.
                     } else {
                         let allX = document.querySelectorAll(`[data-x="${coordinatesXZero}"]`);
                         let neighborsYSum = 0;
+                        // For loop adds the innerHTML of the spans in between.
                         for (let i = coordinatesYMin + 1; i < coordinatesYMax; i++) {
                             neighborsYSum += Number(allX[i].innerHTML);
                         }
+                        // If the sum of spans in between is 0, hint has been located.
                         if (neighborsYSum === 0) {
                             choices.push(spans[i]);
+                            choices.push(spans[j]);
                             spans[i].classList.add("hint");
                             spans[j].classList.add("hint");
-                            choices.push(spans[j]);
+                            // if length of array choices is 2, centralLoop is broken.
                             if (choices.length === 2) {
-                                break loopOne;
+                                break centralLoop;
                             }
                         }
-                        // else {
-                        //     console.log(spans[i], spans[j], "cannot be removed, thins one?");
-                        // }
                     }
-                    // Else if statement takes the 
+                // Else if statement takes the two spans which are not in the same row
                 } else if (placeYMin !== placeYMax) {
                     let allPlaces = document.querySelectorAll(`[data-place]`);
                     let betweenSpanSum = 0;
+                    // For loop adds the innerHTML of the spans in between.
                     for (let i = placeYMin + 1; i < placeYMax; i++) {
                         betweenSpanSum += Number(allPlaces[i].innerHTML);
                     }
+                    // If the sum of spans in between is 0, hint has been located.
                     if (betweenSpanSum === 0) {
                         choices.push(spans[i]);
+                        choices.push(spans[j]);
                         spans[i].classList.add("hint");
                         spans[j].classList.add("hint");
-                        choices.push(spans[j]);
+                        // If length of array choices is 2, centralLoop is broken.
                         if (choices.length === 2) {
-                            break loopOne;
+                            break centralLoop;
                         }
                     }
                 }
             }
         }
     }
+    // If there are no hints to be provided on the spans, generateButton receives a 'hint' class.
     if (choices.length === 2) {
         choices = [];
     } else {
@@ -574,30 +591,27 @@ function provideHint() {
 
 // Removes a pair if all conditions are met.
 function removeViablePair() {
+    let spans = gameTable.getElementsByTagName("span");
     // Sets generateButtonInstance to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
     generateButtonInstance = 0;
     memory = [];
     // Cloning gameTable to remember the last choice.
     memory = gameTable.cloneNode(true);
-    // Shows undo button after a successful removal.
-    if (undoButton.classList.contains("hidden")) {
-        undoButtonToggle();
-    }
     // Increases score.
     score += 2;
+    // Class and innerHTML are updated.
     choices[0].classList.add("removed-choice");
     choices[1].classList.add("removed-choice");
     choices[0].textContent = "";
     choices[1].textContent = "";
+    // Shows undo button after a successful removal.
+    if (undoButton.classList.contains("hidden")) {
+        undoButtonToggle();
+    }
     // Checks if there are empty rows.
     removeEmptyRow();
     // Checks if spans are highlighted and removes highlight.
-    let currentSpans = gameTable.getElementsByTagName("span");
-    for (let i = 0; i < currentSpans.length; i++) {
-        if (currentSpans[i].classList.contains("hint")) {
-            currentSpans[i].classList.remove("hint");
-        }
-    }
+    removeHint();
     // Checks if game is won.
     isGameWonCheck();
 }
