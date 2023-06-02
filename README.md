@@ -110,138 +110,144 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     - User can choose their difficulty level. Their choice will decide on the initial size of the game.
 
-![screenshot](documentation/feature/difficulty-levels.png)
+![screenshot](documentation/features/difficulty-levels.png)
 
 - **Generate button and functionality**
 
     - User can choose to generate all existing squares (spans) to allow for more options when solving the game.
 
-![screenshot](documentation/feature/generate-button.png)
+![screenshot](documentation/features/generate-button.png)
 
 - **Hint button and functionality**
 
     - If user is unsure of their next move, they can use the hint button to see available match. In case there are none, Generate button will be highlighted instead.
 
-![screenshot](documentation/feature/hint.png)
+![screenshot](documentation/features/hint.png)
 
 - **Undo button**
 
     - After a successful removal of a pair, user has an option to use the undo button should they notice their choice not being the best. Undo button will be disabled in several instances to prevent gaming and boost genuine experience.
 
-![screenshot](documentation/feature/undo-button.png)
+![screenshot](documentation/features/undo-button.png)
 
 - **Remove fifth button and functionality**
 
     - User can choose to spend their points by using a 'remove fifth' booster. This button is enabled only if the user has a minimum of 50 points and if there are more than 4 squares on the board.
 
-![screenshot](documentation/remove-fifth-button.png)
+![screenshot](documentation/features/remove-fifth-button.png)
 
 - **Sound and sound options**
 
     - User can choose to switch the sound on or off. When game is initially launched, sound will be switched off.
 
-![screenshot](documentation/feature/sound-off-icon.png)
-![screenshot](documentation/feature/sound-on-icon.png)
+![screenshot](documentation/features/sound-off-icon.png)
+![screenshot](documentation/features/sound-on-icon.png)
 
 - **Return to Menu button**
 
     - Each section of the game enables user to return to the main menu.
 
-![screenshot](documentation/feature/return-to-menu-button.png)
+![screenshot](documentation/features/return-to-menu-button.png)
 
 - **Pause game**
 
     - Should the user return to the menu during a live game session, the main menu will contain 'continue' and 'quit game' buttons.
 
-![screenshot](documentation/feature/pause-game.png)
+![screenshot](documentation/features/pause-game.png)
 
 - **Continue game**
 
     - User can use continue button to return to the game. All stats, including the squares present on the board, sound preference and score will remain as they left them when pausing the game.
 
-![screenshot](documentation/feature/continue-game.png)
+![screenshot](documentation/features/continue-game.png)
 
 - **Quit game**
 
     - User can choose to quit the game. Pop-up will ask for confirmation. If the user decides to cancel the action, game will remain in it's paused state.
 
-![screenshot](documentation/feature/quit-game-confirm.png)
+![screenshot](documentation/features/quit-game-confirm.png)
 
 - **Stuck-check**
 
     - Should the user repeatedly use 'generate' button without any alternative actions, it is possible the player has no viable pairs to remove. For this reason, pop-up will appear notifying the player of the case. Game will be paused for player to decide on the next best action (continue game, or quit game)
 
-![screenshot](documentation/feature/generate-instances.png)
+![screenshot](documentation/features/generate-instances.png)
 
 - **Row removal**
 
     - Once a full row has been emptied, it will be removed from the table to allow for better visibility. Image below is not representative of the actual action which takes place.
 
-![screenshot](documentation/feature/removed-row.png)
+![screenshot](documentation/features/removed-row.png)
 
 - **Score calculation**
 
     - Score is calculated, depending on the user's action. Removing a pair will add 2 points, removing a row will add additional 10 points. Using a hint, undo or remove fifth options will subtract specific amount of points from the overall score.
 
-![screenshot](documentation/feature/score.png)
+![screenshot](documentation/features/score.png)
 
 - **Choice validation**
 
     - User can make valid and invalid choices. Should a valid choice be made, the two squares will become dark. Otherwise the highlight showing the user's choice will be removed from the board. The same behaviour exists for instances when the user clicks the same square twice.
 
-![screenshot](documentation/feature/choice-validation.png)
+![screenshot](documentation/features/choice-validation.png)
 
 - **Game won confirmation**
 
     - Once all of the squares are removed from the board, a pop-up will automatically appear, notifying the user of their win. Pop-up will include their final score. User will be taken to the main menu.
 
-![screenshot](documentation/feature/game-won.png)
+![screenshot](documentation/features/game-won.png)
 
 - **Rules section**
 
     - Main menu includes a button which leads to the rules section. This section briefly explains the rules of the game.
 
-![screenshot](documentation/feature/rules.png)
+![screenshot](documentation/features/rules.png)
 
 - **About section**
 
     - Main menu includes a button which leads to the about section. This section briefly explains the inspiration for the game and contains a link taking the user to the creator's github page.
 
-![screenshot](documentation/feature/about.png)
+![screenshot](documentation/features/about.png)
 
 - **Controls section**
 
     - Main menu includes a button which leads to the controls section. This section briefly explains the controls used in-game. Depending on the screen size, user can see different options available.
 
-![screenshot](documentation/feature/desktop-controls.png)
-![screenshot](documentation/feature/phone-controls.png)
+![screenshot](documentation/features/desktop-controls.png)
+![screenshot](documentation/features/phone-controls.png)
 
 - **Shortcuts**
 
     - There are several shortcuts available in-game. User can un/mute the sound, pause the game, continue game, generate more squares, remove a fifth of them or ask for a hint. Depending on the availability of the boosters. To prevent unnecessary clicks, user can use majority of them to unpause the game all while their actual request is being acknowledged.
 
-![screenshot](documentation/feature/desktop-controls.png)
+![screenshot](documentation/features/desktop-controls.png)
 
 - **Re-playability**
 
     - When launching the game, the numbers will be randomly placed on the board, making the replayability value significant.
 
-![screenshot](documentation/feature/random-one.png)
-![screenshot](documentation/feature/random-two.png)
+![screenshot](documentation/features/random-one.png)
+![screenshot](documentation/features/random-two.png)
 
 - **In-game button section**
 
     - Regardless of the screen size, in-game buttons will remain visible even if the board becomes sufficiently long to require scrolling. Name of the game is deprioritised in this case to maximise screen space.
     - Additional benefit here is the fact that the position of the buttons doesn't change regardless of button visibility. Should 'remove fifth' button not be available, it's space will remain blank instead of taken over by another button. This ensures familiarity for the user and removes room for accidents.
 
-![screenshot](documentation/feature/phone-button-section.png)
-![screenshot](documentation/feature/desktop-button-section.png)
+![screenshot](documentation/features/phone-button-section.png)
+![screenshot](documentation/features/desktop-button-section.png)
 
 - **404 page**
 
     - 404 page exists to notify the user of a non-existent page. Page contains a link which allows user to transition to the main menu easily.
 
-![screenshot](documentation/feature/404.png)
+![screenshot](documentation/features/404.png)
+
+- **Favicon**
+
+    - Favicon is available to allow for easier navigation between multiple tabs.
+
+![screenshot](documentation/features/favicon.png)
 
 ### Future Features
 
