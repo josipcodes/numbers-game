@@ -432,8 +432,6 @@ function undoAction() {
     gameTable.remove();
     // appends spans saved in memory (previous action)
     flex.appendChild(memory);
-    // empties memory
-    memory = [];
     // updates gameTable with the new state
     gameTable = document.getElementById("game-table");
     // Adds event listeners.
@@ -604,7 +602,6 @@ function provideHint() {
 function removeViablePair() {
     // Sets generateButtonInstance to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
     generateButtonInstance = 0;
-    memory = [];
     // Cloning gameTable to remember the last choice.
     memory = gameTable.cloneNode(true);
     // Increases score.
