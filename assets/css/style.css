@@ -51,7 +51,7 @@ h2 {
 }
 
 h1, h2 {
-    font-family: "Kanit", "Times New Roman", sans-serif;
+    font-family: "Kanit", "Courier New", monospace;
 }
 
 #error-title {
