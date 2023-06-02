@@ -95,7 +95,7 @@ function returnToMenu() {
     gamePage.classList.add("hide");
 }
 
-function gamePresentation() {
+function showGame() {
     // Shows initial menu, toggles or hides related pages and buttons.
     initialMenu.classList.add("hide");
     continueGameButton.classList.add("hide");
@@ -112,7 +112,7 @@ function gamePresentation() {
  * MVP: Current state. Future potential - each difficulty level could generate a random amount of spans (15-25, 25-50, 50-100)
  */
 function runGame() {
-    gamePresentation();
+    showGame();
     // Sets score to 0 to prevent score carrying over from a previous session.
     score = 0;
     // Sets innerHTML to score.
