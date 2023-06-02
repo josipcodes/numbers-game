@@ -30,6 +30,7 @@ let soundOff = document.getElementById("sound-is-off");
 let generateButtonInstance = 0;
 let score = 0;
 let newScore = 0;
+let memory = [];
 
 // Event listeners
 newGameButton.addEventListener("click", showDifficultyPage);
@@ -362,53 +363,53 @@ function continueGame() {
     quitGameButton.classList.toggle("hide");
 }
 
-let generateSpans = [];
-
 /** 
- * Generates new spans after the user presses "generate".
+ * Generates new spans after the user presses 'generate'.
  * This is done by only taking into account spans on the board which don't have inner.HTML = 0.
 */
 function generateMoreSpans() {
-    generateButtonInstance += 1;
-    gamePotentiallyNotSolvable();
-    removeHint();
-    removeHighlight();
-    if (!undoButton.classList.contains("hidden")) {
-    undoButtonToggle();
-    }
     let spans = gameTable.getElementsByTagName("span");
     let spansLength = spans.length;
+    let generateSpans = [];
+    // Calculates the amount of time generateButton was pressed without any other actions taking place.
+    generateButtonInstance += 1;
+    // Checks if generateButtonInstance is too high.
+    gamePotentiallyNotSolvable();
+    // Removes hints and highlights if present.
+    removeHint();
+    removeHighlight();
+    // disables undo button to prevent gaming.
+    if (!undoButton.classList.contains("hidden")) {
+        undoButtonToggle();
+    }
+    // For loop checks spans and pushes spans of value  into generateSpans array.
     for (let i = 0; i < spansLength; i++) {
         if (!spans[i].classList.contains("removed-choice")) {
             generateSpans.push(spans[i]);
         }
     }
+    // For loop appends new spans and sets their innerHTML to copy the value of those initially present on the table.
     for (let i = 0; i < generateSpans.length; i++) {
         let newSpan = document.createElement("span");
         newSpan.textContent = generateSpans[i].innerHTML;
         gameTable.appendChild(newSpan);
     }
+    // Location is calculated to scope newly generated spans.
     addLocation();
-    generateSpans = [];
 }
 
-/** 
- * Outside of MVP, removes the last action.
- * Removes 5 points if the score is at least 5, otherwise sets score to 0.
-*/
-
-let memory = [];
-
+// Outside of MVP, deletes the last action by returning the previous state from the memory.
 function undoAction() {
+    // Variable obtains the memorised span preserved within memory variable.
+    let memoryChildren = memory.getElementsByTagName("span");
     // Checks score, if sets score to 0 if less than 5, else removes 5 points.
     if (score <= 5) {
         score = 0;
     } else {
         score -= 5;
     }
-    // hides undoButton
+    // Hides undoButton as memory only stores the previous instance.
     undoButtonToggle();
-    let memoryChildren = memory.getElementsByTagName("span");
     // Removes highlight from spans.
     for (let x = 0; x < memoryChildren.length; x++) {
         if (memoryChildren[x].classList.contains("choice")) {
