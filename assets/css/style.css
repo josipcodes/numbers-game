@@ -1,5 +1,4 @@
 /* Page display */
-
 html {
     height: 100%;
 }
@@ -35,7 +34,6 @@ body {
 }
 
 /* Headings */
-
 h1 {
     text-align: center;
     padding-left: 2.5%;
@@ -61,7 +59,6 @@ h1, h2 {
 }
 
 /* Buttons & icons */
-
 .main-screen-button,
 .new-game-screen-button {
     display: block;
@@ -98,7 +95,6 @@ h1, h2 {
 }
 
 /* Pages and paragraph appearance */
-
 #initial-menu,
 #difficulty-menu,
 #rules-page,
@@ -154,7 +150,6 @@ h1, h2 {
 }
 
 /* In-game content */
-
 #game-table {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
@@ -190,7 +185,6 @@ span {
 }
 
 /* Score appearance */
-
 #score {
     margin: 0 auto 5px;
     width: auto;
@@ -204,7 +198,6 @@ span {
 }
 
 /* Media query organising display of screens wider than 750px */
-
 @media (min-width: 750px) {
     /* In-game content appearance */
     span {
@@ -213,7 +206,6 @@ span {
 }
 
 /* Media query organising display of screens wider than 950px */
-
 @media (min-width: 950px) {
     /* Page display */
     #grid-container {
@@ -274,7 +266,6 @@ span {
 }
 
 /* Media query organising display of screens wider than 1500px */
-
 @media (min-width: 1500px) {
     /* Page display */
     body {
@@ -283,7 +274,6 @@ span {
 }
 
 /* Media query organising display of screens wider than 1800px */
-
 @media (min-width: 1800px) {
     /* In-game content */
     span {
