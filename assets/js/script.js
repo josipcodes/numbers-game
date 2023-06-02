@@ -304,20 +304,14 @@ function checkContent() {
     }
 }
 
-// Cancels choice if pair is not viable
+// Cancels choice if pair is not viable, empties choices array, sets sum to 0.
 function cancelChoice() {
     choices = [];
-    let spans = gameTable.getElementsByTagName("span");
-    // Checks if any of the spans are highlighted and removes highlight
-    Array.from(spans).forEach(span => {
-        if (span.classList.contains("hint") || span.classList.contains("choice")) {
-            span.classList.remove("hint");
-            span.classList.remove("choice");
-        }
-    });
+    // Removes highlight or hints if present
+        removeHint();
+        removeHighlight();
     sum = 0;
 }
-// }
 
 // Checks for and removes an empty row
 function removeEmptyRow() {
@@ -343,19 +337,14 @@ function removeEmptyRow() {
     addLocation();
 }
 
-/** 
- * Opens main menu
-*/
+// Opens main menu
 function pauseGame() {
     returnToMenu();
     continueGameButton.classList.toggle("hide");
     quitGameButton.classList.toggle("hide");
-    // initialMenu.classList.remove("hide");
 }
 
-/** 
- * Brings user back into the game
-*/
+// Brings user back into the game
 function continueGame() {
     initialMenu.classList.toggle("hide");
     gamePage.classList.toggle("hide");
@@ -826,12 +815,12 @@ function undoButtonToggle() {
 
 // Removes a highlight if another action takes place.
 function removeHighlight() {
-    const spans = gameTable.getElementsByTagName("span");
-    if (Array.from(spans).forEach(span => {
+    let spans = gameTable.getElementsByTagName("span");
+    Array.from(spans).forEach(span => {
         if (span.classList.contains("choice")) {
             span.classList.remove("choice");
         }
-    }));
+    });
     // Empties choices to prevent user having to make unnecessary click
     choices = [];
 }
