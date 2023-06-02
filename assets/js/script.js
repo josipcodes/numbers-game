@@ -309,9 +309,7 @@ function checkLocation(choices) {
  * Checks content of spans to decide if action is valid based on the innerHTML.
  */
 function checkContent() {
-    // using variable created outside of the function
-    // let sum = 0;
-    // sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
+    // setting sum to the sum of the two choices
     let sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
     /**
      * If sum of spans is 10 or their innerHTML is equal and greater than 0, pair is removed, otherwise cancelled.
@@ -499,7 +497,7 @@ function provideHint() {
             let coordinatesYMax = Math.max(coordinatesYZero, coordinatesYOne);
             let coordinatesXMin = Math.min(coordinatesXZero, coordinatesXOne);
             let coordinatesXMax = Math.max(coordinatesXZero, coordinatesXOne);
-            // using variable created outside of the function
+            // setting sum value to the sum of the two spans
             let sum = spanIValue + spanJValue;
             // If statement checks inner HTML of i and j as long as the current i's inner HTML isn't 0 (previously removed item).
             if ((spanIValue === spanJValue || sum === 10) && spanIValue !== 0) {
