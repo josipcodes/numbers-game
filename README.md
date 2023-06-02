@@ -1,32 +1,22 @@
 # NUMBERS GAME
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
+Want to play a game? Who doesn't!
 
-In this section, you will include a few paragraphs providing an overview of your project.
-Essentially, this part is your "sales pitch".
+Lucky for you, there is a new game in town and it's said to be very addictive.
 
-At this stage, you should have a name for your project so use it!
-Don't introduce the project as a "portfolio project" for the diploma.
+Our game is called 'Numbers game'. 
 
-In this section, describe what the project hopes to accomplish, who it is intended to target, and how it will be useful to the target audience.
+The point of the game is to clear all of the numbers from the screen by following a few simple rules. 
+Depending on the users current result, they can take advantage of several boosters.
 
-Consider adding a mockup image using the "Am I Responsive" website.
-Here's your deployed site as an example:
-https://ui.dev/amiresponsive?url=https://josipcodes.github.io/numbers-game
+Our target audience are any users with access to the Internet. And more specifically, users with thirst for quality content without adds. 
+Our ideal user is a working professional who commutes to and from work and/or has too much time on their hands when on their lunch break. 
+A user that wishes to have at least something under their control, their square of peace and quiet. 
+Our user does not want a permanent commitment, but a temporary escape without repercussions.
 
-Screenshots for the README and testing should not be inside of `assets/` or `static/` image folders.
-(reminder: `assets/` and `static/` are for files used on the live site, not documentation)
-Consider adding a new folder called `documentation`, and add the amiresponsive screenshot inside of that folder.
-To add the image into your README, use this format:
-(assuming you have a new folder called `documentation` with an image called "mockup.png")
+Game's goal is for it's users to relax their mind all while practicing logical and strategic thinking.
 
-![screenshot](documentation/mockup.png)
-
-Note: Markdown files (.md) should not contain HTML elements like `img`, `br`, `div`, `a`, etc, only Markdown formatting.
-Find out more about using Markdown elements here:
-https://pandao.github.io/editor.md/en.html
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+![screenshot](documentation/responsive-image.png)
 
 ## UX
 
