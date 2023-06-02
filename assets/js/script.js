@@ -670,9 +670,10 @@ function removeHint() {
     const spans = gameTable.getElementsByTagName("span");
     if (generateButton.classList.contains("hint")) {
         generateButton.classList.remove("hint")
-    }
+    } else {
     let filteredHints = Array.from(spans).filter(span => span.classList.contains("hint"));
     Array.from(filteredHints).forEach(filteredHint => filteredHint.classList.remove("hint"));
+    }
 }
 
 /**
@@ -830,11 +831,8 @@ function undoButtonToggle() {
 // Removes a highlight if another action takes place.
 function removeHighlight() {
     let spans = gameTable.getElementsByTagName("span");
-    Array.from(spans).forEach(span => {
-        if (span.classList.contains("choice")) {
-            span.classList.remove("choice");
-        }
-    });
+    let filteredChoices = Array.from(spans).filter(span => span.classList.contains("choice"));
+    Array.from(filteredChoices).forEach(filteredChoice => filteredChoice.classList.remove("choice"));
     // Empties choices to prevent user having to make unnecessary click
     choices = [];
 }
