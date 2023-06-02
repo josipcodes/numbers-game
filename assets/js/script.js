@@ -135,7 +135,7 @@ function runGame() {
         }
     }
     randomizer();
-    addListenerToSpan();
+    // addListenerToSpan();
 }
 
 // Creates random numbers (1-9) and adds them into relevant span elements
@@ -183,7 +183,6 @@ function addLocation() {
 // Creates event listeners for all spans created. Ideally will only create listeners for spans which don't have a value of 0
 function addListenerToSpan() {
     let choice = gameTable.getElementsByTagName("span");
-    typeof(choice);
     Array.from(choice).forEach(span => {
         span.addEventListener("click", highlight)
       });
@@ -311,7 +310,6 @@ function cancelChoice() {
 
 // Checks for and removes an empty row
 function removeEmptyRow() {
-    typeof(wholeRow)
     let amountOfSpans = document.querySelectorAll("[data-place]").length;
     // Calculates the amount of rows that need checking. Doesn't check the last row if not full.
     for (let i = 0; i < (Math.floor(amountOfSpans / 9)); i++) {
@@ -594,7 +592,7 @@ function removeViablePair() {
         }
     }
     // Checks if game is won.
-    gameWon();
+    isGameWonCheck();
 }
 
 let score = 0;
@@ -647,7 +645,7 @@ function removeFifth() {
     /**
      * Check if game was won by removing spans.
      */
-    gameWon();
+    isGameWonCheck();
     /**
      * Span location is calculated again.
      */
@@ -679,12 +677,14 @@ if (Array.from(spans).forEach(span => {
  * Pop up includes the final score.
  * Upon closing of the pop-up, user is brought to the initial game menu.
  */
-function gameWon() {
+function isGameWonCheck() {
     const spans = gameTable.getElementsByTagName("span");
     let sum = 0;
-    /** 
+    /**
      * For loop checks if all present spans equal to 0.
+     * If check added to prevent unnecessary running of the for loop - it will only run when there is one row left.
      */
+    if (spans.length <= 9) {
     for (let i = 0; i < spans.length; i++) {
         sum += Number(spans[i].innerHTML);
     }
@@ -698,6 +698,7 @@ function gameWon() {
         // initialMenu.classList.toggle("hide");
         // gamePage.classList.toggle("hide");
         // continueGameButton.classList.add("hide");
+    }
     }
 }
 
