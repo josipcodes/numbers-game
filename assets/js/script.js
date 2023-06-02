@@ -31,6 +31,7 @@ let generateButtonInstance = 0;
 let score = 0;
 let newScore = 0;
 let memory = [];
+let choices = [];
 
 // Event listeners
 newGameButton.addEventListener("click", showDifficultyPage);
@@ -119,27 +120,30 @@ function runGame() {
             gameTable.removeChild(spans[0]);
         }
     }
+    // If user chooses intermediate level, 45 spans are created.
     if (this.id === "intermediate") {
         for (let i = 0; i < 45; i++) {
             let newSpan = document.createElement("span");
-            // newSpan.textContent = "";
             gameTable.appendChild(newSpan);
         }
-
-    } else if (this.id === "expert") {
+    } 
+    // If user chooses expert level, 45 spans are created.
+    else if (this.id === "expert") {
         for (let i = 0; i < 70; i++) {
             let newSpan = document.createElement("span");
             // newSpan.textContent = "";
             gameTable.appendChild(newSpan);
         }
-    } else {
+    } 
+    // 20 spans are created and appended if higher difficulty level wasn't chosen.
+    else {
         for (let i = 0; i < 20; i++) {
             let newSpan = document.createElement("span");
             gameTable.appendChild(newSpan);
         }
     }
+    // Randomizer is called to set innerHTML of spans.
     randomizer();
-    // addListenerToSpan();
 }
 
 // Creates random numbers (1-9) and adds them into relevant span elements
@@ -197,9 +201,6 @@ function addListenerToSpan() {
     calculateScore();
 }
 
-let sum = 0;
-let choices = [];
-
 /**
  * Hightlights the chosen span pairs and calls for the check of choice.
  * If user clicks on the same span twice, choice is disregarded.
@@ -213,7 +214,9 @@ function highlight() {
             playSound();
         }
     }
+    // Each choice is pushed into an array.
     choices.push(this);
+    // If user clicks on the same span twice, choice is cancelled, otherwise we proceed to check the location of the two choices.
     if (choices[0] === choices[1]) {
         cancelChoice();
     } else if (choices.length === 2) {
@@ -227,6 +230,7 @@ function highlight() {
  * Proceeds to cancelChoice if choice is not valid, or to check content if choice is deemed valid
  */
 function checkLocation(choices) {
+    // Variables containing the locations of the two choices
     const coordinatesYZero = Number(choices[0].getAttribute("data-y"));
     const coordinatesXZero = Number(choices[0].getAttribute("data-x"));
     const coordinatesYOne = Number(choices[1].getAttribute("data-y"));
@@ -239,49 +243,64 @@ function checkLocation(choices) {
     const coordinatesYMax = Math.max(coordinatesYZero, coordinatesYOne);
     const coordinatesXMin = Math.min(coordinatesXZero, coordinatesXOne);
     const coordinatesXMax = Math.max(coordinatesXZero, coordinatesXOne);
-
+    // If statement checks if both choices have the same Y coordinate
     if (coordinatesYZero === coordinatesYOne) {
+        // If statement checks if the two choices are neighbors by X coordinate.
         if (coordinatesXMin + 1 === coordinatesXMax) {
             checkContent();
-        } else {
+        } 
+        // Else statement calculates the sum of all spans between the two choices if they are not neighbors.
+        else {
             let allY = document.querySelectorAll(`[data-y="${coordinatesYZero}"]`);
             let neighborsXSum = 0;
             for (let i = coordinatesXMin + 1; i < coordinatesXMax; i++) {
                 neighborsXSum += Number(allY[i].innerHTML);
             }
+            // If sum of spans in between is 0, we proceed to check the content of the two choices, otherwise cancel the choices.
             if (neighborsXSum === 0) {
                 checkContent();
             } else {
                 cancelChoice();
             }
         }
-    } else if (coordinatesXZero === coordinatesXOne) {
+    } 
+    // Else if checks if the two choices have the same X coordinate.
+    else if (coordinatesXZero === coordinatesXOne) {
+        // If statement checks if the two choices are neighbors by Y.
         if (coordinatesYMin + 1 === coordinatesYMax) {
             checkContent();
-        } else {
+        } 
+        // Else statement calculates the sum of spans in between if the two choices are not neighbors.
+        else {
             let allX = document.querySelectorAll(`[data-x="${coordinatesXZero}"]`);
             let neighborsYSum = 0;
             for (let i = coordinatesYMin + 1; i < coordinatesYMax; i++) {
                 neighborsYSum += Number(allX[i].innerHTML);
             }
+            // If sum of spans in between is 0, we proceed to check the content of the two choices, otherwise cancel the choices.
             if (neighborsYSum === 0) {
                 checkContent();
             } else {
                 cancelChoice();
             }
         }
-    } else if (placeYMin !== placeYMax) {
+    } 
+    // Else if checks the sum of spans in between the two choices if they are not on the same X or Y coordinate.
+    else if (placeYMin !== placeYMax) {
         let allPlaces = document.querySelectorAll(`[data-place]`);
         let betweenSpanSum = 0;
         for (let i = placeYMin + 1; i < placeYMax; i++) {
             betweenSpanSum += Number(allPlaces[i].innerHTML);
         }
+        // If sum of spans in between is 0, we proceed to check the content of the two choices, otherwise cancel the choices.
         if (betweenSpanSum === 0) {
             checkContent();
         } else {
             cancelChoice();
         }
-    } else {
+    } 
+    // All other cases result in canceling a choice.
+    else {
         cancelChoice();
     }
 }
@@ -291,8 +310,9 @@ function checkLocation(choices) {
  */
 function checkContent() {
     // using variable created outside of the function
-    sum = 0;
-    sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
+    // let sum = 0;
+    // sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
+    let sum = parseInt(choices[0].innerHTML) + parseInt(choices[1].innerHTML);
     /**
      * If sum of spans is 10 or their innerHTML is equal and greater than 0, pair is removed, otherwise cancelled.
      * This fixes issue where user could remove previously removed pair, which triggered score calculation and undo button visibility.
@@ -310,7 +330,7 @@ function cancelChoice() {
     // Removes highlight or hints if present
         removeHint();
         removeHighlight();
-    sum = 0;
+    // sum = 0;
 }
 
 // Checks for and removes an empty row
@@ -480,7 +500,7 @@ function provideHint() {
             let coordinatesXMin = Math.min(coordinatesXZero, coordinatesXOne);
             let coordinatesXMax = Math.max(coordinatesXZero, coordinatesXOne);
             // using variable created outside of the function
-            sum = spanIValue + spanJValue;
+            let sum = spanIValue + spanJValue;
             // If statement checks inner HTML of i and j as long as the current i's inner HTML isn't 0 (previously removed item).
             if ((spanIValue === spanJValue || sum === 10) && spanIValue !== 0) {
                 // if statement checks if both i and j are in the same row.
@@ -581,7 +601,6 @@ function provideHint() {
 
 // Removes a pair if all conditions are met.
 function removeViablePair() {
-    let spans = gameTable.getElementsByTagName("span");
     // Sets generateButtonInstance to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
     generateButtonInstance = 0;
     memory = [];
