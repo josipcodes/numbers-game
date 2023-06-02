@@ -299,14 +299,15 @@ function cancelChoice() {
     choices = [];
     let spans = gameTable.getElementsByTagName("span");
     // Checks if any of the spans are highlighted and removes highlight
-    for (let i = 0; i < spans.length; i++) {
-        if (spans[i].classList.contains("hint") || spans[i].classList.contains("choice")) {
-            spans[i].classList.remove("hint");
-            spans[i].classList.remove("choice");
+    Array.from(spans).forEach(span => {
+        if (span.classList.contains("hint") || span.classList.contains("choice")) {
+            span.classList.remove("hint");
+            span.classList.remove("choice");
         }
-        sum = 0;
-    }
+    });
+    sum = 0;
 }
+// }
 
 // Checks for and removes an empty row
 function removeEmptyRow() {
@@ -327,11 +328,11 @@ function removeEmptyRow() {
             let emptyRow = document.querySelectorAll(`[data-y="${i}"]`);
             Array.prototype.forEach.call(emptyRow, span => {
                 span.remove()
-              });
-            }
+            });
         }
-        addLocation();
     }
+    addLocation();
+}
 
 /** 
  * Opens main menu
