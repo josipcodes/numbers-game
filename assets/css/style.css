@@ -20,7 +20,7 @@ body {
 }
 
 #game-area {
-    background-color: lightgrey;
+    background-color: #D3D3D3;
     margin: 20% auto auto auto;
     /* Prevents overflow */
     width: inherit;
@@ -28,9 +28,9 @@ body {
 
 #game-window {
     width: inherit;
-    background-color: lightgrey;
+    background-color: #D3D3D3;
     padding: 5% 0;
-    border: 3px solid black;
+    border: 3px solid #000001;
 }
 
 /* Headings */
@@ -65,14 +65,14 @@ h1, h2 {
     margin: 7px auto;
     padding: 10px 10px;
     font-size: larger;
-    box-shadow: 3px 3px 2px darkgrey;
+    box-shadow: 3px 3px 2px #808080;
 }
 
 .in-game-screen-button {
     display: block;
     margin: 7px auto;
     padding: 6px 4px;
-    box-shadow: 3px 3px 2px darkgrey;
+    box-shadow: 3px 3px 2px #808080;
 }
 
 .hidden {
@@ -89,7 +89,7 @@ h1, h2 {
 }
 
 .fa-solid {
-    color: black;
+    color: #000001;
     font-size: xx-large;
     margin-left: 30%;
 }
@@ -109,9 +109,9 @@ h1, h2 {
 }
 
 .text-block {
-    border: 2px solid black;
+    border: 2px solid #000001;
     margin: 5px auto;
-    background-color: whitesmoke;
+    background-color: #F5F5F5;
     border-radius: 5%;
     padding: 15px;
     text-align: justify;
@@ -128,20 +128,20 @@ h1, h2 {
 
 .image-display {
     margin: 5px auto;
-    border: 2px solid black;
+    border: 2px solid #000001;
     display: block;
     max-width: 275px;
 }
 
 #error-container {
-    background-color: lightgrey;
+    background-color: #D3D3D3;
     margin: 5% auto;
-    border: 2px solid black;
+    border: 2px solid #000001;
     padding-bottom: 15px;
 }
 
 #error-container > a {
-    color: black;
+    color: #000001;
     margin: 5%;
 }
 
@@ -156,8 +156,8 @@ h1, h2 {
 }
 
 span {
-    background-color: whitesmoke;
-    border: 1px solid black;
+    background-color: #F5F5F5;
+    border: 1px solid #000001;
     padding: 10px 0;
     text-align: center;
     font-size: large;
@@ -166,21 +166,22 @@ span {
 }
 
 .hint {
-    background-color: rgb(244 196 48);
-    border: 1px dotted grey;
+    background-color: #F4C430;
+    border: 1px dotted #808080;
     font-weight: 600;
 }
 
 .choice {
     background-color: #E5E619;
-    border: 1px dotted grey;
+    border: 1px dotted #808080;
     font-weight: 600;
     transition: all 0.2s ease-in;
 }
 
 .removed-choice {
     background-color: #000001;
-    border: 1px solid black;
+    /* Overrides choice border */
+    border: 1px solid #000001;
     transition: all 0.4s ease-out;
 }
 
@@ -190,10 +191,10 @@ span {
     width: auto;
     padding: 5px 5px 1px 5px;
     height: 23px;
-    color: black;
+    color: #000001;
     display: block;
-    background-color: whitesmoke;
-    border: 2px solid black;
+    background-color: #F5F5F5;
+    border: 2px solid #000001;
     text-align: center;
 }
 
