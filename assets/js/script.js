@@ -95,12 +95,7 @@ function returnToMenu() {
     gamePage.classList.add("hide");
 }
 
-/**
- * Creates sufficient amount of spans based on the difficulty chosen.
- * If user closes a previous session by clicking on a new game, deletes previous spans and generates new game.
- * MVP: Current state. Future potential - each difficulty level could generate a random amount of spans (15-25, 25-50, 50-100)
- */
-function runGame() {
+function gamePresentation() {
     // Shows initial menu, toggles or hides related pages and buttons.
     initialMenu.classList.add("hide");
     continueGameButton.classList.add("hide");
@@ -109,6 +104,15 @@ function runGame() {
     gamePage.classList.toggle("hide");
     difficultyMenu.classList.toggle("hide");
     generateButton.classList.remove("hint");
+}
+
+/**
+ * Creates sufficient amount of spans based on the difficulty chosen.
+ * If user closes a previous session by clicking on a new game, deletes previous spans and generates new game.
+ * MVP: Current state. Future potential - each difficulty level could generate a random amount of spans (15-25, 25-50, 50-100)
+ */
+function runGame() {
+    gamePresentation();
     // Sets score to 0 to prevent score carrying over from a previous session.
     score = 0;
     // Sets innerHTML to score.
