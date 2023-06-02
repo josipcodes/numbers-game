@@ -1,9 +1,11 @@
+/* Page display */
+
 html {
     height: 100%;
 }
 
-/* Removing user agent stylesheet margin */
 body {
+    /* Removing user agent stylesheet margin */
     margin: inherit;
     background-image: url("../images/race-track.webp");
     background-repeat: no-repeat;
@@ -13,7 +15,6 @@ body {
     background-color: #BC4A3C;
 }
 
-/* Main screen set up*/
 .side-area-left,
 .side-area-right {
     display: none;
@@ -33,10 +34,7 @@ body {
     border: 3px solid black;
 }
 
-#game-window > section {
-    width: 90%;
-    margin: 0 auto;
-}
+/* Headings */
 
 h1 {
     text-align: center;
@@ -44,7 +42,6 @@ h1 {
     background-color: lightgray;
     /* Adding 1% margin to prevent h1 from covering external border */
     margin: 0 1%;
-
 }
 
 h2 {
@@ -59,10 +56,11 @@ h1, h2 {
     font-family: "Kanit", "Times New Roman", sans-serif;
 }
 
-p {
-    text-align: justify;
-    font-family: 'Courier New', Courier, monospace;
+#error-title {
+    margin-bottom: 5%;
 }
+
+/* Buttons & icons */
 
 .main-screen-button,
 .new-game-screen-button {
@@ -80,25 +78,8 @@ p {
     box-shadow: 3px 3px 2px darkgrey;
 }
 
-
 .hidden {
    visibility: hidden;
-}
-
-#initial-menu,
-#difficulty-menu,
-#rules-page,
-#about-page,
-#controls-page {
-    padding-top: 10px;
-}
-
-.text-block {
-    border: 2px solid black;
-    margin: 5px auto;
-    background-color: whitesmoke;
-    border-radius: 5%;
-    padding: 15px;
 }
 
 #game-button-container {
@@ -115,6 +96,64 @@ p {
     font-size: xx-large;
     margin-left: 30%;
 }
+
+/* Pages and paragraph appearance */
+
+#initial-menu,
+#difficulty-menu,
+#rules-page,
+#about-page,
+#controls-page {
+    padding-top: 10px;
+}
+
+#game-window > section {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.text-block {
+    border: 2px solid black;
+    margin: 5px auto;
+    background-color: whitesmoke;
+    border-radius: 5%;
+    padding: 15px;
+    text-align: justify;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#computer-controls {
+    display: none;
+}
+
+.general-controls-icons {
+    margin-left: 0;
+}
+
+.image-display {
+    margin: 5px auto;
+    border: 2px solid black;
+    display: block;
+    max-width: 275px;
+}
+
+#error-container {
+    background-color: lightgrey;
+    margin: 5% auto;
+    border: 2px solid black;
+    padding-bottom: 15px;
+}
+
+#error-container > a {
+    color: black;
+    margin: 5%;
+}
+
+.hide {
+    display: none;
+}
+
+/* In-game content */
 
 #game-table {
     display: grid;
@@ -150,9 +189,7 @@ span {
     transition: all 0.4s ease-out;
 }
 
-.hide {
-    display: none;
-}
+/* Score appearance */
 
 #score {
     margin: 0 auto 5px;
@@ -166,40 +203,10 @@ span {
     text-align: center;
 }
 
-#computer-controls {
-    display: none;
-}
-
-.general-controls-icons {
-    margin-left: 0;
-}
-
-.image-display {
-    margin: 5px auto;
-    border: 2px solid black;
-    display: block;
-    max-width: 275px;
-}
-
-#error-container {
-    background-color: lightgrey;
-    margin: 5% auto;
-    min-height: 15vh;
-    border: 2px solid black;
-}
-
-#error-container > a {
-    color: black;
-    margin: 5%;
-}
-
-#error-title {
-    margin-bottom: 5%;
-}
-
 /* Media query organising display of screens wider than 750px */
 
 @media (min-width: 750px) {
+    /* In-game content appearance */
     span {
         padding: 12px 0;
     }
@@ -208,10 +215,7 @@ span {
 /* Media query organising display of screens wider than 950px */
 
 @media (min-width: 950px) {
-    h2 {
-        margin-bottom: 15px;
-    }
-
+    /* Page display */
     #grid-container {
         display: grid;
         grid-template-columns: 25% auto 25%;
@@ -222,6 +226,11 @@ span {
         display: grid;
     }
 
+    #game-area {
+        width: 100%;
+        height: auto;
+    }
+
     #flex {
         display: flex;
         flex-direction: row-reverse;
@@ -229,17 +238,18 @@ span {
         min-height: 500px;
     }
 
+    /* Heading */
+    h2 {
+        margin-bottom: 15px;
+    }
+
+    /* In-game content display */
     #game-button-container {
         display: block;
         padding-top: 5%;
         margin: 0 auto;
         /* Adding to ensure button container remains on the screen, otherwise it doesn't remain sticky */
         max-height: 50px;
-    }
-
-    #game-area {
-        width: 100%;
-        height: auto;
     }
 
     #game-table {
@@ -249,6 +259,7 @@ span {
         padding-top: 10px;
     }
 
+    /* Buttons & icons */
     .fa-solid {
         margin-left: 1vw;
     }
@@ -265,6 +276,7 @@ span {
 /* Media query organising display of screens wider than 1500px */
 
 @media (min-width: 1500px) {
+    /* Page display */
     body {
         background-size: cover;
     }
@@ -273,12 +285,14 @@ span {
 /* Media query organising display of screens wider than 1800px */
 
 @media (min-width: 1800px) {
+    /* In-game content */
     span {
         padding: 16px 0;
         font-size: x-large;
         line-height: 2;
     }
 
+    /* Score appearance */
     #score {
         aspect-ratio: unset;
         height: auto;
