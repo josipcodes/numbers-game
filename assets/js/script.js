@@ -27,6 +27,7 @@ let sound = document.getElementById("sound");
 let soundIcons = document.getElementsByClassName("fa-solid");
 let soundOn = document.getElementById("sound-is-on");
 let soundOff = document.getElementById("sound-is-off");
+let generateButtonInstance = 0;
 
 // Event listeners
 newGameButton.addEventListener("click", showDifficultyPage);
@@ -677,8 +678,6 @@ if (Array.from(spans).forEach(span => {
 }));
 }
 
-let gameWon = false;
-
 /**
  * Function checks if all present spans are empty (0).
  * Once all spans are empty, pop-up is generated, notifying player.
@@ -701,12 +700,8 @@ function isGameWonCheck() {
      * It hides the current session and shows initial menu.
      */
     if (sum === 0) {
-        gameWon = true;
         alert(`You won! Your final score is ${score}`);
-        quitGame();
-        // initialMenu.classList.toggle("hide");
-        // gamePage.classList.toggle("hide");
-        // continueGameButton.classList.add("hide");
+        quitGameAction();
     }
     }
 }
@@ -738,41 +733,35 @@ function FifthButtonDisplay() {
 
 /** 
  * Function brings up a pop up asking user to confirm if they want to quit the game. 
- * Upon confirmation, the main menu is brought up, and continue and quit options are hidden.
+ * Upon confirmation, the main menu is brought up; continue and quit options are hidden.
  * Cancel closes the pop-up without further action.
  */
 function quitGame() {
     /** 
      * Pop up will ask user for confirmation of quitting the game.
-     * This is done only if the game has not been solved already during the current session to prevent poor user experience.
+     * This is done only if the game has not been solved already during the current session - prevents poor user experience.
      */
-    if (gameWon === false) {
         let quitConfirm = confirm("Are you sure you want to quit?");
         if (quitConfirm === true) {
-            returnToMenu();
-            continueGameButton.classList.add("hide");
-            quitGameButton.classList.add("hide");
+            quitGameAction();
         }
-    } else {
-        returnToMenu();
-        continueGameButton.classList.add("hide");
-        quitGameButton.classList.add("hide");
-
-    }
-    gameWon = false;
 }
 
-let generateButtonInstance = 0;
+function quitGameAction() {
+    returnToMenu();
+    continueGameButton.classList.add("hide");
+    quitGameButton.classList.add("hide");
+}
 
 /**
  * Function checks if user uses Generate button several times without removing any viable pairs in between.
  * This is designed to warn the user at certain intervals to: 
  * a) prevent game exploitation,
- * b) recognise potential for player genuinely being stuck, while not impact their experience.
+ * b) recognise potential for player genuinely being stuck, while not impacting their experience.
  */
 function gamePotentiallyNotSolvable() {
     /**
-     * If statement check the generateButtonInstance which is increased whenever the user repeatedly presses Generate.
+     * If statement checks the generateButtonInstance which is increased whenever the user repeatedly presses Generate.
      * If generateButtonInstance reaches 4, alert pops up and the game moves to its paused state.
      */
     if (generateButtonInstance === 4) {
@@ -806,29 +795,29 @@ function playSound() {
  * Event listener creation was loosely inspired by JavaScript30 website - JavaScript Drum Kit tutorial.
  */
 document.addEventListener("keyup", function(event) {
-        if (event.code = "KeyC" && !continueGameButton.classList.contains("hide")) {
-            continueGame();
-        } 
-        if (!gamePage.classList.contains("hide")) {
-            if (event.code === "KeyG") {
-                generateMoreSpans();
-            } else if (event.code === "KeyH") {
-                provideHint();
-            } else if (event.code === "KeyP") {
-                pauseGame();
-            } else if (event.code === "KeyR" && !removeFifthButton.classList.contains("hidden")) {
-                removeFifth();
-            } else if (event.code === "KeyM") {
-                soundOptions();
-            }
+    if (event.code = "KeyC" && !continueGameButton.classList.contains("hide")) {
+        continueGame();
+    } 
+    if (!gamePage.classList.contains("hide")) {
+        if (event.code === "KeyG") {
+            generateMoreSpans();
+        } else if (event.code === "KeyH") {
+            provideHint();
+        } else if (event.code === "KeyP") {
+            pauseGame();
+        } else if (event.code === "KeyR" && !removeFifthButton.classList.contains("hidden")) {
+            removeFifth();
+        } else if (event.code === "KeyM") {
+            soundOptions();
         }
-  });
+    }
+});
   
-  /**
-   * Function checks for a class of soundOn div and toggles visibility between it and soundOff.
-   * Sound will play when user clicks on the icon which enables sound to confirm the user's action.
-   */
-  function soundOptions() {
+/**
+* Function checks for a class of soundOn div and toggles visibility between it and soundOff.
+* Sound will play when user clicks on the icon which enables sound to confirm the user's action.
+*/
+function soundOptions() {
     soundOn.classList.toggle("hide");
     soundOff.classList.toggle("hide");
     if (!soundOn.classList.contains("hide")) {
@@ -843,12 +832,12 @@ function undoButtonToggle() {
 
 // Removes a highlight if another action takes place.
 function removeHighlight() {
-const spans = gameTable.getElementsByTagName("span");
-if (Array.from(spans).forEach(span => {
-    if (span.classList.contains("choice")) {
-        span.classList.remove("choice");
-    }
-}));
-// Empties choices to prevent user having to make unnecessary click
-choices = [];
+    const spans = gameTable.getElementsByTagName("span");
+    if (Array.from(spans).forEach(span => {
+        if (span.classList.contains("choice")) {
+            span.classList.remove("choice");
+        }
+    }));
+    // Empties choices to prevent user having to make unnecessary click
+    choices = [];
 }
