@@ -671,11 +671,8 @@ function removeHint() {
     if (generateButton.classList.contains("hint")) {
         generateButton.classList.remove("hint")
     }
-    if (Array.from(spans).forEach(span => {
-        if (span.classList.contains("hint")) {
-            span.classList.remove("hint");
-        }
-    }));
+    let filteredHints = Array.from(spans).filter(span => span.classList.contains("hint"));
+    Array.from(filteredHints).forEach(filteredHint => filteredHint.classList.remove("hint"));
 }
 
 /**
