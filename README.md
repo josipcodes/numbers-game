@@ -223,7 +223,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 - **Shortcuts**
 
-    - There are several shortcuts available in-game. User can un/mute the sound, pause the game, continue game, generate more squares, remove a fifth of them or ask for a hint. Depending on the availability of the boosters. To prevent unnecessary clicks, user can use majority of them to unpause the game all while their actual request is being acknowledged.
+    - There are several shortcuts available in-game. User can un/mute the sound, pause the game, continue game, generate more squares, remove a fifth of them or ask for a hint. Depending on the availability of the boosters. To prevent unnecessary clicks, user can use majority of them to unpause the game all while their actual request is being acknowledged. This feature is intended to be used by desktop users and the controls section should not be displaying the shortcuts on devices smaller than the usual desktop width.
 
 ![screenshot](documentation/features/desktop-controls.png)
 
