@@ -96,6 +96,11 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | Desktop | ![screenshot](documentation/wireframes/desktop-sound-off.png) |
 | Desktop | ![screenshot](documentation/wireframes/desktop-sound-on.png) |
 
+- **Deviation from wireframes**
+
+    - Button placement and content has been revised during production to optimise the experience and allow room for features which were not part of the MVP (hint, remove fifth). That being said, user can still easily access rules and controls when pausing the game.
+    - Back to top button has not been implemented due to the fact that this feature was initially planned to allow the user to easily reach the game button section. This was resolved by ensuring the button section remains visible at all times. Taking into the account the usual logic of game solving, user will have no need to scroll all the way to the top since they are either solving the game from the top or the bottom - leaving gaps in between solved areas will prove unwise.
+
 ## Features
 
 ### Existing Features
@@ -251,10 +256,12 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 ### Future Features
 
-- Modal box
+- Custom Modal box
     - In the future, we would like to replace pop-up windows with modal boxes.
 - Randomise-booster
     - In the future, we would like to add additional booster which functions like a randomizer for the existing squares on the board.
+- Leadership board
+    - In the future, we would like to implement a scoreboard with users being able to add their usernames and compare their result to their peers depending on the level played.
 
 ## Tools & Technologies Used
 
