@@ -365,6 +365,7 @@ Images displayed within the Rules section and the ones used to create favicon ar
 
 - I would like to thank my Code Institute mentor, [Tim Nelson](https://github.com/TravelTimN) for their support throughout the development of this project.
 - I would like to thank the [Code Institute](https://codeinstitute.net) tutor team for their assistance with troubleshooting and debugging some project issues.
+- I need to thank [Codewars](https://www.codewars.com); without the katas solved, I'm not sure I would dare to create some of the current aspects of the game. In addition, I owe thanks to [Javascript30 challenge](https://courses.wesbos.com) for the idea (and partially capability) to add sound to the game.
 - I would like to thank Iva for the inspiration and Petra for her support throughout the process.
-- I would also like to thank all of my testers - Eva Amalija, Minna, Claire and Marek.
+- I absolutely have to thank all of my testers - Eva Amalija, Minna, Claire and Marek.
 
