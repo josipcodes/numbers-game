@@ -251,15 +251,12 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 ### Future Features
 
-
 - Modal box
     - In the future, we would like to replace pop-up windows with modal boxes.
 - Randomise-booster
     - In the future, we would like to add additional booster which functions like a randomizer for the existing squares on the board.
 
 ## Tools & Technologies Used
-
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
 
 - [HTML](https://en.wikipedia.org/wiki/HTML) used for the main site content.
 - [CSS](https://en.wikipedia.org/wiki/CSS) used for the main site design and layout.
@@ -324,13 +321,7 @@ There are no known differences between the local version developed, and the live
 
 ## Credits
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-In this section you need to reference where you got your content, media, and extra help from.
-It is common practice to use code from other repositories and tutorials,
-however, it is important to be very specific about these sources to avoid plagiarism.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+Below resources were used in the creation of the game. No content was explicitly copied unless stated otherwise within .js, .html or .css files.
 
 ### Content
 
@@ -338,16 +329,35 @@ however, it is important to be very specific about these sources to avoid plagia
 | --- | --- | --- |
 | [Markdown Builder](https://traveltimn.github.io/markdown-builder) | README and TESTING | tool to help generate the Markdown files |
 | [Chris Beams](https://chris.beams.io/posts/git-commit) | version control | "How to Write a Git Commit Message" |
-| [W3Schools](https://www.w3schools.com/howto/howto_js_topnav_responsive.asp) | entire site | responsive HTML/CSS/JS navbar |
-| [W3Schools](https://www.w3schools.com/howto/howto_css_modals.asp) | contact page | interactive pop-up (modal) |
-| [W3Schools](https://www.w3schools.com/css/css3_variables.asp) | entire site | how to use CSS :root variables |
+| [W3Schools](https://www.w3schools.com/css/css_grid.asp) | entire site | CSS Grid |
+| [MDN Web docs](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns) | entire site | CSS Grid |
+| [W3Schools](https://www.w3schools.com/jsref/met_document_createelement.asp) | entire site | Create element |
+| [W3Schools](https://www.w3schools.com/jsref/met_element_remove.asp) | entire site | Removing element |
+| [StackOverflow](https://stackoverflow.com/questions/5933157/how-to-remove-an-html-element-using-javascript) | entire site | Removing element |
+| [StackOverflow](https://stackoverflow.com/questions/1133770/how-to-convert-a-string-to-an-integer-in-javascrip) | entire site | Converting string to an integer |
+| [StackOverflow](https://stackoverflow.com/questions/7784620/javascript-number-split-into-individual-digits) | entire site | split method |
+| [W3Schools](https://www.w3schools.com/jsref/met_document_createattribute.asp) | entire site | Creating attribute |
+| [StackOverflow](https://stackoverflow.com/questions/47035752/getting-the-first-characters-of-each-string-in-an-array-in-javascript) | entire site | charAt method |
+| [GetButterfly](https://getbutterfly.com/a-quick-introduction-to-custom-data-attributes-and-vanilla-javascript) | entire site | Customer data-attributes |
+| [MDN Web docs](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) | entire site | querySelectorAll method |
+| [MDN Web docs](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) | entire site | querySelector method |
+| [StackOverflow](https://stackoverflow.com/questions/183161/whats-the-best-way-to-break-from-nested-loops-in-javascript) | entire site | Breaking nested functions |
+| [StackOverflow](https://stackoverflow.com/questions/5898656/check-if-an-element-contains-a-class-in-javascript) | entire site | .contains check |
+| [MDN Web docs](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode) | entire site | Cloning Nodes |
+| [StackOverflow](https://stackoverflow.com/questions/40380676/javascript-remove-background-color-and-opacity) | entire site | Remove style |
+| [MDN Web docs](https://developer.mozilla.org/en-US/docs/Web/CSS/repeat) | entire site | Grid repeat |
+| [StackOverflow](https://stackoverflow.com/questions/14705710/html-body-background-image-not-cover-all-page) | entire site | Background styling |
+| [W3Schools](https://www.w3schools.com/css/css3_transitions.asp) | entire site | CSS transition |
+| [W3Schools](https://www.w3schools.com/css/css_display_visibility.asp) | entire site | hidden visibility |
+| [Javascript30](https://courses.wesbos.com/account/access/643aab55847e161a65b82f5d/view/194130650) | entire site | Playing audio |
+| [W3Schools](https://www.w3schools.com/jsref/met_audio_play.asp) | entire site | Playing audio |
+| [StackOverflow](https://stackoverflow.com/questions/35969974/foreach-is-not-a-function-error-with-javascript-array) | entire site | forEach method |
+| [MDN Web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) | entire site | Spread syntax |
+| [CodingDeft](https://www.codingdeft.com/posts/javascript-typeerror-foreach-is-not-a-function/?utm_content=cmp-true) | entire site | Array.from (error fix) |
+| [StackOverflow](https://stackoverflow.com/questions/57628890/why-people-use-rel-noopener-noreferrer-instead-of-just-rel-noreferrer) | entire site | noopener, noreferrer |
+| [AnswerTabs](https://www.answertabs.com/javascript-alert-popup-with-two-buttons-ok-cancel-or-yes-no/) | entire site | confirm() |
+| [StackOverflow](https://stackoverflow.com/questions/46938541/foreach-inside-filter) | entire site | forEach within a filter |
 | [Flexbox Froggy](https://flexboxfroggy.com/) | entire site | modern responsive layouts |
-| [Grid Garden](https://cssgridgarden.com) | entire site | modern responsive layouts |
-| [StackOverflow](https://stackoverflow.com/a/2450976) | quiz page | Fisher-Yates/Knuth shuffle in JS |
-| [YouTube](https://www.youtube.com/watch?v=YL1F4dCUlLc) | leaderboard | using `localStorage()` in JS for high scores |
-| [YouTube](https://www.youtube.com/watch?v=u51Zjlnui4Y) | PP3 terminal | tutorial for adding color to the Python terminal |
-| [strftime](https://strftime.org) | CRUD functionality | helpful tool to format date/time from string |
-| [WhiteNoise](http://whitenoise.evans.io) | entire site | hosting static files on Heroku temporarily |
 
 ### Media
 
@@ -360,6 +370,7 @@ Images displayed within the Rules section and the ones used to create favicon ar
 | [DynamicDrive](http://tools.dynamicdrive.com/favicon) | tab | favicon | tool for favicon creation |
 | [Coolors](https://www.coolors.co) | entire site | image | tool for colour pallet creation |
 | [Convertio](https://www.convertio.co) | entire site | image | tool for image compression |
+| [Canva](https://www.canva.com/colors/color-wheel) | entire site | colours | tool for colour choice |
 
 ### Acknowledgements
 
