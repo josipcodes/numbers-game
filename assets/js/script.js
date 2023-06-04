@@ -48,17 +48,17 @@ quitGameButton.addEventListener("click", quitGame);
 
 // Ensures item is an array and uses forEach to add event listener.
   [...gameModeButtons].forEach(button => {
-    button.addEventListener("click", runGame)
+    button.addEventListener("click", runGame);
   });
 
 // Ensures item is an array and uses forEach to add event listener.
 [...returnButtons].forEach(button => {
-    button.addEventListener("click", returnToMenu)
+    button.addEventListener("click", returnToMenu);
   });
 
 // Ensures item is an array and uses forEach to add event listener.
 [...soundIcons].forEach(button => {
-    button.addEventListener("click", soundOptions)
+    button.addEventListener("click", soundOptions);
   });
 
 // Opens difficulty page
@@ -200,7 +200,7 @@ function addLocation() {
 function addListenerToSpan() {
     let spans = gameTable.getElementsByTagName("span");
     Array.from(spans).forEach(span => {
-        span.addEventListener("click", highlight)
+        span.addEventListener("click", highlight);
       });
     // Ensures score is calculated when needed.
     calculateScore();
@@ -353,7 +353,7 @@ function removeEmptyRow() {
             calculateScore();
             let emptyRow = document.querySelectorAll(`[data-y="${i}"]`);
             Array.prototype.forEach.call(emptyRow, span => {
-                span.remove()
+                span.remove();
             });
         }
     }
@@ -669,7 +669,7 @@ function removeFifth() {
 function removeHint() {
     const spans = gameTable.getElementsByTagName("span");
     if (generateButton.classList.contains("hint")) {
-        generateButton.classList.remove("hint")
+        generateButton.classList.remove("hint");
     } else {
     let filteredHints = Array.from(spans).filter(span => span.classList.contains("hint"));
     Array.from(filteredHints).forEach(filteredHint => filteredHint.classList.remove("hint"));
@@ -793,7 +793,7 @@ function playSound() {
  * Event listener creation was loosely inspired by JavaScript30 website - JavaScript Drum Kit tutorial.
  */
 document.addEventListener("keyup", function(event) {
-    if (event.code = "KeyC" && !continueGameButton.classList.contains("hide")) {
+    if (event.code === "KeyC" && !continueGameButton.classList.contains("hide")) {
         continueGame();
     } 
     if (!gamePage.classList.contains("hide")) {
