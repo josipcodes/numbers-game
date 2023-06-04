@@ -43,7 +43,7 @@ I have used the recommended [JShint Validator](https://jshint.com) to validate a
 I've tested my deployed project on multiple browsers to check for compatibility issues.
 
 | Browser | Menu screenshot | Game screenshot | 404 screenshot | Notes |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | Chrome | ![screenshot](documentation/compatibility/chrome-main-menu.png) | ![screenshot](documentation/compatibility/chrome-game.png) | ![screenshot](documentation/compatibility/chrome-404.png) | Works as expected |
 | Firefox | ![screenshot](documentation/compatibility/firefox-main-menu.png) | ![screenshot](documentation/compatibility/firefox-game.png) | ![screenshot](documentation/compatibility/firefox-404.png) | Works as expected |
 | Edge | ![screenshot](documentation/compatibility/edge-main-menu.png) | ![screenshot](documentation/compatibility/edge-game.png) | ![screenshot](documentation/compatibility/edge-404.png) | Works as expected |
@@ -52,39 +52,13 @@ I've tested my deployed project on multiple browsers to check for compatibility 
 
 ## Responsiveness
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-Use this space to discuss testing the live/deployed site on various device sizes.
-
-The minimum requirement is for the following 3 tests:
-- Mobile
-- Tablet
-- Desktop
-
-**IMPORTANT**: You must provide screenshots of the tested responsiveness, to "prove" that you've actually tested them.
-
-Using the "amiresponsive" mockup image (or similar) does not suffice the requirements.
-Consider using some of the built-in device sizes in the Developer Tools.
-
-If you have tested the project on your actual mobile phone or tablet, consider also including screenshots of these as well.
-It showcases a higher level of manual tests, and can be seen as a positive inclusion!
-
-Sample responsiveness testing documentation:
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 I've tested my deployed project on multiple devices to check for responsiveness issues.
 
-| Device | Screenshot | Notes |
-| --- | --- | --- |
-| Mobile (DevTools) | ![screenshot](documentation/responsive-mobile.png) | Works as expected |
-| Tablet (DevTools) | ![screenshot](documentation/responsive-tablet.png) | Works as expected |
-| Desktop | ![screenshot](documentation/responsive-desktop.png) | Works as expected |
-| XL Monitor | ![screenshot](documentation/responsive-xl.png) | Scaling starts to have minor issues |
-| 4K Monitor | ![screenshot](documentation/responsive-4k.png) | Noticeable scaling issues |
-| Google Pixel 7 Pro | ![screenshot](documentation/responsive-pixel.png) | Works as expected |
-| iPhone 14 | ![screenshot](documentation/responsive-iphone.png) | Works as expected |
-| x | x | repeat for any other tested sizes |
+| Device | Main Menu Screenshot | Rules Screenshot | Controls Screenshot | Generate-warning Screenshot | Hint Screenshot | 404 Screenshot | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Samsung Galaxy S20 Ultra (DevTools) | ![screenshot](documentation/responsiveness/galaxy-menu.png) | ![screenshot](documentation/responsiveness/galaxy-rules.png) | ![screenshot](documentation/responsiveness/galaxy-controls.png) | ![screenshot](documentation/responsiveness/galaxy-warning.png) | ![screenshot](documentation/responsiveness/galaxy-hint.png) | ![screenshot](documentation/responsiveness/galaxy-404.png) | Works as expected |
+| Surface Pro 7 (DevTools) | ![screenshot](documentation/responsiveness/surface-menu.png) | ![screenshot](documentation/responsiveness/surface-rules.png) | ![screenshot](documentation/responsiveness/surface-controls.png) | ![screenshot](documentation/responsiveness/surface-warning.png) | ![screenshot](documentation/responsiveness/surface-hint.png) | ![screenshot](documentation/responsiveness/surface-404.png) | Works as expected |
+| Desktop | ![screenshot](documentation/responsiveness/desktop-menu.png) | ![screenshot](documentation/responsiveness/desktop-rules.png) | ![screenshot](documentation/responsiveness/desktop-controls.png) | ![screenshot](documentation/responsiveness/desktop-warning.png) | ![screenshot](documentation/responsiveness/desktop-hint.png) | ![screenshot](documentation/responsiveness/desktop-404.png) | Works as expected |
 
 ## Lighthouse Audit
 
