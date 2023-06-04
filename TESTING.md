@@ -66,16 +66,13 @@ Sample browser testing documentation:
 
 I've tested my deployed project on multiple browsers to check for compatibility issues.
 
-| Browser | Screenshot | Notes |
-| --- | --- | --- |
-| Chrome | ![screenshot](documentation/browser-chrome.png) | Works as expected |
-| Firefox | ![screenshot](documentation/browser-firefox.png) | Works as expected |
-| Edge | ![screenshot](documentation/browser-edge.png) | Works as expected |
-| Safari | ![screenshot](documentation/browser-safari.png) | Minor CSS differences |
-| Brave | ![screenshot](documentation/browser-brave.png) | Works as expected |
-| Opera | ![screenshot](documentation/browser-opera.png) | Minor differences |
-| Internet Explorer | ![screenshot](documentation/browser-iex.png) | Does not work as expected |
-| x | x | repeat for any other tested browsers |
+| Browser | Menu screenshot | Game screenshot | 404 screenshot | Notes |
+| --- | --- | --- | --- |
+| Chrome | ![screenshot](documentation/compatibility/chrome-main-menu.png) | ![screenshot](documentation/compatibility/chrome-game.png) | ![screenshot](documentation/compatibility/chrome-404.png) | Works as expected |
+| Firefox | ![screenshot](documentation/compatibility/firefox-main-menu.png) | ![screenshot](documentation/compatibility/firefox-game.png) | ![screenshot](documentation/compatibility/firefox-404.png) | Works as expected |
+| Edge | ![screenshot](documentation/compatibility/edge-main-menu.png) | ![screenshot](documentation/compatibility/edge-game.png) | ![screenshot](documentation/compatibility/edge-404.png) | Works as expected |
+| Brave | ![screenshot](documentation/compatibility/brave-main-menu.png) | ![screenshot](documentation/compatibility/brave-game.png) | ![screenshot](documentation/compatibility/brave-404.png) | Works as expected |
+| Opera | ![screenshot](documentation/compatibility/opera-main-menu.png) | ![screenshot](documentation/compatibility/opera-game.png) | ![screenshot](documentation/compatibility/opera-404.png) | Works as expected |
 
 ## Responsiveness
 
