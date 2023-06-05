@@ -262,6 +262,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - In the future, we would like to add additional booster which functions like a randomizer for the existing squares on the board.
 - Leadership board
     - In the future, we would like to implement a scoreboard with users being able to add their usernames and compare their result to their peers depending on the level played.
+- Light/dark theme
+    - In the future, we would like to implement a variety of themes to make game more accessible all while allowing the user to choose the prefered theme.
 
 ## Tools & Technologies Used
 
