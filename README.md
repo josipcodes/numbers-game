@@ -385,5 +385,5 @@ Images displayed within the Rules section and the ones used to create favicon ar
 - I would like to thank the [Code Institute](https://codeinstitute.net) tutor team for their assistance with troubleshooting and debugging some project issues.
 - I need to thank [Codewars](https://www.codewars.com); without the katas solved, I'm not sure I would dare to create some of the current aspects of the game. In addition, I owe thanks to [Javascript30 challenge](https://courses.wesbos.com) for the idea (and partially capability) to add sound to the game.
 - I would like to thank Iva for the inspiration and Petra for her support throughout the process.
-- I absolutely have to thank all of my testers - Eva Amalija, Minna, Claire and Marek as well as the creator of the original Numbers Game available on Google Playstore.
+- I absolutely have to thank all of my testers - Eva Amalija, Aoife, Minna, Claire and Marek as well as the creator of the original Numbers Game available on Google Playstore.
 
