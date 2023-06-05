@@ -73,79 +73,50 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 
 ## Defensive Programming
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-Defensive programming (defensive design) is extremely important!
-
-When building projects that accept user inputs or forms, you should always test the level of security for each.
-Examples of this could include (not limited to):
-
-Forms:
-- Users cannot submit an empty form
-- Users must enter valid email addresses
-
-PP3 (Python-only):
-- Users must enter a valid letter/word/string when prompted
-- Users must choose from a specific list only
-
-Flask/Django:
-- Users cannot brute-force a URL to navigate to a restricted page
-- Users cannot perform CRUD functionality while logged-out
-- User-A should not be able to manipulate data belonging to User-B, or vice versa
-- Non-Authenticated users should not be able to access pages that require authentication
-- Standard users should not be able to access pages intended for superusers
-
-You'll want to test all functionality on your application, whether it's a standard form,
-or uses CRUD functionality for data manipulation on a database.
-Make sure to include the `required` attribute on any form-fields that should be mandatory.
-Try to access various pages on your site as different user types (User-A, User-B, guest user, admin, superuser).
-
-You should include any manual tests performed, and the expected results/outcome.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 Defensive programming was manually tested with the below user acceptance testing:
 
-| Page | User Action | Expected Result | Pass/Fail | Comments |
+| Page/section | User Action | Expected Result | Pass/Fail | Comments |
 | --- | --- | --- | --- | --- |
-| Home Page | | | | |
-| | Click on Logo | Redirection to Home page | Pass | |
-| | Click on Home link in navbar | Redirection to Home page | Pass | |
-| Gallery Page | | | | |
-| | Click on Gallery link in navbar | Redirection to Gallery page | Pass | |
-| | Load gallery images | All images load as expected | Pass | |
-| Contact Page | | | | |
-| | Click on Contact link in navbar | Redirection to Contact page | Pass | |
-| | Enter first/last name | Field will accept freeform text | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter message in textarea | Field will accept freeform text | Pass | |
-| | Click the Submit button | Redirects user to form-dump | Pass | User must click 'Back' button to return |
-| Sign Up | | | | |
-| | Click on Sign Up button | Redirection to Sign Up page | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter valid password (twice) | Field will only accept password format | Pass | |
-| | Click on Sign Up button | Asks user to confirm email page | Pass | Email sent to user |
-| | Confirm email | Redirects user to blank Sign In page | Pass | |
-| Log In | | | | |
-| | Click on the Login link | Redirection to Login page | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter valid password | Field will only accept password format | Pass | |
-| | Click Login button | Redirects user to home page | Pass | |
-| Log Out | | | | |
-| | Click Logout button | Redirects user to logout page | Pass | Confirms logout first |
-| | Click Confirm Logout button | Redirects user to home page | Pass | |
-| Profile | | | | |
-| | Click on Profile button | User will be redirected to the Profile page | Pass | |
-| | Click on the Edit button | User will be redirected to the edit profile page | Pass | |
-| | Click on the My Orders link | User will be redirected to the My Orders page | Pass | |
-| | Brute forcing the URL to get to another user's profile | User should be given an error | Pass | Redirects user back to own profile |
-
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-Repeat for all other tests, as applicable to your own site.
-The aforementioned tests are just an example of a few different project scenarios.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+| Home Page/Main Menu | | | | |
+| | Click on New Game | Redirection to difficulty section | Pass | |
+| | Click on Rules | Redirection to rules section | Pass | |
+| | Click on About | Redirection to about section | Pass | |
+| | Click on Controls | Redirection to controls section | Pass | |
+| | Click on Continue Game | Redirection to the game | Pass | |
+| | Click on Quit Game | Pop-up with confirmation request generating | Pass | |
+| | Press C | Redirection to the game | Pass | |
+| | Confirm quitting the game in pop-up | Closes pop-up, removes continue and quit game buttons from the Main menu | Pass | |
+| | Decline quitting the game in pop-up | Closes pop-up | Pass | |
+| Home Page/Rules | | | | |
+| | Click on Return to Main Menu | Redirection to the Main Menu | Pass | |
+| Home Page/About | | | | |
+| | Click on the link | Opens Numbers Game Github README in a new tab | Pass | |
+| | Click on Return to Main Menu | Redirection to the Main Menu | Pass | |
+| Home Page/Controls | | | | |
+| | Click on Return to Main Menu | Redirection to the Main Menu | Pass | |
+| Home Page/Difficulty section | | | | |
+| | Click on Beginner | Redirection to the game, with beginner mode launched | Pass | |
+| | Click on Intermediate | Redirection to the game, with intermediate mode launched | Pass | |
+| | Click on Expert | Redirection to the game, with expert mode launched | Pass | |
+| | Click on Return to Main Menu | Redirection to the Main Menu | Pass | |
+| Home Page/Game Section | | | | |
+| | Click on Generate | Generates spans with numbers which were currently present on the board | Pass | |
+| | Click on Undo | Removes the previous move, updates score | Pass | |
+| | Click on Hint | Highlights the first available hint, updates score | Pass | |
+| | Click on Remove Fifth | Removes 1/5 of spans, updates score | Pass | |
+| | Click on Sound On | Switches sound on | Pass | |
+| | Click on Sound Off | Switches sound off | Pass | |
+| | Press M | Toggles sound | Pass | |
+| | Press H | Highlights the first available hint, updates score | Pass | |
+| | Press G | Generates spans with numbers which were currently present on the board | Pass | |
+| | Press F | Removes 1/5 of spans, updates score | Pass | |
+| | Press P | Redirection to the Main Menu, enables continue game and quit game buttons | Pass | |
+| | Click on Return to Main Menu | Redirection to the Main Menu, enables continue game and quit game buttons | Pass | |
+| | Click OK on pop-up confirming game has been won | Redirection to the Main Menu, hides continue game and quit game buttons | Pass | |
+| General | | | | |
+| | Enter invalid URL | Redirection to the 404 page | Pass | |
+| 404 | | | | |
+| | Click on the link | Redirection to the Home page | Pass | |
 
 ## Bugs
 
