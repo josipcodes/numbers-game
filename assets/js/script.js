@@ -468,7 +468,7 @@ function provideHint() {
      * Loop starts from startOfCheck (or 0) - this enables user to go through multiple hints instead of only having one.
      * Max i is second to last span - as further functions check for hints going down and going to the right.
      */
-    for (let i = startOfCheck; i < spans.length - 2; i++) {
+    for (let i = startOfCheck; i < spans.length - 1; i++) {
       /** 
        * Loop runs as many times as there are spans on the board, counting from the current i + 1.
        * Bug observed where a positive vertical find in the first column causes j to become 01, likely because of addLocation().
