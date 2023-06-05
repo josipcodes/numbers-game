@@ -120,85 +120,43 @@ Defensive programming was manually tested with the below user acceptance testing
 
 ## Bugs
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-It's very important to document any bugs you've discovered while developing the project.
-Make sure to include any necessary steps you've implemented to fix the bug(s) as well.
-
-For JavaScript and Python applications, it's best to screenshot the errors to include them as well.
-
-**PRO TIP**: screenshots of bugs are extremely helpful, and go a long way!
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-- JS Uncaught ReferenceError: `foobar` is undefined/not defined
-
-    ![screenshot](documentation/bug01.png)
-
-    - To fix this, I _____________________.
-
-- JS `'let'` or `'const'` or `'template literal syntax'` or `'arrow function syntax (=>)'` is available in ES6 (use `'esversion: 11'`) or Mozilla JS extensions (use moz).
-
-    ![screenshot](documentation/bug02.png)
-
-    - To fix this, I _____________________.
-
-- Python `'ModuleNotFoundError'` when trying to import module from imported package
-
-    ![screenshot](documentation/bug03.png)
-
-    - To fix this, I _____________________.
-
-- Django `TemplateDoesNotExist` at /appname/path appname/template_name.html
-
-    ![screenshot](documentation/bug04.png)
-
-    - To fix this, I _____________________.
-
-- Python `E501 line too long` (93 > 79 characters)
-
-    ![screenshot](documentation/bug04.png)
-
-    - To fix this, I _____________________.
-
-### GitHub **Issues**
-
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-An improved way to manage bugs is to use the built-in **Issues** tracker on your GitHub repository.
-To access your Issues, click on the "Issues" tab at the top of your repository.
-Alternatively, use this link: https://github.com/josipcodes/numbers-game/issues
-
-If using the Issues tracker for your bug management, you can simplify the documentation process.
-Issues allow you to directly paste screenshots into the issue without having to first save the screenshot locally,
-then uploading into your project.
-
-You can add labels to your issues (`bug`), assign yourself as the owner, and add comments/updates as you progress with fixing the issue(s).
-
-Once you've sorted the issue, you should then "Close" it.
-
-When showcasing your bug tracking for assessment, you can use the following format:
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 **Fixed Bugs**
 
-All previously closed/fixed bugs can be tracked [here](https://github.com/josipcodes/numbers-game/issues?q=is%3Aissue+is%3Aclosed).
+- Last row of spans doesn't follow the height of remaining rows if empty.
 
-| Bug | Status |
-| --- | --- |
-| [JS Uncaught ReferenceError: `foobar` is undefined/not defined](https://github.com/josipcodes/numbers-game/issues/1) | Closed |
-| [Python `'ModuleNotFoundError'` when trying to import module from imported package](https://github.com/josipcodes/numbers-game/issues/2) | Closed |
-| [Django `TemplateDoesNotExist` at /appname/path appname/template_name.html](https://github.com/josipcodes/numbers-game/issues/3) | Closed |
+    ![screenshot](documentation/bugs/removed-choice.png)
 
-**Open Issues**
+    - To fix this, I have included a min-height CSS rule depending on the screen-width.
 
-Any remaining open issues can be tracked [here](https://github.com/josipcodes/numbers-game/issues).
+- Uncaught TypeError: Cannot read properties of undefined (reading 'innerHTML').
 
-| Bug | Status |
-| --- | --- |
-| [JS `'let'` or `'const'` or `'template literal syntax'` or `'arrow function syntax (=>)'` is available in ES6 (use `'esversion: 11'`) or Mozilla JS extensions (use moz).](https://github.com/josipcodes/numbers-game/issues/4) | Open |
-| [Python `E501 line too long` (93 > 79 characters)](https://github.com/josipcodes/numbers-game/issues/5) | Open |
+    ![screenshot](documentation/bugs/uncaught-type-error.png)
+
+    - As the error came from for loop working from 0 to the last position, all while it removes every 5th span, eventually for loop would not have anything in the index which was previously manifested. To fix this, I have set the for loop to start from the array end and work back to the position 0. 
+
+    ![screenshot](documentation/bugs/uncaught-type-error-fixed.png)
+
+- Provided hint remains stuck if the hint starts in the first row and is vertical. Pressing hint button again would not move the hint further.
+
+    ![screenshot](documentation/bugs/hint-stuck.png)
+
+    - Cause of the issue comes from addLocation() as it sets a location to a string. This resulted in j being itterated as 0-1-2-3-4-5-6-7-8-9-01 (0+'1'). To fix this I have implemented a break in such instances. I admit that this was a quick and not-ideal fix as it caused a minor issue down the line noted in open bugs.
+
+    ![screenshot](documentation/bugs/hint-stuck-cause.png)
+    ![screenshot](documentation/bugs/hint-stuck-fixed.png)
+
+- In-game keyboard shortcuts work when the game is paused.
+
+    - This was caused by an error in the first if statement where equality was not set properly (assignment instead of equality). To fix this, I have set the condition to strict equality.
+
+    ![screenshot](documentation/bugs/eventcode.png)
+
+- When the game is won, 2 pop-ups appear; first one notifies user of the win, second one asks to confirm if they want to quit the game.
+
+    - This was caused by isGameWonCheck() function triggering quitGameConfirm() which generates a pop-up. To fix this, I have separated the process of quitting the game into two separate functions - one which asks for confirmation and another one which actually performs the action. As a result, isGameWonCheck() now triggers quitGameAction().
+
+    ![screenshot](documentation/bugs/game-won.png)
+    ![screenshot](documentation/bugs/game-won-fixed.png)
 
 ## Unfixed Bugs
 

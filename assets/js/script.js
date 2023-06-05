@@ -44,7 +44,7 @@ generateButton.addEventListener("click", generateMoreSpans);
 undoButton.addEventListener("click", undoAction);
 hintButton.addEventListener("click", provideHint);
 removeFifthButton.addEventListener("click", removeFifth);
-quitGameButton.addEventListener("click", quitGame);
+quitGameButton.addEventListener("click", quitGameConfirm);
 
 // Ensures item is an array and uses forEach to add event listener.
   [...gameModeButtons].forEach(button => {
@@ -733,7 +733,7 @@ function FifthButtonDisplay() {
  * Function brings up a pop up asking user to confirm if they want to quit the game. 
  * Cancel closes the pop-up without further action.
  */
-function quitGame() {
+function quitGameConfirm() {
     /** 
      * Pop up will ask user for confirmation of quitting the game: 
      * function will transition to quitGameAction if needed.
