@@ -55,7 +55,7 @@ generateButton.addEventListener("click", generateMoreSpans);
 undoButton.addEventListener("click", undoAction);
 hintButton.addEventListener("click", provideHint);
 removeFifthButton.addEventListener("click", removeFifth);
-quitGameButton.addEventListener("click", quitGameConfirm);
+quitGameButton.addEventListener("click", showQuitGameModal);
 closeWonModalButton.addEventListener("click", exitModal);
 closeGenerateAbusedModalButton.addEventListener("click", exitGenerateModal);
 quitGameModalYesButton.addEventListener("click", quitGameAction);
@@ -755,7 +755,7 @@ function FifthButtonDisplay() {
  * Function brings up a pop up asking user to confirm if they want to quit the game. 
  * Cancel closes the pop-up without further action.
  */
-function quitGameConfirm() {
+function showQuitGameModal() {
     // Modal will ask user for confirmation of quitting the game: 
     quitGameModal.showModal();
 }
