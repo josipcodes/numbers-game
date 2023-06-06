@@ -54,47 +54,43 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 ### Home Page Wireframes
 
-| Size | Screenshot |
+| Mobile | Desktop |
 | --- | --- |
-| Mobile | ![screenshot](documentation/wireframes/phone-main-menu.png) |
-| Desktop | ![screenshot](documentation/wireframes/desktop-main-menu.png) |
+| ![screenshot](documentation/wireframes/phone-main-menu.png) | ![screenshot](documentation/wireframes/desktop-main-menu.png) |
 
 ### Rules Wireframes
 
-| Size | Screenshot |
+| Mobile | Desktop |
 | --- | --- |
-| Mobile | ![screenshot](documentation/wireframes/phone-rules.png) |
-| Desktop | ![screenshot](documentation/wireframes/desktop-rules.png) |
+| ![screenshot](documentation/wireframes/phone-rules.png) | ![screenshot](documentation/wireframes/desktop-rules.png) |
 
 ### About Wireframes
 
-| Size | Screenshot |
+| Mobile | Desktop |
 | --- | --- |
-| Mobile | ![screenshot](documentation/wireframes/phone-about.png) |
-| Desktop | ![screenshot](documentation/wireframes/desktop-about.png) |
+| ![screenshot](documentation/wireframes/phone-about.png) | ![screenshot](documentation/wireframes/desktop-about.png) |
 
 ### Controls Wireframes
 
-| Size | Screenshot |
+| Mobile | Desktop |
 | --- | --- |
-| Mobile | ![screenshot](documentation/wireframes/phone-controls.png) |
-| Desktop | ![screenshot](documentation/wireframes/desktop-controls.png) |
+| ![screenshot](documentation/wireframes/phone-controls.png) | ![screenshot](documentation/wireframes/desktop-controls.png) |
 
 ### Difficulty Menu Wireframes
 
-| Size | Screenshot |
+| Mobile | Desktop |
 | --- | --- |
-| Mobile | ![screenshot](documentation/wireframes/phone-difficulty.png) |
-| Desktop | ![screenshot](documentation/wireframes/desktop-difficulty.png) |
+| ![screenshot](documentation/wireframes/phone-difficulty.png) | ![screenshot](documentation/wireframes/desktop-difficulty.png) |
 
 ### Game Wireframes
 
-| Size | Screenshot |
-| --- | --- |
-| Mobile | ![screenshot](documentation/wireframes/phone-sound-off.png) |
-| Mobile | ![screenshot](documentation/wireframes/phone-sound-on.png) |
-| Desktop | ![screenshot](documentation/wireframes/desktop-sound-off.png) |
-| Desktop | ![screenshot](documentation/wireframes/desktop-sound-on.png) |
+| Mobile | Desktop |
+| --- | --- | 
+| ![screenshot](documentation/wireframes/phone-sound-off.png) | ![screenshot](documentation/wireframes/desktop-sound-off.png) |
+
+| Mobile | Desktop |
+| --- | --- | 
+| ![screenshot](documentation/wireframes/phone-sound-on.png) | ![screenshot](documentation/wireframes/desktop-sound-on.png) |
 
 - **Deviation from wireframes**
 
