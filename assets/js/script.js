@@ -1,3 +1,5 @@
+/* jshint esversion: 11 */
+
 // DOM related variables - buttons
 let newGameButton = document.getElementById("new-game");
 let rulesButton = document.getElementById("rules");
