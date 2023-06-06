@@ -100,6 +100,14 @@ h1, h2 {
     background-color: #F5F5F5;
 }
 
+#quit-confirm, #quit-close {
+    display: inline;
+}
+
+#quit-close {
+    margin-left: 57%;
+}
+
 /* Pages and paragraph appearance */
 #initial-menu,
 #difficulty-menu,

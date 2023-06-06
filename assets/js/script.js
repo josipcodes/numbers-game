@@ -16,6 +16,8 @@ let removeFifthButton = document.getElementById("remove-fifth");
 let quitGameButton = document.getElementById("quit-game");
 let closeWonModalButton = document.getElementById("game-won").children[1];
 let closeGenerateAbusedModalButton = document.getElementById("generate-abused").children[1];
+let quitGameModalYesButton = document.getElementById("quit-confirm");
+let quitGameModalNoButton = document.getElementById("quit-close");
 
 // DOM related variables
 let initialMenu = document.getElementById("initial-menu");
@@ -33,6 +35,7 @@ let soundOn = document.getElementById("sound-is-on");
 let soundOff = document.getElementById("sound-is-off");
 let gameWonModal = document.getElementById("game-won");
 let generateAbusedModal = document.getElementById("generate-abused");
+let quitGameModal = document.getElementById("quit-game-modal");
 let gameWonModalParagraph = document.getElementById("game-won").children[0];
 let generateAbusedModalParagraph = document.getElementById("generate-abused").children[0];
 let generateButtonInstance = 0;
@@ -55,6 +58,8 @@ removeFifthButton.addEventListener("click", removeFifth);
 quitGameButton.addEventListener("click", quitGameConfirm);
 closeWonModalButton.addEventListener("click", exitModal);
 closeGenerateAbusedModalButton.addEventListener("click", exitGenerateModal);
+quitGameModalYesButton.addEventListener("click", quitGameAction);
+quitGameModalNoButton.addEventListener("click", closeQuitModal);
 
 // Ensures item is an array and uses forEach to add event listener.
   [...gameModeButtons].forEach(button => {
@@ -610,7 +615,7 @@ function provideHint() {
 
 // Removes a pair if all conditions are met.
 function removeViablePair() {
-    // Sets generateButtonInstance to 0 to prevent gamePotentiallyNotSolvable from triggering alert.
+    // Sets generateButtonInstance to 0 to prevent gamePotentiallyNotSolvable from triggering modal.
     generateButtonInstance = 0;
     // Cloning gameTable to remember the last choice.
     memory = gameTable.cloneNode(true);
@@ -716,6 +721,7 @@ function isGameWonCheck() {
 
 // Closes Modal and hides the game, opens main menu
 function exitModal() {
+    console.log(this)
     gameWonModal.close() 
     quitGameAction();
 }
@@ -750,18 +756,18 @@ function FifthButtonDisplay() {
  * Cancel closes the pop-up without further action.
  */
 function quitGameConfirm() {
-    /** 
-     * Pop up will ask user for confirmation of quitting the game: 
-     * function will transition to quitGameAction if needed.
-     */
-    let quitConfirm = confirm("Are you sure you want to quit?");
-    if (quitConfirm === true) {
-        quitGameAction();
-    }
+    // Modal will ask user for confirmation of quitting the game: 
+    quitGameModal.showModal();
+}
+
+// Closes quit game Modal 
+function closeQuitModal() {
+    quitGameModal.close();
 }
 
 // Function returns user to the main menu, hides continue/quit game buttons as the session is done.
 function quitGameAction() {
+    closeQuitModal();
     returnToMenu();
     continueGameButton.classList.add("hide");
     quitGameButton.classList.add("hide");
@@ -776,7 +782,7 @@ function quitGameAction() {
 function gamePotentiallyNotSolvable() {
     /**
      * If statement checks the generateButtonInstance which is increased whenever the user repeatedly presses Generate.
-     * If generateButtonInstance reaches 4, alert pops up and the game moves to its paused state.
+     * If generateButtonInstance reaches 4, Modal pops up.
      */
     if (generateButtonInstance === 4) {
         generateAbusedModalParagraph.innerHTML =`You have used 'Generate' several times in a row. Feel free to start a new game if this one is no longer solvable. Good luck!`;
