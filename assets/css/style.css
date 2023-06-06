@@ -118,7 +118,7 @@ h1, h2 {
     border: 2px solid #000001;
     margin: 5px auto;
     background-color: #F5F5F5;
-    border-radius: 5%;
+    border-radius: 1rem;
     padding: 15px;
     text-align: justify;
     font-family: 'Courier New', Courier, monospace;
@@ -205,6 +205,14 @@ span {
     border: 2px solid #000001;
     text-align: center;
 }
+
+dialog {
+    z-index: 10;
+    margin-top: 10px;
+    background: #F5F5F5;
+    border: 1px solid #000001;
+    border-radius: 1rem;
+  }
 
 /* Media query organising display of screens wider than 750px */
 @media (min-width: 750px) {

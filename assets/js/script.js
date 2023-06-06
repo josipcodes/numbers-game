@@ -14,6 +14,7 @@ let undoButton = document.getElementById("undo");
 let hintButton = document.getElementById("hint");
 let removeFifthButton = document.getElementById("remove-fifth");
 let quitGameButton = document.getElementById("quit-game");
+let closeModalButton = document.getElementById("game-won").children[1];
 
 // DOM related variables
 let initialMenu = document.getElementById("initial-menu");
@@ -29,6 +30,8 @@ let sound = document.getElementById("sound");
 let soundIcons = document.getElementsByClassName("fa-solid");
 let soundOn = document.getElementById("sound-is-on");
 let soundOff = document.getElementById("sound-is-off");
+let gameWonModal = document.getElementById("game-won");
+let gameWonModalParagraph = document.getElementById("game-won").children[0];
 let generateButtonInstance = 0;
 let score = 0;
 let newScore = 0;
@@ -47,6 +50,7 @@ undoButton.addEventListener("click", undoAction);
 hintButton.addEventListener("click", provideHint);
 removeFifthButton.addEventListener("click", removeFifth);
 quitGameButton.addEventListener("click", quitGameConfirm);
+closeModalButton.addEventListener("click", exitModal);
 
 // Ensures item is an array and uses forEach to add event listener.
   [...gameModeButtons].forEach(button => {
@@ -695,15 +699,21 @@ function isGameWonCheck() {
         for (let i = 0; i < spans.length; i++) {
             sum += Number(spans[i].innerHTML);
         }
-    /** If statement creates an alert if the game is won. 
+    /** 
+     * If statement opens Modal if the game is won.
      * It shows the final score.
-     * It hides the current session and shows initial menu.
      */
         if (sum === 0) {
-            alert(`You won! Your final score is ${score}`);
-            quitGameAction();
+            gameWonModalParagraph.innerHTML =`You won! Your final score is ${score}!`;
+            gameWonModal.showModal();
         }
     }
+}
+
+// Closes Modal and hides the game, opens main menu
+function exitModal() {
+    gameWonModal.close() 
+    quitGameAction();
 }
 
 /**
