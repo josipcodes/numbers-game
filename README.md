@@ -364,6 +364,7 @@ Below resources were used in the creation of the game. No content was explicitly
 | [StackOverflow](https://stackoverflow.com/questions/46938541/foreach-inside-filter) | entire site | forEach within a filter |
 | [Flexbox Froggy](https://flexboxfroggy.com) | entire site | modern responsive layouts |
 | [Github](https://github.com/TravelTimN/version-control-playground) | commit messages | version control |
+| [Webdevsimplified](https://blog.webdevsimplified.com/2023-04/html-dialog/) | modal boxes | creating dialogs/modals |
 | [MDN Web docs](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-modal) | modal boxes | modal accessibility |
 | [MDN Web docs](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/dialog_role) | modal boxes | modal accessibility |
 
