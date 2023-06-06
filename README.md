@@ -252,8 +252,6 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 ### Future Features
 
-- Custom Modal box
-    - In the future, we would like to replace pop-up windows with modal boxes.
 - Randomise-booster
     - In the future, we would like to add additional booster which functions like a randomizer for the existing squares on the board.
 - Leadership board
