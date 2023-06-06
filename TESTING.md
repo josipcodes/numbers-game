@@ -158,11 +158,19 @@ Defensive programming was manually tested with the below user acceptance testing
 
     - Attempted fix: I tried to add additional media queries to handle this, but the content started becoming too small to read.
 
+---
 - provideHint() misses hints in instances where there is a vertical and horizontal hint to be provided, starting with the same span. This would only be noticed by the user if they opted to use the hint option repeatedly without actually removing the provided hint off the board.
 
     ![screenshot](documentation/bugs/unfixed-hint.png)
 
     - Attempted fix: This is a result of a previous fix documented in fixed bugs section where provideHint would remain stuck on a single hint. I tried changing the logic of addLocation() unsuccessfully as well as changing the logic of the provideHint(), however, this would create more bugs which, unlike the current one, impact the user experience. 
+
+---
+- abusing generate button can result in overall slowness if a significant amount of span exists on the screen. 
+
+    ![screenshot](documentation/bugs/generate-abuse.png)
+
+    - Attempted fix: Temporary buffer was built by opening a dialog after 4 consecutive uses of the generate button but the underlaying issue remains. Permanent fix would require a complete overhaul of the game's logic.
 
 ## What could have been done better
 
