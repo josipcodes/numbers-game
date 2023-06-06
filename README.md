@@ -362,7 +362,8 @@ Below resources were used in the creation of the game. No content was explicitly
 | [StackOverflow](https://stackoverflow.com/questions/57628890/why-people-use-rel-noopener-noreferrer-instead-of-just-rel-noreferrer) | entire site | noopener, noreferrer |
 | [AnswerTabs](https://www.answertabs.com/javascript-alert-popup-with-two-buttons-ok-cancel-or-yes-no/) | entire site | confirm() |
 | [StackOverflow](https://stackoverflow.com/questions/46938541/foreach-inside-filter) | entire site | forEach within a filter |
-| [Flexbox Froggy](https://flexboxfroggy.com/) | entire site | modern responsive layouts |
+| [Flexbox Froggy](https://flexboxfroggy.com) | entire site | modern responsive layouts |
+| [Github](https://github.com/TravelTimN/version-control-playground) | commit messages | version control |
 
 ### Media
 
