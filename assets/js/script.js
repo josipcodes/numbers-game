@@ -14,7 +14,8 @@ let undoButton = document.getElementById("undo");
 let hintButton = document.getElementById("hint");
 let removeFifthButton = document.getElementById("remove-fifth");
 let quitGameButton = document.getElementById("quit-game");
-let closeModalButton = document.getElementById("game-won").children[1];
+let closeWonModalButton = document.getElementById("game-won").children[1];
+let closeGenerateAbusedModalButton = document.getElementById("generate-abused").children[1];
 
 // DOM related variables
 let initialMenu = document.getElementById("initial-menu");
@@ -31,7 +32,9 @@ let soundIcons = document.getElementsByClassName("fa-solid");
 let soundOn = document.getElementById("sound-is-on");
 let soundOff = document.getElementById("sound-is-off");
 let gameWonModal = document.getElementById("game-won");
+let generateAbusedModal = document.getElementById("generate-abused");
 let gameWonModalParagraph = document.getElementById("game-won").children[0];
+let generateAbusedModalParagraph = document.getElementById("generate-abused").children[0];
 let generateButtonInstance = 0;
 let score = 0;
 let newScore = 0;
@@ -50,7 +53,8 @@ undoButton.addEventListener("click", undoAction);
 hintButton.addEventListener("click", provideHint);
 removeFifthButton.addEventListener("click", removeFifth);
 quitGameButton.addEventListener("click", quitGameConfirm);
-closeModalButton.addEventListener("click", exitModal);
+closeWonModalButton.addEventListener("click", exitModal);
+closeGenerateAbusedModalButton.addEventListener("click", exitGenerateModal);
 
 // Ensures item is an array and uses forEach to add event listener.
   [...gameModeButtons].forEach(button => {
@@ -775,10 +779,15 @@ function gamePotentiallyNotSolvable() {
      * If generateButtonInstance reaches 4, alert pops up and the game moves to its paused state.
      */
     if (generateButtonInstance === 4) {
-        alert("You have used 'Generate' several times in a row. Feel free to start a new game if this one is no longer solvable. Good luck!");
+        generateAbusedModalParagraph.innerHTML =`You have used 'Generate' several times in a row. Feel free to start a new game if this one is no longer solvable. Good luck!`;
+        generateAbusedModal.showModal();
         generateButtonInstance = 0;
-        pauseGame();
     }
+}
+
+// Function closes Modal
+function exitGenerateModal() {
+    generateAbusedModal.close();
 }
 
 /**
