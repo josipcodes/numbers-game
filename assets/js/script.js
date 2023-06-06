@@ -56,8 +56,8 @@ undoButton.addEventListener("click", undoAction);
 hintButton.addEventListener("click", provideHint);
 removeFifthButton.addEventListener("click", removeFifth);
 quitGameButton.addEventListener("click", showQuitGameModal);
-closeWonModalButton.addEventListener("click", exitModal);
-closeGenerateAbusedModalButton.addEventListener("click", exitGenerateModal);
+closeWonModalButton.addEventListener("click", closeGameWonModal);
+closeGenerateAbusedModalButton.addEventListener("click", closeGenerateModal);
 quitGameModalYesButton.addEventListener("click", quitGameAction);
 quitGameModalNoButton.addEventListener("click", closeQuitModal);
 
@@ -720,8 +720,7 @@ function isGameWonCheck() {
 }
 
 // Closes Modal and hides the game, opens main menu
-function exitModal() {
-    console.log(this)
+function closeGameWonModal() {
     gameWonModal.close() 
     quitGameAction();
 }
@@ -792,7 +791,7 @@ function gamePotentiallyNotSolvable() {
 }
 
 // Function closes Modal
-function exitGenerateModal() {
+function closeGenerateModal() {
     generateAbusedModal.close();
 }
 
