@@ -366,7 +366,6 @@ Below resources were used in the creation of the game. No content was explicitly
 | [MDN Web docs](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-modal) | modal boxes | modal accessibility |
 | [MDN Web docs](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/dialog_role) | modal boxes | modal accessibility |
 
-
 ### Media
 
 Images displayed within the Rules section and the ones used to create favicon are of this game and thus belong to the creator of the game.
