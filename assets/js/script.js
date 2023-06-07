@@ -725,7 +725,7 @@ function isGameWonCheck() {
 
 // Closes Modal and hides the game, opens main menu
 function closeGameWonModal() {
-    gameWonModal.close() 
+    gameWonModal.close(); 
     quitGameAction();
 }
 
