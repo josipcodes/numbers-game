@@ -154,7 +154,7 @@ h1, h2 {
     padding-bottom: 15px;
 }
 
-#error-container > a {
+#error-container > nav {
     color: #000001;
     margin: 5%;
 }
