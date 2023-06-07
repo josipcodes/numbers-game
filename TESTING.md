@@ -131,7 +131,7 @@ Defensive programming was manually tested with the below user acceptance testing
 
     ![screenshot](documentation/bugs/hint-stuck.png)
 
-    - Cause of the issue comes from `addLocation()` as it sets a location to a string. This resulted in j being itterated as 0-1-2-3-4-5-6-7-8-9-01 (0+'1'). To fix this I have implemented a `break` in such instances. I admit that this was a quick and not-ideal fix as it caused a minor issue down the line noted in open bugs.
+    - Cause of the issue comes from `addLocation()` as it sets a location to a string. This resulted in j being itterated as 0-1-2-3-4-5-6-7-8-9-01 ('0'+1). To fix this I have implemented a `break` in such instances. I admit that this was a quick and not-ideal fix as it caused a minor issue down the line noted in open bugs.
 
     ![screenshot](documentation/bugs/hint-stuck-cause.png)
     ![screenshot](documentation/bugs/hint-stuck-fixed.png)
