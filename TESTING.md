@@ -113,25 +113,25 @@ Defensive programming was manually tested with the below user acceptance testing
 
 **Fixed Bugs**
 
-- Last row of spans doesn't follow the height of remaining rows if empty.
+- Last row of `spans` doesn't follow the height of remaining rows if empty.
 
     ![screenshot](documentation/bugs/removed-choice.png)
 
-    - To fix this, I have included a min-height CSS rule depending on the screen-width.
+    - To fix this, I have included a `min-height` CSS rule depending on the `screen-width`.
 
-- Uncaught TypeError: Cannot read properties of undefined (reading 'innerHTML').
+- `Uncaught TypeError: Cannot read properties of undefined (reading 'innerHTML')`.
 
     ![screenshot](documentation/bugs/uncaught-type-error.png)
 
-    - As the error came from for loop working from 0 to the last position, all while it removes every 5th span, eventually for loop would not have anything in the index which was previously manifested. To fix this, I have set the for loop to start from the array end and work back to the position 0. 
+    - As the error came from for loop working from 0 to the last position, all while it removes every 5th span, eventually `for loop` would not have anything in the index which was previously manifested. To fix this, I have set the for loop to start from the `array end` and work back to the `position 0`. 
 
     ![screenshot](documentation/bugs/uncaught-type-error-fixed.png)
 
-- Provided hint remains stuck if the hint starts in the first row and is vertical. Pressing hint button again would not move the hint further.
+- Provided `hint` remains stuck if the hint starts in the first row and is vertical. Pressing `hint button` again would not move the `hint` further.
 
     ![screenshot](documentation/bugs/hint-stuck.png)
 
-    - Cause of the issue comes from addLocation() as it sets a location to a string. This resulted in j being itterated as 0-1-2-3-4-5-6-7-8-9-01 (0+'1'). To fix this I have implemented a break in such instances. I admit that this was a quick and not-ideal fix as it caused a minor issue down the line noted in open bugs.
+    - Cause of the issue comes from `addLocation()` as it sets a location to a string. This resulted in j being itterated as 0-1-2-3-4-5-6-7-8-9-01 (0+'1'). To fix this I have implemented a `break` in such instances. I admit that this was a quick and not-ideal fix as it caused a minor issue down the line noted in open bugs.
 
     ![screenshot](documentation/bugs/hint-stuck-cause.png)
     ![screenshot](documentation/bugs/hint-stuck-fixed.png)
@@ -144,7 +144,7 @@ Defensive programming was manually tested with the below user acceptance testing
 
 - When the game is won, 2 pop-ups appear; first one notifies user of the win, second one asks to confirm if they want to quit the game.
 
-    - This was caused by isGameWonCheck() function triggering quitGameConfirm() which generates a pop-up. To fix this, I have separated the process of quitting the game into two separate functions - one which asks for confirmation and another one which actually performs the action. As a result, isGameWonCheck() now triggers quitGameAction().
+    - This was caused by `isGameWonCheck()` function triggering `quitGameConfirm()` which generates a pop-up. To fix this, I have separated the process of quitting the game into two separate functions - one which asks for confirmation and another one which actually performs the action. As a result, `isGameWonCheck()` now triggers `quitGameAction()`.
 
     ![screenshot](documentation/bugs/game-won.png)
     ![screenshot](documentation/bugs/game-won-fixed.png)
@@ -159,18 +159,18 @@ Defensive programming was manually tested with the below user acceptance testing
     - Attempted fix: I tried to add additional media queries to handle this, but the content started becoming too small to read.
 
 ---
-- provideHint() misses hints in instances where there is a vertical and horizontal hint to be provided, starting with the same span. This would only be noticed by the user if they opted to use the hint option repeatedly without actually removing the provided hint off the board.
+- `provideHint()` misses hints in instances where there is a vertical and horizontal `hint` to be provided starting with the same `span`. This would only be noticed by the user if they opted to use the `hint` option repeatedly without actually removing the provided `hint` off the board.
 
     ![screenshot](documentation/bugs/unfixed-hint.png)
 
-    - Attempted fix: This is a result of a previous fix documented in fixed bugs section where provideHint would remain stuck on a single hint. I tried changing the logic of addLocation() unsuccessfully as well as changing the logic of the provideHint(), however, this would create more bugs which, unlike the current one, impact the user experience. 
+    - Attempted fix: This is a result of a previous fix documented in fixed bugs section where `provideHint()` would remain stuck on a single hint. I tried changing the logic of `addLocation()` unsuccessfully as well as changing the logic of the `provideHint()`, however, this would create more bugs which, unlike the current one, impact the user experience. 
 
 ---
-- abusing generate button can result in overall slowness if a significant amount of span exists on the screen. 
+- abusing `generate button` can result in overall slowness if a significant amount of `spans` exists on the screen. 
 
     ![screenshot](documentation/bugs/generate-abuse.png)
 
-    - Attempted fix: Temporary buffer was built by opening a dialog after 4 consecutive uses of the generate button but the underlaying issue remains. Permanent fix would require a complete overhaul of the game's logic.
+    - Attempted fix: Temporary buffer was built by opening a `dialog` after 4 consecutive uses of the `generate button` but the underlaying issue remains. Permanent fix would require a complete overhaul of the game's logic.
 
 ## What could have been done better
 
