@@ -50,6 +50,7 @@ I've tested my deployed project on multiple devices to check for responsiveness 
 | Samsung Galaxy S20 Ultra (DevTools) | ![screenshot](documentation/responsiveness/galaxy-menu.png) | ![screenshot](documentation/responsiveness/galaxy-rules.png) | ![screenshot](documentation/responsiveness/galaxy-controls.png) | ![screenshot](documentation/responsiveness/galaxy-warning.png) | ![screenshot](documentation/responsiveness/galaxy-hint.png) | ![screenshot](documentation/responsiveness/galaxy-404.png) | Works as expected |
 | Surface Pro 7 (DevTools) | ![screenshot](documentation/responsiveness/surface-menu.png) | ![screenshot](documentation/responsiveness/surface-rules.png) | ![screenshot](documentation/responsiveness/surface-controls.png) | ![screenshot](documentation/responsiveness/surface-warning.png) | ![screenshot](documentation/responsiveness/surface-hint.png) | ![screenshot](documentation/responsiveness/surface-404.png) | Works as expected |
 | Desktop | ![screenshot](documentation/responsiveness/desktop-menu.png) | ![screenshot](documentation/responsiveness/desktop-rules.png) | ![screenshot](documentation/responsiveness/desktop-controls.png) | ![screenshot](documentation/responsiveness/desktop-warning.png) | ![screenshot](documentation/responsiveness/desktop-hint.png) | ![screenshot](documentation/responsiveness/desktop-404.png) | Works as expected |
+| Samsung Galaxy S22 Ultra, Samsung browser, dark theme | ![screenshot](documentation/responsiveness/phone-dark-menu.jfif) | ![screenshot](documentation/responsiveness/phone-dark-rules.jfif) | ![screenshot](documentation/responsiveness/phone-dark-controls.jfif) | ![screenshot](documentation/responsiveness/phone-dark-warning.jfif) | ![screenshot](documentation/responsiveness/phone-dark-hint.jfif) | ![screenshot](documentation/responsiveness/phone-dark-404.jfif) | Colors are inverted |
 
 ## Lighthouse Audit
 
@@ -179,5 +180,3 @@ Defensive programming was manually tested with the below user acceptance testing
 - Some of the initial commit messages start with a lowercase character. I have since been made aware of this not being ideal and although the explicit rule was not found in Code Institute's guidelines, I admit a personal error.
 
 - checkLocation and provideHint functions are too lenghty for personal liking. I have stried to keep all of the functions short, however, due to the complexity of the task attributed to the two functions, I felt more comfortable keeping them lenghty as opposed to breaking them up in multiple short functions. I can see some of the issues I've since come accross being a result of this. 
-
-
