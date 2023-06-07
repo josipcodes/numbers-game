@@ -28,7 +28,7 @@ The main goal was for image's content to be a connection between outdoor sports 
 Once the image was sourced, the colour scheme of the game needed to provide direct contrast while being simple and easy on the eyes.
 
 - `#BC4A3C` used for background colour in case image does not load.
-- `#000001` user as primary border, text colour, icons as well as span colour upon successful removal of valid pairs in-game.
+- `#000001` user as primary border, text colour, icons as well as span background colour upon successful removal of valid pairs in-game.
 - `#D3D3D3` used as primary background colour of the game-area to provide initial contrast from the background image.
 - `#F5F5F5` used as a secondary background colour of the areas containing text.
 - `#E5E619` used as a tertiary background colour to highlight user's choice.
