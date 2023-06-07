@@ -170,7 +170,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 - **Stuck-check**
 
-    - Should the user repeatedly use 'generate' button without any alternative actions, it is possible the player has no viable pairs to remove. For this reason, pop-up will appear notifying the player of the case. Game will be paused for player to decide on the next best action (continue game, or quit game)
+    - Should the user repeatedly use 'generate' button without any alternative actions, it is possible the player has no viable pairs to remove. For this reason, pop-up will appear notifying the player of the case.
 
 ![screenshot](documentation/features/generate-instances.png)
 
