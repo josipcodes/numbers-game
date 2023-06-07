@@ -607,7 +607,11 @@ function provideHint() {
             }
         }
     }
-    // If there are no hints to be provided on the spans, generateButton receives a 'hint' class.
+    /** 
+     * If there are no hints to be provided on the spans, generateButton receives a 'hint' class.
+     * If user repeatedly clicks the hint in this case, they receive a score penalty.
+     * If user repeatedly clicks the hint button while there are available hints on the board, generate button will be hinted when the last span hint is passed.
+    */
     if (hintOptions.length === 0) {
         generateButton.classList.add("hint");
     }
