@@ -58,10 +58,10 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 
 | Page | Size | Screenshot | Notes |
 | --- | --- | --- | --- |
-| Home | Mobile | ![screenshot](documentation/lighthouse-audit/lighthouse-mobile-home.png) | Some minor warnings |
-| Home | Desktop | ![screenshot](documentation/lighthouse-audit/lighthouse-desktop-home.png) | Few warnings |
-| 404 | Mobile | ![screenshot](documentation/lighthouse-audit/lighthouse-mobile-404.png) | Some minor warnings |
-| 404 | Desktop | ![screenshot](documentation/lighthouse-audit/lighthouse-desktop-404.png) | Few warnings |
+| Home | Mobile | ![screenshot](documentation/lighthouse-audit/lighthouse-mobile-home.png) | Some minor warnings (cache policy, render-blocking resources) |
+| Home | Desktop | ![screenshot](documentation/lighthouse-audit/lighthouse-desktop-home.png) | Few warnings (cache policy, render-blocking resources) |
+| 404 | Mobile | ![screenshot](documentation/lighthouse-audit/lighthouse-mobile-404.png) | Some minor warnings (cache policy, render-blocking resources) |
+| 404 | Desktop | ![screenshot](documentation/lighthouse-audit/lighthouse-desktop-404.png) | Few warnings (cache policy, render-blocking resources)  |
 
 ## Defensive Programming
 
