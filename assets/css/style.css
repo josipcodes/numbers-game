@@ -217,7 +217,9 @@ span {
     text-align: center;
 }
 
+/* Modals */
 dialog {
+    /* z-index and border-radius were taken from Webdevsimplified noted in the Content section of the README */
     z-index: 10;
     margin-top: 10px;
     background: #F5F5F5;
